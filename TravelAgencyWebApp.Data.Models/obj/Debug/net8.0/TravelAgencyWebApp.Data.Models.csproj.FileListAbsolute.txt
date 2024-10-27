@@ -1,0 +1,17 @@
+C:\Users\dell\source\repos\TravelAgencyWebApp\TravelAgencyWebApp.Data.Models\bin\Debug\net8.0\TravelAgencyWebApp.Data.Models.deps.json
+C:\Users\dell\source\repos\TravelAgencyWebApp\TravelAgencyWebApp.Data.Models\bin\Debug\net8.0\TravelAgencyWebApp.Data.Models.runtimeconfig.json
+C:\Users\dell\source\repos\TravelAgencyWebApp\TravelAgencyWebApp.Data.Models\bin\Debug\net8.0\TravelAgencyWebApp.Data.Models.dll
+C:\Users\dell\source\repos\TravelAgencyWebApp\TravelAgencyWebApp.Data.Models\bin\Debug\net8.0\TravelAgencyWebApp.Data.Models.pdb
+C:\Users\dell\source\repos\TravelAgencyWebApp\TravelAgencyWebApp.Data.Models\bin\Debug\net8.0\TravelAgencyWebApp.Common.dll
+C:\Users\dell\source\repos\TravelAgencyWebApp\TravelAgencyWebApp.Data.Models\bin\Debug\net8.0\TravelAgencyWebApp.Common.pdb
+C:\Users\dell\source\repos\TravelAgencyWebApp\TravelAgencyWebApp.Data.Models\obj\Debug\net8.0\TravelAgencyWebApp.Data.Models.csproj.AssemblyReference.cache
+C:\Users\dell\source\repos\TravelAgencyWebApp\TravelAgencyWebApp.Data.Models\obj\Debug\net8.0\TravelAgencyWebApp.Data.Models.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\dell\source\repos\TravelAgencyWebApp\TravelAgencyWebApp.Data.Models\obj\Debug\net8.0\TravelAgencyWebApp.Data.Models.AssemblyInfoInputs.cache
+C:\Users\dell\source\repos\TravelAgencyWebApp\TravelAgencyWebApp.Data.Models\obj\Debug\net8.0\TravelAgencyWebApp.Data.Models.AssemblyInfo.cs
+C:\Users\dell\source\repos\TravelAgencyWebApp\TravelAgencyWebApp.Data.Models\obj\Debug\net8.0\TravelAgencyWebApp.Data.Models.csproj.CoreCompileInputs.cache
+C:\Users\dell\source\repos\TravelAgencyWebApp\TravelAgencyWebApp.Data.Models\obj\Debug\net8.0\TravelAg.034F813F.Up2Date
+C:\Users\dell\source\repos\TravelAgencyWebApp\TravelAgencyWebApp.Data.Models\obj\Debug\net8.0\TravelAgencyWebApp.Data.Models.dll
+C:\Users\dell\source\repos\TravelAgencyWebApp\TravelAgencyWebApp.Data.Models\obj\Debug\net8.0\refint\TravelAgencyWebApp.Data.Models.dll
+C:\Users\dell\source\repos\TravelAgencyWebApp\TravelAgencyWebApp.Data.Models\obj\Debug\net8.0\TravelAgencyWebApp.Data.Models.pdb
+C:\Users\dell\source\repos\TravelAgencyWebApp\TravelAgencyWebApp.Data.Models\obj\Debug\net8.0\TravelAgencyWebApp.Data.Models.genruntimeconfig.cache
+C:\Users\dell\source\repos\TravelAgencyWebApp\TravelAgencyWebApp.Data.Models\obj\Debug\net8.0\ref\TravelAgencyWebApp.Data.Models.dll

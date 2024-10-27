@@ -1,0 +1,17 @@
+C:\Users\dell\source\repos\TravelAgencyWebApp\TravelAgencyWebApp.ViewModels\bin\Debug\net8.0\TravelAgencyWebApp.ViewModels.deps.json
+C:\Users\dell\source\repos\TravelAgencyWebApp\TravelAgencyWebApp.ViewModels\bin\Debug\net8.0\TravelAgencyWebApp.ViewModels.runtimeconfig.json
+C:\Users\dell\source\repos\TravelAgencyWebApp\TravelAgencyWebApp.ViewModels\bin\Debug\net8.0\TravelAgencyWebApp.ViewModels.dll
+C:\Users\dell\source\repos\TravelAgencyWebApp\TravelAgencyWebApp.ViewModels\bin\Debug\net8.0\TravelAgencyWebApp.ViewModels.pdb
+C:\Users\dell\source\repos\TravelAgencyWebApp\TravelAgencyWebApp.ViewModels\bin\Debug\net8.0\TravelAgencyWebApp.Common.dll
+C:\Users\dell\source\repos\TravelAgencyWebApp\TravelAgencyWebApp.ViewModels\bin\Debug\net8.0\TravelAgencyWebApp.Common.pdb
+C:\Users\dell\source\repos\TravelAgencyWebApp\TravelAgencyWebApp.ViewModels\obj\Debug\net8.0\TravelAgencyWebApp.ViewModels.csproj.AssemblyReference.cache
+C:\Users\dell\source\repos\TravelAgencyWebApp\TravelAgencyWebApp.ViewModels\obj\Debug\net8.0\TravelAgencyWebApp.ViewModels.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\dell\source\repos\TravelAgencyWebApp\TravelAgencyWebApp.ViewModels\obj\Debug\net8.0\TravelAgencyWebApp.ViewModels.AssemblyInfoInputs.cache
+C:\Users\dell\source\repos\TravelAgencyWebApp\TravelAgencyWebApp.ViewModels\obj\Debug\net8.0\TravelAgencyWebApp.ViewModels.AssemblyInfo.cs
+C:\Users\dell\source\repos\TravelAgencyWebApp\TravelAgencyWebApp.ViewModels\obj\Debug\net8.0\TravelAgencyWebApp.ViewModels.csproj.CoreCompileInputs.cache
+C:\Users\dell\source\repos\TravelAgencyWebApp\TravelAgencyWebApp.ViewModels\obj\Debug\net8.0\TravelAg.4F049393.Up2Date
+C:\Users\dell\source\repos\TravelAgencyWebApp\TravelAgencyWebApp.ViewModels\obj\Debug\net8.0\TravelAgencyWebApp.ViewModels.dll
+C:\Users\dell\source\repos\TravelAgencyWebApp\TravelAgencyWebApp.ViewModels\obj\Debug\net8.0\refint\TravelAgencyWebApp.ViewModels.dll
+C:\Users\dell\source\repos\TravelAgencyWebApp\TravelAgencyWebApp.ViewModels\obj\Debug\net8.0\TravelAgencyWebApp.ViewModels.pdb
+C:\Users\dell\source\repos\TravelAgencyWebApp\TravelAgencyWebApp.ViewModels\obj\Debug\net8.0\TravelAgencyWebApp.ViewModels.genruntimeconfig.cache
+C:\Users\dell\source\repos\TravelAgencyWebApp\TravelAgencyWebApp.ViewModels\obj\Debug\net8.0\ref\TravelAgencyWebApp.ViewModels.dll

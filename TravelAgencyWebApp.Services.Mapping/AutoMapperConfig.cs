@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using AutoMapper;
+using System.Reflection;
 
 namespace TravelAgencyWebApp.Services.Mapping
 {
@@ -100,4 +101,4 @@ namespace TravelAgencyWebApp.Services.Mapping
         }
     }
 }
-}
+

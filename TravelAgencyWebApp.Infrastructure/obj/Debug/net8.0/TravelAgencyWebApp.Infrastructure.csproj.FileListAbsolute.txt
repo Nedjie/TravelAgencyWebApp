@@ -19,3 +19,4 @@ C:\Users\dell\source\repos\TravelAgencyWebApp\TravelAgencyWebApp.Infrastructure\
 C:\Users\dell\source\repos\TravelAgencyWebApp\TravelAgencyWebApp.Infrastructure\obj\Debug\net8.0\TravelAgencyWebApp.Infrastructure.pdb
 C:\Users\dell\source\repos\TravelAgencyWebApp\TravelAgencyWebApp.Infrastructure\obj\Debug\net8.0\TravelAgencyWebApp.Infrastructure.genruntimeconfig.cache
 C:\Users\dell\source\repos\TravelAgencyWebApp\TravelAgencyWebApp.Infrastructure\obj\Debug\net8.0\ref\TravelAgencyWebApp.Infrastructure.dll
+C:\Users\dell\source\repos\TravelAgencyWebApp\TravelAgencyWebApp.Infrastructure\obj\Debug\net8.0\TravelAgencyWebApp.Infrastructure.sourcelink.json

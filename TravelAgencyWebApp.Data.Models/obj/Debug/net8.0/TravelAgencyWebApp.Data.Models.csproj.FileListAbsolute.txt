@@ -15,3 +15,4 @@ C:\Users\dell\source\repos\TravelAgencyWebApp\TravelAgencyWebApp.Data.Models\obj
 C:\Users\dell\source\repos\TravelAgencyWebApp\TravelAgencyWebApp.Data.Models\obj\Debug\net8.0\TravelAgencyWebApp.Data.Models.pdb
 C:\Users\dell\source\repos\TravelAgencyWebApp\TravelAgencyWebApp.Data.Models\obj\Debug\net8.0\TravelAgencyWebApp.Data.Models.genruntimeconfig.cache
 C:\Users\dell\source\repos\TravelAgencyWebApp\TravelAgencyWebApp.Data.Models\obj\Debug\net8.0\ref\TravelAgencyWebApp.Data.Models.dll
+C:\Users\dell\source\repos\TravelAgencyWebApp\TravelAgencyWebApp.Data.Models\obj\Debug\net8.0\TravelAgencyWebApp.Data.Models.sourcelink.json

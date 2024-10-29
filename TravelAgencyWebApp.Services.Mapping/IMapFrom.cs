@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TravelAgencyWebApp.Services.Mapping
+﻿namespace TravelAgencyWebApp.Services.Mapping
 {
-    internal class IMapFrom
+    public class IMapFrom<T>
     {
     }
 }

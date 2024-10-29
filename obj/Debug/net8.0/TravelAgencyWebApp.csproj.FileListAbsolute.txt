@@ -300,3 +300,5 @@ C:\Users\dell\source\repos\TravelAgencyWebApp\bin\Debug\net8.0\TravelAgencyWebAp
 C:\Users\dell\source\repos\TravelAgencyWebApp\bin\Debug\net8.0\TravelAgencyWebApp.Infrastructure.pdb
 C:\Users\dell\source\repos\TravelAgencyWebApp\bin\Debug\net8.0\TravelAgencyWebApp.ViewModels.pdb
 C:\Users\dell\source\repos\TravelAgencyWebApp\bin\Debug\net8.0\TravelAgencyWebApp.Data.Models.pdb
+C:\Users\dell\source\repos\TravelAgencyWebApp\bin\Debug\net8.0\AutoMapper.dll
+C:\Users\dell\source\repos\TravelAgencyWebApp\obj\Debug\net8.0\TravelAgencyWebApp.sourcelink.json

@@ -1,6 +1,10 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using NuGet.Protocol.Core.Types;
 using TravelAgencyWebApp.Data;
+using TravelAgencyWebApp.Data.Models;
+using TravelAgencyWebApp.Data.Repository;
+using TravelAgencyWebApp.Data.Repository.Interfaces;
 
 namespace TravelAgencyWebApp
 {
@@ -15,6 +19,12 @@ namespace TravelAgencyWebApp
             builder.Services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(connectionString));
             builder.Services.AddDatabaseDeveloperPageExceptionFilter();
+
+            builder.Services.AddScoped<IRepository<Booking>,Repository<Booking>>();
+            builder.Services.AddScoped<IRepository<Offer>,Repository<Offer>>();
+            builder.Services.AddScoped<IRepository<Review>,Repository<Review>>();
+            builder.Services.AddScoped<IRepository<TravelingWay>,Repository<TravelingWay>>();
+            builder.Services.AddScoped<IRepository<User>, Repository<User>>();
 
             builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();

@@ -3,21 +3,23 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35222.181
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravelAgencyWebApp", "TravelAgencyWebApp.csproj", "{949743E4-E43F-4DE1-9EDC-07CF2F45A045}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TravelAgencyWebApp", "TravelAgencyWebApp.csproj", "{949743E4-E43F-4DE1-9EDC-07CF2F45A045}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{59EC8995-3306-45A5-8D5F-0FF43AFECC8A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{28BCE53E-0325-495B-A83A-2227E1591B0E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravelAgencyWebApp.Data", "TravelAgencyWebApp.Data\TravelAgencyWebApp.Data.csproj", "{9422796D-8103-4EE2-9847-69F396F6C059}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TravelAgencyWebApp.Data", "TravelAgencyWebApp.Data\TravelAgencyWebApp.Data.csproj", "{9422796D-8103-4EE2-9847-69F396F6C059}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravelAgencyWebApp.Data.Models", "TravelAgencyWebApp.Data.Models\TravelAgencyWebApp.Data.Models.csproj", "{44A617F2-9252-46AC-B7BC-5C0E7571FA3B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TravelAgencyWebApp.Data.Models", "TravelAgencyWebApp.Data.Models\TravelAgencyWebApp.Data.Models.csproj", "{44A617F2-9252-46AC-B7BC-5C0E7571FA3B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravelAgencyWebApp.Infrastructure", "TravelAgencyWebApp.Infrastructure\TravelAgencyWebApp.Infrastructure.csproj", "{B21F4678-AD4E-4733-A7D3-13373D55573B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TravelAgencyWebApp.Infrastructure", "TravelAgencyWebApp.Infrastructure\TravelAgencyWebApp.Infrastructure.csproj", "{B21F4678-AD4E-4733-A7D3-13373D55573B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravelAgencyWebApp.ViewModels", "TravelAgencyWebApp.ViewModels\TravelAgencyWebApp.ViewModels.csproj", "{3A869124-C898-46EA-81B7-7D801CE28DA6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TravelAgencyWebApp.ViewModels", "TravelAgencyWebApp.ViewModels\TravelAgencyWebApp.ViewModels.csproj", "{3A869124-C898-46EA-81B7-7D801CE28DA6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravelAgencyWebApp.Common", "TravelAgencyWebApp.Common\TravelAgencyWebApp.Common.csproj", "{BC81A34F-452F-4644-94E1-91CEC9A4A646}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TravelAgencyWebApp.Common", "TravelAgencyWebApp.Common\TravelAgencyWebApp.Common.csproj", "{BC81A34F-452F-4644-94E1-91CEC9A4A646}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{398D76B2-30BA-47DD-9066-10994C357A0B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TravelAgencyWebApp.Services.Mapping
 {
-    internal class IHaveCustomMapping
+    internal interface IHaveCustomMappings
     {
     }
 }

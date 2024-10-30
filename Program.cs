@@ -1,10 +1,11 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using NuGet.Protocol.Core.Types;
 using TravelAgencyWebApp.Data;
 using TravelAgencyWebApp.Data.Models;
 using TravelAgencyWebApp.Data.Repository;
 using TravelAgencyWebApp.Data.Repository.Interfaces;
+using TravelAgencyWebApp.Services.Mapping;
+using TravelAgencyWebApp.ViewModels;
 
 namespace TravelAgencyWebApp
 {
@@ -31,6 +32,9 @@ namespace TravelAgencyWebApp
             builder.Services.AddControllersWithViews();
 
             var app = builder.Build();
+
+            AutoMapperConfig.RegisterMappings(typeof(ErrorViewModel).Assembly);
+
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())

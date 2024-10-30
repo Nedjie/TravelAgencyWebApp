@@ -10,4 +10,9 @@
     <PackageReference Include="AutoMapper" Version="13.0.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\TravelAgencyWebApp.Data\TravelAgencyWebApp.Data.csproj" />
+    <ProjectReference Include="..\TravelAgencyWebApp.ViewModels\TravelAgencyWebApp.ViewModels.csproj" />
+  </ItemGroup>
+
 </Project>

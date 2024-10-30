@@ -3123,6 +3123,39 @@
         "runtime": {
           "bin/placeholder/TravelAgencyWebApp.Common.dll": {}
         }
+      },
+      "TravelAgencyWebApp.Data.Models/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "AutoMapper": "13.0.1",
+          "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": "8.0.8",
+          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "8.0.10",
+          "Microsoft.AspNetCore.Identity.UI": "8.0.10",
+          "Microsoft.EntityFrameworkCore.SqlServer": "8.0.10",
+          "Microsoft.EntityFrameworkCore.Sqlite": "8.0.10",
+          "Microsoft.VisualStudio.Web.CodeGeneration.Design": "8.0.6",
+          "TravelAgencyWebApp.Common": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/TravelAgencyWebApp.Data.Models.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/TravelAgencyWebApp.Data.Models.dll": {}
+        }
+      },
+      "TravelAgencyWebApp.Services.Mapping/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "AutoMapper": "13.0.1"
+        },
+        "compile": {
+          "bin/placeholder/TravelAgencyWebApp.Services.Mapping.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/TravelAgencyWebApp.Services.Mapping.dll": {}
+        }
       }
     }
   },
@@ -8518,6 +8551,16 @@
       "type": "project",
       "path": "../TravelAgencyWebApp.Common/TravelAgencyWebApp.Common.csproj",
       "msbuildProject": "../TravelAgencyWebApp.Common/TravelAgencyWebApp.Common.csproj"
+    },
+    "TravelAgencyWebApp.Data.Models/1.0.0": {
+      "type": "project",
+      "path": "../TravelAgencyWebApp.Data.Models/TravelAgencyWebApp.Data.Models.csproj",
+      "msbuildProject": "../TravelAgencyWebApp.Data.Models/TravelAgencyWebApp.Data.Models.csproj"
+    },
+    "TravelAgencyWebApp.Services.Mapping/1.0.0": {
+      "type": "project",
+      "path": "../TravelAgencyWebApp.Services.Mapping/TravelAgencyWebApp.Services.Mapping.csproj",
+      "msbuildProject": "../TravelAgencyWebApp.Services.Mapping/TravelAgencyWebApp.Services.Mapping.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -8530,7 +8573,9 @@
       "Microsoft.EntityFrameworkCore.Sqlite >= 8.0.10",
       "Microsoft.EntityFrameworkCore.Tools >= 8.0.10",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 8.0.6",
-      "TravelAgencyWebApp.Common >= 1.0.0"
+      "TravelAgencyWebApp.Common >= 1.0.0",
+      "TravelAgencyWebApp.Data.Models >= 1.0.0",
+      "TravelAgencyWebApp.Services.Mapping >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -8568,6 +8613,12 @@
           "projectReferences": {
             "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\TravelAgencyWebApp.Common\\TravelAgencyWebApp.Common.csproj": {
               "projectPath": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\TravelAgencyWebApp.Common\\TravelAgencyWebApp.Common.csproj"
+            },
+            "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\TravelAgencyWebApp.Data.Models\\TravelAgencyWebApp.Data.Models.csproj": {
+              "projectPath": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\TravelAgencyWebApp.Data.Models\\TravelAgencyWebApp.Data.Models.csproj"
+            },
+            "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\TravelAgencyWebApp.Services.Mapping\\TravelAgencyWebApp.Services.Mapping.csproj": {
+              "projectPath": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\TravelAgencyWebApp.Services.Mapping\\TravelAgencyWebApp.Services.Mapping.csproj"
             }
           }
         }

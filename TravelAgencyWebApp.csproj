@@ -56,6 +56,8 @@
     <ProjectReference Include="TravelAgencyWebApp.Common\TravelAgencyWebApp.Common.csproj" />
     <ProjectReference Include="TravelAgencyWebApp.Data\TravelAgencyWebApp.Data.csproj" />
     <ProjectReference Include="TravelAgencyWebApp.Infrastructure\TravelAgencyWebApp.Infrastructure.csproj" />
+    <ProjectReference Include="TravelAgencyWebApp.Services.Data\TravelAgencyWebApp.Services.Data.csproj" />
+    <ProjectReference Include="TravelAgencyWebApp.Services.Mapping\TravelAgencyWebApp.Services.Mapping.csproj" />
     <ProjectReference Include="TravelAgencyWebApp.ViewModels\TravelAgencyWebApp.ViewModels.csproj" />
   </ItemGroup>
 

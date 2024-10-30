@@ -21,9 +21,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TravelAgencyWebApp.Common",
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{398D76B2-30BA-47DD-9066-10994C357A0B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravelAgencyWebApp.Services.Data", "TravelAgencyWebApp.Services.Data\TravelAgencyWebApp.Services.Data.csproj", "{1C2B9E87-7037-401B-8E5D-1D2C85CD0860}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TravelAgencyWebApp.Services.Data", "TravelAgencyWebApp.Services.Data\TravelAgencyWebApp.Services.Data.csproj", "{1C2B9E87-7037-401B-8E5D-1D2C85CD0860}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravelAgencyWebApp.Services.Mapping", "TravelAgencyWebApp.Services.Mapping\TravelAgencyWebApp.Services.Mapping.csproj", "{A8202C4F-CD81-47A1-8C92-ED12041AF683}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TravelAgencyWebApp.Services.Mapping", "TravelAgencyWebApp.Services.Mapping\TravelAgencyWebApp.Services.Mapping.csproj", "{A8202C4F-CD81-47A1-8C92-ED12041AF683}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

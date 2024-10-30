@@ -1,0 +1,6 @@
+C:\Users\dell\source\repos\TravelAgencyWebApp\TravelAgencyWebApp.Services.Data\obj\Debug\net8.0\TravelAgencyWebApp.Services.Data.csproj.AssemblyReference.cache
+C:\Users\dell\source\repos\TravelAgencyWebApp\TravelAgencyWebApp.Services.Data\obj\Debug\net8.0\TravelAgencyWebApp.Services.Data.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\dell\source\repos\TravelAgencyWebApp\TravelAgencyWebApp.Services.Data\obj\Debug\net8.0\TravelAgencyWebApp.Services.Data.AssemblyInfoInputs.cache
+C:\Users\dell\source\repos\TravelAgencyWebApp\TravelAgencyWebApp.Services.Data\obj\Debug\net8.0\TravelAgencyWebApp.Services.Data.AssemblyInfo.cs
+C:\Users\dell\source\repos\TravelAgencyWebApp\TravelAgencyWebApp.Services.Data\obj\Debug\net8.0\TravelAgencyWebApp.Services.Data.csproj.CoreCompileInputs.cache
+C:\Users\dell\source\repos\TravelAgencyWebApp\TravelAgencyWebApp.Services.Data\obj\Debug\net8.0\TravelAgencyWebApp.Services.Data.sourcelink.json

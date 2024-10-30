@@ -16,3 +16,7 @@ C:\Users\dell\source\repos\TravelAgencyWebApp\TravelAgencyWebApp.ViewModels\obj\
 C:\Users\dell\source\repos\TravelAgencyWebApp\TravelAgencyWebApp.ViewModels\obj\Debug\net8.0\TravelAgencyWebApp.ViewModels.genruntimeconfig.cache
 C:\Users\dell\source\repos\TravelAgencyWebApp\TravelAgencyWebApp.ViewModels\obj\Debug\net8.0\ref\TravelAgencyWebApp.ViewModels.dll
 C:\Users\dell\source\repos\TravelAgencyWebApp\TravelAgencyWebApp.ViewModels\obj\Debug\net8.0\TravelAgencyWebApp.ViewModels.sourcelink.json
+C:\Users\dell\source\repos\TravelAgencyWebApp\TravelAgencyWebApp.ViewModels\bin\Debug\net8.0\TravelAgencyWebApp.Data.Models.dll
+C:\Users\dell\source\repos\TravelAgencyWebApp\TravelAgencyWebApp.ViewModels\bin\Debug\net8.0\TravelAgencyWebApp.Services.Mapping.dll
+C:\Users\dell\source\repos\TravelAgencyWebApp\TravelAgencyWebApp.ViewModels\bin\Debug\net8.0\TravelAgencyWebApp.Data.Models.pdb
+C:\Users\dell\source\repos\TravelAgencyWebApp\TravelAgencyWebApp.ViewModels\bin\Debug\net8.0\TravelAgencyWebApp.Services.Mapping.pdb

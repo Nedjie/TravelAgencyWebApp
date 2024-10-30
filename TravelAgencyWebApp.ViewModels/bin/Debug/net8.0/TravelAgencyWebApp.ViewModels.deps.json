@@ -16,7 +16,9 @@
           "Microsoft.EntityFrameworkCore.Sqlite": "8.0.10",
           "Microsoft.EntityFrameworkCore.Tools": "8.0.10",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "8.0.6",
-          "TravelAgencyWebApp.Common": "1.0.0"
+          "TravelAgencyWebApp.Common": "1.0.0",
+          "TravelAgencyWebApp.Data.Models": "1.0.0",
+          "TravelAgencyWebApp.Services.Mapping": "1.0.0"
         },
         "runtime": {
           "TravelAgencyWebApp.ViewModels.dll": {}
@@ -2197,6 +2199,35 @@
             "fileVersion": "1.0.0.0"
           }
         }
+      },
+      "TravelAgencyWebApp.Data.Models/1.0.0": {
+        "dependencies": {
+          "AutoMapper": "13.0.1",
+          "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": "8.0.8",
+          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "8.0.10",
+          "Microsoft.AspNetCore.Identity.UI": "8.0.10",
+          "Microsoft.EntityFrameworkCore.SqlServer": "8.0.10",
+          "Microsoft.EntityFrameworkCore.Sqlite": "8.0.10",
+          "Microsoft.VisualStudio.Web.CodeGeneration.Design": "8.0.6",
+          "TravelAgencyWebApp.Common": "1.0.0"
+        },
+        "runtime": {
+          "TravelAgencyWebApp.Data.Models.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "TravelAgencyWebApp.Services.Mapping/1.0.0": {
+        "dependencies": {
+          "AutoMapper": "13.0.1"
+        },
+        "runtime": {
+          "TravelAgencyWebApp.Services.Mapping.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
       }
     }
   },
@@ -3439,6 +3470,16 @@
       "hashPath": "system.windows.extensions.7.0.0.nupkg.sha512"
     },
     "TravelAgencyWebApp.Common/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "TravelAgencyWebApp.Data.Models/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "TravelAgencyWebApp.Services.Mapping/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

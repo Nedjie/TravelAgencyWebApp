@@ -1,113 +1,62 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using TravelAgencyWebApp.Data.Models;
 using TravelAgencyWebApp.Data;
+using TravelAgencyWebApp.Services.Data.Interfaces;
 
 namespace TravelAgencyWebApp.Controllers
 {
     public class TravelingWayController : BaseController
     {
-        private readonly ApplicationDbContext _context; // Assume ApplicationDbContext is your EF Core DB context
+        private readonly ITravelingWayService _travelingWayService;
 
-        public TravelingWayController(ApplicationDbContext context, ILogger<TravelingWayController> logger) : base(logger)
+        public TravelingWayController(ITravelingWayService travelingWayService, ILogger<BaseController> logger)
+            : base(logger)
         {
-            _context = context;
+            _travelingWayService = travelingWayService;
         }
 
-        // GET: TravelingWay
-        public IActionResult Index()
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<TravelingWay>>> GetAllTravelingWays()
         {
-            var travelingWays = _context.TravelingWays.ToList(); // Retrieve all traveling ways
-            return View(travelingWays); // Return to the index view
+            var travelingWays = await _travelingWayService.GetAllTravelingWaysAsync();
+            return Ok(travelingWays);
         }
 
-        // GET: TravelingWay/Details/5
-        public IActionResult Details(int id)
+        [HttpGet("{id}")]
+        public async Task<ActionResult<TravelingWay>> GetTravelingWayById(int id)
         {
-            var travelingWay = _context.TravelingWays.Find(id); // Find the traveling way by ID
+            var travelingWay = await _travelingWayService.GetTravelingWayByIdAsync(id);
             if (travelingWay == null)
             {
-                return NotFound(); // Return 404 if not found
+              //  return HandleNotFound($"Traveling way with ID: {id}");
             }
-            return View(travelingWay); // Return the details view
+            return Ok(travelingWay);
         }
 
-        // GET: TravelingWay/Create
-        public IActionResult Create()
-        {
-            return View(); // Return the create view
-        }
-
-        // POST: TravelingWay/Create
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult Create(TravelingWay travelingWay)
+        public async Task<ActionResult<TravelingWay>> CreateTravelingWay([FromBody] TravelingWay travelingWay)
         {
-            if (!ModelState.IsValid)
-            {
-                return View(travelingWay); // Return view with validation errors
-            }
-
-            _context.TravelingWays.Add(travelingWay); // Add to the context
-            _context.SaveChanges(); // Save changes to the database
-
-            return RedirectToAction(nameof(Index)); // Redirect to the index action
+            await _travelingWayService.AddTravelingWayAsync(travelingWay);
+            return CreatedAtAction(nameof(GetTravelingWayById), new { id = travelingWay.Id }, travelingWay);
         }
 
-        // GET: TravelingWay/Edit/5
-        public IActionResult Edit(int id)
-        {
-            var travelingWay = _context.TravelingWays.Find(id); // Find the traveling way by ID
-            if (travelingWay == null)
-            {
-                return NotFound(); // Return 404 if not found
-            }
-            return View(travelingWay); // Return the edit view
-        }
-
-        // POST: TravelingWay/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult Edit(int id, TravelingWay travelingWay)
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateTravelingWay(int id, [FromBody] TravelingWay travelingWay)
         {
             if (id != travelingWay.Id)
             {
-                return BadRequest(); // Return a bad request if the IDs don't match
+                return BadRequest();
             }
 
-            if (!ModelState.IsValid)
-            {
-                return View(travelingWay); // Return view with validation errors
-            }
-
-            _context.TravelingWays.Update(travelingWay); // Update the entity
-            _context.SaveChanges(); // Save changes to the database
-
-            return RedirectToAction(nameof(Index)); // Redirect to the index action
+            await _travelingWayService.UpdateTravelingWayAsync(travelingWay);
+            return NoContent();
         }
 
-        // GET: TravelingWay/Delete/5
-        public IActionResult Delete(int id)
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteTravelingWay(int id)
         {
-            var travelingWay = _context.TravelingWays.Find(id); // Find the traveling way by ID
-            if (travelingWay == null)
-            {
-                return NotFound(); // Return 404 if not found
-            }
-            return View(travelingWay); // Return the delete confirmation view
-        }
-
-        // POST: TravelingWay/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public IActionResult DeleteConfirmed(int id)
-        {
-            var travelingWay = _context.TravelingWays.Find(id); // Find the traveling way
-            if (travelingWay != null)
-            {
-                _context.TravelingWays.Remove(travelingWay); // Remove the entity
-                _context.SaveChanges(); // Save changes to the database
-            }
-            return RedirectToAction(nameof(Index)); // Redirect to the index action
+            await _travelingWayService.DeleteTravelingWayAsync(id);
+            return NoContent();
         }
     }
 }

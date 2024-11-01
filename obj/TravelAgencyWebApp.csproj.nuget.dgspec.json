@@ -472,6 +472,9 @@
             "projectReferences": {
               "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\TravelAgencyWebApp.Data\\TravelAgencyWebApp.Data.csproj": {
                 "projectPath": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\TravelAgencyWebApp.Data\\TravelAgencyWebApp.Data.csproj"
+              },
+              "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\TravelAgencyWebApp.Services.Data\\TravelAgencyWebApp.Services.Data.csproj": {
+                "projectPath": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\TravelAgencyWebApp.Services.Data\\TravelAgencyWebApp.Services.Data.csproj"
               }
             }
           }

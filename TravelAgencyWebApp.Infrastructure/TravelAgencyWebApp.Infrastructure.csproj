@@ -22,6 +22,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\TravelAgencyWebApp.Data\TravelAgencyWebApp.Data.csproj" />
+    <ProjectReference Include="..\TravelAgencyWebApp.Services.Data\TravelAgencyWebApp.Services.Data.csproj" />
   </ItemGroup>
 
 </Project>

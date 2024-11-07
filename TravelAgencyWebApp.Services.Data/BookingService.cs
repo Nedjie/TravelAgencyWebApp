@@ -1,13 +1,14 @@
 ﻿using TravelAgencyWebApp.Data.Models;
+using TravelAgencyWebApp.Data.Repository.Interfaces;
 using TravelAgencyWebApp.Services.Data.Interfaces;
 
 namespace TravelAgencyWebApp.Services.Data
 {
     public class BookingService : IBookingService
     {
-        private readonly IBookingRepository _bookingRepository;
+        private readonly IRepository<Booking> _bookingRepository;
 
-        public BookingService(IBookingRepository bookingRepository)
+        public BookingService(IRepository<Booking> bookingRepository)
         {
             _bookingRepository = bookingRepository;
         }

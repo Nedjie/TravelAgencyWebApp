@@ -18,7 +18,8 @@
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "8.0.6",
           "TravelAgencyWebApp.Common": "1.0.0",
           "TravelAgencyWebApp.Data.Models": "1.0.0",
-          "TravelAgencyWebApp.Services.Mapping": "1.0.0"
+          "TravelAgencyWebApp.Services.Mapping": "1.0.0",
+          "WebEssentials.AspNetCore.PWA": "1.0.85"
         },
         "runtime": {
           "TravelAgencyWebApp.ViewModels.dll": {}
@@ -2183,6 +2184,17 @@
           }
         }
       },
+      "WebEssentials.AspNetCore.PWA/1.0.85": {
+        "dependencies": {
+          "Newtonsoft.Json": "13.0.3"
+        },
+        "runtime": {
+          "lib/netcoreapp3.0/WebEssentials.AspNetCore.Pwa.dll": {
+            "assemblyVersion": "1.0.85.0",
+            "fileVersion": "1.0.85.0"
+          }
+        }
+      },
       "TravelAgencyWebApp.Common/1.0.0": {
         "dependencies": {
           "AutoMapper": "13.0.1",
@@ -2191,7 +2203,8 @@
           "Microsoft.AspNetCore.Identity.UI": "8.0.10",
           "Microsoft.EntityFrameworkCore.SqlServer": "8.0.10",
           "Microsoft.EntityFrameworkCore.Sqlite": "8.0.10",
-          "Microsoft.VisualStudio.Web.CodeGeneration.Design": "8.0.6"
+          "Microsoft.VisualStudio.Web.CodeGeneration.Design": "8.0.6",
+          "WebEssentials.AspNetCore.PWA": "1.0.85"
         },
         "runtime": {
           "TravelAgencyWebApp.Common.dll": {
@@ -2209,7 +2222,8 @@
           "Microsoft.EntityFrameworkCore.SqlServer": "8.0.10",
           "Microsoft.EntityFrameworkCore.Sqlite": "8.0.10",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "8.0.6",
-          "TravelAgencyWebApp.Common": "1.0.0"
+          "TravelAgencyWebApp.Common": "1.0.0",
+          "WebEssentials.AspNetCore.PWA": "1.0.85"
         },
         "runtime": {
           "TravelAgencyWebApp.Data.Models.dll": {
@@ -2220,7 +2234,8 @@
       },
       "TravelAgencyWebApp.Services.Mapping/1.0.0": {
         "dependencies": {
-          "AutoMapper": "13.0.1"
+          "AutoMapper": "13.0.1",
+          "WebEssentials.AspNetCore.PWA": "1.0.85"
         },
         "runtime": {
           "TravelAgencyWebApp.Services.Mapping.dll": {
@@ -3468,6 +3483,13 @@
       "sha512": "sha512-bR4qdCmssMMbo9Fatci49An5B1UaVJZHKNq70PRgzoLYIlitb8Tj7ns/Xt5Pz1CkERiTjcVBDU2y1AVrPBYkaw==",
       "path": "system.windows.extensions/7.0.0",
       "hashPath": "system.windows.extensions.7.0.0.nupkg.sha512"
+    },
+    "WebEssentials.AspNetCore.PWA/1.0.85": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-kfcQ7hFb0LvPrkd/sTVyBayGRg1DfemwbHij1vtiYGAwKk3UC8o70EO4vQX+l2R7vh56GJQNxKpz6sBDh5xUpQ==",
+      "path": "webessentials.aspnetcore.pwa/1.0.85",
+      "hashPath": "webessentials.aspnetcore.pwa.1.0.85.nupkg.sha512"
     },
     "TravelAgencyWebApp.Common/1.0.0": {
       "type": "project",

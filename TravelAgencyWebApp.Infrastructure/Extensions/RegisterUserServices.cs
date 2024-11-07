@@ -3,6 +3,10 @@ using TravelAgencyWebApp.Services.Data.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
 using System.Linq;
 using System.Reflection;
+using TravelAgencyWebApp.Data.Models;
+using TravelAgencyWebApp.Services.Data;
+using NuGet.Protocol.Core.Types;
+using TravelAgencyWebApp.Data.Repository;
 
 namespace TravelAgencyWebApp.Infrastructure.Extensions
 {
@@ -11,6 +15,17 @@ namespace TravelAgencyWebApp.Infrastructure.Extensions
         public static void RegisterUserDefinedServices(this IServiceCollection services)
         {
             RegisterServicesAndRepositories(services, typeof(IBookingService).Assembly);
+
+            // Register Services
+            services.AddScoped<IBookingService, BookingService>();
+            services.AddScoped<IOfferService, OfferService>();
+            services.AddScoped<IReviewService, ReviewService>();
+
+            // Register Repositories
+            services.AddScoped<IRepository<Booking>, Repository<Booking>>();
+            services.AddScoped<IRepository<Offer>, Repository<Offer>>();
+            services.AddScoped<IRepository<Review>, Repository<Review>>();
+
         }
 
         private static void RegisterServicesAndRepositories(IServiceCollection services, Assembly assembly)

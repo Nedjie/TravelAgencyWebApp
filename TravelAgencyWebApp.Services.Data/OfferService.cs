@@ -1,13 +1,14 @@
 ﻿using TravelAgencyWebApp.Data.Models;
+using TravelAgencyWebApp.Data.Repository.Interfaces;
 using TravelAgencyWebApp.Services.Data.Interfaces;
 
 namespace TravelAgencyWebApp.Services.Data
 {
     public class OfferService : IOfferService
     {
-        private readonly IOfferRepository _offerRepository;
+        private readonly IRepository<Offer> _offerRepository;
 
-        public OfferService(IOfferRepository offerRepository)
+        public OfferService(IRepository<Offer> offerRepository)
         {
             _offerRepository = offerRepository;
         }

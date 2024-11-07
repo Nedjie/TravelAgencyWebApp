@@ -3104,6 +3104,25 @@
             "rid": "win"
           }
         }
+      },
+      "WebEssentials.AspNetCore.PWA/1.0.85": {
+        "type": "package",
+        "dependencies": {
+          "Newtonsoft.Json": "13.0.1"
+        },
+        "compile": {
+          "lib/netcoreapp3.0/WebEssentials.AspNetCore.Pwa.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netcoreapp3.0/WebEssentials.AspNetCore.Pwa.dll": {
+            "related": ".xml"
+          }
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
       }
     }
   },
@@ -8494,6 +8513,21 @@
         "system.windows.extensions.nuspec",
         "useSharedDesignerContext.txt"
       ]
+    },
+    "WebEssentials.AspNetCore.PWA/1.0.85": {
+      "sha512": "kfcQ7hFb0LvPrkd/sTVyBayGRg1DfemwbHij1vtiYGAwKk3UC8o70EO4vQX+l2R7vh56GJQNxKpz6sBDh5xUpQ==",
+      "type": "package",
+      "path": "webessentials.aspnetcore.pwa/1.0.85",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netcoreapp3.0/WebEssentials.AspNetCore.Pwa.dll",
+        "lib/netcoreapp3.0/WebEssentials.AspNetCore.Pwa.xml",
+        "lib/netstandard2.0/WebEssentials.AspNetCore.Pwa.dll",
+        "lib/netstandard2.0/WebEssentials.AspNetCore.Pwa.xml",
+        "webessentials.aspnetcore.pwa.1.0.85.nupkg.sha512",
+        "webessentials.aspnetcore.pwa.nuspec"
+      ]
     }
   },
   "projectFileDependencyGroups": {
@@ -8505,7 +8539,8 @@
       "Microsoft.EntityFrameworkCore.SqlServer >= 8.0.10",
       "Microsoft.EntityFrameworkCore.Sqlite >= 8.0.10",
       "Microsoft.EntityFrameworkCore.Tools >= 8.0.10",
-      "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 8.0.6"
+      "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 8.0.6",
+      "WebEssentials.AspNetCore.PWA >= 1.0.85"
     ]
   },
   "packageFolders": {
@@ -8591,6 +8626,10 @@
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
             "target": "Package",
             "version": "[8.0.6, )"
+          },
+          "WebEssentials.AspNetCore.PWA": {
+            "target": "Package",
+            "version": "[1.0.85, )"
           }
         },
         "imports": [

@@ -1,9 +1,6 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using TravelAgencyWebApp.Data;
-using TravelAgencyWebApp.Data.Models;
-using TravelAgencyWebApp.Data.Repository;
-using TravelAgencyWebApp.Data.Repository.Interfaces;
 using TravelAgencyWebApp.Infrastructure.Extensions;
 using TravelAgencyWebApp.Services.Mapping;
 using TravelAgencyWebApp.ViewModels;

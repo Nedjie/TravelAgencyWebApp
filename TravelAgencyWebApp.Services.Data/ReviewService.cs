@@ -1,13 +1,14 @@
 ﻿using TravelAgencyWebApp.Data.Models;
+using TravelAgencyWebApp.Data.Repository.Interfaces;
 using TravelAgencyWebApp.Services.Data.Interfaces;
 
 namespace TravelAgencyWebApp.Services.Data
 {
     public class ReviewService : IReviewService
     {
-        private readonly IReviewRepository _reviewRepository;
+        private readonly IRepository<Review> _reviewRepository;
 
-        public ReviewService(IReviewRepository reviewRepository)
+        public ReviewService(IRepository<Review> reviewRepository)
         {
             _reviewRepository = reviewRepository;
         }
@@ -34,7 +35,7 @@ namespace TravelAgencyWebApp.Services.Data
 
         public async Task DeleteReviewAsync(int id)
         {
-        return await _reviewRepository.DeleteAsync(id);
+            await _reviewRepository.DeleteAsync(id);
         }
 
     }

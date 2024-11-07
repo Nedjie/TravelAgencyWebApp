@@ -7,9 +7,9 @@ C:\Users\dell\source\repos\TravelAgencyWebApp\TravelAgencyWebApp.Common\obj\Debu
 C:\Users\dell\source\repos\TravelAgencyWebApp\TravelAgencyWebApp.Common\obj\Debug\net8.0\TravelAgencyWebApp.Common.AssemblyInfoInputs.cache
 C:\Users\dell\source\repos\TravelAgencyWebApp\TravelAgencyWebApp.Common\obj\Debug\net8.0\TravelAgencyWebApp.Common.AssemblyInfo.cs
 C:\Users\dell\source\repos\TravelAgencyWebApp\TravelAgencyWebApp.Common\obj\Debug\net8.0\TravelAgencyWebApp.Common.csproj.CoreCompileInputs.cache
+C:\Users\dell\source\repos\TravelAgencyWebApp\TravelAgencyWebApp.Common\obj\Debug\net8.0\TravelAgencyWebApp.Common.sourcelink.json
 C:\Users\dell\source\repos\TravelAgencyWebApp\TravelAgencyWebApp.Common\obj\Debug\net8.0\TravelAgencyWebApp.Common.dll
 C:\Users\dell\source\repos\TravelAgencyWebApp\TravelAgencyWebApp.Common\obj\Debug\net8.0\refint\TravelAgencyWebApp.Common.dll
 C:\Users\dell\source\repos\TravelAgencyWebApp\TravelAgencyWebApp.Common\obj\Debug\net8.0\TravelAgencyWebApp.Common.pdb
 C:\Users\dell\source\repos\TravelAgencyWebApp\TravelAgencyWebApp.Common\obj\Debug\net8.0\TravelAgencyWebApp.Common.genruntimeconfig.cache
 C:\Users\dell\source\repos\TravelAgencyWebApp\TravelAgencyWebApp.Common\obj\Debug\net8.0\ref\TravelAgencyWebApp.Common.dll
-C:\Users\dell\source\repos\TravelAgencyWebApp\TravelAgencyWebApp.Common\obj\Debug\net8.0\TravelAgencyWebApp.Common.sourcelink.json

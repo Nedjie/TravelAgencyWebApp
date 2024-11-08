@@ -1,4 +1,5 @@
-﻿using TravelAgencyWebApp.Data.Models;
+﻿using TravelAgencyWebApp.Common.ErrorMessages;
+using TravelAgencyWebApp.Data.Models;
 using TravelAgencyWebApp.Data.Repository.Interfaces;
 using TravelAgencyWebApp.Services.Data.Interfaces;
 
@@ -6,9 +7,9 @@ namespace TravelAgencyWebApp.Services.Data
 {
     public class OfferService : IOfferService
     {
-        private readonly IRepository<Offer> _offerRepository;
+        private readonly IRepository<Offer, int> _offerRepository;
 
-        public OfferService(IRepository<Offer> offerRepository)
+        public OfferService(IRepository<Offer, int> offerRepository)
         {
             _offerRepository = offerRepository;
         }
@@ -35,7 +36,13 @@ namespace TravelAgencyWebApp.Services.Data
 
         public async Task DeleteOfferAsync(int id)
         {
-            await _offerRepository.DeleteAsync(id);
+            var offer = await _offerRepository.GetByIdAsync(id);
+            if (offer == null)
+            {
+                throw new EntityNotFoundException($"Offer with ID {id} not found.");
+            }
+
+            await _offerRepository.DeleteAsync(offer);
         }
     }
 }

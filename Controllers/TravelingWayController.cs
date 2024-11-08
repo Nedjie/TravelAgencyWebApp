@@ -28,7 +28,7 @@ namespace TravelAgencyWebApp.Controllers
             var travelingWay = await _travelingWayService.GetTravelingWayByIdAsync(id);
             if (travelingWay == null)
             {
-              //  return HandleNotFound($"Traveling way with ID: {id}");
+                //  return HandleNotFound($"Traveling way with ID: {id}");
             }
             return Ok(travelingWay);
         }

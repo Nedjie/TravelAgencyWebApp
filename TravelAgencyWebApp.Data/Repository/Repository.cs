@@ -4,52 +4,101 @@ using TravelAgencyWebApp.Data.Repository.Interfaces;
 
 namespace TravelAgencyWebApp.Data.Repository
 {
-    public class Repository<T> : IRepository<T> where T : class
+    public class Repository<TType, TId> : IRepository<TType, TId> where TType : class
     {
         private readonly ApplicationDbContext _context;
-        private readonly DbSet<T> _dbSet;
+        private readonly DbSet<TType> _dbSet;
 
         public Repository(ApplicationDbContext context)
         {
             _context = context;
-            _dbSet = context.Set<T>();
+            _dbSet = context.Set<TType>();
         }
 
-        public async Task<IEnumerable<T>> GetAllAsync()
+        public TType? GetById(TId id)
+        {
+            return this._dbSet.Find(id);
+        }
+
+        public async Task<TType?> GetByIdAsync(TId id)
+        {
+            return await this._dbSet.FindAsync(id);
+        }
+
+        public TType? FirstOrDefault(Func<TType, bool> predicate)
+        {
+            return _dbSet.AsEnumerable().FirstOrDefault(predicate);
+        }
+
+        public async Task<TType?> FirstOrDefaultAsync(Expression<Func<TType, bool>> predicate)
+        {
+            return await _dbSet.FirstOrDefaultAsync(predicate);
+        }
+
+        public IEnumerable<TType> GetAll()
+        {
+            return _dbSet.ToList();
+        }
+
+        public async Task<IEnumerable<TType>> GetAllAsync()
         {
             return await _dbSet.ToListAsync();
         }
 
-        public async Task<T?> GetByIdAsync(int id)
+        public IQueryable<TType> GetAllAttached()
         {
-            return await _dbSet.FindAsync(id);
+            return _dbSet.AsQueryable(); 
         }
 
-        public async Task AddAsync(T entity)
+        public void Add(TType item)
         {
-            await _dbSet.AddAsync(entity);
+            _dbSet.Add(item);
+            _context.SaveChanges(); 
+        }
+
+        public async Task AddAsync(TType item)
+        {
+            await _dbSet.AddAsync(item);
+            await _context.SaveChangesAsync(); 
+        }
+
+        public void AddRange(TType[] items)
+        {
+            _dbSet.AddRange(items);
+            _context.SaveChanges();
+        }
+
+        public async Task AddRangeAsync(TType[] items)
+        {
+            await _dbSet.AddRangeAsync(items);
             await _context.SaveChangesAsync();
         }
 
-        public async Task UpdateAsync(T entity)
+        public bool Delete(TType entity)
         {
-            _dbSet.Update(entity);
-            await _context.SaveChangesAsync();
+            if (entity == null) return false;
+            _dbSet.Remove(entity);
+            return _context.SaveChanges() > 0; 
         }
 
-        public async Task DeleteAsync(int id)
+        public async Task<bool> DeleteAsync(TType entity)
         {
-            var entity = await GetByIdAsync(id);
-            if (entity != null)
-            {
-                _dbSet.Remove(entity);
-                await _context.SaveChangesAsync();
-            }
+            if (entity == null) return false;
+            _dbSet.Remove(entity);
+            return await _context.SaveChangesAsync() > 0; 
         }
 
-        public async Task<IEnumerable<T>> FindAsync(Expression<Func<T, bool>> predicate)
+        public bool Update(TType item)
         {
-            return await _dbSet.Where(predicate).ToListAsync();
+            _dbSet.Update(item);
+            return _context.SaveChanges() > 0;
+        }
+
+        public async Task<bool> UpdateAsync(TType item)
+        {
+            _dbSet.Update(item);
+            return await _context.SaveChangesAsync() > 0;
         }
     }
 }
+

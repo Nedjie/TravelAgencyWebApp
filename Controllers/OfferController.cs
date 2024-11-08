@@ -4,6 +4,7 @@ using TravelAgencyWebApp.Services.Data.Interfaces;
 
 namespace TravelAgencyWebApp.Controllers
 {
+    [Route("api/offers")]
     public class OfferController : BaseController
     {
         private readonly IOfferService _offerService;
@@ -27,7 +28,7 @@ namespace TravelAgencyWebApp.Controllers
             var offer = await _offerService.GetOfferByIdAsync(id);
             if (offer == null)
             {
-              //  return HandleNotFound($"Offer with ID: {id}");
+                //  return HandleNotFound($"Offer with ID: {id}");
             }
             return Ok(offer);
         }

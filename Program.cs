@@ -1,7 +1,10 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using TravelAgencyWebApp.Data;
+using TravelAgencyWebApp.Data.Models;
 using TravelAgencyWebApp.Infrastructure.Extensions;
+using TravelAgencyWebApp.Services.Data;
+using TravelAgencyWebApp.Services.Data.Interfaces;
 using TravelAgencyWebApp.Services.Mapping;
 using TravelAgencyWebApp.ViewModels;
 
@@ -18,12 +21,17 @@ namespace TravelAgencyWebApp
             builder.Services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(connectionString));
             builder.Services.AddDatabaseDeveloperPageExceptionFilter();
+         
+            builder.Services.RegisterRepositories(typeof(User).Assembly);
+            builder.Services.RegisterUserDefinedServices(typeof(IBookingService).Assembly);
 
-            builder.Services.RegisterUserDefinedServices();
+            builder.Services.AddScoped<IBookingService, BookingService>();
+
 
             builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             builder.Services.AddControllersWithViews();
+            builder.Services.AddRazorPages();
 
             var app = builder.Build();
 
@@ -47,6 +55,7 @@ namespace TravelAgencyWebApp
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.MapControllerRoute(

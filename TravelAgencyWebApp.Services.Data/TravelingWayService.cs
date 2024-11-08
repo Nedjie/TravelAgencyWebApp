@@ -1,33 +1,64 @@
-﻿using TravelAgencyWebApp.Data.Models;
+﻿using TravelAgencyWebApp.Common.ErrorMessages;
+using TravelAgencyWebApp.Data.Models;
+using TravelAgencyWebApp.Data.Repository.Interfaces;
 using TravelAgencyWebApp.Services.Data.Interfaces;
 
 namespace TravelAgencyWebApp.Services.Data
 {
     public class TravelingWayService : ITravelingWayService
     {
-        public Task AddTravelingWayAsync(TravelingWay travelingWay)
+        private readonly IRepository<TravelingWay, int> _travelingWayRepository;
+
+        public TravelingWayService(IRepository<TravelingWay, int> travelingWayRepository)
         {
-            throw new NotImplementedException();
+            _travelingWayRepository = travelingWayRepository;
         }
 
-        public Task DeleteTravelingWayAsync(int id)
+        public async Task<IEnumerable<TravelingWay>> GetAllTravelingWaysAsync()
         {
-            throw new NotImplementedException();
+            return await _travelingWayRepository.GetAllAsync();
         }
 
-        public Task<IEnumerable<TravelingWay>> GetAllTravelingWaysAsync()
+        public async Task<TravelingWay?> GetTravelingWayByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            return await _travelingWayRepository.GetByIdAsync(id);
         }
 
-        public Task<TravelingWay?> GetTravelingWayByIdAsync(int id)
+        public async Task AddTravelingWayAsync(TravelingWay travelingWay)
         {
-            throw new NotImplementedException();
+            if (travelingWay == null)
+            {
+                throw new ArgumentNullException(nameof(travelingWay), "TravelingWay cannot be null.");
+            }
+
+            await _travelingWayRepository.AddAsync(travelingWay);
         }
 
-        public Task UpdateTravelingWayAsync(TravelingWay travelingWay)
+        public async Task UpdateTravelingWayAsync(TravelingWay travelingWay)
         {
-            throw new NotImplementedException();
+            if (travelingWay == null)
+            {
+                throw new ArgumentNullException(nameof(travelingWay), "TravelingWay cannot be null.");
+            }
+
+            var existingTravelingWay = await _travelingWayRepository.GetByIdAsync(travelingWay.Id);
+            if (existingTravelingWay == null)
+            {
+                throw new EntityNotFoundException($"TravelingWay with ID {travelingWay.Id} not found.");
+            }
+
+            await _travelingWayRepository.UpdateAsync(travelingWay);
+        }
+
+        public async Task DeleteTravelingWayAsync(int id)
+        {
+            var travelingWay = await _travelingWayRepository.GetByIdAsync(id);
+            if (travelingWay == null)
+            {
+                throw new EntityNotFoundException($"TravelingWay with ID {id} not found.");
+            }
+
+            await _travelingWayRepository.DeleteAsync(travelingWay);
         }
     }
 }

@@ -3,15 +3,115 @@
   "WorkspaceRootPath": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{949743E4-E43F-4DE1-9EDC-07CF2F45A045}|TravelAgencyWebApp.csproj|c:\\users\\dell\\source\\repos\\travelagencywebapp\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{949743E4-E43F-4DE1-9EDC-07CF2F45A045}|TravelAgencyWebApp.csproj|solutionrelative:controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{949743E4-E43F-4DE1-9EDC-07CF2F45A045}|TravelAgencyWebApp.csproj|c:\\users\\dell\\source\\repos\\travelagencywebapp\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{949743E4-E43F-4DE1-9EDC-07CF2F45A045}|TravelAgencyWebApp.csproj|solutionrelative:views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{949743E4-E43F-4DE1-9EDC-07CF2F45A045}|TravelAgencyWebApp.csproj|c:\\users\\dell\\source\\repos\\travelagencywebapp\\views\\home\\about.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{949743E4-E43F-4DE1-9EDC-07CF2F45A045}|TravelAgencyWebApp.csproj|solutionrelative:views\\home\\about.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{949743E4-E43F-4DE1-9EDC-07CF2F45A045}|TravelAgencyWebApp.csproj|c:\\users\\dell\\source\\repos\\travelagencywebapp\\controllers\\basecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{949743E4-E43F-4DE1-9EDC-07CF2F45A045}|TravelAgencyWebApp.csproj|solutionrelative:controllers\\basecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B21F4678-AD4E-4733-A7D3-13373D55573B}|TravelAgencyWebApp.Infrastructure\\TravelAgencyWebApp.Infrastructure.csproj|c:\\users\\dell\\source\\repos\\travelagencywebapp\\travelagencywebapp.infrastructure\\extensions\\registeruserservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B21F4678-AD4E-4733-A7D3-13373D55573B}|TravelAgencyWebApp.Infrastructure\\TravelAgencyWebApp.Infrastructure.csproj|solutionrelative:travelagencywebapp.infrastructure\\extensions\\registeruserservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1C2B9E87-7037-401B-8E5D-1D2C85CD0860}|TravelAgencyWebApp.Services.Data\\TravelAgencyWebApp.Services.Data.csproj|c:\\users\\dell\\source\\repos\\travelagencywebapp\\travelagencywebapp.services.data\\travelingwayservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1C2B9E87-7037-401B-8E5D-1D2C85CD0860}|TravelAgencyWebApp.Services.Data\\TravelAgencyWebApp.Services.Data.csproj|solutionrelative:travelagencywebapp.services.data\\travelingwayservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1C2B9E87-7037-401B-8E5D-1D2C85CD0860}|TravelAgencyWebApp.Services.Data\\TravelAgencyWebApp.Services.Data.csproj|c:\\users\\dell\\source\\repos\\travelagencywebapp\\travelagencywebapp.services.data\\interfaces\\itravelingwayservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1C2B9E87-7037-401B-8E5D-1D2C85CD0860}|TravelAgencyWebApp.Services.Data\\TravelAgencyWebApp.Services.Data.csproj|solutionrelative:travelagencywebapp.services.data\\interfaces\\itravelingwayservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1C2B9E87-7037-401B-8E5D-1D2C85CD0860}|TravelAgencyWebApp.Services.Data\\TravelAgencyWebApp.Services.Data.csproj|c:\\users\\dell\\source\\repos\\travelagencywebapp\\travelagencywebapp.services.data\\offerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1C2B9E87-7037-401B-8E5D-1D2C85CD0860}|TravelAgencyWebApp.Services.Data\\TravelAgencyWebApp.Services.Data.csproj|solutionrelative:travelagencywebapp.services.data\\offerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1C2B9E87-7037-401B-8E5D-1D2C85CD0860}|TravelAgencyWebApp.Services.Data\\TravelAgencyWebApp.Services.Data.csproj|c:\\users\\dell\\source\\repos\\travelagencywebapp\\travelagencywebapp.services.data\\reviewservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1C2B9E87-7037-401B-8E5D-1D2C85CD0860}|TravelAgencyWebApp.Services.Data\\TravelAgencyWebApp.Services.Data.csproj|solutionrelative:travelagencywebapp.services.data\\reviewservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1C2B9E87-7037-401B-8E5D-1D2C85CD0860}|TravelAgencyWebApp.Services.Data\\TravelAgencyWebApp.Services.Data.csproj|c:\\users\\dell\\source\\repos\\travelagencywebapp\\travelagencywebapp.services.data\\bookingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1C2B9E87-7037-401B-8E5D-1D2C85CD0860}|TravelAgencyWebApp.Services.Data\\TravelAgencyWebApp.Services.Data.csproj|solutionrelative:travelagencywebapp.services.data\\bookingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BC81A34F-452F-4644-94E1-91CEC9A4A646}|TravelAgencyWebApp.Common\\TravelAgencyWebApp.Common.csproj|c:\\users\\dell\\source\\repos\\travelagencywebapp\\travelagencywebapp.common\\errormessages\\errormessages.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BC81A34F-452F-4644-94E1-91CEC9A4A646}|TravelAgencyWebApp.Common\\TravelAgencyWebApp.Common.csproj|solutionrelative:travelagencywebapp.common\\errormessages\\errormessages.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{949743E4-E43F-4DE1-9EDC-07CF2F45A045}|TravelAgencyWebApp.csproj|c:\\users\\dell\\source\\repos\\travelagencywebapp\\controllers\\bookingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{949743E4-E43F-4DE1-9EDC-07CF2F45A045}|TravelAgencyWebApp.csproj|solutionrelative:controllers\\bookingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{949743E4-E43F-4DE1-9EDC-07CF2F45A045}|TravelAgencyWebApp.csproj|c:\\users\\dell\\source\\repos\\travelagencywebapp\\controllers\\offercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{949743E4-E43F-4DE1-9EDC-07CF2F45A045}|TravelAgencyWebApp.csproj|solutionrelative:controllers\\offercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{949743E4-E43F-4DE1-9EDC-07CF2F45A045}|TravelAgencyWebApp.csproj|c:\\users\\dell\\source\\repos\\travelagencywebapp\\controllers\\reviewcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{949743E4-E43F-4DE1-9EDC-07CF2F45A045}|TravelAgencyWebApp.csproj|solutionrelative:controllers\\reviewcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9422796D-8103-4EE2-9847-69F396F6C059}|TravelAgencyWebApp.Data\\TravelAgencyWebApp.Data.csproj|c:\\users\\dell\\source\\repos\\travelagencywebapp\\travelagencywebapp.data\\repository\\interfaces\\irepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9422796D-8103-4EE2-9847-69F396F6C059}|TravelAgencyWebApp.Data\\TravelAgencyWebApp.Data.csproj|solutionrelative:travelagencywebapp.data\\repository\\interfaces\\irepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1C2B9E87-7037-401B-8E5D-1D2C85CD0860}|TravelAgencyWebApp.Services.Data\\TravelAgencyWebApp.Services.Data.csproj|c:\\users\\dell\\source\\repos\\travelagencywebapp\\travelagencywebapp.services.data\\homeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1C2B9E87-7037-401B-8E5D-1D2C85CD0860}|TravelAgencyWebApp.Services.Data\\TravelAgencyWebApp.Services.Data.csproj|solutionrelative:travelagencywebapp.services.data\\homeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1C2B9E87-7037-401B-8E5D-1D2C85CD0860}|TravelAgencyWebApp.Services.Data\\TravelAgencyWebApp.Services.Data.csproj|c:\\users\\dell\\source\\repos\\travelagencywebapp\\travelagencywebapp.services.data\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1C2B9E87-7037-401B-8E5D-1D2C85CD0860}|TravelAgencyWebApp.Services.Data\\TravelAgencyWebApp.Services.Data.csproj|solutionrelative:travelagencywebapp.services.data\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1C2B9E87-7037-401B-8E5D-1D2C85CD0860}|TravelAgencyWebApp.Services.Data\\TravelAgencyWebApp.Services.Data.csproj|c:\\users\\dell\\source\\repos\\travelagencywebapp\\travelagencywebapp.services.data\\interfaces\\ibookingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1C2B9E87-7037-401B-8E5D-1D2C85CD0860}|TravelAgencyWebApp.Services.Data\\TravelAgencyWebApp.Services.Data.csproj|solutionrelative:travelagencywebapp.services.data\\interfaces\\ibookingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{949743E4-E43F-4DE1-9EDC-07CF2F45A045}|TravelAgencyWebApp.csproj|c:\\users\\dell\\source\\repos\\travelagencywebapp\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{949743E4-E43F-4DE1-9EDC-07CF2F45A045}|TravelAgencyWebApp.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9422796D-8103-4EE2-9847-69F396F6C059}|TravelAgencyWebApp.Data\\TravelAgencyWebApp.Data.csproj|c:\\users\\dell\\source\\repos\\travelagencywebapp\\travelagencywebapp.data\\repository\\repository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9422796D-8103-4EE2-9847-69F396F6C059}|TravelAgencyWebApp.Data\\TravelAgencyWebApp.Data.csproj|solutionrelative:travelagencywebapp.data\\repository\\repository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{949743E4-E43F-4DE1-9EDC-07CF2F45A045}|TravelAgencyWebApp.csproj|c:\\users\\dell\\source\\repos\\travelagencywebapp\\controllers\\travelingwaycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{949743E4-E43F-4DE1-9EDC-07CF2F45A045}|TravelAgencyWebApp.csproj|solutionrelative:controllers\\travelingwaycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1C2B9E87-7037-401B-8E5D-1D2C85CD0860}|TravelAgencyWebApp.Services.Data\\TravelAgencyWebApp.Services.Data.csproj|c:\\users\\dell\\source\\repos\\travelagencywebapp\\travelagencywebapp.services.data\\interfaces\\ihomeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1C2B9E87-7037-401B-8E5D-1D2C85CD0860}|TravelAgencyWebApp.Services.Data\\TravelAgencyWebApp.Services.Data.csproj|solutionrelative:travelagencywebapp.services.data\\interfaces\\ihomeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{949743E4-E43F-4DE1-9EDC-07CF2F45A045}|TravelAgencyWebApp.csproj|c:\\users\\dell\\source\\repos\\travelagencywebapp\\controllers\\accountcontoller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{949743E4-E43F-4DE1-9EDC-07CF2F45A045}|TravelAgencyWebApp.csproj|solutionrelative:controllers\\accountcontoller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{949743E4-E43F-4DE1-9EDC-07CF2F45A045}|TravelAgencyWebApp.csproj|c:\\users\\dell\\source\\repos\\travelagencywebapp\\wwwroot\\content\\about.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{949743E4-E43F-4DE1-9EDC-07CF2F45A045}|TravelAgencyWebApp.csproj|solutionrelative:wwwroot\\content\\about.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1C2B9E87-7037-401B-8E5D-1D2C85CD0860}|TravelAgencyWebApp.Services.Data\\TravelAgencyWebApp.Services.Data.csproj|c:\\users\\dell\\source\\repos\\travelagencywebapp\\travelagencywebapp.services.data\\interfaces\\ireviewservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1C2B9E87-7037-401B-8E5D-1D2C85CD0860}|TravelAgencyWebApp.Services.Data\\TravelAgencyWebApp.Services.Data.csproj|solutionrelative:travelagencywebapp.services.data\\interfaces\\ireviewservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1C2B9E87-7037-401B-8E5D-1D2C85CD0860}|TravelAgencyWebApp.Services.Data\\TravelAgencyWebApp.Services.Data.csproj|c:\\users\\dell\\source\\repos\\travelagencywebapp\\travelagencywebapp.services.data\\interfaces\\iofferservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1C2B9E87-7037-401B-8E5D-1D2C85CD0860}|TravelAgencyWebApp.Services.Data\\TravelAgencyWebApp.Services.Data.csproj|solutionrelative:travelagencywebapp.services.data\\interfaces\\iofferservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{949743E4-E43F-4DE1-9EDC-07CF2F45A045}|TravelAgencyWebApp.csproj|c:\\users\\dell\\.nuget\\packages\\bootstrap\\5.3.3\\contentfiles\\any\\any\\wwwroot\\css\\bootstrap.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{949743E4-E43F-4DE1-9EDC-07CF2F45A045}|TravelAgencyWebApp.csproj|c:\\users\\dell\\source\\repos\\travelagencywebapp\\wwwroot\\content\\styles\\main_styles.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
       "RelativeMoniker": "D:0:0:{949743E4-E43F-4DE1-9EDC-07CF2F45A045}|TravelAgencyWebApp.csproj|solutionrelative:wwwroot\\content\\styles\\main_styles.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{949743E4-E43F-4DE1-9EDC-07CF2F45A045}|TravelAgencyWebApp.csproj|c:\\users\\dell\\source\\repos\\travelagencywebapp\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{949743E4-E43F-4DE1-9EDC-07CF2F45A045}|TravelAgencyWebApp.csproj|solutionrelative:views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{949743E4-E43F-4DE1-9EDC-07CF2F45A045}|TravelAgencyWebApp.csproj|c:\\users\\dell\\source\\repos\\travelagencywebapp\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
@@ -24,46 +124,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{949743E4-E43F-4DE1-9EDC-07CF2F45A045}|TravelAgencyWebApp.csproj|c:\\users\\dell\\source\\repos\\travelagencywebapp\\wwwroot\\content\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{949743E4-E43F-4DE1-9EDC-07CF2F45A045}|TravelAgencyWebApp.csproj|solutionrelative:wwwroot\\content\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{949743E4-E43F-4DE1-9EDC-07CF2F45A045}|TravelAgencyWebApp.csproj|c:\\users\\dell\\source\\repos\\travelagencywebapp\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{949743E4-E43F-4DE1-9EDC-07CF2F45A045}|TravelAgencyWebApp.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{949743E4-E43F-4DE1-9EDC-07CF2F45A045}|TravelAgencyWebApp.csproj|c:\\users\\dell\\source\\repos\\travelagencywebapp\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{949743E4-E43F-4DE1-9EDC-07CF2F45A045}|TravelAgencyWebApp.csproj|solutionrelative:controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B21F4678-AD4E-4733-A7D3-13373D55573B}|TravelAgencyWebApp.Infrastructure\\TravelAgencyWebApp.Infrastructure.csproj|c:\\users\\dell\\source\\repos\\travelagencywebapp\\travelagencywebapp.infrastructure\\extensions\\registeruserservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B21F4678-AD4E-4733-A7D3-13373D55573B}|TravelAgencyWebApp.Infrastructure\\TravelAgencyWebApp.Infrastructure.csproj|solutionrelative:travelagencywebapp.infrastructure\\extensions\\registeruserservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1C2B9E87-7037-401B-8E5D-1D2C85CD0860}|TravelAgencyWebApp.Services.Data\\TravelAgencyWebApp.Services.Data.csproj|c:\\users\\dell\\source\\repos\\travelagencywebapp\\travelagencywebapp.services.data\\bookingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1C2B9E87-7037-401B-8E5D-1D2C85CD0860}|TravelAgencyWebApp.Services.Data\\TravelAgencyWebApp.Services.Data.csproj|solutionrelative:travelagencywebapp.services.data\\bookingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9422796D-8103-4EE2-9847-69F396F6C059}|TravelAgencyWebApp.Data\\TravelAgencyWebApp.Data.csproj|c:\\users\\dell\\source\\repos\\travelagencywebapp\\travelagencywebapp.data\\repository\\repository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9422796D-8103-4EE2-9847-69F396F6C059}|TravelAgencyWebApp.Data\\TravelAgencyWebApp.Data.csproj|solutionrelative:travelagencywebapp.data\\repository\\repository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1C2B9E87-7037-401B-8E5D-1D2C85CD0860}|TravelAgencyWebApp.Services.Data\\TravelAgencyWebApp.Services.Data.csproj|c:\\users\\dell\\source\\repos\\travelagencywebapp\\travelagencywebapp.services.data\\interfaces\\ibookingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1C2B9E87-7037-401B-8E5D-1D2C85CD0860}|TravelAgencyWebApp.Services.Data\\TravelAgencyWebApp.Services.Data.csproj|solutionrelative:travelagencywebapp.services.data\\interfaces\\ibookingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1C2B9E87-7037-401B-8E5D-1D2C85CD0860}|TravelAgencyWebApp.Services.Data\\TravelAgencyWebApp.Services.Data.csproj|c:\\users\\dell\\source\\repos\\travelagencywebapp\\travelagencywebapp.services.data\\reviewservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1C2B9E87-7037-401B-8E5D-1D2C85CD0860}|TravelAgencyWebApp.Services.Data\\TravelAgencyWebApp.Services.Data.csproj|solutionrelative:travelagencywebapp.services.data\\reviewservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1C2B9E87-7037-401B-8E5D-1D2C85CD0860}|TravelAgencyWebApp.Services.Data\\TravelAgencyWebApp.Services.Data.csproj|c:\\users\\dell\\source\\repos\\travelagencywebapp\\travelagencywebapp.services.data\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1C2B9E87-7037-401B-8E5D-1D2C85CD0860}|TravelAgencyWebApp.Services.Data\\TravelAgencyWebApp.Services.Data.csproj|solutionrelative:travelagencywebapp.services.data\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1C2B9E87-7037-401B-8E5D-1D2C85CD0860}|TravelAgencyWebApp.Services.Data\\TravelAgencyWebApp.Services.Data.csproj|c:\\users\\dell\\source\\repos\\travelagencywebapp\\travelagencywebapp.services.data\\travelingwayservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1C2B9E87-7037-401B-8E5D-1D2C85CD0860}|TravelAgencyWebApp.Services.Data\\TravelAgencyWebApp.Services.Data.csproj|solutionrelative:travelagencywebapp.services.data\\travelingwayservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1C2B9E87-7037-401B-8E5D-1D2C85CD0860}|TravelAgencyWebApp.Services.Data\\TravelAgencyWebApp.Services.Data.csproj|c:\\users\\dell\\source\\repos\\travelagencywebapp\\travelagencywebapp.services.data\\offerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1C2B9E87-7037-401B-8E5D-1D2C85CD0860}|TravelAgencyWebApp.Services.Data\\TravelAgencyWebApp.Services.Data.csproj|solutionrelative:travelagencywebapp.services.data\\offerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{BC81A34F-452F-4644-94E1-91CEC9A4A646}|TravelAgencyWebApp.Common\\TravelAgencyWebApp.Common.csproj|c:\\users\\dell\\source\\repos\\travelagencywebapp\\travelagencywebapp.common\\travelagencywebapp.common.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
@@ -117,7 +177,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 33,
           "Children": [
             {
               "$type": "Bookmark",
@@ -125,7 +185,202 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 6,
+              "Title": "ITravelingWayService.cs",
+              "DocumentMoniker": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\TravelAgencyWebApp.Services.Data\\Interfaces\\ITravelingWayService.cs",
+              "RelativeDocumentMoniker": "TravelAgencyWebApp.Services.Data\\Interfaces\\ITravelingWayService.cs",
+              "ToolTip": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\TravelAgencyWebApp.Services.Data\\Interfaces\\ITravelingWayService.cs",
+              "RelativeToolTip": "TravelAgencyWebApp.Services.Data\\Interfaces\\ITravelingWayService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-08T19:42:41.886Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "ErrorMessages.cs",
+              "DocumentMoniker": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\TravelAgencyWebApp.Common\\ErrorMessages\\ErrorMessages.cs",
+              "RelativeDocumentMoniker": "TravelAgencyWebApp.Common\\ErrorMessages\\ErrorMessages.cs",
+              "ToolTip": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\TravelAgencyWebApp.Common\\ErrorMessages\\ErrorMessages.cs",
+              "RelativeToolTip": "TravelAgencyWebApp.Common\\ErrorMessages\\ErrorMessages.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-08T19:33:18.46Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "IRepository.cs",
+              "DocumentMoniker": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\TravelAgencyWebApp.Data\\Repository\\Interfaces\\IRepository.cs",
+              "RelativeDocumentMoniker": "TravelAgencyWebApp.Data\\Repository\\Interfaces\\IRepository.cs",
+              "ToolTip": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\TravelAgencyWebApp.Data\\Repository\\Interfaces\\IRepository.cs",
+              "RelativeToolTip": "TravelAgencyWebApp.Data\\Repository\\Interfaces\\IRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-08T18:59:33.728Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "ReviewController.cs",
+              "DocumentMoniker": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\Controllers\\ReviewController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ReviewController.cs",
+              "ToolTip": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\Controllers\\ReviewController.cs",
+              "RelativeToolTip": "Controllers\\ReviewController.cs",
+              "ViewState": "AgIAACEAAAAAAAAAAAAAAA8AAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-08T18:15:10.38Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "TravelingWayController.cs",
+              "DocumentMoniker": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\Controllers\\TravelingWayController.cs",
+              "RelativeDocumentMoniker": "Controllers\\TravelingWayController.cs",
+              "ToolTip": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\Controllers\\TravelingWayController.cs",
+              "RelativeToolTip": "Controllers\\TravelingWayController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACsAAAA2AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-08T18:14:52.803Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "OfferController.cs",
+              "DocumentMoniker": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\Controllers\\OfferController.cs",
+              "RelativeDocumentMoniker": "Controllers\\OfferController.cs",
+              "ToolTip": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\Controllers\\OfferController.cs",
+              "RelativeToolTip": "Controllers\\OfferController.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAAAAAYAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-08T18:14:39.523Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "AccountContoller.cs",
+              "DocumentMoniker": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\Controllers\\AccountContoller.cs",
+              "RelativeDocumentMoniker": "Controllers\\AccountContoller.cs",
+              "ToolTip": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\Controllers\\AccountContoller.cs",
+              "RelativeToolTip": "Controllers\\AccountContoller.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-08T18:13:53.959Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "about.html",
+              "DocumentMoniker": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\about.html",
+              "RelativeDocumentMoniker": "wwwroot\\Content\\about.html",
+              "ToolTip": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\about.html",
+              "RelativeToolTip": "wwwroot\\Content\\about.html",
+              "ViewState": "AgIAAOEBAAAAAAAAAAAUwAgCAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2024-11-08T18:06:16.463Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "About.cshtml",
+              "DocumentMoniker": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\Views\\Home\\About.cshtml",
+              "RelativeDocumentMoniker": "Views\\Home\\About.cshtml",
+              "ToolTip": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\Views\\Home\\About.cshtml",
+              "RelativeToolTip": "Views\\Home\\About.cshtml",
+              "ViewState": "AgIAAOQBAAAAAAAAAAAkwAoCAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-08T18:06:04.467Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "IReviewService.cs",
+              "DocumentMoniker": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\TravelAgencyWebApp.Services.Data\\Interfaces\\IReviewService.cs",
+              "RelativeDocumentMoniker": "TravelAgencyWebApp.Services.Data\\Interfaces\\IReviewService.cs",
+              "ToolTip": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\TravelAgencyWebApp.Services.Data\\Interfaces\\IReviewService.cs",
+              "RelativeToolTip": "TravelAgencyWebApp.Services.Data\\Interfaces\\IReviewService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-08T18:04:06.094Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "BookingController.cs",
+              "DocumentMoniker": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\Controllers\\BookingController.cs",
+              "RelativeDocumentMoniker": "Controllers\\BookingController.cs",
+              "ToolTip": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\Controllers\\BookingController.cs",
+              "RelativeToolTip": "Controllers\\BookingController.cs",
+              "ViewState": "AgIAACEAAAAAAAAAAAAAAD8AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-08T18:01:49.61Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "IOfferService.cs",
+              "DocumentMoniker": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\TravelAgencyWebApp.Services.Data\\Interfaces\\IOfferService.cs",
+              "RelativeDocumentMoniker": "TravelAgencyWebApp.Services.Data\\Interfaces\\IOfferService.cs",
+              "ToolTip": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\TravelAgencyWebApp.Services.Data\\Interfaces\\IOfferService.cs",
+              "RelativeToolTip": "TravelAgencyWebApp.Services.Data\\Interfaces\\IOfferService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-08T17:39:35.338Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "HomeService.cs",
+              "DocumentMoniker": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\TravelAgencyWebApp.Services.Data\\HomeService.cs",
+              "RelativeDocumentMoniker": "TravelAgencyWebApp.Services.Data\\HomeService.cs",
+              "ToolTip": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\TravelAgencyWebApp.Services.Data\\HomeService.cs",
+              "RelativeToolTip": "TravelAgencyWebApp.Services.Data\\HomeService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-08T17:39:11.335Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "IHomeService.cs",
+              "DocumentMoniker": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\TravelAgencyWebApp.Services.Data\\Interfaces\\IHomeService.cs",
+              "RelativeDocumentMoniker": "TravelAgencyWebApp.Services.Data\\Interfaces\\IHomeService.cs",
+              "ToolTip": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\TravelAgencyWebApp.Services.Data\\Interfaces\\IHomeService.cs",
+              "RelativeToolTip": "TravelAgencyWebApp.Services.Data\\Interfaces\\IHomeService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-08T17:37:46.986Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "BaseController.cs",
+              "DocumentMoniker": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\Controllers\\BaseController.cs",
+              "RelativeDocumentMoniker": "Controllers\\BaseController.cs",
+              "ToolTip": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\Controllers\\BaseController.cs",
+              "RelativeToolTip": "Controllers\\BaseController.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAArwCQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-08T17:34:59.683Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
               "Title": "main_styles.css",
               "DocumentMoniker": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\styles\\main_styles.css",
               "RelativeDocumentMoniker": "wwwroot\\Content\\styles\\main_styles.css",
@@ -133,25 +388,24 @@
               "RelativeToolTip": "wwwroot\\Content\\styles\\main_styles.css",
               "ViewState": "AgIAAC0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2024-11-07T19:13:42.79Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-07T19:13:42.79Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 26,
               "Title": "bootstrap.css",
               "DocumentMoniker": "C:\\Users\\dell\\.nuget\\packages\\bootstrap\\5.3.3\\contentFiles\\any\\any\\wwwroot\\css\\bootstrap.css",
               "RelativeDocumentMoniker": "..\\..\\..\\.nuget\\packages\\bootstrap\\5.3.3\\contentFiles\\any\\any\\wwwroot\\css\\bootstrap.css",
               "ToolTip": "C:\\Users\\dell\\.nuget\\packages\\bootstrap\\5.3.3\\contentFiles\\any\\any\\wwwroot\\css\\bootstrap.css [Read Only]",
               "RelativeToolTip": "..\\..\\..\\.nuget\\packages\\bootstrap\\5.3.3\\contentFiles\\any\\any\\wwwroot\\css\\bootstrap.css [Read Only]",
-              "ViewState": "AgIAAAQbAAAAAAAAAAAswAcbAABiAAAAAQAAAA==",
+              "ViewState": "AgIAAAEBAAAAAAAAAAAmwBoBAAAWAAAAAQAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
               "WhenOpened": "2024-11-07T18:53:04.338Z",
               "EditorCaption": " [Read Only]"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 30,
               "Title": "index.html",
               "DocumentMoniker": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\index.html",
               "RelativeDocumentMoniker": "wwwroot\\Content\\index.html",
@@ -159,51 +413,50 @@
               "RelativeToolTip": "wwwroot\\Content\\index.html",
               "ViewState": "AgIAAO4EAAAAAAAAAAAmwAAFAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
-              "WhenOpened": "2024-11-07T17:57:08.67Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-07T17:57:08.67Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 19,
               "Title": "Repository.cs",
               "DocumentMoniker": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\TravelAgencyWebApp.Data\\Repository\\Repository.cs",
               "RelativeDocumentMoniker": "TravelAgencyWebApp.Data\\Repository\\Repository.cs",
               "ToolTip": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\TravelAgencyWebApp.Data\\Repository\\Repository.cs",
               "RelativeToolTip": "TravelAgencyWebApp.Data\\Repository\\Repository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAEgAAAAAAAAAAAAAACAAAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-07T17:52:00.02Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 4,
               "Title": "RegisterUserServices.cs",
               "DocumentMoniker": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\TravelAgencyWebApp.Infrastructure\\Extensions\\RegisterUserServices.cs",
               "RelativeDocumentMoniker": "TravelAgencyWebApp.Infrastructure\\Extensions\\RegisterUserServices.cs",
               "ToolTip": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\TravelAgencyWebApp.Infrastructure\\Extensions\\RegisterUserServices.cs",
               "RelativeToolTip": "TravelAgencyWebApp.Infrastructure\\Extensions\\RegisterUserServices.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAIAwwBwAAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAAcAAAAAAAAAAAArwBsAAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-07T17:49:56.492Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 17,
               "Title": "IBookingService.cs",
               "DocumentMoniker": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\TravelAgencyWebApp.Services.Data\\Interfaces\\IBookingService.cs",
               "RelativeDocumentMoniker": "TravelAgencyWebApp.Services.Data\\Interfaces\\IBookingService.cs",
               "ToolTip": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\TravelAgencyWebApp.Services.Data\\Interfaces\\IBookingService.cs",
               "RelativeToolTip": "TravelAgencyWebApp.Services.Data\\Interfaces\\IBookingService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-07T17:48:51.578Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 16,
               "Title": "UserService.cs",
               "DocumentMoniker": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\TravelAgencyWebApp.Services.Data\\UserService.cs",
               "RelativeDocumentMoniker": "TravelAgencyWebApp.Services.Data\\UserService.cs",
@@ -216,39 +469,39 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 5,
               "Title": "TravelingWayService.cs",
               "DocumentMoniker": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\TravelAgencyWebApp.Services.Data\\TravelingWayService.cs",
               "RelativeDocumentMoniker": "TravelAgencyWebApp.Services.Data\\TravelingWayService.cs",
               "ToolTip": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\TravelAgencyWebApp.Services.Data\\TravelingWayService.cs",
               "RelativeToolTip": "TravelAgencyWebApp.Services.Data\\TravelingWayService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-07T17:45:20.369Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 8,
               "Title": "ReviewService.cs",
               "DocumentMoniker": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\TravelAgencyWebApp.Services.Data\\ReviewService.cs",
               "RelativeDocumentMoniker": "TravelAgencyWebApp.Services.Data\\ReviewService.cs",
               "ToolTip": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\TravelAgencyWebApp.Services.Data\\ReviewService.cs",
               "RelativeToolTip": "TravelAgencyWebApp.Services.Data\\ReviewService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAABkAAAAAAAAAAAAAADEAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-07T17:44:52.348Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 7,
               "Title": "OfferService.cs",
               "DocumentMoniker": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\TravelAgencyWebApp.Services.Data\\OfferService.cs",
               "RelativeDocumentMoniker": "TravelAgencyWebApp.Services.Data\\OfferService.cs",
               "ToolTip": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\TravelAgencyWebApp.Services.Data\\OfferService.cs",
               "RelativeToolTip": "TravelAgencyWebApp.Services.Data\\OfferService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAA0AAAAAAAAAA==",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAkwCAAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-07T17:44:17.565Z",
               "EditorCaption": ""
@@ -261,118 +514,112 @@
               "RelativeDocumentMoniker": "TravelAgencyWebApp.Services.Data\\BookingService.cs",
               "ToolTip": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\TravelAgencyWebApp.Services.Data\\BookingService.cs",
               "RelativeToolTip": "TravelAgencyWebApp.Services.Data\\BookingService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAABEAAAAAAAAAAAAkwCkAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-07T17:42:10.397Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "TravelAgencyWebApp.Common",
+              "DocumentIndex": 31,
+              "Title": "TravelAgencyWebApp.Common.csproj",
               "DocumentMoniker": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\TravelAgencyWebApp.Common\\TravelAgencyWebApp.Common.csproj",
               "RelativeDocumentMoniker": "TravelAgencyWebApp.Common\\TravelAgencyWebApp.Common.csproj",
-              "ToolTip": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\TravelAgencyWebApp.Common\\TravelAgencyWebApp.Common.csproj*",
-              "RelativeToolTip": "TravelAgencyWebApp.Common\\TravelAgencyWebApp.Common.csproj*",
+              "ToolTip": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\TravelAgencyWebApp.Common\\TravelAgencyWebApp.Common.csproj",
+              "RelativeToolTip": "TravelAgencyWebApp.Common\\TravelAgencyWebApp.Common.csproj",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2024-11-07T17:38:33.518Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-07T17:38:33.518Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "TravelAgencyWebApp.ViewModels",
+              "DocumentIndex": 32,
+              "Title": "TravelAgencyWebApp.ViewModels.csproj",
               "DocumentMoniker": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\TravelAgencyWebApp.ViewModels\\TravelAgencyWebApp.ViewModels.csproj",
               "RelativeDocumentMoniker": "TravelAgencyWebApp.ViewModels\\TravelAgencyWebApp.ViewModels.csproj",
-              "ToolTip": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\TravelAgencyWebApp.ViewModels\\TravelAgencyWebApp.ViewModels.csproj*",
-              "RelativeToolTip": "TravelAgencyWebApp.ViewModels\\TravelAgencyWebApp.ViewModels.csproj*",
+              "ToolTip": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\TravelAgencyWebApp.ViewModels\\TravelAgencyWebApp.ViewModels.csproj",
+              "RelativeToolTip": "TravelAgencyWebApp.ViewModels\\TravelAgencyWebApp.ViewModels.csproj",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2024-11-07T17:38:32.034Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-07T17:38:32.034Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "TravelAgencyWebApp.Infrastructure",
+              "DocumentIndex": 33,
+              "Title": "TravelAgencyWebApp.Infrastructure.csproj",
               "DocumentMoniker": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\TravelAgencyWebApp.Infrastructure\\TravelAgencyWebApp.Infrastructure.csproj",
               "RelativeDocumentMoniker": "TravelAgencyWebApp.Infrastructure\\TravelAgencyWebApp.Infrastructure.csproj",
-              "ToolTip": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\TravelAgencyWebApp.Infrastructure\\TravelAgencyWebApp.Infrastructure.csproj*",
-              "RelativeToolTip": "TravelAgencyWebApp.Infrastructure\\TravelAgencyWebApp.Infrastructure.csproj*",
+              "ToolTip": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\TravelAgencyWebApp.Infrastructure\\TravelAgencyWebApp.Infrastructure.csproj",
+              "RelativeToolTip": "TravelAgencyWebApp.Infrastructure\\TravelAgencyWebApp.Infrastructure.csproj",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2024-11-07T17:38:28.394Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-07T17:38:28.394Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
-              "Title": "TravelAgencyWebApp",
+              "DocumentIndex": 34,
+              "Title": "TravelAgencyWebApp.csproj",
               "DocumentMoniker": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\TravelAgencyWebApp.csproj",
               "RelativeDocumentMoniker": "TravelAgencyWebApp.csproj",
-              "ToolTip": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\TravelAgencyWebApp.csproj*",
-              "RelativeToolTip": "TravelAgencyWebApp.csproj*",
+              "ToolTip": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\TravelAgencyWebApp.csproj",
+              "RelativeToolTip": "TravelAgencyWebApp.csproj",
               "ViewState": "AgIAAD0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2024-11-07T17:37:55.194Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-07T17:37:55.194Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
-              "Title": "TravelAgencyWebApp.Data.Models",
+              "DocumentIndex": 35,
+              "Title": "TravelAgencyWebApp.Data.Models.csproj",
               "DocumentMoniker": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\TravelAgencyWebApp.Data.Models\\TravelAgencyWebApp.Data.Models.csproj",
               "RelativeDocumentMoniker": "TravelAgencyWebApp.Data.Models\\TravelAgencyWebApp.Data.Models.csproj",
-              "ToolTip": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\TravelAgencyWebApp.Data.Models\\TravelAgencyWebApp.Data.Models.csproj*",
-              "RelativeToolTip": "TravelAgencyWebApp.Data.Models\\TravelAgencyWebApp.Data.Models.csproj*",
+              "ToolTip": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\TravelAgencyWebApp.Data.Models\\TravelAgencyWebApp.Data.Models.csproj",
+              "RelativeToolTip": "TravelAgencyWebApp.Data.Models\\TravelAgencyWebApp.Data.Models.csproj",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2024-11-07T17:37:49.698Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-07T17:37:49.698Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
-              "Title": "TravelAgencyWebApp.Data",
+              "DocumentIndex": 36,
+              "Title": "TravelAgencyWebApp.Data.csproj",
               "DocumentMoniker": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\TravelAgencyWebApp.Data\\TravelAgencyWebApp.Data.csproj",
               "RelativeDocumentMoniker": "TravelAgencyWebApp.Data\\TravelAgencyWebApp.Data.csproj",
-              "ToolTip": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\TravelAgencyWebApp.Data\\TravelAgencyWebApp.Data.csproj*",
-              "RelativeToolTip": "TravelAgencyWebApp.Data\\TravelAgencyWebApp.Data.csproj*",
+              "ToolTip": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\TravelAgencyWebApp.Data\\TravelAgencyWebApp.Data.csproj",
+              "RelativeToolTip": "TravelAgencyWebApp.Data\\TravelAgencyWebApp.Data.csproj",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2024-11-07T17:37:30.09Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-07T17:37:30.09Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 0,
               "Title": "HomeController.cs",
               "DocumentMoniker": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\Controllers\\HomeController.cs",
               "RelativeDocumentMoniker": "Controllers\\HomeController.cs",
-              "ToolTip": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\Controllers\\HomeController.cs",
-              "RelativeToolTip": "Controllers\\HomeController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAPAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\Controllers\\HomeController.cs*",
+              "RelativeToolTip": "Controllers\\HomeController.cs*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-07T17:21:51.585Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 18,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
               "ToolTip": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\Program.cs",
               "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAABIAAAAAAAAAAAAAABcAAABfAAAAAAAAAA==",
+              "ViewState": "AgIAACsAAAAAAAAAAAAwwDkAAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-07T17:19:56.972Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 40,
               "Title": "_ViewStart.cshtml",
               "DocumentMoniker": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\Views\\_ViewStart.cshtml",
               "RelativeDocumentMoniker": "Views\\_ViewStart.cshtml",
@@ -380,12 +627,11 @@
               "RelativeToolTip": "Views\\_ViewStart.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-06T19:04:56.453Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-06T19:04:56.453Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 41,
               "Title": "_ViewImports.cshtml",
               "DocumentMoniker": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\Views\\_ViewImports.cshtml",
               "RelativeDocumentMoniker": "Views\\_ViewImports.cshtml",
@@ -393,12 +639,11 @@
               "RelativeToolTip": "Views\\_ViewImports.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-06T19:04:55.437Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-06T19:04:55.437Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 38,
               "Title": "_ValidationScriptsPartial.cshtml",
               "DocumentMoniker": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
               "RelativeDocumentMoniker": "Views\\Shared\\_ValidationScriptsPartial.cshtml",
@@ -406,12 +651,11 @@
               "RelativeToolTip": "Views\\Shared\\_ValidationScriptsPartial.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-06T19:04:49.077Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-06T19:04:49.077Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 39,
               "Title": "_LoginPartial.cshtml",
               "DocumentMoniker": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\Views\\Shared\\_LoginPartial.cshtml",
               "RelativeDocumentMoniker": "Views\\Shared\\_LoginPartial.cshtml",
@@ -419,12 +663,11 @@
               "RelativeToolTip": "Views\\Shared\\_LoginPartial.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-06T19:04:39.811Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-06T19:04:39.811Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 29,
               "Title": "_Layout.cshtml",
               "DocumentMoniker": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\Views\\Shared\\_Layout.cshtml",
               "RelativeDocumentMoniker": "Views\\Shared\\_Layout.cshtml",
@@ -432,25 +675,24 @@
               "RelativeToolTip": "Views\\Shared\\_Layout.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAB6AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-06T19:00:39.942Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-06T19:00:39.942Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\Views\\Home\\Index.cshtml",
               "RelativeDocumentMoniker": "Views\\Home\\Index.cshtml",
               "ToolTip": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\Views\\Home\\Index.cshtml",
               "RelativeToolTip": "Views\\Home\\Index.cshtml",
-              "ViewState": "AgIAAOEAAAAAAAAAAAAAAAwEAAAtAAAAAAAAAA==",
+              "ViewState": "AgIAACAAAAAAAAAAAAAwwDYAAABNAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-11-06T18:49:49.689Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 37,
               "Title": "bootstrap.css",
               "DocumentMoniker": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
               "RelativeDocumentMoniker": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
@@ -458,21 +700,19 @@
               "RelativeToolTip": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
               "ViewState": "AgIAAI0BAAAAAAAAAAAmwKEBAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2024-11-06T18:44:00.039Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-06T18:44:00.039Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 28,
               "Title": "site.css",
               "DocumentMoniker": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\css\\site.css",
               "RelativeDocumentMoniker": "wwwroot\\css\\site.css",
-              "ToolTip": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\css\\site.css*",
-              "RelativeToolTip": "wwwroot\\css\\site.css*",
+              "ToolTip": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\css\\site.css",
+              "RelativeToolTip": "wwwroot\\css\\site.css",
               "ViewState": "AgIAAAYAAAAAAAAAAAAmwBYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2024-11-06T18:39:59.458Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-06T18:39:59.458Z"
             }
           ]
         },

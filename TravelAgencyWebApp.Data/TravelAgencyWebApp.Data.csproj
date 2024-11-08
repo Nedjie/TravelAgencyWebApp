@@ -26,4 +26,8 @@
     <ProjectReference Include="..\TravelAgencyWebApp.Data.Models\TravelAgencyWebApp.Data.Models.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Seeding\" />
+  </ItemGroup>
+
 </Project>

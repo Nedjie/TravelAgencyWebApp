@@ -1,4 +1,5 @@
-﻿using TravelAgencyWebApp.Data.Models;
+﻿using TravelAgencyWebApp.Common.ErrorMessages;
+using TravelAgencyWebApp.Data.Models;
 using TravelAgencyWebApp.Data.Repository.Interfaces;
 using TravelAgencyWebApp.Services.Data.Interfaces;
 
@@ -6,9 +7,9 @@ namespace TravelAgencyWebApp.Services.Data
 {
     public class ReviewService : IReviewService
     {
-        private readonly IRepository<Review> _reviewRepository;
+        private readonly IRepository<Review,int> _reviewRepository;
 
-        public ReviewService(IRepository<Review> reviewRepository)
+        public ReviewService(IRepository<Review, int> reviewRepository)
         {
             _reviewRepository = reviewRepository;
         }
@@ -35,7 +36,13 @@ namespace TravelAgencyWebApp.Services.Data
 
         public async Task DeleteReviewAsync(int id)
         {
-            await _reviewRepository.DeleteAsync(id);
+            var review = await _reviewRepository.GetByIdAsync(id);
+            if (review == null)
+            {
+                throw new EntityNotFoundException($"Review with ID {id} not found.");
+            }
+
+            await _reviewRepository.DeleteAsync(review);
         }
 
     }

@@ -6,57 +6,60 @@ namespace TravelAgencyWebApp.Controllers
 {
     public class BookingController : BaseController
     {
-        private readonly IBookingService _bookingService;
+		private readonly IBookingService _bookingService;
 
-        public BookingController(IBookingService bookingService, ILogger<BaseController> logger)
-            : base(logger)
-        {
-            _bookingService = bookingService;
-        }
+		public BookingController(IBookingService bookingService, ILogger<BaseController> logger)
+			: base(logger)
+		{
+			_bookingService = bookingService;
+		}
 
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<Booking>>> GetAllBookings()
-        {
-            var bookings = await _bookingService.GetAllBookingsAsync();
-            return Ok(bookings);
-        }
+		public async Task<IActionResult> Index()
+		{
+			try
+			{
+				var bookings = await _bookingService.GetAllBookingsAsync();
+				return View(bookings);
+			}
+			catch (Exception ex)
+			{
+				return HandleException(ex); // Handle exceptions
+			}
+		}
 
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Booking>> GetBookingById(int id)
-        {
-            var booking = await _bookingService.GetBookingByIdAsync(id);
-            if (booking == null)
-            {
-                return NotFound();
-            }
-            return Ok(booking);
-        }
+		public async Task<IActionResult> Details(int id)
+		{
+			var booking = await _bookingService.GetBookingByIdAsync(id);
+			if (booking == null)
+			{
+				return NotFoundPage(); // Handle not found
+			}
 
-        [HttpPost]
-        public async Task<ActionResult<Booking>> CreateBooking([FromBody] Booking booking)
-        {
-            await _bookingService.AddBookingAsync(booking);
-            return CreatedAtAction(nameof(GetBookingById), new { id = booking.Id }, booking);
-        }
+			return View(booking); // Return booking details
+		}
 
-        [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateBooking(int id, [FromBody] Booking booking)
-        {
-            if (id != booking.Id)
-            {
-                return BadRequest();
-            }
+		public async Task<IActionResult> Create(Booking booking)
+		{
+			await _bookingService.AddBookingAsync(booking);
+			return RedirectToAction(nameof(Index)); // Redirect after creation
+		}
 
-            await _bookingService.UpdateBookingAsync(booking);
-            return NoContent();
-        }
+		public async Task<IActionResult> Edit(int id)
+		{
+			var booking = await _bookingService.GetBookingByIdAsync(id);
+			if (booking == null)
+			{
+				return NotFoundPage(); // Handle not found
+			}
 
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteBooking(int id)
-        {
-            await _bookingService.DeleteBookingAsync(id);
-            return NoContent();
-        }
-    }
+			return View(booking); // Return booking for editing
+		}
+
+		public async Task<IActionResult> Delete(int id)
+		{
+			await _bookingService.DeleteBookingAsync(id);
+			return RedirectToAction(nameof(Index)); // Redirect after deletion
+		}
+	}
 }
 

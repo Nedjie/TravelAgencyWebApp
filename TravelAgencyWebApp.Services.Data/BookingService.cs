@@ -1,4 +1,5 @@
-﻿using TravelAgencyWebApp.Data.Models;
+﻿using TravelAgencyWebApp.Common.ErrorMessages;
+using TravelAgencyWebApp.Data.Models;
 using TravelAgencyWebApp.Data.Repository.Interfaces;
 using TravelAgencyWebApp.Services.Data.Interfaces;
 
@@ -6,9 +7,9 @@ namespace TravelAgencyWebApp.Services.Data
 {
     public class BookingService : IBookingService
     {
-        private readonly IRepository<Booking> _bookingRepository;
+        private readonly IRepository<Booking,int> _bookingRepository;
 
-        public BookingService(IRepository<Booking> bookingRepository)
+        public BookingService(IRepository<Booking,int> bookingRepository)
         {
             _bookingRepository = bookingRepository;
         }
@@ -35,7 +36,13 @@ namespace TravelAgencyWebApp.Services.Data
 
         public async Task DeleteBookingAsync(int id)
         {
-            await _bookingRepository.DeleteAsync(id);
+            var booking = await _bookingRepository.GetByIdAsync(id);
+            if (booking == null)
+            {
+                throw new EntityNotFoundException($"Booking with ID {id} not found.");
+            }
+
+            await _bookingRepository.DeleteAsync(booking);
         }
     }
 }

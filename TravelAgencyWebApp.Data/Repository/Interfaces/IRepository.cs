@@ -2,13 +2,22 @@
 
 namespace TravelAgencyWebApp.Data.Repository.Interfaces
 {
-    public interface IRepository<T>
+    public interface IRepository<TType, TId>
     {
-        Task<IEnumerable<T>> GetAllAsync();
-        Task<T?> GetByIdAsync(int id);
-        Task AddAsync(T entity);
-        Task UpdateAsync(T entity);
-        Task DeleteAsync(int id);
-        Task<IEnumerable<T>> FindAsync(Expression<Func<T, bool>> predicate);
+        TType? GetById(TId id);
+        Task<TType?> GetByIdAsync(TId id);
+        TType? FirstOrDefault(Func<TType, bool> predicate);
+        Task<TType?> FirstOrDefaultAsync(Expression<Func<TType, bool>> predicate);
+        IEnumerable<TType> GetAll();
+        Task<IEnumerable<TType>> GetAllAsync();
+        IQueryable<TType> GetAllAttached();
+        void Add(TType item);
+        Task AddAsync(TType item);
+        void AddRange(TType[] items);
+        Task AddRangeAsync(TType[] items);
+        bool Delete(TType entity);
+        Task<bool> DeleteAsync(TType entity);
+        bool Update(TType item);
+        Task<bool> UpdateAsync(TType item);
     }
 }

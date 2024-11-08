@@ -4,6 +4,7 @@ using TravelAgencyWebApp.Services.Data.Interfaces;
 
 namespace TravelAgencyWebApp.Controllers
 {
+    [Route("api/reviews")]
     public class ReviewController : BaseController
     {
         private readonly IReviewService _reviewService;
@@ -27,7 +28,7 @@ namespace TravelAgencyWebApp.Controllers
             var review = await _reviewService.GetReviewByIdAsync(id);
             if (review == null)
             {
-               // return HandleNotFound($"Review with ID: {id}");
+                // return HandleNotFound($"Review with ID: {id}");
             }
             return Ok(review);
         }

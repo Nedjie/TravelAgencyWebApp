@@ -1,0 +1,55 @@
+﻿@model IEnumerable<TravelAgencyWebApp.ViewModels.Booking.BookingViewModel>
+
+@{
+    ViewData["Title"] = "Управление на Резервации"; // Заглавие на страницата
+}
+
+<h2>Управление на Резервации</h2>
+
+<p>
+    <a asp-controller="Booking" asp-action="Create" class="btn btn-primary">Създаване на Нова Резервация</a>
+</p>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Идентификатор</th>
+            <th>Ползвател</th>
+            <th>Дата на Настаняване</th>
+            <th>Дата на Освобождаване</th>
+            <th>Оферта</th>
+            <th>Действия</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Any())
+        {
+            foreach (var booking in Model)
+            {
+                <tr>
+                    <td>@booking.Id</td>
+                    <td>@booking.UserName</td>
+                    <td>@booking.CheckInDate.ToShortDateString()</td>
+                    <td>@booking.CheckOutDate.ToShortDateString()</td>
+                    <td>@booking.OfferTitle</td>
+                    <td>
+                        <a asp-controller="Booking" asp-action="Details" asp-route-id="@booking.Id" class="btn btn-info">Детайли</a>
+                        <a asp-controller="Booking" asp-action="Edit" asp-route-id="@booking.Id" class="btn btn-warning">Редактиране</a>
+                        <a asp-controller="Booking" asp-action="Delete" asp-route-id="@booking.Id" class="btn btn-danger">Изтриване</a>
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="6" class="text-center">Няма намерени резервации.</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section Scripts {
+    <script>
+    </script>
+}

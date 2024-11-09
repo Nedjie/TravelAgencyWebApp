@@ -18,6 +18,7 @@
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "8.0.6",
           "TravelAgencyWebApp.Data": "1.0.0",
           "TravelAgencyWebApp.Services.Data": "1.0.0",
+          "TravelAgencyWebApp.ViewModels": "1.0.0",
           "WebEssentials.AspNetCore.PWA": "1.0.85"
         },
         "runtime": {
@@ -2287,6 +2288,7 @@
           "Microsoft.EntityFrameworkCore.Sqlite": "8.0.10",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "8.0.6",
           "TravelAgencyWebApp.Common": "1.0.0",
+          "TravelAgencyWebApp.Data": "1.0.0",
           "TravelAgencyWebApp.Data.Models": "1.0.0",
           "TravelAgencyWebApp.Services.Mapping": "1.0.0",
           "WebEssentials.AspNetCore.PWA": "1.0.85"

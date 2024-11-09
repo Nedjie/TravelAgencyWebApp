@@ -78,4 +78,14 @@
     </Content>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Views\TravelingWay\" />
+    <Folder Include="Views\User\" />
+    <Folder Include="Views\Review\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="TravelAgencyWebApp.ViewModels\TravelAgencyWebApp.ViewModels.csproj" />
+  </ItemGroup>
+
 </Project>

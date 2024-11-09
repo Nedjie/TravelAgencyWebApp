@@ -1,0 +1,36 @@
+﻿@model TravelAgencyWebApp.ViewModels.Offer.OfferViewModel
+
+@{
+    ViewData["Title"] = "Създаване на Нова Оферта"; 
+}
+
+<h2>Създаване на Нова Оферта</h2>
+
+<form asp-action="Create">
+    <div class="form-group">
+        <label asp-for="Title" class="control-label">Заглавие</label>
+        <input asp-for="Title" class="form-control" required />
+        <span asp-validation-for="Title" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Description" class="control-label">Описание</label>
+        <textarea asp-for="Description" class="form-control" required></textarea>
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Price" class="control-label">Цена</label>
+        <input asp-for="Price" class="form-control" type="number" step="0.01" required />
+        <span asp-validation-for="Price" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="ImageUrl" class="control-label">URL на изображение</label>
+        <input asp-for="ImageUrl" class="form-control" />
+        <span asp-validation-for="ImageUrl" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-success">Създай Оферта</button>
+    <a asp-action="Index" class="btn btn-secondary">Отказ</a>
+</form>

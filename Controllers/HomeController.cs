@@ -16,10 +16,11 @@ namespace TravelAgencyWebApp.Controllers
 		}
 
 		[HttpGet]
-		public IActionResult Index()
-		{
-			return View();
-		}
+        public async Task<IActionResult> Index()
+        {
+            var offers = await _homeService.GetOffersAsync();
+            return View(offers); 
+        }
 
         [HttpGet("About")]
         public IActionResult About()

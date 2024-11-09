@@ -1,13 +1,14 @@
 ﻿using TravelAgencyWebApp.Data.Models;
+using TravelAgencyWebApp.ViewModels.Booking;
 
 namespace TravelAgencyWebApp.Services.Data.Interfaces
 {
     public interface IBookingService
     {
-        Task<IEnumerable<Booking>> GetAllBookingsAsync();
-        Task<Booking?> GetBookingByIdAsync(int id);
-        Task AddBookingAsync(Booking booking);
-        Task UpdateBookingAsync(Booking booking);
+        Task<IEnumerable<BookingViewModel>> GetAllBookingsAsync();
+        Task<BookingViewModel?> GetBookingByIdAsync(int id);
+        Task AddBookingAsync(CreateBookingViewModel model);
+        Task UpdateBookingAsync(EditBookingViewModel model);
         Task DeleteBookingAsync(int id);
     }
 }

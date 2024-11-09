@@ -17,6 +17,7 @@
           "Microsoft.EntityFrameworkCore.Tools": "8.0.10",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "8.0.6",
           "TravelAgencyWebApp.Common": "1.0.0",
+          "TravelAgencyWebApp.Data": "1.0.0",
           "TravelAgencyWebApp.Data.Models": "1.0.0",
           "TravelAgencyWebApp.Services.Mapping": "1.0.0",
           "WebEssentials.AspNetCore.PWA": "1.0.85"
@@ -2213,6 +2214,26 @@
           }
         }
       },
+      "TravelAgencyWebApp.Data/1.0.0": {
+        "dependencies": {
+          "AutoMapper": "13.0.1",
+          "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": "8.0.8",
+          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "8.0.10",
+          "Microsoft.AspNetCore.Identity.UI": "8.0.10",
+          "Microsoft.EntityFrameworkCore.SqlServer": "8.0.10",
+          "Microsoft.EntityFrameworkCore.Sqlite": "8.0.10",
+          "Microsoft.VisualStudio.Web.CodeGeneration.Design": "8.0.6",
+          "TravelAgencyWebApp.Common": "1.0.0",
+          "TravelAgencyWebApp.Data.Models": "1.0.0",
+          "WebEssentials.AspNetCore.PWA": "1.0.85"
+        },
+        "runtime": {
+          "TravelAgencyWebApp.Data.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
       "TravelAgencyWebApp.Data.Models/1.0.0": {
         "dependencies": {
           "AutoMapper": "13.0.1",
@@ -3492,6 +3513,11 @@
       "hashPath": "webessentials.aspnetcore.pwa.1.0.85.nupkg.sha512"
     },
     "TravelAgencyWebApp.Common/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "TravelAgencyWebApp.Data/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

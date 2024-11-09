@@ -5,21 +5,31 @@ namespace TravelAgencyWebApp.Common.Attributes
 {
     public class IsBefore:ValidationAttribute
     {
-        private const string DateTimeFormat = "dd/MM/yyyy";
-        private readonly DateTime date;
+        private readonly string _comparisonProperty;
 
-        public IsBefore(string dateInput)
+        public IsBefore(string comparisonProperty)
         {
-            date = DateTime.ParseExact(dateInput, DateTimeFormat, CultureInfo.InvariantCulture);
+            _comparisonProperty = comparisonProperty;
         }
 
-        protected override ValidationResult? IsValid(object? value, ValidationContext validationContext)
+        protected override ValidationResult IsValid(object? value, ValidationContext validationContext)
         {
-            if (value != null && (DateTime)value >= date)
+            // Retrieve the comparison property's value
+            var comparisonValue = validationContext.ObjectType.GetProperty(_comparisonProperty)?.GetValue(validationContext.ObjectInstance, null);
+
+            // Ensure both values are DateTime
+            if (value is DateTime currentDate && comparisonValue is DateTime comparisonDate)
             {
-                return new ValidationResult(ErrorMessage);
+                if (currentDate < comparisonDate)
+                {
+                    return ValidationResult.Success; // Valid case
+                }
+                return new ValidationResult(ErrorMessage ?? "The check-out date must be before the check-in date."); // Validation failed
             }
-            return base.IsValid(value, validationContext);
+
+            // Handle invalid formats or nulls gracefully
+            return new ValidationResult("Both values must be valid dates.");
         }
     }
 }
+

@@ -1,0 +1,47 @@
+﻿@model IEnumerable<TravelAgencyWebApp.Data.Models.Offer>
+
+@{
+    ViewData["Title"] = "Оферти"; // Title in Bulgarian
+}
+
+<h2>Оферти</h2>
+
+<p>
+    <a asp-controller="Offer" asp-action="Create" class="btn btn-primary">Създаване на Нова Оферта</a>
+</p>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Идентификатор</th>
+            <th>Заглавие</th>
+            <th>Описание</th>
+            <th>Цена</th>
+            <th>Действия</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Any())
+        {
+            foreach (var offer in Model)
+            {
+                <tr>
+                    <td>@offer.Id</td>
+                    <td>@offer.Title</td>
+                    <td>@offer.Description</td>
+                    <td>@offer.Price.ToString("C")</td> <!-- Format the price -->
+                    <td>
+                        <a asp-controller="Offer" asp-action="Edit" asp-route-id="@offer.Id" class="btn btn-warning">Редактиране</a>
+                        <a asp-controller="Offer" asp-action="Delete" asp-route-id="@offer.Id" class="btn btn-danger">Изтриване</a>
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="5" class="text-center">Няма намерени оферти.</td> <!-- Message if no offers are found -->
+            </tr>
+        }
+    </tbody>
+</table>

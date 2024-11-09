@@ -824,11 +824,11 @@ section
 	z-index: 1;
 }
 
-/*********************************
+	/*********************************
 6. Section Title
 *********************************/
 
-.section_title
+	.section_title
 {
 	font-size: 30px;
 	font-weight: 700;

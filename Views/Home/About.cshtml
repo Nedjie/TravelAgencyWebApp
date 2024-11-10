@@ -30,8 +30,10 @@
 						<div class="col d-flex flex-row">
 							<div class="phone">+359 345 3324 </div>
 							<div class="user_box ml-auto">
-								<div class="user_box_login user_box_link"><a href="#">Вход за клиенти</a></div>
-								<div class="user_box_register user_box_link"><a href="#">Регистрация</a></div>
+								<div class="user_box_login user_box_link">
+									<a asp-area="Identity" asp-page="/Account/Login">Вход</a>
+								</div>
+								<div class="user_box_login user_box_link"><a asp-area="Identity" asp-page="/Account/Register">Регистрация</a></div>
 							</div>
 						</div>
 					</div>
@@ -49,11 +51,9 @@
 							</div>
 							<div class="main_nav_container ml-auto">
 								<ul class="main_nav_list">
-									<li class="main_nav_item"><a asp-controller="Home" asp-action="Index">Home</a></li>
-									<li class="main_nav_item"><a asp-controller="Home" asp-action="About">За Дени Травел</a></li>
-									<li class="main_nav_item"><a href="offers.html">offers</a></li>
-									<li class="main_nav_item"><a href="blog.html">news</a></li>
-									<li class="main_nav_item"><a href="contact.html">contact</a></li>
+									<li class="main_nav_item"><a asp-controller="Home" asp-action="Index">Начало</a></li>
+									<li class="main_nav_item"><a asp-controller="Offer" asp-action="Index">Оферти</a></li>
+									<li class="main_nav_item"><a asp-controller="Home" asp-action="About">За Нас</a></li>
 								</ul>
 							</div>
 							<div class="content_search ml-lg-0 ml-auto">
@@ -98,11 +98,9 @@
 			<div class="menu_close_container"><div class="menu_close"></div></div>
 			<div class="logo menu_logo"><a href="#"><img src="~/Content/images/logo.png" alt=""></a></div>
 			<ul>
-				<li class="main_nav_item"><a asp-controller="Home" asp-action="Index">Home</a></li>
-				<li class="main_nav_item"><a asp-controller="Home" asp-action="About">За Дени Травел</a></li>
-				<li class="menu_item"><a href="offers.html">offers</a></li>
-				<li class="menu_item"><a href="blog.html">news</a></li>
-				<li class="menu_item"><a href="contact.html">contact</a></li>
+				<li class="main_nav_item"><a asp-controller="Home" asp-action="Index">Начало</a></li>
+				<li class="main_nav_item"><a asp-controller="Offer" asp-action="Index">Оферти</a></li>
+				<li class="main_nav_item"><a asp-controller="Home" asp-action="About">За Нас</a></li>
 			</ul>
 		</div>
 	</div>
@@ -211,8 +209,8 @@
 						<div class="add_background" style="background-image:url('/Content/images/add.jpg')"></div>
 						<div class="add_content">
 							<h1 class="add_title">Тайланд</h1>
-							<div class="add_subtitle">From <span>$999</span></div>
-							<div class="button add_button"><div class="button_bcg"></div><a href="#">Открий повече<span></span><span></span><span></span></a></div>
+							<div class="add_subtitle">Цени от <span>$999</span></div>
+							<div class="button add_button"><div class="button_bcg"></div><a asp-controller="Offer" asp-action="Index" class="btn">Открий повече<span></span><span></span><span></span></a></div>
 						</div>
 					</div>
 				</div>

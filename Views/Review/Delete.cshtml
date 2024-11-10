@@ -1,0 +1,23 @@
+﻿@model TravelAgencyWebApp.ViewModels.Offer.ConfirmDeleteOfferViewModel
+
+@{
+    ViewData["Title"] = "Изтриване на Отзив"; 
+}
+
+<h1>Изтриване на Отзив</h1>
+
+<div>
+    <h3>Сигурни ли сте, че искате да изтриете следния отзив?</h3>
+    <div>
+        <strong>Идентификатор:</strong> @Model.Id<br />
+        <strong>Заглавие:</strong> @Model.Title<br />
+        <strong>Описание:</strong> @Model.Description<br />
+    </div>
+</div>
+
+<form method="post">
+    <div class="form-group">
+        <button type="submit" class="btn btn-danger">Изтрий</button>
+        <a asp-controller="Review" asp-action="Index" class="btn btn-secondary">Отказ</a>
+    </div>
+</form>

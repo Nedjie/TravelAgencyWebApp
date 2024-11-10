@@ -4,7 +4,6 @@ using TravelAgencyWebApp.Services.Data.Interfaces;
 
 namespace TravelAgencyWebApp.Controllers
 {
-    [Route("api/reviews")]
     public class ReviewController : BaseController
     {
         private readonly IReviewService _reviewService;
@@ -28,15 +27,20 @@ namespace TravelAgencyWebApp.Controllers
             var review = await _reviewService.GetReviewByIdAsync(id);
             if (review == null)
             {
-                // return HandleNotFound($"Review with ID: {id}");
-            }
+				return NotFound(); // Return 404 if the review does not exist
+			}
             return Ok(review);
         }
 
         [HttpPost]
         public async Task<ActionResult<Review>> CreateReview([FromBody] Review review)
         {
-            await _reviewService.AddReviewAsync(review);
+			if (review == null)
+			{
+				return BadRequest("Review cannot be null."); // Handle the case where review is null
+			}
+
+			await _reviewService.AddReviewAsync(review);
             return CreatedAtAction(nameof(GetReviewById), new { id = review.Id }, review);
         }
 
@@ -45,18 +49,31 @@ namespace TravelAgencyWebApp.Controllers
         {
             if (id != review.Id)
             {
-                return BadRequest();
+                return BadRequest();// 404 Not NFound
             }
 
-            await _reviewService.UpdateReviewAsync(review);
-            return NoContent();
-        }
+			var existingReview = await _reviewService.GetReviewByIdAsync(id);
+
+			if (existingReview == null)
+			{
+				return NotFound(); // Return 404 if the review does not exist
+			}
+
+			await _reviewService.UpdateReviewAsync(review);
+			return NoContent();
+		}
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteReview(int id)
         {
-            await _reviewService.DeleteReviewAsync(id);
-            return NoContent();
-        }
+			var review = await _reviewService.GetReviewByIdAsync(id);
+			if (review == null)
+			{
+				return NotFound(); // Return 404 if the review does not exist
+			}
+
+			await _reviewService.DeleteReviewAsync(id);
+			return NoContent();
+		}
     }
 }

@@ -1,0 +1,40 @@
+﻿@model TravelAgencyWebApp.ViewModels.Review.ReviewViewModel
+@{
+    ViewData["Title"] = "Създаване на Отзив"; 
+}
+
+<h1>Създаване на Отзив</h1>
+
+<form method="post">
+    <div class="form-group">
+        <label asp-for="UserId">Потребител</label>
+        <input asp-for="UserId" class="form-control" />
+        <span asp-validation-for="UserId" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="OfferId">Оферта</label>
+        <input asp-for="OfferId" class="form-control" />
+        <span asp-validation-for="OfferId" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="ReviewText">Текст на отзива</label>
+        <textarea asp-for="ReviewText" class="form-control"></textarea>
+        <span asp-validation-for="ReviewText" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Rating">Оценка (1-5)</label>
+        <input asp-for="Rating" type="number" min="1" max="5" class="form-control" />
+        <span asp-validation-for="Rating" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Създаване</button>
+    </div>
+</form>
+
+<div>
+    <a asp-page="/Account/Login">Връщане към логин</a>
+</div>

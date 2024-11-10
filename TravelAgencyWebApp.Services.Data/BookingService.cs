@@ -11,11 +11,15 @@ namespace TravelAgencyWebApp.Services.Data
     {
         private readonly IRepository<Booking, int> _bookingRepository;
         private readonly IRepository<Offer, int> _offerRepository;
+        private readonly IRepository<ApplicationUser,int> _userRepository;
 
-        public BookingService(IRepository<Booking, int> bookingRepository, IRepository<Offer, int> offerRepository)
+        public BookingService(IRepository<Booking, int> bookingRepository,
+            IRepository<Offer, int> offerRepository,IRepository<ApplicationUser,int> userRepository)
         {
             _bookingRepository = bookingRepository;
             _offerRepository = offerRepository;
+            _userRepository = userRepository;
+
         }
 
         public async Task<IEnumerable<BookingViewModel>> GetAllBookingsAsync()
@@ -60,6 +64,12 @@ namespace TravelAgencyWebApp.Services.Data
                 throw new ArgumentException(DataConstants.BookingCheckOutDateIsBeforeCheckInDateError);
             }
 
+            var userExists = await _userRepository.GetByIdAsync(model.UserId); 
+            if (userExists == null)
+            {
+                throw new EntityNotFoundException($"User with ID {model.UserId} not found.");
+            }
+
             var offer = await _offerRepository.GetByIdAsync(model.OfferId);
             if (offer == null)
             {
@@ -68,7 +78,7 @@ namespace TravelAgencyWebApp.Services.Data
 
             var booking = new Booking
             {
-                UserId = model.UserId,
+                UserId = model.UserId.ToString(),
                 CheckInDate = model.CheckInDate,
                 CheckOutDate = model.CheckOutDate,
                 OfferId = model.OfferId

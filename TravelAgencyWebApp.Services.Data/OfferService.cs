@@ -19,12 +19,10 @@ namespace TravelAgencyWebApp.Services.Data
         {
             return await _offerRepository.GetAllAsync();
         }
-
         public async Task<Offer?> GetOfferByIdAsync(int id)
         {
             return await _offerRepository.GetByIdAsync(id);
         }
-
         public async Task AddOfferAsync(OfferViewModel model)
         {
 
@@ -64,15 +62,42 @@ namespace TravelAgencyWebApp.Services.Data
             await _offerRepository.AddAsync(offer);
 
         }
-        public async Task UpdateOfferAsync(Offer offer)
+        public async Task UpdateOfferAsync(OfferViewModel model)
         {
+            if (model == null)
+            {
+                throw new ArgumentNullException(nameof(model));
+            }
+
+            if (string.IsNullOrWhiteSpace(model.Title))
+            {
+                throw new ArgumentException("Заглавието е задължително.", nameof(model.Title));
+            }
+
+            if (string.IsNullOrWhiteSpace(model.Description))
+            {
+                throw new ArgumentException("Описание е задължително.", nameof(model.Description));
+            }
+
+            if (!string.IsNullOrWhiteSpace(model.ImageUrl) && !Uri.IsWellFormedUriString(model.ImageUrl, UriKind.Absolute))
+            {
+                throw new ArgumentException("Невалидна URL адрес за изображение.", nameof(model.ImageUrl));
+            }
+
+            var offer = await _offerRepository.GetByIdAsync(model.Id);
+
             if (offer == null)
             {
-                throw new ArgumentNullException(nameof(offer));
-            }
+                throw new EntityNotFoundException($"Offer with ID {model.Id} not found.");
+            }       
+
+            offer.Title = model.Title;
+            offer.Description = model.Description;
+            offer.Price = model.Price;
+            offer.ImageUrl = model.ImageUrl;
+
             await _offerRepository.UpdateAsync(offer);
         }
-
         public async Task DeleteOfferAsync(int id)
         {
             var offer = await _offerRepository.GetByIdAsync(id);
@@ -80,6 +105,7 @@ namespace TravelAgencyWebApp.Services.Data
             {
                 throw new EntityNotFoundException($"Offer with ID {id} not found.");
             }
+
             await _offerRepository.DeleteAsync(offer);
         }
     }

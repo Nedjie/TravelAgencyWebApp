@@ -8,11 +8,9 @@ namespace TravelAgencyWebApp.Controllers
         {
         }
 
-        // GET: /about
-        [HttpGet]
-        public IActionResult Index()
-        {
-            return View(); // This will return About/Index.cshtml view
-        }
-    }
+		public IActionResult Register()
+		{
+			return View(); 
+		}
+	}
 }

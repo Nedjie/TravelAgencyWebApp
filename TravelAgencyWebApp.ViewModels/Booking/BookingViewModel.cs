@@ -14,7 +14,7 @@ namespace TravelAgencyWebApp.ViewModels.Booking
 
         [Required(ErrorMessage = DataConstants.BookingUserIdRequiredError)]
         [Comment("User identifier")]
-        public int UserId { get; set; }
+        public string? UserId { get; set; }
 
         [Comment("User name")]
         public string? UserName { get; set; }

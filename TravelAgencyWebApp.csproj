@@ -80,8 +80,7 @@
 
   <ItemGroup>
     <Folder Include="Views\TravelingWay\" />
-    <Folder Include="Views\User\" />
-    <Folder Include="Views\Review\" />
+    <Folder Include="Views\ApplicationUser\" />
   </ItemGroup>
 
   <ItemGroup>

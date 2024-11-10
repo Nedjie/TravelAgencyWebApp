@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using TravelAgencyWebApp.Data.Models;
+using TravelAgencyWebApp.Infrastructure.Extensions;
 using TravelAgencyWebApp.Services.Data;
 using TravelAgencyWebApp.Services.Data.Interfaces;
 using TravelAgencyWebApp.ViewModels.Booking;
@@ -56,6 +57,7 @@ namespace TravelAgencyWebApp.Controllers
 
             return View();
         }
+
         [HttpPost]
         public async Task<IActionResult> Create(CreateBookingViewModel model)
         {
@@ -68,20 +70,13 @@ namespace TravelAgencyWebApp.Controllers
                         Text = o.Title
                     });
 
-                return View(model);
+                return View(model); 
             }
 
-            var booking = new CreateBookingViewModel
-            {
-                UserId = model.UserId,
-                CheckInDate = model.CheckInDate,
-                CheckOutDate = model.CheckOutDate,
-                OfferId = model.OfferId
-            };
+            model.UserId =User.GetCurrentUserId();
 
-            await _bookingService.AddBookingAsync(booking);
-
-            return RedirectToAction(nameof(Index));
+            await _bookingService.AddBookingAsync(model); 
+            return RedirectToAction(nameof(Index)); 
         }
 
         [HttpGet]

@@ -8,7 +8,7 @@ namespace TravelAgencyWebApp.Services.Data.Interfaces
         Task<IEnumerable<Offer>> GetAllOffersAsync();
         Task<Offer?> GetOfferByIdAsync(int id);
         Task AddOfferAsync(OfferViewModel model);
-        Task UpdateOfferAsync(Offer offer);
+        Task UpdateOfferAsync(OfferViewModel model);
         Task DeleteOfferAsync(int id);
     }
 }

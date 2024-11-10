@@ -1,0 +1,19 @@
+﻿@model TravelAgencyWebApp.Data.Models.Offer
+
+@{
+    ViewData["Title"] = Model.Title; 
+}
+
+<h2>Детайли на Офертата</h2>
+
+<div>
+    <h3>@Model.Title</h3>
+    <img src="@Model.ImageUrl" alt="@Model.Title" class="img-fluid" />
+    <p><strong>Описание:</strong> @Model.Description</p>
+    <p><strong>Цена:</strong> @Model.Price.ToString("C")</p>
+</div>
+
+<p>
+    <a asp-controller="Offer" asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">Редактиране</a>
+    <a asp-controller="Offer" asp-action="Index" class="btn btn-secondary">Назад към Оферти</a>
+</p>

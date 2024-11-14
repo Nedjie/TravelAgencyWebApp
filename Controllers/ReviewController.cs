@@ -4,15 +4,11 @@ using TravelAgencyWebApp.Services.Data.Interfaces;
 
 namespace TravelAgencyWebApp.Controllers
 {
-    public class ReviewController : BaseController
+    public class ReviewController(IReviewService reviewService, ILogger<ReviewController> logger)
+        : BaseController(logger)
     {
-        private readonly IReviewService _reviewService;
-
-        public ReviewController(IReviewService reviewService, ILogger<BaseController> logger)
-            : base(logger)
-        {
-            _reviewService = reviewService;
-        }
+        private readonly IReviewService _reviewService = reviewService
+            ?? throw new ArgumentNullException(nameof(reviewService));
 
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Review>>> GetAllReviews()
@@ -27,20 +23,20 @@ namespace TravelAgencyWebApp.Controllers
             var review = await _reviewService.GetReviewByIdAsync(id);
             if (review == null)
             {
-				return NotFound(); // Return 404 if the review does not exist
-			}
+                return NotFound(); // Return 404 if the review does not exist
+            }
             return Ok(review);
         }
 
         [HttpPost]
         public async Task<ActionResult<Review>> CreateReview([FromBody] Review review)
         {
-			if (review == null)
-			{
-				return BadRequest("Review cannot be null."); // Handle the case where review is null
-			}
+            if (review == null)
+            {
+                return BadRequest("Review cannot be null."); // Handle the case where review is null
+            }
 
-			await _reviewService.AddReviewAsync(review);
+            await _reviewService.AddReviewAsync(review);
             return CreatedAtAction(nameof(GetReviewById), new { id = review.Id }, review);
         }
 
@@ -52,28 +48,28 @@ namespace TravelAgencyWebApp.Controllers
                 return BadRequest();// 404 Not NFound
             }
 
-			var existingReview = await _reviewService.GetReviewByIdAsync(id);
+            var existingReview = await _reviewService.GetReviewByIdAsync(id);
 
-			if (existingReview == null)
-			{
-				return NotFound(); // Return 404 if the review does not exist
-			}
+            if (existingReview == null)
+            {
+                return NotFound(); // Return 404 if the review does not exist
+            }
 
-			await _reviewService.UpdateReviewAsync(review);
-			return NoContent();
-		}
+            await _reviewService.UpdateReviewAsync(review);
+            return NoContent();
+        }
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteReview(int id)
         {
-			var review = await _reviewService.GetReviewByIdAsync(id);
-			if (review == null)
-			{
-				return NotFound(); // Return 404 if the review does not exist
-			}
+            var review = await _reviewService.GetReviewByIdAsync(id);
+            if (review == null)
+            {
+                return NotFound(); // Return 404 if the review does not exist
+            }
 
-			await _reviewService.DeleteReviewAsync(id);
-			return NoContent();
-		}
+            await _reviewService.DeleteReviewAsync(id);
+            return NoContent();
+        }
     }
 }

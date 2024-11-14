@@ -6,14 +6,9 @@ using TravelAgencyWebApp.ViewModels.Offer;
 
 namespace TravelAgencyWebApp.Services.Data
 {
-    public class OfferService : IOfferService
+    public class OfferService(IRepository<Offer, int> offerRepository) : IOfferService
     {
-        private readonly IRepository<Offer, int> _offerRepository;
-
-        public OfferService(IRepository<Offer, int> offerRepository)
-        {
-            _offerRepository = offerRepository;
-        }
+        private readonly IRepository<Offer, int> _offerRepository = offerRepository ?? throw new ArgumentNullException(nameof(offerRepository));
 
         public async Task<IEnumerable<Offer>> GetAllOffersAsync()
         {
@@ -28,35 +23,15 @@ namespace TravelAgencyWebApp.Services.Data
 
             if (model == null)
             {
-                throw new ArgumentNullException(nameof(model));
-            }
-
-            if (string.IsNullOrWhiteSpace(model.Title))
-            {
-                throw new ArgumentException("Заглавието е задължително.", nameof(model.Title));
-            }
-
-            if (string.IsNullOrWhiteSpace(model.Description))
-            {
-                throw new ArgumentException("Описание е задължително.", nameof(model.Description));
-            }
-
-            if (model.Price <= 0)
-            {
-                throw new ArgumentException("Цената трябва да бъде положително число.", nameof(model.Price));
-            }
-
-            if (!string.IsNullOrWhiteSpace(model.ImageUrl) && !Uri.IsWellFormedUriString(model.ImageUrl, UriKind.Absolute))
-            {
-                throw new ArgumentException("Невалидна URL адрес за изображение.", nameof(model.ImageUrl));
+                ArgumentNullException.ThrowIfNull(model, nameof(model));
             }
 
             var offer = new Offer
             {
-                Title = model.Title,
-                Description = model.Description,
+                Title = model.Title! ,
+                Description = model.Description ?? "No Description",
                 Price = model.Price,
-                ImageUrl = model.ImageUrl // Now validated
+                ImageUrl = model.ImageUrl! 
             };
 
             await _offerRepository.AddAsync(offer);
@@ -66,45 +41,25 @@ namespace TravelAgencyWebApp.Services.Data
         {
             if (model == null)
             {
-                throw new ArgumentNullException(nameof(model));
-            }
-
-            if (string.IsNullOrWhiteSpace(model.Title))
-            {
-                throw new ArgumentException("Заглавието е задължително.", nameof(model.Title));
-            }
-
-            if (string.IsNullOrWhiteSpace(model.Description))
-            {
-                throw new ArgumentException("Описание е задължително.", nameof(model.Description));
-            }
-
-            if (!string.IsNullOrWhiteSpace(model.ImageUrl) && !Uri.IsWellFormedUriString(model.ImageUrl, UriKind.Absolute))
-            {
-                throw new ArgumentException("Невалидна URL адрес за изображение.", nameof(model.ImageUrl));
+                ArgumentNullException.ThrowIfNull(model, nameof(model));
             }
 
             var offer = await _offerRepository.GetByIdAsync(model.Id);
 
-            if (offer == null)
-            {
-                throw new EntityNotFoundException($"Offer with ID {model.Id} not found.");
-            }       
+            ArgumentNullException.ThrowIfNull(offer);
 
-            offer.Title = model.Title;
-            offer.Description = model.Description;
+            offer.Title = model.Title!;
+            offer.Description = model.Description ?? "No Description";
             offer.Price = model.Price;
-            offer.ImageUrl = model.ImageUrl;
+            offer.ImageUrl = model.ImageUrl!;
 
             await _offerRepository.UpdateAsync(offer);
         }
         public async Task DeleteOfferAsync(int id)
         {
             var offer = await _offerRepository.GetByIdAsync(id);
-            if (offer == null)
-            {
-                throw new EntityNotFoundException($"Offer with ID {id} not found.");
-            }
+
+            ArgumentNullException.ThrowIfNull(offer);
 
             await _offerRepository.DeleteAsync(offer);
         }

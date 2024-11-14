@@ -1,19 +1,15 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using TravelAgencyWebApp.Data.Models;
-using TravelAgencyWebApp.Data;
 using TravelAgencyWebApp.Services.Data.Interfaces;
 
 namespace TravelAgencyWebApp.Controllers
 {
-    public class TravelingWayController : BaseController
+    public class TravelingWayController(ITravelingWayService travelingWayService,
+        ILogger<TravelingWayController> logger) : BaseController(logger)
     {
-        private readonly ITravelingWayService _travelingWayService;
+        private readonly ITravelingWayService _travelingWayService = travelingWayService
+            ?? throw new ArgumentNullException(nameof(travelingWayService));
 
-        public TravelingWayController(ITravelingWayService travelingWayService, ILogger<BaseController> logger)
-            : base(logger)
-        {
-            _travelingWayService = travelingWayService;
-        }
 
         [HttpGet]
         public async Task<ActionResult<IEnumerable<TravelingWay>>> GetAllTravelingWays()

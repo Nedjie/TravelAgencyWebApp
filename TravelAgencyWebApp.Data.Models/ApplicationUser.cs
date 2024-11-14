@@ -22,7 +22,7 @@ namespace TravelAgencyWebApp.Data.Models
         [Comment("User password")]
         public string Password { get; set; } = null!;
 
-        public ICollection<Booking> Bookings { get; set; } = new List<Booking>();
-		public  ICollection<Review> Reviews { get; set; }=new List<Review>();
-	}
+        public ICollection<Booking> Bookings { get; set; } = new HashSet<Booking>();
+        public ICollection<Review> Reviews { get; set; } = new HashSet<Review>();
+    }
 }

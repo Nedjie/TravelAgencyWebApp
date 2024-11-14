@@ -4,7 +4,10 @@ namespace TravelAgencyWebApp.Services.Data.Interfaces
 {
 	public interface IHomeService
 	{
-		Task<IEnumerable<Offer>> GetOffersAsync();
-		
-	}
+        /// <summary>
+        /// Asynchronously retrieves a list of offers.
+        /// </summary>
+        Task<IEnumerable<Offer>> GetOffersAsync();
+
+    }
 }

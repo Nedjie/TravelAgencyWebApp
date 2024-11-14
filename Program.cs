@@ -46,7 +46,7 @@ namespace TravelAgencyWebApp
 
             app.UseRouting();
 
-            app.UseAuthentication();
+          //  app.UseAuthentication();
             app.UseAuthorization();
 
             app.MapControllerRoute(

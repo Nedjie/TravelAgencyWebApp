@@ -1,17 +1,14 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 using TravelAgencyWebApp.Data.Models;
 
 namespace TravelAgencyWebApp.Data
 {
 
-	public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
+	public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) 
+		: IdentityDbContext<ApplicationUser>(options)
 	{
-		public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
-		   : base(options)
-		{
-		}
-
 		public DbSet<Booking> Bookings { get; set; }
 		public DbSet<Offer> Offers { get; set; }
 		public DbSet<Review> Reviews { get; set; }

@@ -2,18 +2,13 @@
 
 namespace TravelAgencyWebApp.Controllers
 {
-    public class BaseController : Controller
+    public class BaseController(ILogger<BaseController> logger) : Controller
     {
-        protected readonly ILogger<BaseController> _logger;
-
-        public BaseController(ILogger<BaseController> logger)
-        {
-            _logger = logger;
-        }
+        protected readonly ILogger<BaseController> _logger = logger ?? throw new ArgumentNullException(nameof(logger));
 
         protected void LogError(string message)
         {
-            _logger.LogError(message);
+            _logger.LogError("An error occurred: {Message}", message);
         }
 
         protected IActionResult HandleException(Exception ex)
@@ -24,7 +19,7 @@ namespace TravelAgencyWebApp.Controllers
 
         protected bool IsUserAuthenticated()
         {
-            return User.Identity.IsAuthenticated;
+            return User.Identity!.IsAuthenticated;
         }
 
         public IActionResult NotFoundPage()

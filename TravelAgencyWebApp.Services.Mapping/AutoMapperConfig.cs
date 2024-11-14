@@ -88,16 +88,16 @@ namespace TravelAgencyWebApp.Services.Mapping
                              where typeof(IHaveCustomMappings).GetTypeInfo().IsAssignableFrom(t) &&
                                    !t.GetTypeInfo().IsAbstract &&
                                    !t.GetTypeInfo().IsInterface
-                             select (IHaveCustomMappings)Activator.CreateInstance(t);
+                             select (IHaveCustomMappings?)Activator.CreateInstance(t);
 
             return customMaps;
         }
 
         private class TypesMap
         {
-            public Type Source { get; set; }
+            public Type? Source { get; set; }
 
-            public Type Destination { get; set; }
+            public Type? Destination { get; set; }
         }
     }
 }

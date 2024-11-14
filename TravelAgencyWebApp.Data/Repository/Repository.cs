@@ -4,16 +4,11 @@ using TravelAgencyWebApp.Data.Repository.Interfaces;
 
 namespace TravelAgencyWebApp.Data.Repository
 {
-    public class Repository<TType, TId> : IRepository<TType, TId> where TType : class
+    public class Repository<TType, TId>(ApplicationDbContext context) : IRepository<TType, TId> where TType : class
     {
-        private readonly ApplicationDbContext _context;
-        private readonly DbSet<TType> _dbSet;
+        private readonly ApplicationDbContext _context =context ?? throw new ArgumentNullException(nameof(context));
+        private readonly DbSet<TType> _dbSet=context.Set<TType>();
 
-        public Repository(ApplicationDbContext context)
-        {
-            _context = context;
-            _dbSet = context.Set<TType>();
-        }
 
         public TType? GetById(TId id)
         {
@@ -35,14 +30,14 @@ namespace TravelAgencyWebApp.Data.Repository
             return await _dbSet.FirstOrDefaultAsync(predicate);
         }
 
-        public IEnumerable<TType> GetAll()
+        public IEnumerable<TType> GetAll() // ПРОВЕРИ ДАЛИ РАБОТИ ПРАВИЛНО!!!!!
         {
-            return _dbSet.ToList();
+            return this._dbSet.AsEnumerable();
         }
 
         public async Task<IEnumerable<TType>> GetAllAsync()
         {
-            return await _dbSet.ToListAsync();
+            return await this._dbSet.ToListAsync();
         }
 
         public IQueryable<TType> GetAllAttached()

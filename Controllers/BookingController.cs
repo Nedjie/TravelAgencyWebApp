@@ -8,17 +8,13 @@ using TravelAgencyWebApp.ViewModels.Booking;
 
 namespace TravelAgencyWebApp.Controllers
 {
-    public class BookingController : BaseController
+    public class BookingController(IBookingService bookingService, IOfferService offerService,
+        ILogger<BookingController> logger) : BaseController(logger)
     {
-        private readonly IBookingService _bookingService;
-        private readonly IOfferService _offerService;
-
-        public BookingController(IBookingService bookingService, IOfferService offerService, ILogger<BaseController> logger)
-            : base(logger)
-        {
-            _bookingService = bookingService;
-            _offerService = offerService;
-        }
+        private readonly IBookingService _bookingService = bookingService
+            ?? throw new ArgumentNullException(nameof(bookingService));
+        private readonly IOfferService _offerService = offerService
+            ?? throw new ArgumentNullException(nameof(offerService));
 
         public async Task<IActionResult> Index()
         {
@@ -70,13 +66,13 @@ namespace TravelAgencyWebApp.Controllers
                         Text = o.Title
                     });
 
-                return View(model); 
+                return View(model);
             }
 
-            model.UserId =User.GetCurrentUserId();
+            model.UserId = User.GetCurrentUserId();
 
-            await _bookingService.AddBookingAsync(model); 
-            return RedirectToAction(nameof(Index)); 
+            await _bookingService.AddBookingAsync(model);
+            return RedirectToAction(nameof(Index));
         }
 
         [HttpGet]
@@ -137,8 +133,8 @@ namespace TravelAgencyWebApp.Controllers
             var model = new ConfirmDeleteViewModel
             {
                 Id = booking.Id,
-                UserName = booking.UserName != null ? booking.UserName : "Unknown",
-                OfferTitle = booking.OfferTitle != null ? booking.OfferTitle : "No Offer"
+                UserName = booking.UserName ?? "Unknown",
+                OfferTitle = booking.OfferTitle ?? "No Offer"
             };
 
             return View(model);

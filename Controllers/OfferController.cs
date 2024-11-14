@@ -4,17 +4,12 @@ using TravelAgencyWebApp.ViewModels.Offer;
 
 namespace TravelAgencyWebApp.Controllers
 {
-    public class OfferController : BaseController
+    public class OfferController(IOfferService offerService, ILogger<OfferController> logger)
+        : BaseController(logger)
     {
-        private readonly IOfferService _offerService;
+        private readonly IOfferService _offerService = offerService 
+            ?? throw new ArgumentNullException(nameof(offerService));
 
-        public OfferController(IOfferService offerService, ILogger<BaseController> logger)
-                : base(logger)
-        {
-            _offerService = offerService;
-        }
-
-       
         public async Task<IActionResult> Index()
         {
             var offers = await _offerService.GetAllOffersAsync();

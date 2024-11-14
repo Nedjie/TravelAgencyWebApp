@@ -5,14 +5,10 @@ using TravelAgencyWebApp.Services.Data.Interfaces;
 
 namespace TravelAgencyWebApp.Services.Data
 {
-    public class ReviewService : IReviewService
+    public class ReviewService(IRepository<Review, int> reviewRepository) : IReviewService
     {
-        private readonly IRepository<Review,int> _reviewRepository;
-
-        public ReviewService(IRepository<Review, int> reviewRepository)
-        {
-            _reviewRepository = reviewRepository;
-        }
+        private readonly IRepository<Review, int> _reviewRepository = reviewRepository
+            ?? throw new ArgumentNullException(nameof(reviewRepository));
 
         public async Task<IEnumerable<Review>> GetAllReviewsAsync()
         {
@@ -36,11 +32,8 @@ namespace TravelAgencyWebApp.Services.Data
 
         public async Task DeleteReviewAsync(int id)
         {
-            var review = await _reviewRepository.GetByIdAsync(id);
-            if (review == null)
-            {
-                throw new EntityNotFoundException($"Review with ID {id} not found.");
-            }
+            var review = await _reviewRepository.GetByIdAsync(id)
+                ?? throw new EntityNotFoundException($"Review with ID {id} not found.");
 
             await _reviewRepository.DeleteAsync(review);
         }

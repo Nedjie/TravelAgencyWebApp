@@ -5,14 +5,10 @@ using TravelAgencyWebApp.Services.Data.Interfaces;
 
 namespace TravelAgencyWebApp.Services.Data
 {
-    public class TravelingWayService : ITravelingWayService
+    public class TravelingWayService(IRepository<TravelingWay, int> travelingWayRepository) : ITravelingWayService
     {
-        private readonly IRepository<TravelingWay, int> _travelingWayRepository;
-
-        public TravelingWayService(IRepository<TravelingWay, int> travelingWayRepository)
-        {
-            _travelingWayRepository = travelingWayRepository;
-        }
+        private readonly IRepository<TravelingWay, int> _travelingWayRepository= travelingWayRepository 
+            ?? throw new ArgumentNullException(nameof(travelingWayRepository));
 
         public async Task<IEnumerable<TravelingWay>> GetAllTravelingWaysAsync()
         {
@@ -21,42 +17,33 @@ namespace TravelAgencyWebApp.Services.Data
 
         public async Task<TravelingWay?> GetTravelingWayByIdAsync(int id)
         {
-            return await _travelingWayRepository.GetByIdAsync(id);
+           var travelingWay= await _travelingWayRepository.GetByIdAsync(id)
+                       ?? throw new EntityNotFoundException($"TravelingWay with ID {id} not found.");
+
+            return travelingWay;
         }
 
         public async Task AddTravelingWayAsync(TravelingWay travelingWay)
         {
-            if (travelingWay == null)
-            {
-                throw new ArgumentNullException(nameof(travelingWay), "TravelingWay cannot be null.");
-            }
+            ArgumentNullException.ThrowIfNull(travelingWay, nameof(travelingWay));
 
             await _travelingWayRepository.AddAsync(travelingWay);
         }
 
         public async Task UpdateTravelingWayAsync(TravelingWay travelingWay)
         {
-            if (travelingWay == null)
-            {
-                throw new ArgumentNullException(nameof(travelingWay), "TravelingWay cannot be null.");
-            }
+            ArgumentNullException.ThrowIfNull(travelingWay, nameof(travelingWay));
 
-            var existingTravelingWay = await _travelingWayRepository.GetByIdAsync(travelingWay.Id);
-            if (existingTravelingWay == null)
-            {
-                throw new EntityNotFoundException($"TravelingWay with ID {travelingWay.Id} not found.");
-            }
+            var existingTravelingWay = await _travelingWayRepository.GetByIdAsync(travelingWay.Id)
+                ?? throw new EntityNotFoundException($"TravelingWay with ID {travelingWay.Id} not found.");
 
-            await _travelingWayRepository.UpdateAsync(travelingWay);
+            await _travelingWayRepository.UpdateAsync(existingTravelingWay);
         }
 
         public async Task DeleteTravelingWayAsync(int id)
         {
-            var travelingWay = await _travelingWayRepository.GetByIdAsync(id);
-            if (travelingWay == null)
-            {
-                throw new EntityNotFoundException($"TravelingWay with ID {id} not found.");
-            }
+            var travelingWay = await _travelingWayRepository.GetByIdAsync(id)
+                      ?? throw new EntityNotFoundException($"TravelingWay with ID {id} not found."); 
 
             await _travelingWayRepository.DeleteAsync(travelingWay);
         }

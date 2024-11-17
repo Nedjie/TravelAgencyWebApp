@@ -104,7 +104,7 @@ namespace TravelAgencyWebApp.Data.Repository
 				query = query.Include(include);
 			}
 
-			return await query.FirstOrDefaultAsync(e => EF.Property<TId>(e, "Id").Equals(id));
+			return await query.FirstOrDefaultAsync(e => EF.Property<TId>(e, "Id")!.Equals(id));
 		}
 
 		public async Task<IEnumerable<TType>> GetAllIncludingAsync(params Expression<Func<TType, object>>[] includes)

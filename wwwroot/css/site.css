@@ -1,25 +1,26 @@
 html {
-  font-size: 14px;
+    font-size: 14px;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+    }
 }
 
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
 
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
 }
+
 .home {
     position: relative;
     height: 500px; /* Fixed height */
@@ -57,4 +58,36 @@ body {
 .footer {
     background-color: #f8f9fa;
     padding: 20px 0;
+}
+
+th.sorted-asc i,
+th.sorted-desc i {
+    visibility: visible; /* Ensure the icon is visible */
+}
+
+th.sorted-asc i {
+    content: "\f0de"; /* Font Awesome sort ascending icon */
+}
+
+th.sorted-desc i {
+    content: "\f0de"; /* Font Awesome sort descending icon */
+}
+
+.card {
+    width: 300px; /* Fixed width */
+    height: 400px; /* Fixed height */
+    overflow: hidden; /* Prevent overflow */
+    margin: auto; /* Center the cards in their columns */
+}
+
+.card-body {
+    overflow: hidden; /* Hide excess content */
+    text-overflow: ellipsis; /* Add ellipsis if text is too long */
+    white-space: nowrap; /* Prevent wrapping */
+}
+
+.card img {
+    max-width: 100%; /* Ensure image fits within the card */
+    height: 150px; /* Fixed height for the image to maintain aspect ratio */
+    object-fit: cover; /* Ensure the image covers the area */
 }

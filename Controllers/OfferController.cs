@@ -145,23 +145,42 @@ namespace TravelAgencyWebApp.Controllers
 		[HttpPost]
 		public async Task<IActionResult> Edit(OfferViewModel model)
 		{
+			// Check if the model state is valid
 			if (!ModelState.IsValid)
 			{
+				// Log validation errors
+				foreach (var state in ModelState)
+				{
+					foreach (var error in state.Value.Errors)
+					{
+						Console.WriteLine(error.ErrorMessage);
+					}
+				}
+
 				var travelingWays = await _travelingWayService.GetAllTravelingWaysAsync();
 				ViewBag.TravelingWays = travelingWays.Select(tw => new SelectListItem
 				{
 					Value = tw.Method,
 					Text = tw.Method
 				}).ToList();
-				return View(model); // Return with validation errors
+
+				return View(model); // Return to the view with errors
 			}
 
+			// Validate the traveling way method
 			if (string.IsNullOrWhiteSpace(model.TravelingWayMethod))
 			{
 				ModelState.AddModelError("TravelingWayMethod", "Please select a traveling way method.");
-				return View(model);
+				var travelingWays = await _travelingWayService.GetAllTravelingWaysAsync();
+				ViewBag.TravelingWays = travelingWays.Select(tw => new SelectListItem
+				{
+					Value = tw.Method,
+					Text = tw.Method
+				}).ToList();
+				return View(model); // Return model with error
 			}
 
+			// Fetch the TravelingWay based on selected method
 			var travelingWay = await _travelingWayService.GetByMethodAsync(model.TravelingWayMethod);
 			if (travelingWay == null)
 			{
@@ -172,22 +191,25 @@ namespace TravelAgencyWebApp.Controllers
 					Value = tw.Method,
 					Text = tw.Method
 				}).ToList();
-				return View(model);
+				return View(model); // Return model with error
 			}
-		
+
+			// Create the Offer entity for update
 			var offerToUpdate = new Offer
 			{
-				Title = model.Title ?? "No Title",
-				Description = model.Description ?? "No Description",
+				Id = model.Id,
+				Title = model.Title ?? "No Title", // Ensure Title is not null
+				Description = model.Description ?? "No Description", // Ensure Description is not null
 				Price = model.Price,
-				ImageUrl = model.ImageUrl ?? "default-image-url.png",
-				TravelingWayId = travelingWay.Id
+				ImageUrl = model.ImageUrl ?? "default-image-url.png", // Set to default if null
+				TravelingWayId = travelingWay.Id // Ensure the foreign key is set correctly
 			};
 
-			_logger.LogInformation("Updating Offer with ID: {Id}, Title: {Title}", offerToUpdate.Id, offerToUpdate.Title);
-			
+			// Update the offer in the database
 			await _offerService.UpdateOfferAsync(offerToUpdate);
-			return RedirectToAction(nameof(Index));
+
+			// Redirect after successful update
+			return RedirectToAction(nameof(Index)); // Ensure this redirects correctly
 		}
 
 		[HttpGet]

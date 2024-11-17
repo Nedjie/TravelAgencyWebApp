@@ -1,93 +1,122 @@
-﻿@model IDictionary<TravelAgencyWebApp.Data.Models.TravelingWay, IEnumerable<TravelAgencyWebApp.Data.Models.Offer>>
+﻿@model IDictionary<string, IEnumerable<TravelAgencyWebApp.ViewModels.Offer.OfferViewModel>>
 
 @{
-    ViewData["Title"] = "Добре дошли в Дени Травел";
+	ViewData["Title"] = "Добре дошли в Дени Травел";
 }
 
 <!DOCTYPE html>
 <html lang="bg">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="Travelix Project">
-    <title>@ViewData["Title"]</title>
-    <link rel="stylesheet" href="~/Content/styles/bootstrap4/bootstrap.min.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/Content/plugins/font-awesome-4.7.0/css/font-awesome.min.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/Content/plugins/OwlCarousel2-2.2.1/owl.carousel.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/Content/plugins/OwlCarousel2-2.2.1/owl.theme.default.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/Content/styles/main_styles.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/Content/styles/responsive.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="description" content="Travelix Project">
+	<title>@ViewData["Title"]</title>
+	@* 	<link rel="stylesheet" href="~/Content/styles/bootstrap4/bootstrap.min.css" asp-append-version="true" />
+	<link rel="stylesheet" href="~/Content/plugins/font-awesome-4.7.0/css/font-awesome.min.css" asp-append-version="true" />
+	<link rel="stylesheet" href="~/Content/plugins/OwlCarousel2-2.2.1/owl.carousel.css" asp-append-version="true" />
+	<link rel="stylesheet" href="~/Content/plugins/OwlCarousel2-2.2.1/owl.theme.default.css" asp-append-version="true" />
+	<link rel="stylesheet" href="~/Content/styles/main_styles.css" asp-append-version="true" />
+	<link rel="stylesheet" href="~/Content/styles/responsive.css" asp-append-version="true" />
+	<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" /> *@
+
+	<link rel="stylesheet" type="text/css" href="~/Content/styles/bootstrap4/bootstrap.min.css" asp-append-version="true" />
+	<link href="~/Content/plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" asp-append-version="true" />
+	<link rel="stylesheet" type="text/css" href="~/Content/plugins/OwlCarousel2-2.2.1/owl.carousel.css" asp-append-version="true" />
+	<link rel="stylesheet" type="text/css" href="~/Content/plugins/OwlCarousel2-2.2.1/owl.theme.default.css" asp-append-version="true" />
+	<link rel="stylesheet" type="text/css" href="~/Content/styles/main_styles.css" asp-append-version="true" />
+	<link rel="stylesheet" type="text/css" href="~/Content/styles/responsive.css" asp-append-version="true" />
 </head>
 <body>
-    <div class="super_container">
-        <!-- Header -->
-        <header class="header">
-            <div class="top_bar">
-                <div class="container">
-                    <div class="row">
-                        <div class="col d-flex flex-row">
-                            <div class="phone">+359 345 3324</div>
-                            <div class="user_box ml-auto">
-                                <a asp-area="Identity" asp-page="/Account/Login">Вход</a>
-                                <a asp-area="Identity" asp-page="/Account/Register">Регистрация</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </header>
+	<div class="super_container">
+		<!-- Header -->
+		<header class="header">
+			<!-- Top Bar -->
+			<div class="top_bar">
+				<div class="container">
+					<div class="row">
+						<div class="col d-flex flex-row">
+							<div class="phone">+359 345 3324 </div>
+							<div class="user_box ml-auto">
+								<div class="user_box_login user_box_link">
+									<a asp-area="Identity" asp-page="/Account/Login">Вход</a>
+								</div>
+								<div class="user_box_login user_box_link"><a asp-area="Identity" asp-page="/Account/Register">Регистрация</a></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</header>
+	</div>
+	<!-- Home -->
 
-        <!-- Offers Section -->
-        <div class="container mt-5">
-            @foreach (var travelingWay in Model.Keys)
-            {
-                <h2 class="text-center">@travelingWay.Method</h2> <!-- Displaying the TravelingWay Name -->
-                <div class="row">
-                    @foreach (var offer in Model[travelingWay])
-                    {
-                        <div class="col-md-4 mb-4">
-                            <div class="card">
-                                <img src="@offer.ImageUrl" class="card-img-top" alt="@offer.Title" />
-                                <div class="card-body">
-                                    <h5 class="card-title">@offer.Title</h5>
-                                    <p class="card-text">@offer.Description</p>
-                                    <p class="card-text"><strong>Цена: @offer.Price.ToString("C")</strong></p>
-                                    <a asp-controller="Offer" asp-action="Details" asp-route-id="@offer.Id" class="btn btn-primary">Виж Офертата</a>
-                                </div>
-                            </div>
-                        </div>
-                    }
-                </div>
-                <hr /> <!-- Add a horizontal line for separation between traveling ways -->
-            }
-        </div>
+	<div class="home">
+		<div class="home_background parallax-window" style="background-image: url('/Content/images/home_slider.jpg');"></div>
+		<div class="home_content">
+		</div>
+	</div>
+	<!-- Offers Section -->
+	<div class="container mt-5">
+		<h2 class="text-center">Нашите Оферти</h2>
 
-        <!-- Footer -->
-        <footer class="footer mt-5">
-            <div class="container">
-                <div class="row">
-                    <div class="col text-center">
-                        <p>&copy; 2024 Дени Травел. Всички права запазени.</p>
-                        <p>Свържете се с нас: <a href="mailto:info@denitravel.com">info@denitravel.com</a></p>
-                        <ul class="list-inline">
-                            <li class="list-inline-item"><a href="#">Facebook</a></li>
-                            <li class="list-inline-item"><a href="#">Instagram</a></li>
-                            <li class="list-inline-item"><a href="#">Twitter</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </footer>
+		@foreach (var travelingWay in Model.Keys)
+		{
+			<h3 class="text-center">Екскурзии със @travelingWay</h3> <!-- Displaying the TravelingWay Name -->
+			<div class="row mb-4">
+				@foreach (var offer in Model[travelingWay])
+				{
+					<div class="col-md-4 mb-4">
+						<div class="card">
+							<img src="@offer.ImageUrl" class="card-img-top" alt="@offer.Title" />
+							<div class="card-body">
+								<h5 class="card-title">@offer.Title</h5>
+								<p class="card-text">@offer.Description</p>
+								<p class="card-text"><strong>Цена: @offer.Price.ToString("C")</strong></p>
+								<a asp-controller="Offer" asp-action="Details" asp-route-id="@offer.Id" class="btn btn-primary">Виж Офертата</a>
+							</div>
+						</div>
+					</div>
+				}
+			</div>
+			<hr /> <!-- Add a horizontal line for separation between traveling ways -->
+		}
+	</div>
+	<!-- Scripts Section -->
+	@section Scripts {
+		<script src="~/Content/plugins/jquery/jquery.min.js" asp-append-version="true"></script>
+		<script src="~/Content/plugins/bootstrap/js/bootstrap.bundle.min.js" asp-append-version="true"></script>
+		<script src="~/Content/plugins/OwlCarousel2-2.2.1/owl.carousel.min.js" asp-append-version="true"></script>
+		<script src="~/Content/js/custom.js" asp-append-version="true"></script>
 
-        <!-- Scripts Section -->
-        @section Scripts {
-            <script src="~/Content/plugins/jquery/jquery.min.js" asp-append-version="true"></script>
-            <script src="~/Content/plugins/bootstrap/js/bootstrap.bundle.min.js" asp-append-version="true"></script>
-            <script src="~/Content/plugins/OwlCarousel2-2.2.1/owl.carousel.min.js" asp-append-version="true"></script>
-            <script src="~/Content/js/custom.js" asp-append-version="true"></script>
-        }
-    </div>
+		<script>
+			$(document).ready(function () {
+				// Search function for filtering table
+				$('#searchInput').on('keyup', function () {
+					const filter = $(this).val().toLowerCase();
+					$('table.table-striped tbody tr').filter(function () {
+						const text = $(this).text().toLowerCase();
+						// Filter based on the entire row's text
+						$(this).toggle(text.indexOf(filter) > -1);
+					});
+				});
+
+				let deleteOfferId;
+				// Show delete modal
+				window.showDeleteModal = function (offerId) {
+					deleteOfferId = offerId;
+					$('#deleteModal').modal('show');
+				};
+
+				// Confirm delete functionality
+				$('#confirmDelete').on('click', function () {
+					if (deleteOfferId) {
+						// Redirect to the delete action
+						window.location.href = `@Url.Action("Delete", "Offer")/${deleteOfferId}`;
+					}
+				});
+			});
+		</script>
+	}
 </body>
 </html>

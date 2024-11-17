@@ -19,5 +19,7 @@ namespace TravelAgencyWebApp.Data.Repository.Interfaces
         Task<bool> DeleteAsync(TType entity);
         bool Update(TType item);
         Task<bool> UpdateAsync(TType item);
-    }
+        Task<TType?> GetIncludingAsync(TId id, params Expression<Func<TType, object>>[] includes);
+        Task<IEnumerable<TType>> GetAllIncludingAsync(params Expression<Func<TType, object>>[] includes);
+	}
 }

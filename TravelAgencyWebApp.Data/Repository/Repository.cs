@@ -94,6 +94,30 @@ namespace TravelAgencyWebApp.Data.Repository
             _dbSet.Update(item);
             return await _context.SaveChangesAsync() > 0;
         }
-    }
+
+		public async Task<TType?> GetIncludingAsync(TId id, params Expression<Func<TType, object>>[] includes)
+		{
+			IQueryable<TType> query = _dbSet;
+
+			foreach (var include in includes)
+			{
+				query = query.Include(include);
+			}
+
+			return await query.FirstOrDefaultAsync(e => EF.Property<TId>(e, "Id").Equals(id));
+		}
+
+		public async Task<IEnumerable<TType>> GetAllIncludingAsync(params Expression<Func<TType, object>>[] includes)
+		{
+			IQueryable<TType> query = _dbSet;
+
+			foreach (var include in includes)
+			{
+				query = query.Include(include);
+			}
+
+			return await query.ToListAsync();
+		}
+	}
 }
 

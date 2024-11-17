@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using static TravelAgencyWebApp.Common.DataConstants;
 
 namespace TravelAgencyWebApp.Data.Models
@@ -30,6 +31,12 @@ namespace TravelAgencyWebApp.Data.Models
         [Comment("Offer image")]
         public string ImageUrl { get; set; } = null!;
 
-        public ICollection<Review> Reviews { get; set; } = new List<Review>();
+        [Comment("Traveling way identifier")]
+		public int TravelingWayId { get; set; }
+
+		[ForeignKey(nameof(TravelingWayId))]
+		public TravelingWay? TravelingWay { get; set; } 
+
+		public ICollection<Review> Reviews { get; set; } = new List<Review>();
     }
 }

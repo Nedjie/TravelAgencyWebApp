@@ -1,77 +1,85 @@
 ﻿<!DOCTYPE html>
 <html lang="bg">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="Travelix Project">
-    <title>@ViewData["Title"] - Дени Травел</title>
-    <link rel="stylesheet" href="~/Content/styles/bootstrap4/bootstrap.min.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/Content/plugins/font-awesome-4.7.0/css/font-awesome.min.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/Content/plugins/OwlCarousel2-2.2.1/owl.carousel.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/Content/plugins/OwlCarousel2-2.2.1/owl.theme.default.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/Content/styles/main_styles.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/Content/styles/responsive.css" asp-append-version="true" />
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="description" content="Travelix Project">
+	<title>@ViewData["Title"] - Дени Травел</title>
+	<link rel="stylesheet" href="~/Content/styles/bootstrap4/bootstrap.min.css" asp-append-version="true" />
+	<link rel="stylesheet" href="~/Content/plugins/font-awesome-4.7.0/css/font-awesome.min.css" asp-append-version="true" />
+	<link rel="stylesheet" href="~/Content/plugins/OwlCarousel2-2.2.1/owl.carousel.css" asp-append-version="true" />
+	<link rel="stylesheet" href="~/Content/plugins/OwlCarousel2-2.2.1/owl.theme.default.css" asp-append-version="true" />
+	<link rel="stylesheet" href="~/Content/styles/main_styles.css" asp-append-version="true" />
+	<link rel="stylesheet" href="~/Content/styles/responsive.css" asp-append-version="true" />
+	<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+
 </head>
 <body>
-    <div class="super_container">
-        <!-- Header -->
-        <header class="header">
-            <div class="top_bar">
-                <div class="container">
-                    <div class="row">
-                        <div class="col d-flex flex-row">
-                            <div class="phone">+359 332 5678</div>
-                            <div class="user_box ml-auto">
-                                <a asp-area="Identity" asp-page="/Account/Login">Вход</a>
-                                <a asp-area="Identity" asp-page="/Account/Register">Регистрация</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <nav class="main_nav">
-                <div class="container">
-                    <div class="row">
-                        <div class="col main_nav_col d-flex flex-row align-items-center">
-                            <div class="logo_container">
-                                <div class="logo"><a href="#"><img src="~/Content/images/logo.png" alt="Дени Травел"></a></div>
-                            </div>
-                            <div class="main_nav_container ml-auto">
-                                <ul class="main_nav_list">
-                                    <li class="main_nav_item"><a asp-controller="Home" asp-action="Index">Начало</a></li>
-                                    <li class="main_nav_item"><a asp-controller="Offer" asp-action="Index">Оферти</a></li>
-                                    <li class="main_nav_item"><a asp-controller="Home" asp-action="About">За Нас</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </nav>
-        </header>
+	<div class="super_container">
+		<!-- Header -->
+		<header class="header">
+			<div class="top_bar">
+				<div class="container">
+					<div class="row">
+						<div class="col d-flex flex-row">
+							<div class="phone">+359 332 5678</div>
+							<div class="user_box ml-auto">
+								<a asp-area="Identity" asp-page="/Account/Login">Вход</a>
+								<a asp-area="Identity" asp-page="/Account/Register">Регистрация</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<nav class="main_nav">
+				<div class="container">
+					<div class="row">
+						<div class="col main_nav_col d-flex flex-row align-items-center">
+							<div class="logo_container">
+								<div class="logo"><a href="#"><img src="~/Content/images/logo.png" alt="Дени Травел"></a></div>
+							</div>
+							<div class="main_nav_container ml-auto">
+								<ul class="main_nav_list">
+									<li class="main_nav_item"><a asp-controller="Home" asp-action="Index">Начало</a></li>
+									<li class="main_nav_item"><a asp-controller="Offer" asp-action="Index">Оферти</a></li>
+									<li class="main_nav_item"><a asp-controller="Home" asp-action="About">За Нас</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</nav>
+		</header>
 
-        <!-- Body Content -->
-        <main>
-            @RenderBody()
-        </main>
+		<!-- Body Content -->
+		<main>
+			@RenderBody()
+		</main>
 
-        <!-- Footer -->
-        <footer class="footer">
-            <div class="container">
-                <div class="row">
-                    <div class="col text-center">
-                        <p>&copy; 2024 Дени Травел. Всички права запазени.</p>
-                    </div>
-                </div>
-            </div>
-        </footer>
-    </div>
-    <!-- Render script section at the bottom -->
-    @RenderSection("Scripts", required: false)
-    <!-- Scripts Section -->
-    <script src="~/Content/plugins/jquery/jquery.min.js" asp-append-version="true"></script>
-    <script src="~/Content/plugins/bootstrap/js/bootstrap.bundle.min.js" asp-append-version="true"></script>
-    <script src="~/Content/plugins/OwlCarousel2-2.2.1/owl.carousel.min.js" asp-append-version="true"></script>
-    <script src="~/Content/js/custom.js" asp-append-version="true"></script>
+		<!-- Footer -->
+		<footer class="footer ">
+			<div class="container">
+				<div class="row">
+					<div class="col text-center">
+						<p>&copy; 2024 Дени Травел. Всички права запазени.</p>
+						<p>Свържете се с нас: <a href="mailto:info@denitravel.com">info@denitravel.com</a></p>
+						<ul class="list-inline">
+							<li class="list-inline-item"><a href="#">Facebook</a></li>
+							<li class="list-inline-item"><a href="#">Instagram</a></li>
+							<li class="list-inline-item"><a href="#">Twitter</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</footer>
+	</div>
+	<!-- Render script section at the bottom -->
+	@RenderSection("Scripts", required: false)
+	<!-- Scripts Section -->
+	<script src="~/Content/plugins/jquery/jquery.min.js" asp-append-version="true"></script>
+	<script src="~/Content/plugins/bootstrap/js/bootstrap.bundle.min.js" asp-append-version="true"></script>
+	<script src="~/Content/plugins/OwlCarousel2-2.2.1/owl.carousel.min.js" asp-append-version="true"></script>
+	<script src="~/Content/js/custom.js" asp-append-version="true"></script>
 </body>
 </html>

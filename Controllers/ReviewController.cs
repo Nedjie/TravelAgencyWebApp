@@ -17,7 +17,7 @@ namespace TravelAgencyWebApp.Controllers
             return Ok(reviews);
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{id:int}")]
         public async Task<ActionResult<Review>> GetReviewById(int id)
         {
             var review = await _reviewService.GetReviewByIdAsync(id);

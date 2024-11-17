@@ -2,7 +2,6 @@
 using System.ComponentModel.DataAnnotations;
 using TravelAgencyWebApp.Common;
 
-
 namespace TravelAgencyWebApp.ViewModels.Offer
 {
 	public class OfferViewModel
@@ -30,6 +29,13 @@ namespace TravelAgencyWebApp.ViewModels.Offer
 
 		[Url(ErrorMessage = DataConstants.OfferImageUrlInvalidError)]
 		[Comment("Offer image")]
-		public string? ImageUrl { get; set; } 
+		public string? ImageUrl { get; set; }
+
+		[Required(ErrorMessage = "Please select a traveling way method.")] // MAKE DATA CONSTANTS
+		[Comment("Traveling way method")]
+		public string? TravelingWayMethod { get; set; }
+
+		public int UserId { get; set; }
+
 	}
 }

@@ -1,8 +1,9 @@
-﻿@model IEnumerable<TravelAgencyWebApp.Data.Models.Offer>
+﻿@model IEnumerable<TravelAgencyWebApp.ViewModels.Offer.OfferViewModel>
 
 @{
     ViewData["Title"] = "Оферти"; 
 }
+
 <head>
     <title>Дени Травел</title>
     <meta charset="utf-8">
@@ -19,7 +20,6 @@
 <div class="super_container">
     <!-- Header -->
     <header class="header">
-        <!-- Top Bar -->
         <div class="top_bar">
             <div class="container">
                 <div class="row">
@@ -29,7 +29,9 @@
                             <div class="user_box_login user_box_link">
                                 <a asp-area="Identity" asp-page="/Account/Login">Вход</a>
                             </div>
-                            <div class="user_box_login user_box_link"><a asp-area="Identity" asp-page="/Account/Register">Регистрация</a></div>
+                            <div class="user_box_login user_box_link">
+                                <a asp-area="Identity" asp-page="/Account/Register">Регистрация</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -41,7 +43,9 @@
                 <div class="row">
                     <div class="col main_nav_col d-flex flex-row align-items-center justify-content-start">
                         <div class="logo_container">
-                            <div class="logo"><a href="#"><img src="~/Content/images/logo.png" alt="">Дени Травел</a></div>
+                            <div class="logo">
+                                <a href="#"><img src="~/Content/images/logo.png" alt="" />Дени Травел</a>
+                            </div>
                         </div>
                         <div class="main_nav_container ml-auto">
                             <ul class="main_nav_list">
@@ -61,15 +65,61 @@
         <img src="~/Content/images/blog_background.jpg" alt="Нашите Оферти" class="img-fluid" style="max-width: 100%; height: auto;" />
     </div>
 </div>
-
-<p><a asp-controller="Offer" asp-action="Create" class="btn btn-primary">Създаване на Нова Оферта</a>
-<button class="btn btn-secondary" onclick="sortTable(3, true); this.innerHTML='&#x25B2;'">Цена ↑</button>
-<button class="btn btn-secondary" onclick="sortTable(3, false); this.innerHTML='&#x25BC;'">Цена ↓</button>
+<p>
+    <a asp-controller="Offer" asp-action="Create" class="btn btn-primary">Създаване на Нова Оферта</a>
 </p>
 
 <div class="mb-3">
     <input type="text" id="searchInput" placeholder="Търсене в офертите..." class="form-control" onkeyup="filterTable()">
 </div>
+
+<!-- Table for Offers -->
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Снимка</th>
+            <th>Заглавие</th>
+            <th>Описание</th>
+            <th>Цена</th>
+            <th>Вид транспорт</th>
+            <th>Действия</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Any())
+        {
+            foreach (var offer in Model)
+            {
+                <tr>
+                    <td>
+                        @if (!string.IsNullOrEmpty(offer.ImageUrl))
+                        {
+                            <img src="@offer.ImageUrl" alt="@offer.Title" class="img-fluid" style="max-width: 100px; height: auto;" /> <!-- Ensure small size -->
+                        }
+                        else
+                        {
+                            <img src="~/Content/images/default.jpg" alt="No image available" class="img-fluid" style="max-width: 100px; height: auto;" /> <!-- Placeholder for missing images -->
+                        }
+                    </td>
+                    <td>@offer.Title</td>
+                    <td>@offer.Description</td>
+                    <td>@offer.Price.ToString("C")</td> <!-- Format the price as currency -->
+                    <td>@offer.TravelingWayMethod</td> <!-- Display the traveling way method -->
+                    <td>
+                        <a asp-controller="Offer" asp-action="Edit" asp-route-id="@offer.Id" class="btn btn-warning">Редактиране</a>
+                        <a href="#" class="btn btn-danger" onclick="showDeleteModal('@offer.Id')">Изтриване</a>
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="6" class="text-center">Няма намерени оферти.</td> <!-- Message if no offers are found -->
+            </tr>
+        }
+    </tbody>
+</table>
 
 <!-- Modal for Delete Confirmation -->
 <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
@@ -89,43 +139,6 @@
         </div>
     </div>
 </div>
-
-<!-- Table for Offers -->
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>Идентификатор</th>
-            <th>Заглавие</th>
-            <th>Описание</th>
-            <th>Цена</th>
-            <th>Действия</th>
-        </tr>
-    </thead>
-    <tbody>
-        @if (Model != null && Model.Any())
-        {
-            foreach (var offer in Model)
-            {
-                <tr>
-                    <td>@offer.Id</td>
-                    <td>@offer.Title</td>
-                    <td>@offer.Description</td>
-                    <td>@offer.Price.ToString("C")</td> <!-- Format the price -->
-                    <td>
-                        <a asp-controller="Offer" asp-action="Edit" asp-route-id="@offer.Id" class="btn btn-warning">Редактиране</a>
-                        <a href="#" class="btn btn-danger" onclick="showDeleteModal('@offer.Id')">Изтриване</a>
-                    </td>
-                </tr>
-            }
-        }
-        else
-        {
-            <tr>
-                <td colspan="5" class="text-center">Няма намерени оферти.</td> <!-- Message if no offers are found -->
-            </tr>
-        }
-    </tbody>
-</table>
 
 <!-- Include jQuery and Bootstrap scripts -->
 <script src="~/Content/scripts/jquery.min.js" asp-append-version="true"></script>
@@ -155,21 +168,6 @@
                     window.location.href = `@Url.Action("Delete", "Offer")/${deleteOfferId}`;
                 }
             });
-
-            // Sort table function
-            window.sortTable = function (columnIndex, ascending) {
-                const table = $('table.table-striped tbody');
-                const rows = table.find('tr').toArray().sort((rowA, rowB) => {
-                    const cellA = $(rowA).children('td').eq(columnIndex).text();
-                    const cellB = $(rowB).children('td').eq(columnIndex).text();
-
-                    const priceA = parseFloat(cellA.replace(/[^0-9.-]+/g, ""));
-                    const priceB = parseFloat(cellB.replace(/[^0-9.-]+/g, ""));
-
-                    return ascending ? priceA - priceB : priceB - priceA;
-                });
-                table.append(rows); // Re-attach sorted rows
-            };
         });
     </script>
 }

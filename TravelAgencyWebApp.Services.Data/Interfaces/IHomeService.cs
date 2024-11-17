@@ -9,5 +9,7 @@ namespace TravelAgencyWebApp.Services.Data.Interfaces
         /// </summary>
         Task<IEnumerable<Offer>> GetOffersAsync();
 
-    }
+		Task<IDictionary<TravelingWay, IEnumerable<Offer>>> GetOffersGroupedByTravelingWayAsync();
+
+	}
 }

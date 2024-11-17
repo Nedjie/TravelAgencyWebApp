@@ -1,4 +1,5 @@
-﻿using TravelAgencyWebApp.Common.ErrorMessages;
+﻿using Microsoft.EntityFrameworkCore;
+using TravelAgencyWebApp.Common.ErrorMessages;
 using TravelAgencyWebApp.Data.Models;
 using TravelAgencyWebApp.Data.Repository.Interfaces;
 using TravelAgencyWebApp.Services.Data.Interfaces;
@@ -6,62 +7,87 @@ using TravelAgencyWebApp.ViewModels.Offer;
 
 namespace TravelAgencyWebApp.Services.Data
 {
-    public class OfferService(IRepository<Offer, int> offerRepository) : IOfferService
-    {
-        private readonly IRepository<Offer, int> _offerRepository = offerRepository ?? throw new ArgumentNullException(nameof(offerRepository));
+	public class OfferService(IRepository<Offer, int> offerRepository,
+		IRepository<TravelingWay, int> travelingWayRepository) : IOfferService
+	{
+		private readonly IRepository<Offer, int> _offerRepository = offerRepository
+			?? throw new ArgumentNullException(nameof(offerRepository));
+		private readonly IRepository<TravelingWay, int> _travelingWayRepository = travelingWayRepository
+			?? throw new ArgumentNullException(nameof(travelingWayRepository));
 
-        public async Task<IEnumerable<Offer>> GetAllOffersAsync()
-        {
-            return await _offerRepository.GetAllAsync();
-        }
-        public async Task<Offer?> GetOfferByIdAsync(int id)
-        {
-            return await _offerRepository.GetByIdAsync(id);
-        }
-        public async Task AddOfferAsync(OfferViewModel model)
-        {
+		public async Task<IEnumerable<Offer>> GetAllOffersAsync()
+		{
+			return await _offerRepository.GetAllIncludingAsync(o => o.TravelingWay);
+		}
+		public async Task<Offer?> GetOfferByIdAsync(int id)
+		{
+			return await _offerRepository.GetIncludingAsync(id, o => o.TravelingWay);
+		}
+		public async Task<IDictionary<TravelingWay, IEnumerable<Offer>>> GetOffersGroupedByTravelingWayAsync()
+		{
+			var offers = await _offerRepository.GetAllAsync();
+			var travelingWays = await _travelingWayRepository.GetAllAsync();
 
-            if (model == null)
-            {
-                ArgumentNullException.ThrowIfNull(model, nameof(model));
-            }
+			var groupedOffers = offers
+				.GroupBy(o => travelingWays.FirstOrDefault(tw => tw.Id == o.TravelingWayId))
+				.Where(g => g.Key != null)
+				.ToDictionary(
+					g => g.Key!,
+					g => g.AsEnumerable()
+				);
 
-            var offer = new Offer
-            {
-                Title = model.Title! ,
-                Description = model.Description ?? "No Description",
-                Price = model.Price,
-                ImageUrl = model.ImageUrl! 
-            };
+			return groupedOffers.ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
+		}
+		public async Task AddOfferAsync(Offer model)
+		{
 
-            await _offerRepository.AddAsync(offer);
+			if (model == null)
+			{
+				ArgumentNullException.ThrowIfNull(model, nameof(model));
+			}
 
-        }
-        public async Task UpdateOfferAsync(OfferViewModel model)
-        {
-            if (model == null)
-            {
-                ArgumentNullException.ThrowIfNull(model, nameof(model));
-            }
+			var offer = new Offer
+			{
+				Title = model.Title!,
+				Description = model.Description ?? "No Description",
+				Price = model.Price,
+				ImageUrl = model.ImageUrl!,
+				TravelingWay = model.TravelingWay,
+				TravelingWayId = model.TravelingWayId
+			};
 
-            var offer = await _offerRepository.GetByIdAsync(model.Id);
+			await _offerRepository.AddAsync(offer);
 
-            ArgumentNullException.ThrowIfNull(offer);
+		}
+		public async Task UpdateOfferAsync(Offer model)
+		{
+			if (model == null)
+			{
+				ArgumentNullException.ThrowIfNull(model, nameof(model));
+			}
 
-            offer.Title = model.Title!;
-            offer.Description = model.Description ?? "No Description";
-            offer.Price = model.Price;
-            offer.ImageUrl = model.ImageUrl!;
+			var existingOffer = await _offerRepository.GetByIdAsync(model.Id);
 
-            await _offerRepository.UpdateAsync(offer);
-        }
-        public async Task DeleteOfferAsync(int id)
-        {
-            var offer = await _offerRepository.GetByIdAsync(id);
+			ArgumentNullException.ThrowIfNull(model);
+			
+			if (existingOffer != null)
+			{
+				existingOffer.Title = model.Title;
+				existingOffer.Description =model.Description ?? "No Description";
+				existingOffer.Price = model.Price;
+				existingOffer.ImageUrl = model.ImageUrl;
+				existingOffer.TravelingWayId = model.TravelingWayId; 
 
-            ArgumentNullException.ThrowIfNull(offer);
+				await _offerRepository.UpdateAsync(existingOffer); 
+			}
+		}
+		public async Task DeleteOfferAsync(int id)
+		{
+			var offer = await _offerRepository.GetByIdAsync(id);
 
-            await _offerRepository.DeleteAsync(offer);
-        }
-    }
+			ArgumentNullException.ThrowIfNull(offer);
+
+			await _offerRepository.DeleteAsync(offer);
+		}
+	}
 }

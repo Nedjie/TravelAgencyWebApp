@@ -1,4 +1,5 @@
-﻿using TravelAgencyWebApp.Common.ErrorMessages;
+﻿using Microsoft.EntityFrameworkCore;
+using TravelAgencyWebApp.Common.ErrorMessages;
 using TravelAgencyWebApp.Data.Models;
 using TravelAgencyWebApp.Data.Repository.Interfaces;
 using TravelAgencyWebApp.Services.Data.Interfaces;
@@ -23,7 +24,13 @@ namespace TravelAgencyWebApp.Services.Data
             return travelingWay;
         }
 
-        public async Task AddTravelingWayAsync(TravelingWay travelingWay)
+		public async Task<TravelingWay?> GetByMethodAsync(string method)
+		{
+			var travelingWays = await _travelingWayRepository.GetAllAsync(); 
+			return travelingWays.FirstOrDefault(tw => tw.Method.Equals(method, StringComparison.OrdinalIgnoreCase));
+		}
+
+		public async Task AddTravelingWayAsync(TravelingWay travelingWay)
         {
             ArgumentNullException.ThrowIfNull(travelingWay, nameof(travelingWay));
 

@@ -12,8 +12,8 @@ using TravelAgencyWebApp.Data;
 namespace TravelAgencyWebApp.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20241110151953_changes")]
-    partial class changes
+    [Migration("20241116154552_InitialMigration")]
+    partial class InitialMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -105,12 +105,10 @@ namespace TravelAgencyWebApp.Data.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
                     b.Property<string>("LoginProvider")
-                        .HasMaxLength(128)
-                        .HasColumnType("nvarchar(128)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("ProviderKey")
-                        .HasMaxLength(128)
-                        .HasColumnType("nvarchar(128)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("ProviderDisplayName")
                         .HasColumnType("nvarchar(max)");
@@ -147,12 +145,10 @@ namespace TravelAgencyWebApp.Data.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("LoginProvider")
-                        .HasMaxLength(128)
-                        .HasColumnType("nvarchar(128)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Name")
-                        .HasMaxLength(128)
-                        .HasColumnType("nvarchar(128)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Value")
                         .HasColumnType("nvarchar(max)");
@@ -303,7 +299,13 @@ namespace TravelAgencyWebApp.Data.Migrations
                         .HasColumnType("nvarchar(200)")
                         .HasComment("Offer title");
 
+                    b.Property<int>("TravelingWayId")
+                        .HasColumnType("int")
+                        .HasComment("Traveling way identifier");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("TravelingWayId");
 
                     b.ToTable("Offers");
                 });
@@ -374,13 +376,7 @@ namespace TravelAgencyWebApp.Data.Migrations
                         .HasColumnType("nvarchar(100)")
                         .HasComment("Traveling way method");
 
-                    b.Property<int>("OfferId")
-                        .HasColumnType("int")
-                        .HasComment("Offer identifier");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("OfferId");
 
                     b.ToTable("TravelingWays");
                 });
@@ -455,6 +451,17 @@ namespace TravelAgencyWebApp.Data.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("TravelAgencyWebApp.Data.Models.Offer", b =>
+                {
+                    b.HasOne("TravelAgencyWebApp.Data.Models.TravelingWay", "TravelingWay")
+                        .WithMany("Offers")
+                        .HasForeignKey("TravelingWayId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("TravelingWay");
+                });
+
             modelBuilder.Entity("TravelAgencyWebApp.Data.Models.Review", b =>
                 {
                     b.HasOne("TravelAgencyWebApp.Data.Models.Offer", "Offer")
@@ -474,17 +481,6 @@ namespace TravelAgencyWebApp.Data.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("TravelAgencyWebApp.Data.Models.TravelingWay", b =>
-                {
-                    b.HasOne("TravelAgencyWebApp.Data.Models.Offer", "Offer")
-                        .WithMany()
-                        .HasForeignKey("OfferId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Offer");
-                });
-
             modelBuilder.Entity("TravelAgencyWebApp.Data.Models.ApplicationUser", b =>
                 {
                     b.Navigation("Bookings");
@@ -495,6 +491,11 @@ namespace TravelAgencyWebApp.Data.Migrations
             modelBuilder.Entity("TravelAgencyWebApp.Data.Models.Offer", b =>
                 {
                     b.Navigation("Reviews");
+                });
+
+            modelBuilder.Entity("TravelAgencyWebApp.Data.Models.TravelingWay", b =>
+                {
+                    b.Navigation("Offers");
                 });
 #pragma warning restore 612, 618
         }

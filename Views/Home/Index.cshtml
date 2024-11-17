@@ -1,129 +1,93 @@
-﻿@model IEnumerable<TravelAgencyWebApp.Data.Models.Offer>
+﻿@model IDictionary<TravelAgencyWebApp.Data.Models.TravelingWay, IEnumerable<TravelAgencyWebApp.Data.Models.Offer>>
 
 @{
-	ViewData["Title"] = "Добре дошли в Дени Травел";
+    ViewData["Title"] = "Добре дошли в Дени Травел";
 }
 
 <!DOCTYPE html>
 <html lang="bg">
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="description" content="Travelix Project">
-	<title>Дени Травел</title>
-	<link rel="stylesheet" type="text/css" href="~/Content/styles/bootstrap4/bootstrap.min.css" asp-append-version="true" />
-	<link rel="stylesheet" type="text/css" href="~/Content/plugins/font-awesome-4.7.0/css/font-awesome.min.css" asp-append-version="true" />
-	<link rel="stylesheet" type="text/css" href="~/Content/plugins/OwlCarousel2-2.2.1/owl.carousel.css" asp-append-version="true" />
-	<link rel="stylesheet" type="text/css" href="~/Content/plugins/OwlCarousel2-2.2.1/owl.theme.default.css" asp-append-version="true" />
-	<link rel="stylesheet" type="text/css" href="~/Content/styles/main_styles.css" asp-append-version="true" />
-	<link rel="stylesheet" type="text/css" href="~/Content/styles/responsive.css" asp-append-version="true" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Travelix Project">
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/Content/styles/bootstrap4/bootstrap.min.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Content/plugins/font-awesome-4.7.0/css/font-awesome.min.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Content/plugins/OwlCarousel2-2.2.1/owl.carousel.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Content/plugins/OwlCarousel2-2.2.1/owl.theme.default.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Content/styles/main_styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Content/styles/responsive.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
 </head>
 <body>
-	<div class="super_container">
-		<!-- Header -->
-		<header class="header">
-			<div class="top_bar">
-				<div class="container">
-					<div class="row">
-						<div class="col d-flex flex-row">
-							<div class="phone">+359 332 5678</div>
-							<div class="user_box ml-auto">
-								<a asp-area="Identity" asp-page="/Account/Login">Вход</a>
-								<a asp-area="Identity" asp-page="/Account/Register">Регистрация</a>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<nav class="main_nav">
-				<div class="container">
-					<div class="row">
-						<div class="col main_nav_col d-flex flex-row align-items-center">
-							<div class="logo_container">
-								<div class="logo"><a href="#"><img src="~/Content/images/logo.png" alt="Дени Травел"></a></div>
-							</div>
-							<div class="main_nav_container ml-auto">
-								<ul class="main_nav_list">
-									<li class="main_nav_item"><a asp-controller="Home" asp-action="Index">Начало</a></li>
-									<li class="main_nav_item"><a asp-controller="Offer" asp-action="Index">Оферти</a></li>
-									<li class="main_nav_item"><a asp-controller="Home" asp-action="About">За Нас</a></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-				</div>
-			</nav>
-		</header>
+    <div class="super_container">
+        <!-- Header -->
+        <header class="header">
+            <div class="top_bar">
+                <div class="container">
+                    <div class="row">
+                        <div class="col d-flex flex-row">
+                            <div class="phone">+359 345 3324</div>
+                            <div class="user_box ml-auto">
+                                <a asp-area="Identity" asp-page="/Account/Login">Вход</a>
+                                <a asp-area="Identity" asp-page="/Account/Register">Регистрация</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
 
-		<!-- Home Slider -->
-		<div class="home">
-			<div class="home_background parallax-window" style="background-image: url('/Content/Images/home_slider.jpg');"></div>
-			<div class="home_content">
-			</div>
-		</div>
-	@* 	<div class="home">
-			<div class="home_slider_container">
-				<div class="owl-carousel owl-theme home_slider">
-					<div class="owl-item home_slider_item">
-						<div class="home_slider_background" style="background-image: url('/Content/images/about_background.jpg');"></div>
-						<div class="home_slider_content text-center">
-							<h1>Открий светa</h1>
-							<div class="button home_slider_button"><a asp-controller="Offer" asp-action="Index">Разгледай сега</a></div>
-						</div>
-					</div>
-					<!-- Additional slider items can be added here if needed -->
-				</div>
-			</div>
-		</div> *@
+        <!-- Offers Section -->
+        <div class="container mt-5">
+            @foreach (var travelingWay in Model.Keys)
+            {
+                <h2 class="text-center">@travelingWay.Method</h2> <!-- Displaying the TravelingWay Name -->
+                <div class="row">
+                    @foreach (var offer in Model[travelingWay])
+                    {
+                        <div class="col-md-4 mb-4">
+                            <div class="card">
+                                <img src="@offer.ImageUrl" class="card-img-top" alt="@offer.Title" />
+                                <div class="card-body">
+                                    <h5 class="card-title">@offer.Title</h5>
+                                    <p class="card-text">@offer.Description</p>
+                                    <p class="card-text"><strong>Цена: @offer.Price.ToString("C")</strong></p>
+                                    <a asp-controller="Offer" asp-action="Details" asp-route-id="@offer.Id" class="btn btn-primary">Виж Офертата</a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+                <hr /> <!-- Add a horizontal line for separation between traveling ways -->
+            }
+        </div>
 
-		<!-- Intro -->
-		<div class="intro">
-			<div class="container">
-				<div class="row">
-					<div class="col">
-						<h2 class="intro_title text-center">We have the best tours</h2>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-lg-10 offset-lg-1">
-						<div class="intro_text text-center">
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eu convallis tortor. Suspendisse potenti. In faucibus massa arcu, vitae cursus mi hendrerit nec.</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+        <!-- Footer -->
+        <footer class="footer mt-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col text-center">
+                        <p>&copy; 2024 Дени Травел. Всички права запазени.</p>
+                        <p>Свържете се с нас: <a href="mailto:info@denitravel.com">info@denitravel.com</a></p>
+                        <ul class="list-inline">
+                            <li class="list-inline-item"><a href="#">Facebook</a></li>
+                            <li class="list-inline-item"><a href="#">Instagram</a></li>
+                            <li class="list-inline-item"><a href="#">Twitter</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </footer>
 
-		<!-- Offers Section -->
-		<div class="container">
-			<h2 class="text-center">Добре дошли в Дени Травел</h2>
-			<p class="text-center">Тук можете да намерите най-добрите оферти!</p>
-			<div class="row">
-				@foreach (var offer in Model)
-				{
-					<div class="col-md-4">
-						<div class="card">
-							<img src="@offer.ImageUrl" class="card-img-top" alt="@offer.Title" />
-							<div class="card-body">
-								<h5 class="card-title">@offer.Title</h5>
-								<p class="card-text">@offer.Description</p>
-								<p class="card-text"><strong>Цена: @offer.Price.ToString("C")</strong></p>
-								<a asp-controller="Offer" asp-action="Details" asp-route-id="@offer.Id" class="btn btn-primary">Виж Оферта</a>
-							</div>
-						</div>
-					</div>
-				}
-			</div>
-		</div>
-	</div>
-
-	<!-- Scripts Section -->
-	@section Scripts {
-		<script src="~/Content/plugins/jquery/jquery.min.js" asp-append-version="true"></script>
-		<script src="~/Content/plugins/bootstrap/js/bootstrap.bundle.min.js" asp-append-version="true"></script>
-		<script src="~/Content/plugins/OwlCarousel2-2.2.1/owl.carousel.min.js" asp-append-version="true"></script>
-		<script src="~/Content/js/custom.js" asp-append-version="true"></script>
-	}
+        <!-- Scripts Section -->
+        @section Scripts {
+            <script src="~/Content/plugins/jquery/jquery.min.js" asp-append-version="true"></script>
+            <script src="~/Content/plugins/bootstrap/js/bootstrap.bundle.min.js" asp-append-version="true"></script>
+            <script src="~/Content/plugins/OwlCarousel2-2.2.1/owl.carousel.min.js" asp-append-version="true"></script>
+            <script src="~/Content/js/custom.js" asp-append-version="true"></script>
+        }
+    </div>
 </body>
 </html>

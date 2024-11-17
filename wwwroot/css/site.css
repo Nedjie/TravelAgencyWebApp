@@ -20,3 +20,41 @@ html {
 body {
   margin-bottom: 60px;
 }
+.home {
+    position: relative;
+    height: 500px; /* Fixed height */
+    overflow: hidden;
+}
+
+.home_background {
+    background-image: url('/Content/Images/home_slider.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.home_content {
+    position: relative;
+    z-index: 1;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay */
+}
+
+.card {
+    transition: transform 0.3s;
+}
+
+    .card:hover {
+        transform: scale(1.05); /* Scale effect on hover */
+    }
+
+.footer {
+    background-color: #f8f9fa;
+    padding: 20px 0;
+}

@@ -6,46 +6,11 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace TravelAgencyWebApp.Data.Migrations
 {
     /// <inheritdoc />
-    public partial class changes : Migration
+    public partial class InitialMigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropForeignKey(
-                name: "FK_Bookings_Offers_OfferId",
-                table: "Bookings");
-
-            migrationBuilder.DropForeignKey(
-                name: "FK_Bookings_Users_UserId",
-                table: "Bookings");
-
-            migrationBuilder.DropForeignKey(
-                name: "FK_Reviews_Users_UserId",
-                table: "Reviews");
-
-            migrationBuilder.DropTable(
-                name: "Users");
-
-            migrationBuilder.AlterColumn<string>(
-                name: "UserId",
-                table: "Reviews",
-                type: "nvarchar(450)",
-                nullable: false,
-                comment: "User identifier of review",
-                oldClrType: typeof(int),
-                oldType: "int",
-                oldComment: "User identifier of review");
-
-            migrationBuilder.AlterColumn<string>(
-                name: "UserId",
-                table: "Bookings",
-                type: "nvarchar(450)",
-                nullable: false,
-                comment: "User identifier",
-                oldClrType: typeof(int),
-                oldType: "int",
-                oldComment: "User identifier");
-
             migrationBuilder.CreateTable(
                 name: "AspNetRoles",
                 columns: table => new
@@ -85,6 +50,21 @@ namespace TravelAgencyWebApp.Data.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "TravelingWays",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false, comment: "Traveling way identifier")
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Method = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false, comment: "Traveling way method"),
+                    Description = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false, comment: "Traveling way description"),
+                    Cost = table.Column<decimal>(type: "decimal(18,2)", nullable: false, comment: "Traveling way cost")
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TravelingWays", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -133,8 +113,8 @@ namespace TravelAgencyWebApp.Data.Migrations
                 name: "AspNetUserLogins",
                 columns: table => new
                 {
-                    LoginProvider = table.Column<string>(type: "nvarchar(128)", maxLength: 128, nullable: false),
-                    ProviderKey = table.Column<string>(type: "nvarchar(128)", maxLength: 128, nullable: false),
+                    LoginProvider = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    ProviderKey = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     ProviderDisplayName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UserId = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },
@@ -178,8 +158,8 @@ namespace TravelAgencyWebApp.Data.Migrations
                 columns: table => new
                 {
                     UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    LoginProvider = table.Column<string>(type: "nvarchar(128)", maxLength: 128, nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(128)", maxLength: 128, nullable: false),
+                    LoginProvider = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     Value = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
@@ -189,6 +169,86 @@ namespace TravelAgencyWebApp.Data.Migrations
                         name: "FK_AspNetUserTokens_AspNetUsers_UserId",
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Offers",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false, comment: "Offer identifier")
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Title = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false, comment: "Offer title"),
+                    Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false, comment: "Offer price"),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false, comment: "Offer description"),
+                    ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: false, comment: "Offer image"),
+                    TravelingWayId = table.Column<int>(type: "int", nullable: false, comment: "Traveling way identifier")
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Offers", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Offers_TravelingWays_TravelingWayId",
+                        column: x => x.TravelingWayId,
+                        principalTable: "TravelingWays",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Bookings",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false, comment: "Booking identifier")
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false, comment: "User identifier"),
+                    OfferId = table.Column<int>(type: "int", nullable: false, comment: "Offer identifier"),
+                    CheckInDate = table.Column<DateTime>(type: "datetime2", nullable: false, comment: "Check in date of booking"),
+                    CheckOutDate = table.Column<DateTime>(type: "datetime2", nullable: false, comment: "Check out date of booking")
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Bookings", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Bookings_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Bookings_Offers_OfferId",
+                        column: x => x.OfferId,
+                        principalTable: "Offers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Reviews",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false, comment: "Review identifier")
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false, comment: "User identifier of review"),
+                    OfferId = table.Column<int>(type: "int", nullable: false, comment: "Offer identifier"),
+                    ReviewText = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: false, comment: "Review text"),
+                    Rating = table.Column<int>(type: "int", nullable: false, comment: "Review rating"),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false, comment: "Review date")
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Reviews", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Reviews_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Reviews_Offers_OfferId",
+                        column: x => x.OfferId,
+                        principalTable: "Offers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -232,46 +292,35 @@ namespace TravelAgencyWebApp.Data.Migrations
                 unique: true,
                 filter: "[NormalizedUserName] IS NOT NULL");
 
-            migrationBuilder.AddForeignKey(
-                name: "FK_Bookings_AspNetUsers_UserId",
+            migrationBuilder.CreateIndex(
+                name: "IX_Bookings_OfferId",
                 table: "Bookings",
-                column: "UserId",
-                principalTable: "AspNetUsers",
-                principalColumn: "Id",
-                onDelete: ReferentialAction.Cascade);
+                column: "OfferId");
 
-            migrationBuilder.AddForeignKey(
-                name: "FK_Bookings_Offers_OfferId",
+            migrationBuilder.CreateIndex(
+                name: "IX_Bookings_UserId",
                 table: "Bookings",
-                column: "OfferId",
-                principalTable: "Offers",
-                principalColumn: "Id",
-                onDelete: ReferentialAction.Cascade);
+                column: "UserId");
 
-            migrationBuilder.AddForeignKey(
-                name: "FK_Reviews_AspNetUsers_UserId",
+            migrationBuilder.CreateIndex(
+                name: "IX_Offers_TravelingWayId",
+                table: "Offers",
+                column: "TravelingWayId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Reviews_OfferId",
                 table: "Reviews",
-                column: "UserId",
-                principalTable: "AspNetUsers",
-                principalColumn: "Id",
-                onDelete: ReferentialAction.Cascade);
+                column: "OfferId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Reviews_UserId",
+                table: "Reviews",
+                column: "UserId");
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropForeignKey(
-                name: "FK_Bookings_AspNetUsers_UserId",
-                table: "Bookings");
-
-            migrationBuilder.DropForeignKey(
-                name: "FK_Bookings_Offers_OfferId",
-                table: "Bookings");
-
-            migrationBuilder.DropForeignKey(
-                name: "FK_Reviews_AspNetUsers_UserId",
-                table: "Reviews");
-
             migrationBuilder.DropTable(
                 name: "AspNetRoleClaims");
 
@@ -288,69 +337,22 @@ namespace TravelAgencyWebApp.Data.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
+                name: "Bookings");
+
+            migrationBuilder.DropTable(
+                name: "Reviews");
+
+            migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
 
-            migrationBuilder.AlterColumn<int>(
-                name: "UserId",
-                table: "Reviews",
-                type: "int",
-                nullable: false,
-                comment: "User identifier of review",
-                oldClrType: typeof(string),
-                oldType: "nvarchar(450)",
-                oldComment: "User identifier of review");
+            migrationBuilder.DropTable(
+                name: "Offers");
 
-            migrationBuilder.AlterColumn<int>(
-                name: "UserId",
-                table: "Bookings",
-                type: "int",
-                nullable: false,
-                comment: "User identifier",
-                oldClrType: typeof(string),
-                oldType: "nvarchar(450)",
-                oldComment: "User identifier");
-
-            migrationBuilder.CreateTable(
-                name: "Users",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false, comment: "User identifier")
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false, comment: "User email"),
-                    Name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false, comment: "User name"),
-                    Password = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false, comment: "User password")
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Users", x => x.Id);
-                });
-
-            migrationBuilder.AddForeignKey(
-                name: "FK_Bookings_Offers_OfferId",
-                table: "Bookings",
-                column: "OfferId",
-                principalTable: "Offers",
-                principalColumn: "Id",
-                onDelete: ReferentialAction.Restrict);
-
-            migrationBuilder.AddForeignKey(
-                name: "FK_Bookings_Users_UserId",
-                table: "Bookings",
-                column: "UserId",
-                principalTable: "Users",
-                principalColumn: "Id",
-                onDelete: ReferentialAction.Cascade);
-
-            migrationBuilder.AddForeignKey(
-                name: "FK_Reviews_Users_UserId",
-                table: "Reviews",
-                column: "UserId",
-                principalTable: "Users",
-                principalColumn: "Id",
-                onDelete: ReferentialAction.Cascade);
+            migrationBuilder.DropTable(
+                name: "TravelingWays");
         }
     }
 }

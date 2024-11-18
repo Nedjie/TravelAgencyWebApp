@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
+using TravelAgencyWebApp.Data.Models;
 using TravelAgencyWebApp.Data.Repository.Interfaces;
 
 namespace TravelAgencyWebApp.Data.Repository
@@ -40,7 +41,12 @@ namespace TravelAgencyWebApp.Data.Repository
             return await this._dbSet.ToListAsync();
         }
 
-        public IQueryable<TType> GetAllAttached()
+		public IQueryable<TType> Query()
+		{
+			return _dbSet; // This provides an IQueryable for the associated entity
+		}
+
+		public IQueryable<TType> GetAllAttached()
         {
             return _dbSet.AsQueryable(); 
         }

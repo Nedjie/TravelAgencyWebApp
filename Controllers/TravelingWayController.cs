@@ -18,8 +18,8 @@ namespace TravelAgencyWebApp.Controllers
             return Ok(travelingWays);
         }
 
-        [HttpGet("{id:int}")]
-        public async Task<ActionResult<TravelingWay>> GetTravelingWayById(int id)
+		[HttpGet("travelingway/details/{id:int}")]
+		public async Task<ActionResult<TravelingWay>> GetTravelingWayById(int id)
         {
             var travelingWay = await _travelingWayService.GetTravelingWayByIdAsync(id);
             if (travelingWay == null)

@@ -90,7 +90,7 @@ namespace TravelAgencyWebApp.Controllers
 			return RedirectToAction(nameof(Index));
 		}
 
-		[HttpGet("{id:int}")]
+		[HttpGet("offer/details/{id:int}")]
 		public async Task<IActionResult> Details(int id)
 		{
 			var offer = await _offerService.GetOfferByIdAsync(id);

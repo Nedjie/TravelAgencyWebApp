@@ -1,21 +1,15 @@
-﻿<!DOCTYPE html>
-<html lang="en">
+﻿@model List<TravelAgencyWebApp.Data.Models.Review>
+@{
+	ViewData["Title"] = "За Нас";
+}
+<!DOCTYPE html>
+<html lang="bg">
 <head>
 	<title>За нас</title>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="description" content="Travelix Project">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-@* 	<link rel="stylesheet" type="text/css" href="~/Content/styles/bootstrap4/bootstrap.min.css" asp-append-version="true" />
-	<link href="~/Content/plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" asp-append-version="true" />
-	<link rel="stylesheet" type="text/css" href="~/Content/plugins/OwlCarousel2-2.2.1/owl.carousel.css" asp-append-version="true" />
-	<link rel="stylesheet" type="text/css" href="~/Content/plugins/OwlCarousel2-2.2.1/owl.theme.default.css" asp-append-version="true" />
-	<link rel="stylesheet" type="text/css" href="~/Content/plugins/OwlCarousel2-2.2.1/animate.css" asp-append-version="true" />
-	<link rel="stylesheet" type="text/css" href="~/Content/styles/about_styles.css" asp-append-version="true" />
-	<link rel="stylesheet" type="text/css" href="~/Content/styles/about_responsive.css" asp-append-version="true" />
-	<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" /> *@
-
-
 	<link rel="stylesheet" type="text/css" href="~/Content/styles/bootstrap4/bootstrap.min.css" asp-append-version="true" />
 	<link href="~/Content/plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" asp-append-version="true" />
 	<link rel="stylesheet" type="text/css" href="~/Content/plugins/OwlCarousel2-2.2.1/owl.carousel.css" asp-append-version="true" />
@@ -23,191 +17,118 @@
 	<link rel="stylesheet" type="text/css" href="~/Content/styles/main_styles.css" asp-append-version="true" />
 	<link rel="stylesheet" type="text/css" href="~/Content/styles/responsive.css" asp-append-version="true" />
 </head>
-
 <body>
-
+	<div class="home">
+		<div class="row mb-3">
+			<div class="col-md-12">
+				<img src="~/Content/images/about_background.jpg" alt="Нашите Оферти" class="img-fluid" style="max-width: 100%; height: auto;" />
+			</div>
+		</div>
+	</div>
 	<div class="super_container">
 		<!-- Header -->
-
 		<header class="header">
-
-			<!-- Top Bar -->
-
 			<div class="top_bar">
 				<div class="container">
 					<div class="row">
 						<div class="col d-flex flex-row">
-							<div class="phone">+359 345 3324 </div>
+							<div class="phone">+359 345 3324</div>
 							<div class="user_box ml-auto">
-								<div class="user_box_login user_box_link">
-									<a asp-area="Identity" asp-page="/Account/Login">Вход</a>
-								</div>
-								<div class="user_box_login user_box_link"><a asp-area="Identity" asp-page="/Account/Register">Регистрация</a></div>
+								<a asp-area="Identity" asp-page="/Account/Login">Вход</a>
+								<a asp-area="Identity" asp-page="/Account/Register">Регистрация</a>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
+			<!-- Main Navigation -->
+			<nav class="main_nav">
+				<div class="container">
+					<div class="row">
+						<div class="col main_nav_col d-flex flex-row align-items-center justify-content-start">
+							<div class="logo_container">
+								<div class="logo"><a href="#"><img src="~/Content/images/logo.png" alt="" />Дени Травел</a></div>
+							</div>
+							<div class="main_nav_container ml-auto">
+								<ul class="main_nav_list">
+									<li class="main_nav_item"><a asp-controller="Home" asp-action="Index">Начало</a></li>
+									<li class="main_nav_item"><a asp-controller="Offer" asp-action="Index">Оферти</a></li>
+									<li class="main_nav_item"><a asp-controller="Home" asp-action="About">За Нас</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</nav>
 		</header>
-	</div>
 
-	<!-- Home -->
-	<div class="home">
-		<div class="home_background parallax-window" style="background-image: url('/Content/images/about_background.jpg');"></div>
-		<div class="home_content">
-		</div>
-	</div>
-	<!-- Intro -->
-	<div class="intro">
-		<div class="container">
+		<!-- About Section -->
+		<div class="container mt-5">
+			<h2 class="text-center">Нашата История</h2>
+			<p class="text-center">
+				Добре дошли в Дени Травел! Ние сме вашият надежден партньор в пътуванията.
+				С години опит на пазара, ние предлагаме уникални и незабравими преживявания за всеки клиент.
+			</p>
+
+			<h3 class="mt-4">Нашата Мисия</h3>
+			<p>
+				Наша цел е да предоставим висококачествени туристически услуги,
+				гарантирайки удобство, безопасност и удовлетворение на нашите клиенти.
+			</p>
+
+			<h3 class="mt-4">Нашият Екип</h3>
 			<div class="row">
-				<div class="col-lg-7">
-					<div class="intro_image"><img src="~/Content/images/intro.png" alt=""></div>
+				<div class="col-md-4 text-center">
+					<div class="team-member">
+						<img src="~/Content/images/member1.jpg" class="img-fluid rounded-circle" alt="Team Member" />
+						<h5>Иван Иванов</h5>
+						<p>Туристически Консултант</p>
+						<p>С опит над 10 години в индустрията, Иван е вашият идеален партньор за планиране на приключения.</p>
+					</div>
 				</div>
-				<div class="col-lg-5">
-					<div class="intro_content">
-						<div class="intro_title">НИЕ СМЕ НАЙ-ДОБРИТЕ</div>
-						<p class="intro_text">
-							Туристическа агенция "Дени Травел" ООД е сертифициран  туроператор и туристически агент. Агенцията е специализирана
-							в организацията на културно-познавателни туристически програми, екскурзии, почивки, конгресни и семинарни пътувания
-							и пътнически услуги.
-						</p>
+				<div class="col-md-4 text-center">
+					<div class="team-member">
+						<img src="~/Content/images/member2.jpg" class="img-fluid rounded-circle" alt="Team Member" />
+						<h5>Мария Петрова</h5>
+						<p>Мениджър по Продажбите</p>
+						<p>Мария е специалист в проектирането на идеални пакети, комбиниращи комфорт и приключение.</p>
+					</div>
+				</div>
+				<div class="col-md-4 text-center">
+					<div class="team-member">
+						<img src="~/Content/images/member3.webp" class="img-fluid rounded-circle" alt="Team Member" />
+						<h5>Георги Георгиев</h5>
+						<p>Финансов Консултант</p>
+						<p>С дългогодишен опит в финансовото планиране, Георги помага на клиентите да правят разумни инвестиции.</p>
 					</div>
 				</div>
 			</div>
-		</div>
-	</div>
-	<!-- Stats -->
-	<div class="stats">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-10 offset-lg-1 text-center">
-					<p class="stats_text">
-						<h4>Туристическа агенция Дени Травел е член на:</h4>
-						<ul>
-							<li>IATA (International Air Transport Association)</li>
-							<li>ETOA (European Tourism Association)</li>
-							<li>PATA (Pacific Asia Travel Association)</li>
-							<li>WTACH (World Tourism Association for Culture and Heritage)</li>
-							<li>БАУТ (Българска Асоциация за устойчив туризъм)</li>
-						</ul>
-					</p>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col">
-					<div class="stats_years">
-						<div class="stats_years_last">2023</div>
-						<div class="stats_years_new float-right">2024</div>
-					</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col">
-					<div class="stats_contents">
 
-						<!-- Stats Item -->
-						<div class="stats_item d-flex flex-md-row flex-column clearfix">
-							<div class="stats_last order-md-1 order-3">
-								<div class="stats_last_icon d-flex flex-column align-items-center justify-content-end">
-									<img src="~/Content/images/stats_1.png" alt="">
-								</div>
-								<div class="stats_last_content">
-									<div class="stats_number">1642</div>
-									<div class="stats_type">Клиенти</div>
-								</div>
-							</div>
-							<div class="stats_bar order-md-2 order-2" data-x="1642" data-y="3527" data-color="#31124b">
-								<div class="stats_bar_perc">
-									<div>
-										<div class="stats_bar_value"></div>
-									</div>
-								</div>
-							</div>
-							<div class="stats_new order-md-3 order-1 text-right">
-								<div class="stats_new_icon d-flex flex-column align-items-center justify-content-end">
-									<img src="~/Content/images/stats_1.png" alt="">
-								</div>
-								<div class="stats_new_content">
-									<div class="stats_number">3527</div>
-									<div class="stats_type">Клиенти</div>
-								</div>
-							</div>
+			<h3 class="mt-4">Отзиви от клиенти</h3>
+			<div class="testimonials">
+				@if (Model != null && Model.Any())
+				{
+					foreach (var review in Model)
+					{
+						<div class="testimonial-item mb-4">
+							<h5>@review.User?.UserName</h5> <!-- Display reviewer's username -->
+							<p>"@review.ReviewText"</p> <!-- Display review text -->
+							<p><strong>Рейтинг: @review.Rating звезди</strong></p> <!-- Display review rating -->
+							<p><small>На дата: @review.CreatedAt.ToString("dd.MM.yyyy")</small></p> <!-- Display review date -->
 						</div>
-					</div>
-				</div>
+					}
+				}
+				else
+				{
+					<p class="text-center">Няма отзиви за показване.</p>
+				}
 			</div>
-		</div>
-	</div>
-	<!-- Add -->
-	<div class="add">
-		<div class="container">
-			<div class="row">
-				<div class="col">
-					<div class="add_container">
-						<div class="add_background" style="background-image:url('/Content/images/add.jpg')"></div>
-						<div class="add_content">
-							<h1 class="add_title">Тайланд</h1>
-							<div class="add_subtitle">Цени от <span>$999</span></div>
-							<div class="button add_button"><div class="button_bcg"></div><a asp-controller="Offer" asp-action="Index" class="btn">Открий повече<span></span><span></span><span></span></a></div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- Milestones -->
-	<div class="milestones">
-		<div class="container">
-			<div class="row">
-				<!-- Milestone -->
-				<div class="col-lg-3 milestone_col">
-					<div class="milestone text-center">
-						<div class="milestone_icon"><img src="~/Content/images/milestone_1.png" alt=""></div>
-						<div class="milestone_counter" data-end-value="2555">0</div>
-						<div class="milestone_text">Клиенти</div>
-					</div>
-				</div>
-				<!-- Milestone -->
-				<div class="col-lg-3 milestone_col">
-					<div class="milestone text-center">
-						<div class="milestone_icon"><img src="~/Content/images/milestone_2.png" alt=""></div>
-						<div class="milestone_counter" data-end-value="355">0</div>
-						<div class="milestone_text">Почивки</div>
-					</div>
-				</div>
-				<!-- Milestone -->
-				<div class="col-lg-3 milestone_col">
-					<div class="milestone text-center">
-						<div class="milestone_icon"><img src="~/Content/images/milestone_3.png" alt=""></div>
-						<div class="milestone_counter" data-end-value="39">0</div>
-						<div class="milestone_text">Държави</div>
-					</div>
-				</div>
 
-				<!-- Milestone -->
-				<div class="col-lg-3 milestone_col">
-					<div class="milestone text-center">
-						<div class="milestone_icon"><img src="~/Content/images/milestone_4.png" alt=""></div>
-						<div class="milestone_counter" data-end-value="127">0</div>
-						<div class="milestone_text">Екскурзии</div>
-					</div>
-				</div>
-
-			</div>
 		</div>
-	</div>
-	<script src="~/Content/js/jquery-3.2.1.min.js"></script>
-	<script src="~/Content/styles/bootstrap4/popper.js"></script>
-	<script src="~/Content/styles/bootstrap4/bootstrap.min.js"></script>
-	<script src="~/Content/plugins/greensock/TweenMax.min.js"></script>
-	<script src="~/Content/plugins/greensock/TimelineMax.min.js"></script>
-	<script src="~/Content/plugins/scrollmagic/ScrollMagic.min.js"></script>
-	<script src="~/Content/plugins/greensock/animation.gsap.min.js"></script>
-	<script src="~/Content/plugins/greensock/ScrollToPlugin.min.js"></script>
-	<script src="~/Content/plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
-	<script src="~/Content/plugins/easing/easing.js"></script>
-	<script src="~/Content/plugins/parallax-js-master/parallax.min.js"></script>
-	<script src="~/Content/js/about_custom.js"></script>
+</div>
+		<!-- Include jQuery and Bootstrap scripts -->
+		<script src="~/Content/plugins/jquery/jquery.min.js" asp-append-version="true"></script>
+		<script src="~/Content/styles/bootstrap4/bootstrap.bundle.min.js" asp-append-version="true"></script>
+
 </body>
 </html>

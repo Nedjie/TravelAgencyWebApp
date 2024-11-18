@@ -10,7 +10,8 @@ namespace TravelAgencyWebApp.Data.Repository.Interfaces
         Task<TType?> FirstOrDefaultAsync(Expression<Func<TType, bool>> predicate);
         IEnumerable<TType> GetAll();
         Task<IEnumerable<TType>> GetAllAsync();
-        IQueryable<TType> GetAllAttached();
+        IQueryable<TType> Query();
+		IQueryable<TType> GetAllAttached();
         void Add(TType item);
         Task AddAsync(TType item);
         void AddRange(TType[] items);

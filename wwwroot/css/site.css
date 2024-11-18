@@ -25,17 +25,17 @@ body {
     position: relative;
     height: 500px; /* Fixed height */
     overflow: hidden;
+    margin: 0; /* Reset margin if necessary */
+    padding: 0; /* Reset padding if necessary */
 }
 
+
 .home_background {
-    background-image: url('/Content/Images/home_slider.jpg');
-    background-size: cover;
-    background-position: center;
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
+    background-image: url('/Content/images/home_slider.jpg');
+    background-size: cover; /* or contain if you want to see the entire image */
+    background-position: center; /* Center the image */
+    height:720px; /* Set a fixed height for visibility */
+    opacity: 0.8; /* Optional: add some opacity for a slight overlay effect */
 }
 
 .home_content {

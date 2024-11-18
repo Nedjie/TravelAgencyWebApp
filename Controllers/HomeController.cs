@@ -8,7 +8,8 @@ using TravelAgencyWebApp.ViewModels.Offer;
 namespace TravelAgencyWebApp.Controllers
 {
 	public class HomeController(IHomeService homeService,
-		ITravelingWayService travelingWayService, IOfferService offerService, ILogger<HomeController> logger)
+		ITravelingWayService travelingWayService, IOfferService offerService,
+		IReviewService reviewService, ILogger<HomeController> logger)
 		: BaseController(logger)
 	{
 		private readonly IHomeService _homeService = homeService
@@ -20,15 +21,17 @@ namespace TravelAgencyWebApp.Controllers
 		private readonly IOfferService _offerService = offerService
 			?? throw new ArgumentNullException(nameof(offerService));
 
+		private readonly IReviewService _reviewService=reviewService
+			?? throw new ArgumentNullException(nameof(reviewService));
+
 		[HttpGet]
 		public async Task<IActionResult> Index()
 		{
 			var offers = await _offerService.GetAllOffersAsync();
 
-			// Use the offer's TravelingWay method to create the group of offers
 			var groupedOffers = offers
-				.Where(offer => offer.TravelingWay != null) // Make sure there's a related TravelingWay
-				.GroupBy(offer => offer.TravelingWay!.Method)  // Group by the method of TravelingWay
+				.Where(offer => offer.TravelingWay != null) 
+				.GroupBy(offer => offer.TravelingWay!.Method) 
 				.ToDictionary(g => g.Key, g => g.Select(o => new OfferViewModel
 				{
 					Id = o.Id,
@@ -36,16 +39,17 @@ namespace TravelAgencyWebApp.Controllers
 					Description = o.Description,
 					Price = o.Price,
 					ImageUrl = o.ImageUrl,
-					TravelingWayMethod = o.TravelingWay?.Method // Assuming you have this property in your model
+					TravelingWayMethod = o.TravelingWay?.Method 
 				}));
 
 			return View(groupedOffers);
 		}
 
 		[HttpGet("About")]
-		public IActionResult About()
+		public async Task<IActionResult> About()
 		{
-			return View();
+			var reviews = await _reviewService.GetAllReviewsAsync();
+			return View(reviews);
 		}
 
 		[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

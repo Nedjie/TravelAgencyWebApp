@@ -52,17 +52,17 @@
 	<!-- Home -->
 
 	<div class="home">
-		<div class="home_background parallax-window" style="background-image: url('/Content/images/home_slider.jpg');"></div>
-		<div class="home_content">
-		</div>
+		<div class="row mb-3">
+			<div class="col-md-12">
+				<img src="~/Content/images/blog_background.jpg" alt="Нашите Оферти" class="img-fluid" style="max-width: 100%; height: auto;" />
+			</div>
+		</div>		
 	</div>
 	<!-- Offers Section -->
 	<div class="container mt-5">
-		<h2 class="text-center">Нашите Оферти</h2>
-
 		@foreach (var travelingWay in Model.Keys)
 		{
-			<h3 class="text-center">Екскурзии със @travelingWay</h3> <!-- Displaying the TravelingWay Name -->
+			<h3 class="text-center">Почивки и Екскурзии с @travelingWay</h3> <!-- Displaying the TravelingWay Name -->
 			<div class="row mb-4">
 				@foreach (var offer in Model[travelingWay])
 				{

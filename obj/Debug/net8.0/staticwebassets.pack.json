@@ -461,6 +461,18 @@
       "PackagePath": "staticwebassets\\Content\\images\\man.png"
     },
     {
+      "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\images\\member1.jpg",
+      "PackagePath": "staticwebassets\\Content\\images\\member1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\images\\member2.jpg",
+      "PackagePath": "staticwebassets\\Content\\images\\member2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\images\\member3.webp",
+      "PackagePath": "staticwebassets\\Content\\images\\member3.webp"
+    },
+    {
       "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\images\\message.svg",
       "PackagePath": "staticwebassets\\Content\\images\\message.svg"
     },

@@ -25,19 +25,26 @@
 						<div class="col d-flex flex-row">
 							<div class="phone">+359 332 5678</div>
 							<div class="user_box ml-auto">
-								<a asp-area="Identity" asp-page="/Account/Login">Вход</a>
-								<a asp-area="Identity" asp-page="/Account/Register">Регистрация</a>
+								<div class="user_box_login user_box_link">
+									<a asp-area="Identity" asp-page="/Account/Login">Вход</a>
+								</div>
+								<div class="user_box_login user_box_link">
+									<a asp-area="Identity" asp-page="/Account/Register">Регистрация</a>
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
+			<!-- Main Navigation -->
 			<nav class="main_nav">
 				<div class="container">
 					<div class="row">
-						<div class="col main_nav_col d-flex flex-row align-items-center">
+						<div class="col main_nav_col d-flex flex-row align-items-center justify-content-start">
 							<div class="logo_container">
-								<div class="logo"><a href="#"><img src="~/Content/images/logo.png" alt="Дени Травел"></a></div>
+								<div class="logo">
+									<a href="#"><img src="~/Content/images/logo.png" alt="" />Дени Травел</a>
+								</div>
 							</div>
 							<div class="main_nav_container ml-auto">
 								<ul class="main_nav_list">
@@ -51,7 +58,12 @@
 				</div>
 			</nav>
 		</header>
-
+	</div>
+	<div class="row mb-3">
+		<div class="col-md-12">
+			<img src="~/Content/images/about_background.jpg" alt="Нашите Оферти" class="img-fluid" style="max-width: 100%; height: auto;" />
+		</div>
+	</div>
 		<!-- Body Content -->
 		<main>
 			@RenderBody()

@@ -17,54 +17,7 @@
 	<link rel="stylesheet" type="text/css" href="~/Content/styles/main_styles.css" asp-append-version="true" />
 	<link rel="stylesheet" type="text/css" href="~/Content/styles/responsive.css" asp-append-version="true" />
 </head>
-<div class="super_container">
-	<!-- Header -->
-	<header class="header">
-		<div class="top_bar">
-			<div class="container">
-				<div class="row">
-					<div class="col d-flex flex-row">
-						<div class="phone">+359 332 5678</div>
-						<div class="user_box ml-auto">
-							<div class="user_box_login user_box_link">
-								<a asp-area="Identity" asp-page="/Account/Login">Вход</a>
-							</div>
-							<div class="user_box_login user_box_link">
-								<a asp-area="Identity" asp-page="/Account/Register">Регистрация</a>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- Main Navigation -->
-		<nav class="main_nav">
-			<div class="container">
-				<div class="row">
-					<div class="col main_nav_col d-flex flex-row align-items-center justify-content-start">
-						<div class="logo_container">
-							<div class="logo">
-								<a href="#"><img src="~/Content/images/logo.png" alt="" />Дени Травел</a>
-							</div>
-						</div>
-						<div class="main_nav_container ml-auto">
-							<ul class="main_nav_list">
-								<li class="main_nav_item"><a asp-controller="Home" asp-action="Index">Начало</a></li>
-								<li class="main_nav_item"><a asp-controller="Offer" asp-action="Index">Оферти</a></li>
-								<li class="main_nav_item"><a asp-controller="Home" asp-action="About">За Нас</a></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
-		</nav>
-	</header>
-</div>
-<div class="row mb-3">
-	<div class="col-md-12">
-		<img src="~/Content/images/contact_background.jpg" alt="Нашите Оферти" class="img-fluid" style="max-width: 100%; height: auto;" />
-	</div>
-</div>
+<body>
 <p>
 	<a asp-controller="Offer" asp-action="Create" class="btn btn-primary">Създаване на Нова Оферта</a>
 </p>
@@ -127,7 +80,7 @@
 		</div>
 	</div>
 </div>
-
+</body>
 <!-- Include jQuery and Bootstrap scripts -->
 <script src="~/Content/scripts/jquery.min.js" asp-append-version="true"></script>
 <script src="~/Content/styles/bootstrap4/bootstrap.bundle.min.js" asp-append-version="true"></script>

@@ -28,36 +28,7 @@
 	<link rel="stylesheet" type="text/css" href="~/Content/styles/responsive.css" asp-append-version="true" />
 </head>
 <body>
-	<div class="super_container">
-		<!-- Header -->
-		<header class="header">
-			<!-- Top Bar -->
-			<div class="top_bar">
-				<div class="container">
-					<div class="row">
-						<div class="col d-flex flex-row">
-							<div class="phone">+359 345 3324 </div>
-							<div class="user_box ml-auto">
-								<div class="user_box_login user_box_link">
-									<a asp-area="Identity" asp-page="/Account/Login">Вход</a>
-								</div>
-								<div class="user_box_login user_box_link"><a asp-area="Identity" asp-page="/Account/Register">Регистрация</a></div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</header>
-	</div>
-	<!-- Home -->
 
-	<div class="home">
-		<div class="row mb-3">
-			<div class="col-md-12">
-				<img src="~/Content/images/blog_background.jpg" alt="Нашите Оферти" class="img-fluid" style="max-width: 100%; height: auto;" />
-			</div>
-		</div>		
-	</div>
 	<!-- Offers Section -->
 	<div class="container mt-5">
 		@foreach (var travelingWay in Model.Keys)

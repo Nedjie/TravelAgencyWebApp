@@ -85,7 +85,10 @@ namespace TravelAgencyWebApp.Services.Data
 		{
 			var offer = await _offerRepository.GetByIdAsync(id);
 
-			ArgumentNullException.ThrowIfNull(offer);
+			if (offer == null)
+			{
+				throw new KeyNotFoundException($"Offer with ID {id} was not found.");
+			}
 
 			await _offerRepository.DeleteAsync(offer);
 		}

@@ -1,6 +1,3 @@
-using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
-using TravelAgencyWebApp.Data;
 using TravelAgencyWebApp.Infrastructure.Extensions;
 using TravelAgencyWebApp.Services.Mapping;
 using TravelAgencyWebApp.ViewModels;
@@ -13,15 +10,12 @@ namespace TravelAgencyWebApp
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
-            var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
-            builder.Services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(connectionString));
-            builder.Services.AddDatabaseDeveloperPageExceptionFilter();
-
-            builder.Services.AddCustomServices();
-
+			builder.Services.AddApplicationDatabase(builder.Configuration);
+            builder.Services.AddApplicationIdentity(builder.Configuration);
+            builder.Services.AddCustomServices(builder.Configuration);
+		
             builder.Services.AddControllersWithViews();
+	
             builder.Services.AddRazorPages();
 
             var app = builder.Build();

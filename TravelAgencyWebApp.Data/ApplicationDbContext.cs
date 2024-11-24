@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using TravelAgencyWebApp.Data.Models;
@@ -8,7 +9,7 @@ namespace TravelAgencyWebApp.Data
 {
 
     public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
-        : IdentityDbContext<ApplicationUser>(options)
+        : IdentityDbContext<ApplicationUser,IdentityRole<Guid>,Guid>(options)
     {
         public DbSet<Booking> Bookings { get; set; }
         public DbSet<Offer> Offers { get; set; }

@@ -17,20 +17,18 @@
 	<link rel="stylesheet" type="text/css" href="~/Content/styles/responsive.css" asp-append-version="true" />
 </head>
 <body>
-<h2>Изтриване на Оферта</h2>
+	<div>
+		<h4>Сигурни ли сте, че искате да изтриете следната оферта?</h4>
+		<div>
+			<h5>Идентификатор на Офертата: @Model.Id</h5>
+			<p>Заглавие: @Model.Title</p>
+			<p>Описание: @Model.Description</p>
+		</div>
+	</div>
 
-<div>
-    <h4>Сигурни ли сте, че искате да изтриете следната оферта?</h4>
-    <div>
-        <h5>Идентификатор на Офертата: @Model.Id</h5>
-        <p>Заглавие: @Model.Title</p>
-        <p>Описание: @Model.Description</p>
-    </div>
-</div>
-
-<form asp-action="Delete">
-    <input type="hidden" asp-for="Id" />
-    <button type="submit" class="btn btn-danger">Изтрий</button>
-    <a asp-action="Index" class="btn btn-secondary">Отказ</a>
-</form>
+	<form asp-action="Delete" method="post">
+		<input type="hidden" asp-for="Id" />
+		<button type="submit" class="btn btn-danger">Изтрий</button>
+		<a asp-action="Index" class="btn btn-secondary">Отказ</a>
+	</form>
 </body>

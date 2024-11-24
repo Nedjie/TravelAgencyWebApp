@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.Azure.Documents;
 using TravelAgencyWebApp.Data.Models;
 using TravelAgencyWebApp.Infrastructure.Extensions;
 using TravelAgencyWebApp.Services.Data.Interfaces;
@@ -77,7 +78,7 @@ namespace TravelAgencyWebApp.Controllers
 				return View(model);
 			}
 
-			var offer = new Offer
+			var offer = new Data.Models.Offer
 			{
 				Title = model.Title ?? "No Title",
 				Description = model.Description ?? "No Description",
@@ -145,10 +146,8 @@ namespace TravelAgencyWebApp.Controllers
 		[HttpPost]
 		public async Task<IActionResult> Edit(OfferViewModel model)
 		{
-			// Check if the model state is valid
 			if (!ModelState.IsValid)
 			{
-				// Log validation errors
 				foreach (var state in ModelState)
 				{
 					foreach (var error in state.Value.Errors)
@@ -164,10 +163,9 @@ namespace TravelAgencyWebApp.Controllers
 					Text = tw.Method
 				}).ToList();
 
-				return View(model); // Return to the view with errors
+				return View(model); 
 			}
 
-			// Validate the traveling way method
 			if (string.IsNullOrWhiteSpace(model.TravelingWayMethod))
 			{
 				ModelState.AddModelError("TravelingWayMethod", "Please select a traveling way method.");
@@ -177,10 +175,9 @@ namespace TravelAgencyWebApp.Controllers
 					Value = tw.Method,
 					Text = tw.Method
 				}).ToList();
-				return View(model); // Return model with error
+				return View(model);
 			}
 
-			// Fetch the TravelingWay based on selected method
 			var travelingWay = await _travelingWayService.GetByMethodAsync(model.TravelingWayMethod);
 			if (travelingWay == null)
 			{
@@ -191,25 +188,22 @@ namespace TravelAgencyWebApp.Controllers
 					Value = tw.Method,
 					Text = tw.Method
 				}).ToList();
-				return View(model); // Return model with error
+				return View(model); 
 			}
 
-			// Create the Offer entity for update
-			var offerToUpdate = new Offer
+			var offerToUpdate = new Data.Models.Offer
 			{
 				Id = model.Id,
-				Title = model.Title ?? "No Title", // Ensure Title is not null
-				Description = model.Description ?? "No Description", // Ensure Description is not null
+				Title = model.Title ?? "No Title",
+				Description = model.Description ?? "No Description", 
 				Price = model.Price,
-				ImageUrl = model.ImageUrl ?? "default-image-url.png", // Set to default if null
-				TravelingWayId = travelingWay.Id // Ensure the foreign key is set correctly
+				ImageUrl = model.ImageUrl ?? "default-image-url.png", 
+				TravelingWayId = travelingWay.Id 
 			};
 
-			// Update the offer in the database
 			await _offerService.UpdateOfferAsync(offerToUpdate);
 
-			// Redirect after successful update
-			return RedirectToAction(nameof(Index)); // Ensure this redirects correctly
+			return RedirectToAction(nameof(Index));
 		}
 
 		[HttpGet]
@@ -232,10 +226,15 @@ namespace TravelAgencyWebApp.Controllers
 		}
 
 		[HttpPost, ActionName("Delete")]
-		public async Task<IActionResult> DeleteConfirmed(int id)
+		public async Task<IActionResult> DeleteConfirmed(ConfirmDeleteOfferViewModel model)
 		{
-			await _offerService.DeleteOfferAsync(id); 
-			return RedirectToAction(nameof(Index)); 
+			if (ModelState.IsValid)
+			{
+				await _offerService.DeleteOfferAsync(model.Id); // Ensure this hits the correct method to delete
+				return RedirectToAction(nameof(Index)); // Redirect after deletion
+			}
+
+			return View(model); // Return the view if model state is not valid (this should generally not happen for deletes)
 		}
 	}
 }

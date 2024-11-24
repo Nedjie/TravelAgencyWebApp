@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using TravelAgencyWebApp.Data;
 using TravelAgencyWebApp.Data.Models;
@@ -11,7 +13,32 @@ namespace TravelAgencyWebApp.Infrastructure.Extensions
 {
 	public static class ServiceRegistrationExtensions
 	{
-		public static void AddCustomServices(this IServiceCollection services)
+		public static IServiceCollection AddApplicationDatabase(this IServiceCollection services, IConfiguration config)
+		{
+			// Add services to the container.
+			var connectionString = config.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string is wrong");
+			services.AddDbContext<ApplicationDbContext>(options =>
+				options.UseSqlServer(connectionString));
+			services.AddDatabaseDeveloperPageExceptionFilter();
+
+			services.ConfigureApplicationCookie(options =>
+			{
+				options.LoginPath = "/Identity/Account/Login";
+			});
+
+			return services;
+		}
+
+		public static IServiceCollection AddApplicationIdentity(this IServiceCollection services, IConfiguration config)
+		{
+			services.AddIdentity<ApplicationUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
+				.AddEntityFrameworkStores<ApplicationDbContext>()
+				.AddDefaultTokenProviders();
+		
+			return services;
+
+		}
+		public static IServiceCollection AddCustomServices(this IServiceCollection services, IConfiguration config)
 		{
 			// Register repositories and services
 			services.AddScoped(typeof(IRepository<,>), typeof(Repository<,>)); // Example repository
@@ -21,15 +48,7 @@ namespace TravelAgencyWebApp.Infrastructure.Extensions
 			services.AddScoped<IReviewService, ReviewService>();
 			services.AddScoped<ITravelingWayService, TravelingWayService>();
 
-			services.AddIdentity<ApplicationUser, IdentityRole>()
-				.AddEntityFrameworkStores<ApplicationDbContext>()
-				.AddDefaultTokenProviders();
-
-			//// Identity setup
-			//services.AddIdentity<ApplicationUser, IdentityRole>()
-			//	.AddEntityFrameworkStores<ApplicationDbContext>()
-			//	.AddDefaultTokenProviders();
-
+			return services;
 		}
 	}
 }

@@ -359,6 +359,9 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
+              "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\TravelAgencyWebApp.Common\\TravelAgencyWebApp.Common.csproj": {
+                "projectPath": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\TravelAgencyWebApp.Common\\TravelAgencyWebApp.Common.csproj"
+              },
               "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\TravelAgencyWebApp.Data\\TravelAgencyWebApp.Data.csproj": {
                 "projectPath": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\TravelAgencyWebApp.Data\\TravelAgencyWebApp.Data.csproj"
               },

@@ -1,3 +1,4 @@
+using TravelAgencyWebApp.Data.Seeding;
 using TravelAgencyWebApp.Infrastructure.Extensions;
 using TravelAgencyWebApp.Services.Mapping;
 using TravelAgencyWebApp.ViewModels;
@@ -10,9 +11,14 @@ namespace TravelAgencyWebApp
         {
             var builder = WebApplication.CreateBuilder(args);
 
+            string adminEmail = builder.Configuration.GetValue<string>("Administrator:Email")!;
+            string adminUsername = builder.Configuration.GetValue<string>("Administrator:Username")!;
+            string adminPassword = builder.Configuration.GetValue<string>("Administrator:Password")!;
+
 			builder.Services.AddApplicationDatabase(builder.Configuration);
             builder.Services.AddApplicationIdentity(builder.Configuration);
             builder.Services.AddCustomServices(builder.Configuration);
+           
 		
             builder.Services.AddControllersWithViews();
 	
@@ -20,7 +26,7 @@ namespace TravelAgencyWebApp
 
             var app = builder.Build();
 
-            AutoMapperConfig.RegisterMappings(typeof(ErrorViewModel).Assembly);
+			AutoMapperConfig.RegisterMappings(typeof(ErrorViewModel).Assembly);
 
 
             // Configure the HTTP request pipeline.
@@ -40,12 +46,23 @@ namespace TravelAgencyWebApp
 
             app.UseRouting();
 
-          //  app.UseAuthentication();
+            app.UseAuthentication();
             app.UseAuthorization();
 
+			app.SeedAdministrator(adminEmail, adminUsername, adminPassword);
+
+			app.MapControllerRoute(
+                name: "Areas",
+                pattern: "{area:exists}/{cotroller=Home}/{action=Index}/{id}");
+			
+            app.MapControllerRoute(
+				name: "Errors",
+				pattern: "{controller=Home}/{action=Index}/{statusCode?}");
+			
             app.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");
+           
             app.MapRazorPages();
 
             app.Run();

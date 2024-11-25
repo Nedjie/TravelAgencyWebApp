@@ -17,6 +17,7 @@
           "Microsoft.EntityFrameworkCore.Sqlite": "8.0.10",
           "Microsoft.EntityFrameworkCore.Tools": "8.0.10",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "8.0.6",
+          "TravelAgencyWebApp.Common": "1.0.0",
           "TravelAgencyWebApp.Data": "1.0.0",
           "TravelAgencyWebApp.Services.Data": "1.0.0",
           "TravelAgencyWebApp.ViewModels": "1.0.0",

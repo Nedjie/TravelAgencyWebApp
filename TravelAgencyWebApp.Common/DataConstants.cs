@@ -2,17 +2,13 @@
 {
     public static class DataConstants
     {
-        // User Constants
-        public const string UserNameRequiredError = "Name is required.";
-        public const int UserNameMaxLength = 100;
-        public const string UserNameMaxLengthError = "Name cannot be longer than {0} characters.";
-        public const string UserEmailRequiredError = "Email is required.";
-        public const string UserEmailInvalidError = "Invalid email format.";
-        public const string UserPasswordRequiredError = "Password is required.";
-        public const int UserPasswordMinLength = 6;
-        public const int UserPasswordMaxLength = 100;
-        public const string UserPasswordMinLengthError = "Password must be at least {0} characters long.";
-
+        // ApplicationUser Constants
+        public const string FullNameRequiredError = "Name is required.";
+        public const int FullNameMaxLength = 200;
+        public const string FullNameMaxLengthError = "Full name cannot be longer than {0} characters";
+        public const int AddressMaxLength = 250;
+        public const string AddressMaxLengthError = "Address cannot be longer than {0} characters";
+            
         // Offer Constants
         public const int OfferTitleMaxLength = 200;
         public const string OfferTitleRequiredError = "Title is required.";

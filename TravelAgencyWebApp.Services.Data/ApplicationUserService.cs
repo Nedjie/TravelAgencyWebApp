@@ -1,33 +1,91 @@
-﻿using TravelAgencyWebApp.Data.Models;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using TravelAgencyWebApp.Data.Models;
 using TravelAgencyWebApp.Services.Data.Interfaces;
+using TravelAgencyWebApp.ViewModels.Admin.UserManagement;
 
 namespace TravelAgencyWebApp.Services.Data
 {
     public class ApplicationUserService : IApplicationUserService
     {
-        public Task AddUserAsync(ApplicationUser user)
+        private readonly UserManager<ApplicationUser> _userManager;
+
+        public ApplicationUserService(UserManager<ApplicationUser> userManager)
         {
-            throw new NotImplementedException();
+            _userManager = userManager;
         }
 
-        public Task DeleteUserAsync(int id)
+        public async Task<IEnumerable<AllUsersViewModel>> GetAllUsersAsync()
         {
-            throw new NotImplementedException();
+            IEnumerable<ApplicationUser> allUsers = await _userManager.Users.ToArrayAsync();
+
+            ICollection<AllUsersViewModel> allUsersViewModel = new List<AllUsersViewModel>();
+
+            foreach (ApplicationUser user in allUsers)
+            {
+                IEnumerable<string> roles = await _userManager.GetRolesAsync(user);
+
+                allUsersViewModel.Add(new AllUsersViewModel()
+                {
+                    Id = user.Id.ToString(),
+                    UserName = user.UserName!,
+                    Email = user.Email!,
+                    FullName = user.FullName,
+                    Roles = roles
+                });
+            }
+            return allUsersViewModel;
+
         }
 
-        public Task<IEnumerable<ApplicationUser>> GetAllUsersAsync()
+        public async Task AddUserAsync(ApplicationUser user, string password)
         {
-            throw new NotImplementedException();
+            {
+                var result = await _userManager.CreateAsync(user, password);
+                if (!result.Succeeded)
+                {
+                    throw new Exception(string.Join(", ", result.Errors.Select(e => e.Description)));
+                }
+            }
         }
 
-        public Task<ApplicationUser?> GetUserByIdAsync(int id)
+        public async Task<IEnumerable<string>> GetRolesByUserIdAsync(Guid id)
         {
-            throw new NotImplementedException();
+            var user = await _userManager.FindByIdAsync(id.ToString());
+            if (user == null)
+            {
+                throw new KeyNotFoundException($"User with ID {id} not found.");
+            }
+
+            return await _userManager.GetRolesAsync(user);
         }
 
-        public Task UpdateUserAsync(ApplicationUser user)
+        public async Task DeleteUserAsync(Guid id)
         {
-            throw new NotImplementedException();
+            var user = await _userManager.FindByIdAsync(id.ToString());
+            if (user != null)
+            {
+                var result = await _userManager.DeleteAsync(user);
+                if (!result.Succeeded)
+                {
+                    throw new Exception(string.Join(", ", result.Errors.Select(e => e.Description)));
+                }
+            }
+        }
+
+        public async Task<ApplicationUser?> GetUserByIdAsync(Guid id)
+        {
+            return await _userManager.FindByIdAsync(id.ToString());
+        }
+
+        public async Task UpdateUserAsync(ApplicationUser user)
+        {
+            var result = await _userManager.UpdateAsync(user);
+            if (!result.Succeeded)
+            {
+                throw new Exception(string.Join(", ", result.Errors.Select(e => e.Description)));
+            }
         }
     }
+
 }

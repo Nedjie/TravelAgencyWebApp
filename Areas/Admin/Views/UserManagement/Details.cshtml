@@ -1,0 +1,31 @@
+﻿@model TravelAgencyWebApp.ViewModels.Admin.UserManagement.UserDetailsViewModel
+
+@{
+    ViewData["Title"] = "Детайли за Потребителя";
+}
+
+<div class="container mt-5">
+    <h2 class="text-center">Детайли за Потребителя</h2>
+
+    <div class="mb-3">
+        <h4>Основна Информация</h4>
+        <p><strong>Име:</strong> @Model.FullName</p>
+        <p><strong>Потребителско Име:</strong> @Model.UserName</p>
+        <p><strong>Email:</strong> @Model.Email</p>
+        <p><strong>Адрес:</strong> @Model.Address</p>
+    </div>
+
+    <div class="mb-3">
+        <h4>Роли</h4>
+        <p>@string.Join(", ", Model.Roles)</p>
+    </div>
+
+    <div class="mb-4">
+        <a asp-action="Index" class="btn btn-secondary">Назад</a>
+        <a asp-controller="UserManagement" asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">Редактиране</a>
+    </div>
+</div>
+
+<!-- Include necessary scripts -->
+<script src="~/Content/scripts/jquery.min.js" asp-append-version="true"></script>
+<script src="~/Content/styles/bootstrap4/bootstrap.bundle.min.js" asp-append-version="true"></script>

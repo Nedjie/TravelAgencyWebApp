@@ -108,7 +108,6 @@
   <ItemGroup>
     <Folder Include=".github\workflows\" />
     <Folder Include="Areas\Admin\Views\Shared\" />
-    <Folder Include="Areas\Admin\Views\UserManagement\" />
     <Folder Include="Views\TravelingWay\" />
     <Folder Include="Views\ApplicationUser\" />
   </ItemGroup>

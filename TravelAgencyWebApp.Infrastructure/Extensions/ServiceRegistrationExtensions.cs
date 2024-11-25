@@ -33,7 +33,7 @@ namespace TravelAgencyWebApp.Infrastructure.Extensions
 
 		public static IServiceCollection AddApplicationIdentity(this IServiceCollection services, IConfiguration config)
 		{
-			services.AddIdentity<ApplicationUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
+			services.AddIdentity<ApplicationUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = false)
 				.AddEntityFrameworkStores<ApplicationDbContext>()
 				.AddRoles<IdentityRole<Guid>>()
 				.AddSignInManager<SignInManager<ApplicationUser>>()

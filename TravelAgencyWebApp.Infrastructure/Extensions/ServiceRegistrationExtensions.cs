@@ -46,7 +46,8 @@ namespace TravelAgencyWebApp.Infrastructure.Extensions
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddRoles<IdentityRole<Guid>>()
                 .AddSignInManager<SignInManager<ApplicationUser>>()
-                .AddUserManager<UserManager<ApplicationUser>>();
+                .AddUserManager<UserManager<ApplicationUser>>()
+                .AddDefaultTokenProviders();
 
             return services;
 

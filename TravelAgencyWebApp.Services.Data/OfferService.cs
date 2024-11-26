@@ -17,11 +17,11 @@ namespace TravelAgencyWebApp.Services.Data
 
 		public async Task<IEnumerable<Offer>> GetAllOffersAsync()
 		{
-			return await _offerRepository.GetAllIncludingAsync(o => o.TravelingWay);
+			return await _offerRepository.GetAllIncludingAsync(o => o.TravelingWay!);
 		}
 		public async Task<Offer?> GetOfferByIdAsync(int id)
 		{
-			return await _offerRepository.GetIncludingAsync(id, o => o.TravelingWay);
+			return await _offerRepository.GetIncludingAsync(id, o => o.TravelingWay!);
 		}
 		public async Task<IDictionary<TravelingWay, IEnumerable<Offer>>> GetOffersGroupedByTravelingWayAsync()
 		{

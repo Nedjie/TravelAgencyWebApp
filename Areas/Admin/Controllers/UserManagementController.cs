@@ -40,8 +40,8 @@ namespace TravelAgencyWebApp.Areas.Admin.Controllers
             var model = new UserDetailsViewModel
             {
                 Id = user.Id.ToString(),
-                UserName = user.UserName,
-                Email = user.Email,
+                UserName = user.UserName!,
+                Email = user.Email!,
                 FullName = user.FullName,
                 Address = user.Address,
                 Roles = roles 

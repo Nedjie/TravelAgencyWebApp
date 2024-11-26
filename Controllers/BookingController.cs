@@ -68,8 +68,8 @@ namespace TravelAgencyWebApp.Controllers
 
                 return View(model);
             }
-
-            model.UserId = User.GetCurrentUserId();
+            var id = User.GetCurrentUserId().ToString();
+            model.UserId = Guid.Parse(id);
 
             await _bookingService.AddBookingAsync(model);
             return RedirectToAction(nameof(Index));
@@ -94,7 +94,7 @@ namespace TravelAgencyWebApp.Controllers
             var model = new EditBookingViewModel
             {
                 Id = booking.Id,
-                UserId = booking.UserId,
+                UserId = Guid.Parse(booking.UserId!),
                 CheckInDate = booking.CheckInDate,
                 CheckOutDate = booking.CheckOutDate,
                 OfferId = booking.OfferId

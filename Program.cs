@@ -14,6 +14,7 @@ namespace TravelAgencyWebApp
             string adminEmail = builder.Configuration.GetValue<string>("Administrator:Email")!;
             string adminUsername = builder.Configuration.GetValue<string>("Administrator:Username")!;
             string adminPassword = builder.Configuration.GetValue<string>("Administrator:Password")!;
+            string adminAddress = builder.Configuration.GetValue<string>("Administrator:Address")!;
 
 			builder.Services.AddApplicationDatabase(builder.Configuration);
             builder.Services.AddApplicationIdentity(builder.Configuration);

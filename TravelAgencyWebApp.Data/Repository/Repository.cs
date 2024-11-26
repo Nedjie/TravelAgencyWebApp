@@ -84,8 +84,8 @@ namespace TravelAgencyWebApp.Data.Repository
 
 		public async Task<bool> DeleteAsync(TType entity)
 		{
-			if (entity == null) throw new ArgumentNullException(nameof(entity));
-			_dbSet.Remove(entity);
+            ArgumentNullException.ThrowIfNull(entity);
+            _dbSet.Remove(entity);
 			return await _context.SaveChangesAsync() > 0;
 		}
 

@@ -11,10 +11,10 @@ namespace TravelAgencyWebApp.Services.Data
     {
         private readonly IRepository<Booking, int> _bookingRepository;
         private readonly IRepository<Offer, int> _offerRepository;
-        private readonly IRepository<ApplicationUser,int> _userRepository;
+        private readonly IRepository<ApplicationUser,Guid> _userRepository;
 
         public BookingService(IRepository<Booking, int> bookingRepository,
-            IRepository<Offer, int> offerRepository,IRepository<ApplicationUser,int> userRepository)
+            IRepository<Offer, int> offerRepository,IRepository<ApplicationUser,Guid> userRepository)
         {
             _bookingRepository = bookingRepository;
             _offerRepository = offerRepository;
@@ -28,8 +28,8 @@ namespace TravelAgencyWebApp.Services.Data
             return bookings.Select(b => new BookingViewModel
             {
                 Id = b.Id,
-                UserId = b.UserId,
-                UserName = b.User != null ? b.User.Name : "Unknown",
+                UserId = b.UserId.ToString(),
+                UserName = b.User != null ? b.User.UserName : "Unknown",
                 OfferId = b.OfferId,
                 OfferTitle = b.Offer != null ? b.Offer.Title : "No Offer",
                 CheckInDate = b.CheckInDate,
@@ -42,14 +42,14 @@ namespace TravelAgencyWebApp.Services.Data
             var booking = await _bookingRepository.GetByIdAsync(id);
             if (booking == null)
             {
-                return null; // Returning null if no booking found
+                return null; 
             }
 
             return new BookingViewModel
             {
                 Id = booking.Id,
-                UserId = booking.UserId,
-                UserName = booking.User != null ? booking.User.Name : "Unknown",
+                UserId = booking.UserId.ToString(),
+                UserName = booking.User != null ? booking.User.UserName : "Unknown",
                 OfferId = booking.OfferId,
                 OfferTitle = booking.Offer != null ? booking.Offer.Title : "No Offer",
                 CheckInDate = booking.CheckInDate,
@@ -64,21 +64,15 @@ namespace TravelAgencyWebApp.Services.Data
                 throw new ArgumentException(DataConstants.BookingCheckOutDateIsBeforeCheckInDateError);
             }
 
-            var userExists = await _userRepository.GetByIdAsync(model.UserId); 
-            if (userExists == null)
-            {
-                throw new EntityNotFoundException($"User with ID {model.UserId} not found.");
-            }
-
+            var userExists = await _userRepository.GetByIdAsync(model.UserId);
+            ArgumentNullException.ThrowIfNull(userExists);
+          
             var offer = await _offerRepository.GetByIdAsync(model.OfferId);
-            if (offer == null)
-            {
-                throw new EntityNotFoundException($"Offer with ID {model.OfferId} not found.");
-            }
+            ArgumentNullException.ThrowIfNull(offer);            
 
             var booking = new Booking
             {
-                UserId = model.UserId.ToString(),
+                UserId = model.UserId,
                 CheckInDate = model.CheckInDate,
                 CheckOutDate = model.CheckOutDate,
                 OfferId = model.OfferId
@@ -89,16 +83,10 @@ namespace TravelAgencyWebApp.Services.Data
 
         public async Task UpdateBookingAsync(EditBookingViewModel model)
         {
-            if (model == null)
-            {
-                throw new ArgumentNullException(nameof(model));
-            }
+            ArgumentNullException.ThrowIfNull(model);          
 
             var existingBooking = await _bookingRepository.GetByIdAsync(model.Id);
-            if (existingBooking == null)
-            {
-                throw new EntityNotFoundException($"Booking with ID {model.Id} not found.");
-            }
+            ArgumentNullException.ThrowIfNull(existingBooking);           
 
             if (model.CheckOutDate <= model.CheckInDate)
             {
@@ -116,10 +104,7 @@ namespace TravelAgencyWebApp.Services.Data
         public async Task DeleteBookingAsync(int id)
         {
             var booking = await _bookingRepository.GetByIdAsync(id);
-            if (booking == null)
-            {
-                throw new EntityNotFoundException($"Booking with ID {id} not found.");
-            }
+            ArgumentNullException.ThrowIfNull(booking);
 
             await _bookingRepository.DeleteAsync(booking);
         }

@@ -14,7 +14,7 @@ namespace TravelAgencyWebApp.Data.Models
 
         [Required(ErrorMessage = BookingUserIdRequiredError)]
         [Comment("User identifier")]
-        public string? UserId { get; set; }
+        public Guid UserId { get; set; }
 
         [ForeignKey(nameof(UserId))]
         public ApplicationUser? User { get; set; }

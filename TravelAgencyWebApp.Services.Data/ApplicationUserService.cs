@@ -15,15 +15,15 @@ namespace TravelAgencyWebApp.Services.Data
             _userManager = userManager;
         }
 
-        public async Task<IEnumerable<AllUsersViewModel>> GetAllUsersAsync()
+        public async Task<List<AllUsersViewModel>> GetAllUsersAsync()
         {
-            IEnumerable<ApplicationUser> allUsers = await _userManager.Users.ToArrayAsync();
+            var allUsers = await _userManager.Users.ToArrayAsync();
 
-            ICollection<AllUsersViewModel> allUsersViewModel = new List<AllUsersViewModel>();
+            var allUsersViewModel = new List<AllUsersViewModel>();
 
-            foreach (ApplicationUser user in allUsers)
+            foreach (var user in allUsers)
             {
-                IEnumerable<string> roles = await _userManager.GetRolesAsync(user);
+                var roles = await _userManager.GetRolesAsync(user);
 
                 allUsersViewModel.Add(new AllUsersViewModel()
                 {

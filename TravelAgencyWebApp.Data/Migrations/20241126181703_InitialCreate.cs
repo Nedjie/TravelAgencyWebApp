@@ -3,10 +3,12 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
+#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
+
 namespace TravelAgencyWebApp.Data.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialMigration : Migration
+    public partial class InitialCreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -15,7 +17,7 @@ namespace TravelAgencyWebApp.Data.Migrations
                 name: "AspNetRoles",
                 columns: table => new
                 {
-                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     ConcurrencyStamp = table.Column<string>(type: "nvarchar(max)", nullable: true)
@@ -29,9 +31,9 @@ namespace TravelAgencyWebApp.Data.Migrations
                 name: "AspNetUsers",
                 columns: table => new
                 {
-                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false, comment: "User name"),
-                    Password = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false, comment: "User password"),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    FullName = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
+                    Address = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: false),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
@@ -73,7 +75,7 @@ namespace TravelAgencyWebApp.Data.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    RoleId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    RoleId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     ClaimType = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ClaimValue = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
@@ -94,7 +96,7 @@ namespace TravelAgencyWebApp.Data.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     ClaimType = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ClaimValue = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
@@ -116,7 +118,7 @@ namespace TravelAgencyWebApp.Data.Migrations
                     LoginProvider = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     ProviderKey = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     ProviderDisplayName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false)
+                    UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -133,8 +135,8 @@ namespace TravelAgencyWebApp.Data.Migrations
                 name: "AspNetUserRoles",
                 columns: table => new
                 {
-                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    RoleId = table.Column<string>(type: "nvarchar(450)", nullable: false)
+                    UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    RoleId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -157,7 +159,7 @@ namespace TravelAgencyWebApp.Data.Migrations
                 name: "AspNetUserTokens",
                 columns: table => new
                 {
-                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     LoginProvider = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     Value = table.Column<string>(type: "nvarchar(max)", nullable: true)
@@ -202,7 +204,7 @@ namespace TravelAgencyWebApp.Data.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false, comment: "Booking identifier")
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false, comment: "User identifier"),
+                    UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false, comment: "User identifier"),
                     OfferId = table.Column<int>(type: "int", nullable: false, comment: "Offer identifier"),
                     CheckInDate = table.Column<DateTime>(type: "datetime2", nullable: false, comment: "Check in date of booking"),
                     CheckOutDate = table.Column<DateTime>(type: "datetime2", nullable: false, comment: "Check out date of booking")
@@ -230,7 +232,7 @@ namespace TravelAgencyWebApp.Data.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false, comment: "Review identifier")
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false, comment: "User identifier of review"),
+                    UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false, comment: "User identifier of review"),
                     OfferId = table.Column<int>(type: "int", nullable: false, comment: "Offer identifier"),
                     ReviewText = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: false, comment: "Review text"),
                     Rating = table.Column<int>(type: "int", nullable: false, comment: "Review rating"),
@@ -251,6 +253,17 @@ namespace TravelAgencyWebApp.Data.Migrations
                         principalTable: "Offers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.InsertData(
+                table: "TravelingWays",
+                columns: new[] { "Id", "Cost", "Description", "Method" },
+                values: new object[,]
+                {
+                    { 1, 0m, "Travel by airplane.", "Air" },
+                    { 2, 0m, "Travel by train.", "Train" },
+                    { 3, 0m, "Travel by bus.", "Bus" },
+                    { 4, 0m, "Travel by car.", "Car" }
                 });
 
             migrationBuilder.CreateIndex(

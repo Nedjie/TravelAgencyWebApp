@@ -4,18 +4,18 @@ using static TravelAgencyWebApp.Common.DataConstants;
 
 namespace TravelAgencyWebApp.Data.Models
 {
-	public class ApplicationUser : IdentityUser<Guid>
-	{
-		[Required(ErrorMessage =FullNameRequiredError)]
-		[StringLength(FullNameMaxLength,
-			ErrorMessage = FullNameMaxLengthError)]
-		public string FullName { get; set; } = null!;
+    public class ApplicationUser : IdentityUser<Guid>
+    {
+        [Required(ErrorMessage = FullNameRequiredError)]
+        [StringLength(FullNameMaxLength,
+            ErrorMessage = FullNameMaxLengthError)]
+        public string FullName { get; set; } = null!;
 
-		[StringLength(AddressMaxLength,
-			ErrorMessage = AddressMaxLengthError)]
-		public string Address { get; set; } = null!;
+        [StringLength(AddressMaxLength,
+            ErrorMessage = AddressMaxLengthError)]
+        public string? Address { get; set; } 
 
-		public ICollection<Booking> Bookings { get; set; } = new HashSet<Booking>();
-		public ICollection<Review> Reviews { get; set; } = new HashSet<Review>();
-	}
+        public virtual ICollection<Booking> Bookings { get; set; } = new HashSet<Booking>();
+        public virtual ICollection<Review> Reviews { get; set; } = new HashSet<Review>();
+    }
 }

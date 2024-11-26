@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TravelAgencyWebApp.ViewModels")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+01f1ac888b49fbf9ad58727ef775d79b212db264")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a14213cf79d31794feb5437a15665278c55798c6")]
 [assembly: System.Reflection.AssemblyProductAttribute("TravelAgencyWebApp.ViewModels")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TravelAgencyWebApp.ViewModels")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

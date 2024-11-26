@@ -29,13 +29,6 @@ namespace TravelAgencyWebApp.Data
         {
             base.OnModelCreating(modelBuilder);
 
-            // Configure foreign key for Booking
-            modelBuilder.Entity<Booking>()
-                .HasOne(b => b.User)
-                .WithMany(u => u.Bookings)
-                .HasForeignKey(b => b.UserId)
-                .OnDelete(DeleteBehavior.Cascade);
-
             modelBuilder.Entity<Booking>()
                  .HasOne(b => b.User)
                  .WithMany(u => u.Bookings)

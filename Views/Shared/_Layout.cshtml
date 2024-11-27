@@ -25,12 +25,32 @@
 						<div class="col d-flex flex-row">
 							<div class="phone">+359 332 5678</div>
 							<div class="user_box ml-auto">
-								<div class="user_box_login user_box_link">
-									<a asp-area="Identity" asp-page="/Account/Login">Вход</a>
-								</div>
-								<div class="user_box_login user_box_link">
-									<a asp-area="Identity" asp-page="/Account/Register">Регистрация</a>
-								</div>
+
+								@if (User.Identity!.IsAuthenticated)
+								{
+									<div class="user_box_login user_box_link">
+										<a class="nav-link" asp-page="/Account/Manage/Index" title="Manage">Здравей, @User.Identity.Name!</a>
+									</div>
+									<div class="user_box_login user_box_link">
+										<a class="nav-link" asp-area="Identity" asp-page="/Account/Logout"
+										   title="Logout"
+										   onclick="event.preventDefault(); document.getElementById('logoutForm').submit();">
+											Изход
+										</a>
+										<form id="logoutForm" asp-area="Identity" asp-page="/Account/Logout" method="post" style="display: none;">
+											{{-- Any additional hidden fields if necessary --}}
+										</form>
+									</div>
+								}
+								else
+								{
+									<div class="user_box_login user_box_link">
+										<a asp-area="Identity" asp-page="/Account/Login">Вход</a>
+									</div>
+									<div class="user_box_login user_box_link">
+										<a asp-area="Identity" asp-page="/Account/Register">Регистрация</a>
+									</div>
+								}
 							</div>
 						</div>
 					</div>
@@ -64,39 +84,39 @@
 			<img src="~/Content/images/about_background.jpg" alt="Нашите Оферти" class="img-fluid" style="max-width: 100%; height: auto;" />
 		</div>
 	</div>
-		<!-- Body Content -->
-		<main>
-			@RenderBody()
-		</main>
+	<!-- Body Content -->
+	<main>
+		@RenderBody()
+	</main>
 
-		<!-- Footer -->
-		<footer class="footer">
-			<div class="container">
-				<div class="row justify-content-center">
-					<!-- Center the content horizontally -->
-					<div class="col-lg-6 text-center">
-						<!-- Changed width as needed, and added text-center -->
-						<div class="footer_col">
-							<div class="footer_content footer_about">
-								<div class="logo_container footer_logo">
-									<div class="logo"><a href="#"><img src="images/logo.png" alt="" />Дени Травел</a></div>
-								</div>
-								<p>Вашият надежден партньор за пътуване.</p>
-								<p>Свържете се с нас: <a href="mailto:info@denitravel.com">info@denitravel.com</a></p>
-								<p>Телефон: +359 345 3324</p>
-								<ul class="footer_social_list list-inline">
-									<!-- Use list-inline for social icons -->
-									<li class="footer_social_item list-inline-item"><a href="#"><i class="fa fa-pinterest"></i></a></li>
-									<li class="footer_social_item list-inline-item"><a href="#"><i class="fa fa-facebook-f"></i></a></li>
-									<li class="footer_social_item list-inline-item"><a href="#"><i class="fa fa-twitter"></i></a></li>
-								</ul>
-								<p class="mt-3">&copy; 2024 Дени Травел. Всички права запазени.</p> <!-- Copyright Notice -->
+	<!-- Footer -->
+	<footer class="footer">
+		<div class="container">
+			<div class="row justify-content-center">
+				<!-- Center the content horizontally -->
+				<div class="col-lg-6 text-center">
+					<!-- Changed width as needed, and added text-center -->
+					<div class="footer_col">
+						<div class="footer_content footer_about">
+							<div class="logo_container footer_logo">
+								<div class="logo"><a href="#"><img src="images/logo.png" alt="" />Дени Травел</a></div>
 							</div>
+							<p>Вашият надежден партньор за пътуване.</p>
+							<p>Свържете се с нас: <a href="mailto:info@denitravel.com">info@denitravel.com</a></p>
+							<p>Телефон: +359 345 3324</p>
+							<ul class="footer_social_list list-inline">
+								<!-- Use list-inline for social icons -->
+								<li class="footer_social_item list-inline-item"><a href="#"><i class="fa fa-pinterest"></i></a></li>
+								<li class="footer_social_item list-inline-item"><a href="#"><i class="fa fa-facebook-f"></i></a></li>
+								<li class="footer_social_item list-inline-item"><a href="#"><i class="fa fa-twitter"></i></a></li>
+							</ul>
+							<p class="mt-3">&copy; 2024 Дени Травел. Всички права запазени.</p> <!-- Copyright Notice -->
 						</div>
 					</div>
 				</div>
 			</div>
-		</footer>
+		</div>
+	</footer>
 	<!-- Render script section at the bottom -->
 	@RenderSection("Scripts", required: false)
 	<!-- Scripts Section -->

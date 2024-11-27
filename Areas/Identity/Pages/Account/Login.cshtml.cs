@@ -14,11 +14,13 @@ namespace TravelAgencyWebApp.Areas.Identity.Pages.Account
 	public class LoginModel : PageModel
     {
         private readonly SignInManager<ApplicationUser> _signInManager;
+        private readonly UserManager<ApplicationUser> _userManager;
         private readonly ILogger<LoginModel> _logger;
 
-        public LoginModel(SignInManager<ApplicationUser> signInManager, ILogger<LoginModel> logger)
+        public LoginModel(SignInManager<ApplicationUser> signInManager, UserManager<ApplicationUser> userManager, ILogger<LoginModel> logger)
         {
             _signInManager = signInManager;
+            _userManager = userManager;
             _logger = logger;
         }
 
@@ -99,35 +101,55 @@ namespace TravelAgencyWebApp.Areas.Identity.Pages.Account
         {
             returnUrl ??= Url.Content("~/");
 
-            ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
-
             if (ModelState.IsValid)
             {
-                // This doesn't count login failures towards account lockout
-                // To enable password failures to trigger account lockout, set lockoutOnFailure: true
-                var result = await _signInManager.PasswordSignInAsync(Input.Email, Input.Password, Input.RememberMe, lockoutOnFailure: false);
-                if (result.Succeeded)
+                // Log the attempt
+                _logger.LogInformation("Attempting login for email: {Email}", Input.Email);
+
+                // Find user by email
+                var user = await _userManager.FindByEmailAsync(Input.Email);
+                if (user != null)
                 {
-                    _logger.LogInformation("User logged in.");
-                    return LocalRedirect(returnUrl);
-                }
-                if (result.RequiresTwoFactor)
-                {
-                    return RedirectToPage("./LoginWith2fa", new { ReturnUrl = returnUrl, RememberMe = Input.RememberMe });
-                }
-                if (result.IsLockedOut)
-                {
-                    _logger.LogWarning("User account locked out.");
-                    return RedirectToPage("./Lockout");
+                    // Verify if the password matches
+                    if (await _userManager.CheckPasswordAsync(user, Input.Password))
+                    {
+                        // Proceed to sign-in the user
+                        _logger.LogInformation("Password check succeeded for user: {Email}", Input.Email);
+
+                        var result = await _signInManager.PasswordSignInAsync(user, Input.Password, Input.RememberMe, lockoutOnFailure: false);
+
+                        if (result.Succeeded)
+                        {
+                            _logger.LogInformation("User logged in successfully.");
+                            return LocalRedirect(returnUrl);
+                        }
+
+                        if (result.RequiresTwoFactor)
+                        {
+                            return RedirectToPage("./LoginWith2fa", new { ReturnUrl = returnUrl });
+                        }
+
+                        if (result.IsLockedOut)
+                        {
+                            _logger.LogWarning("User account locked out for email: {Email}", Input.Email);
+                            return RedirectToPage("./Lockout");
+                        }
+
+                        _logger.LogWarning("Sign-in failed for user: {Email}", Input.Email);
+                    }
+                    else
+                    {
+                        _logger.LogWarning("Password check failed for user: {Email}", Input.Email); // Log if password check fails
+                    }
                 }
                 else
                 {
-                    ModelState.AddModelError(string.Empty, "Invalid login attempt.");
-                    return Page();
+                    _logger.LogWarning("User not found for email: {Email}", Input.Email); // Log if user is not found
                 }
+
+                ModelState.AddModelError(string.Empty, "Invalid login attempt.");
             }
 
-            // If we got this far, something failed, redisplay form
             return Page();
         }
     }

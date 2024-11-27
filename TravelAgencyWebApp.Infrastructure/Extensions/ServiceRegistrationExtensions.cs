@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using System.Net;
 using TravelAgencyWebApp.Data;
 using TravelAgencyWebApp.Data.Models;
 using TravelAgencyWebApp.Data.Repository;
@@ -125,8 +124,9 @@ namespace TravelAgencyWebApp.Infrastructure.Extensions
         public static IServiceCollection AddCustomServices(this IServiceCollection services, IConfiguration _)
         {
             // Register repositories and services
-            services.AddScoped(typeof(IRepository<,>), typeof(Repository<,>)); 
-            services.AddScoped<IBookingService, BookingService>();
+            services.AddScoped(typeof(IRepository<,>), typeof(Repository<,>));
+			services.AddScoped<IApplicationUserService, ApplicationUserService>();
+			services.AddScoped<IBookingService, BookingService>();
             services.AddScoped<IHomeService, HomeService>();
             services.AddScoped<IOfferService, OfferService>();
             services.AddScoped<IReviewService, ReviewService>();

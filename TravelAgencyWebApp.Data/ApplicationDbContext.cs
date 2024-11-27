@@ -14,7 +14,7 @@ namespace TravelAgencyWebApp.Data
         public DbSet<Booking> Bookings { get; set; }
         public DbSet<Offer> Offers { get; set; }
         public DbSet<Review> Reviews { get; set; }
-        public DbSet<TravelingWay> TravelingWays { get; set; }
+        public DbSet<TravelingWay> TravelingWays { get; set; }  
         //public DbSet<ApplicationUser> Users { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

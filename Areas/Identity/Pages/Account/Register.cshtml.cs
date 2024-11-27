@@ -1,78 +1,146 @@
-﻿using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc.RazorPages;
+﻿// Licensed to the .NET Foundation under one or more agreements.
+// The .NET Foundation licenses this file to you under the MIT license.
+#nullable disable
+
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using System.Security.Policy;
-using TravelAgencyWebApp.Data.Models;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.ComponentModel.DataAnnotations;
+using TravelAgencyWebApp.Data.Models;
 
-public class RegisterModel : PageModel
+namespace TravelAgencyWebApp.Areas.Identity.Pages.Account
 {
-    private readonly UserManager<ApplicationUser> _userManager;
-    private readonly SignInManager<ApplicationUser> _signInManager;
-    private readonly ILogger<RegisterModel> _logger;
-
-    public RegisterModel(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, ILogger<RegisterModel> logger)
+    public class RegisterModel : PageModel
     {
-        _userManager = userManager;
-        _signInManager = signInManager;
-        _logger = logger;
-    }
+        private readonly SignInManager<ApplicationUser> _signInManager;
+        private readonly UserManager<ApplicationUser> _userManager;
+        private readonly ILogger<RegisterModel> _logger;
 
-    [BindProperty]
-    public InputModel Input { get; set; } = new InputModel();
-
-    public string ReturnUrl { get; set; } = string.Empty;
-    public class InputModel
-    {
-        [Required(ErrorMessage = "Full name is required.")]
-        [Display(Name = "Full Name")]
-        public string FullName { get; set; } = string.Empty;
-
-        [Required(ErrorMessage = "Email is required.")]
-        [EmailAddress(ErrorMessage = "Invalid email format.")]
-        [Display(Name = "Email")]
-        public string Email { get; set; } = string.Empty;
-
-        [Required(ErrorMessage = "Username is required.")]
-        [StringLength(50, ErrorMessage = "The username must be at least {2} characters long.", MinimumLength = 3)]
-        [Display(Name = "Username")]
-        public string UserName { get; set; } = string.Empty;
-
-        [Required(ErrorMessage = "Password is required.")]
-        [StringLength(100, ErrorMessage = "The password must be at least {2} characters long.", MinimumLength = 6)]
-        [DataType(DataType.Password)]
-        [Display(Name = "Password")]
-        public string Password { get; set; } = string.Empty;
-
-        [DataType(DataType.Password)]
-        [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
-        public string ConfirmPassword { get; set; } = string.Empty;
-    }
-    public async Task<IActionResult> OnPostAsync(string? returnUrl = null)
-    {
-        returnUrl ??= Url.Content("~/");
-        if (ModelState.IsValid)
+        public RegisterModel(
+            UserManager<ApplicationUser> userManager,
+            SignInManager<ApplicationUser> signInManager,
+            ILogger<RegisterModel> logger)
         {
-            var user = new ApplicationUser { UserName = Input.UserName, Email = Input.Email, FullName = Input.FullName };
+            _userManager = userManager;
+            _signInManager = signInManager;
+            _logger = logger;
+        }
 
-            var result = await _userManager.CreateAsync(user, Input.Password);
-            if (result.Succeeded)
+        /// <summary>
+        ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
+        ///     directly from your code. This API may change or be removed in future releases.
+        /// </summary>
+        [BindProperty]
+        public InputModel Input { get; set; }
+
+        /// <summary>
+        ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
+        ///     directly from your code. This API may change or be removed in future releases.
+        /// </summary>
+        public string ReturnUrl { get; set; }
+
+        /// <summary>
+        ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
+        ///     directly from your code. This API may change or be removed in future releases.
+        /// </summary>
+        public IList<AuthenticationScheme> ExternalLogins { get; set; }
+
+        /// <summary>
+        ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
+        ///     directly from your code. This API may change or be removed in future releases.
+        /// </summary>
+        public class InputModel
+        {
+            [Required(ErrorMessage = "Full name is required.")]
+            [Display(Name = "Full Name")]
+            public string FullName { get; set; } = string.Empty;
+
+            /// <summary>
+            ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
+            ///     directly from your code. This API may change or be removed in future releases.
+            /// </summary>
+            [Required]
+            [EmailAddress]
+            [Display(Name = "Email")]
+            public string Email { get; set; }
+
+            [Required(ErrorMessage = "Username is required.")]
+            [StringLength(50, ErrorMessage = "The username must be at least {2} characters long and at max {1} characters long.", MinimumLength = 3)]
+            [Display(Name = "Username")]
+            public string UserName { get; set; } = string.Empty;
+            /// <summary>
+            ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
+            ///     directly from your code. This API may change or be removed in future releases.
+            /// </summary>
+            [Required]
+            [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]
+            [DataType(DataType.Password)]
+            [Display(Name = "Password")]
+            public string Password { get; set; }
+
+            /// <summary>
+            ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
+            ///     directly from your code. This API may change or be removed in future releases.
+            /// </summary>
+            [DataType(DataType.Password)]
+            [Display(Name = "Confirm password")]
+            [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+            public string ConfirmPassword { get; set; }
+        }
+
+
+        public async Task OnGetAsync(string returnUrl = null)
+        {
+            ReturnUrl = returnUrl;
+            ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
+        }
+
+        public async Task<IActionResult> OnPostAsync(string returnUrl = null)
+        {
+            returnUrl ??= Url.Content("~/");
+            if (ModelState.IsValid)
             {
-                //_logger.LogInformation("User created a new account with password.");
-                _logger.LogInformation("Register page accessed.");
-                ReturnUrl = returnUrl;
-                return Page();
-                //await _signInManager.SignInAsync(user, isPersistent: false);
-                //return LocalRedirect(returnUrl);
+                var user = CreateUser();
+
+                var result = await _userManager.CreateAsync(user, Input.Password);
+
+                if (result.Succeeded)
+                {
+                    _logger.LogInformation("User created a new account with password.");
+                    await _signInManager.SignInAsync(user, isPersistent: false);
+                    return LocalRedirect(returnUrl);
+                }
+                foreach (var error in result.Errors)
+                {
+                    ModelState.AddModelError(string.Empty, error.Description);
+                }
             }
 
-            foreach (var error in result.Errors)
+            // If we got this far, something failed, redisplay form
+            return Page();
+        }
+
+        private ApplicationUser CreateUser()
+        {
+            try
             {
-                ModelState.AddModelError(string.Empty, error.Description);
+                var user = new ApplicationUser
+                {
+                    UserName = Input.UserName,
+                    Email = Input.Email,
+                    FullName = Input.FullName 
+                };
+
+                return user;
+            }
+            catch
+            {
+                throw new InvalidOperationException($"Can't create an instance of '{nameof(IdentityUser)}'. " +
+                    $"Ensure that '{nameof(IdentityUser)}' is not an abstract class and has a parameterless constructor, or alternatively " +
+                    $"override the register page in /Areas/Identity/Pages/Account/Register.cshtml");
             }
         }
 
-        return Page(); // If we got this far, something failed, redisplay the form
     }
 }

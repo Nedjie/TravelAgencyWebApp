@@ -9,11 +9,14 @@ namespace TravelAgencyWebApp.Services.Data
     public class ApplicationUserService : IApplicationUserService
     {
         private readonly UserManager<ApplicationUser> _userManager;
+		private readonly RoleManager<IdentityRole<Guid>> _roleManager;
 
-        public ApplicationUserService(UserManager<ApplicationUser> userManager)
-        {
+		public ApplicationUserService(UserManager<ApplicationUser> userManager,
+			 RoleManager<IdentityRole<Guid>> roleManager)
+		{
             _userManager = userManager;
-        }
+			_roleManager = roleManager;
+		}
 
         public async Task<List<AllUsersViewModel>> GetAllUsersAsync()
         {
@@ -38,54 +41,86 @@ namespace TravelAgencyWebApp.Services.Data
 
         }
 
-        public async Task AddUserAsync(ApplicationUser user, string password)
-        {
-            {
-                var result = await _userManager.CreateAsync(user, password);
-                if (!result.Succeeded)
-                {
-                    throw new Exception(string.Join(", ", result.Errors.Select(e => e.Description)));
-                }
-            }
-        }
+		public async Task<bool> AssignUserToRoleAsync(Guid userId, string roleName)
+		{
+			ApplicationUser? user = await _userManager
+				.FindByIdAsync(userId.ToString());
+			bool roleExists = await _roleManager.RoleExistsAsync(roleName);
 
-        public async Task<IEnumerable<string>> GetRolesByUserIdAsync(Guid id)
-        {
-            var user = await _userManager.FindByIdAsync(id.ToString());
-            if (user == null)
-            {
-                throw new KeyNotFoundException($"User with ID {id} not found.");
-            }
+			if (user == null || !roleExists)
+			{
+				return false;
+			}
 
-            return await _userManager.GetRolesAsync(user);
-        }
+			bool alreadyInRole = await _userManager.IsInRoleAsync(user, roleName);
+			if (!alreadyInRole)
+			{
+				IdentityResult? result = await _userManager
+					.AddToRoleAsync(user, roleName);
 
-        public async Task DeleteUserAsync(Guid id)
-        {
-            var user = await _userManager.FindByIdAsync(id.ToString());
-            if (user != null)
-            {
-                var result = await _userManager.DeleteAsync(user);
-                if (!result.Succeeded)
-                {
-                    throw new Exception(string.Join(", ", result.Errors.Select(e => e.Description)));
-                }
-            }
-        }
+				if (!result.Succeeded)
+				{
+					return false;
+				}
+			}
 
-        public async Task<ApplicationUser?> GetUserByIdAsync(Guid id)
-        {
-            return await _userManager.FindByIdAsync(id.ToString());
-        }
+			return true;
+		}
 
-        public async Task UpdateUserAsync(ApplicationUser user)
-        {
-            var result = await _userManager.UpdateAsync(user);
-            if (!result.Succeeded)
-            {
-                throw new Exception(string.Join(", ", result.Errors.Select(e => e.Description)));
-            }
-        }
-    }
+		public async Task<bool> UserExistsByIdAsync(Guid userId)
+		{
+			ApplicationUser? user = await _userManager
+				.FindByIdAsync(userId.ToString());
 
+			return user != null;
+		}
+
+		public async Task<bool> RemoveUserRoleAsync(Guid userId, string roleName)
+		{
+			ApplicationUser? user = await _userManager
+				.FindByIdAsync(userId.ToString());
+			bool roleExists = await _roleManager.RoleExistsAsync(roleName);
+
+			if (user == null || !roleExists)
+			{
+				return false;
+			}
+
+			bool alreadyInRole = await _userManager.IsInRoleAsync(user, roleName);
+			if (alreadyInRole)
+			{
+				IdentityResult? result = await _userManager
+					.RemoveFromRoleAsync(user, roleName);
+
+				if (!result.Succeeded)
+				{
+					return false;
+				}
+			}
+
+			return true;
+		}
+
+		public async Task<bool> DeleteUserAsync(Guid userId)
+		{
+			ApplicationUser? user = await _userManager
+				.FindByIdAsync(userId.ToString());
+
+			if (user == null)
+			{
+				return false;
+			}
+
+			IdentityResult? result = await _userManager
+				.DeleteAsync(user);
+			if (!result.Succeeded)
+			{
+				return false;
+			}
+
+			return true;
+		}
+	}
 }
+        
+    

@@ -2,6 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using TravelAgencyWebApp.Common;
 using TravelAgencyWebApp.Common.Attributes;
+using static TravelAgencyWebApp.Common.DataConstants;
 
 
 namespace TravelAgencyWebApp.ViewModels.Booking
@@ -12,7 +13,7 @@ namespace TravelAgencyWebApp.ViewModels.Booking
         [Comment("Booking identifier")]
         public int Id { get; set; }
 
-        [Required(ErrorMessage = DataConstants.BookingUserIdRequiredError)]
+        [Required(ErrorMessage = BookingUserIdRequiredError)]
         [Comment("User identifier")]
         public string? UserId { get; set; }
 
@@ -25,12 +26,12 @@ namespace TravelAgencyWebApp.ViewModels.Booking
         [Comment("Offer title")]
         public string? OfferTitle { get; set; }
 
-        [Required(ErrorMessage = DataConstants.BookingCheckInDateRequiredError)]
+        [Required(ErrorMessage = BookingCheckInDateRequiredError)]
         [Comment("Check in date of booking")]
         public DateTime CheckInDate { get; set; } 
 
-        [Required(ErrorMessage = DataConstants.BookingCheckOutDateRequiredError)]
-        [IsBefore("CheckInDate", ErrorMessage = DataConstants.BookingCheckOutDateIsBeforeCheckInDateError)]
+        [Required(ErrorMessage = BookingCheckOutDateRequiredError)]
+        [IsBefore("CheckInDate", ErrorMessage = BookingCheckOutDateIsBeforeCheckInDateError)]
         [Comment("Check out date of booking")]
         public DateTime CheckOutDate { get; set; } 
     }

@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
-using TravelAgencyWebApp.Common;
+using static TravelAgencyWebApp.Common.DataConstants;
 
 namespace TravelAgencyWebApp.ViewModels.Booking
 {
@@ -14,11 +14,11 @@ namespace TravelAgencyWebApp.ViewModels.Booking
         [Comment("User identifier")]
         public Guid UserId { get; set; }
 
-        [Required(ErrorMessage = DataConstants.BookingCheckInDateRequiredError)]
+        [Required(ErrorMessage = BookingCheckInDateRequiredError)]
         [Comment("Check in date of booking")]
         public DateTime CheckInDate { get; set; } 
 
-        [Required(ErrorMessage = DataConstants.BookingCheckOutDateRequiredError)]
+        [Required(ErrorMessage = BookingCheckOutDateRequiredError)]
         [Comment("Check out date of booking")]
         public DateTime CheckOutDate { get; set; }
 

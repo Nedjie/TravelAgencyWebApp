@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
-using TravelAgencyWebApp.Common;
+using static TravelAgencyWebApp.Common.DataConstants;
 
 namespace TravelAgencyWebApp.ViewModels.Offer
 {
@@ -10,13 +10,13 @@ namespace TravelAgencyWebApp.ViewModels.Offer
         [Comment("Offer identifier")]
         public int Id { get; set; }
 
-        [Required(ErrorMessage = DataConstants.OfferTitleRequiredError)]
-        [StringLength(DataConstants.OfferTitleMaxLength,
-               ErrorMessage = DataConstants.OfferTitleMaxLengthError)]
+        [Required(ErrorMessage = OfferTitleRequiredError)]
+        [StringLength(OfferTitleMaxLength,
+               ErrorMessage = OfferTitleMaxLengthError)]
         [Comment("Offer title")]
         public string? Title { get; set; }
 
-        [Required(ErrorMessage = DataConstants.OfferDescriptionRequiredError)]
+        [Required(ErrorMessage =OfferDescriptionRequiredError)]
         [Comment("Offer description")]
         public string? Description { get; set; }
     }

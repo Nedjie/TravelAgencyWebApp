@@ -1,3 +1,13 @@
+C:\Users\dell\source\repos\TravelAgencyWebApp\obj\Debug\net8.0\TravelAgencyWebApp.csproj.AssemblyReference.cache
+C:\Users\dell\source\repos\TravelAgencyWebApp\obj\Debug\net8.0\TravelAgencyWebApp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\dell\source\repos\TravelAgencyWebApp\obj\Debug\net8.0\TravelAgencyWebApp.AssemblyInfoInputs.cache
+C:\Users\dell\source\repos\TravelAgencyWebApp\obj\Debug\net8.0\TravelAgencyWebApp.AssemblyInfo.cs
+C:\Users\dell\source\repos\TravelAgencyWebApp\obj\Debug\net8.0\TravelAgencyWebApp.csproj.CoreCompileInputs.cache
+C:\Users\dell\source\repos\TravelAgencyWebApp\obj\Debug\net8.0\TravelAgencyWebApp.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\dell\source\repos\TravelAgencyWebApp\obj\Debug\net8.0\TravelAgencyWebApp.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\dell\source\repos\TravelAgencyWebApp\obj\Debug\net8.0\TravelAgencyWebApp.RazorAssemblyInfo.cache
+C:\Users\dell\source\repos\TravelAgencyWebApp\obj\Debug\net8.0\TravelAgencyWebApp.RazorAssemblyInfo.cs
+C:\Users\dell\source\repos\TravelAgencyWebApp\obj\Debug\net8.0\TravelAgencyWebApp.sourcelink.json
 C:\Users\dell\source\repos\TravelAgencyWebApp\bin\Debug\net8.0\Microsoft.Azure.Documents.ServiceInterop.dll
 C:\Users\dell\source\repos\TravelAgencyWebApp\bin\Debug\net8.0\Cosmos.CRTCompat.dll
 C:\Users\dell\source\repos\TravelAgencyWebApp\bin\Debug\net8.0\appsettings.Development.json
@@ -84,6 +94,7 @@ C:\Users\dell\source\repos\TravelAgencyWebApp\bin\Debug\net8.0\NuGet.Versioning.
 C:\Users\dell\source\repos\TravelAgencyWebApp\bin\Debug\net8.0\SQLitePCLRaw.batteries_v2.dll
 C:\Users\dell\source\repos\TravelAgencyWebApp\bin\Debug\net8.0\SQLitePCLRaw.core.dll
 C:\Users\dell\source\repos\TravelAgencyWebApp\bin\Debug\net8.0\SQLitePCLRaw.provider.e_sqlite3.dll
+C:\Users\dell\source\repos\TravelAgencyWebApp\bin\Debug\net8.0\System.ClientModel.dll
 C:\Users\dell\source\repos\TravelAgencyWebApp\bin\Debug\net8.0\System.CodeDom.dll
 C:\Users\dell\source\repos\TravelAgencyWebApp\bin\Debug\net8.0\System.Composition.AttributedModel.dll
 C:\Users\dell\source\repos\TravelAgencyWebApp\bin\Debug\net8.0\System.Composition.Convention.dll
@@ -289,16 +300,6 @@ C:\Users\dell\source\repos\TravelAgencyWebApp\bin\Debug\net8.0\TravelAgencyWebAp
 C:\Users\dell\source\repos\TravelAgencyWebApp\bin\Debug\net8.0\TravelAgencyWebApp.Services.Mapping.pdb
 C:\Users\dell\source\repos\TravelAgencyWebApp\bin\Debug\net8.0\TravelAgencyWebApp.ViewModels.pdb
 C:\Users\dell\source\repos\TravelAgencyWebApp\bin\Debug\net8.0\TravelAgencyWebApp.Data.Models.pdb
-C:\Users\dell\source\repos\TravelAgencyWebApp\obj\Debug\net8.0\TravelAgencyWebApp.csproj.AssemblyReference.cache
-C:\Users\dell\source\repos\TravelAgencyWebApp\obj\Debug\net8.0\TravelAgencyWebApp.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\dell\source\repos\TravelAgencyWebApp\obj\Debug\net8.0\TravelAgencyWebApp.AssemblyInfoInputs.cache
-C:\Users\dell\source\repos\TravelAgencyWebApp\obj\Debug\net8.0\TravelAgencyWebApp.AssemblyInfo.cs
-C:\Users\dell\source\repos\TravelAgencyWebApp\obj\Debug\net8.0\TravelAgencyWebApp.csproj.CoreCompileInputs.cache
-C:\Users\dell\source\repos\TravelAgencyWebApp\obj\Debug\net8.0\TravelAgencyWebApp.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\dell\source\repos\TravelAgencyWebApp\obj\Debug\net8.0\TravelAgencyWebApp.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\dell\source\repos\TravelAgencyWebApp\obj\Debug\net8.0\TravelAgencyWebApp.RazorAssemblyInfo.cache
-C:\Users\dell\source\repos\TravelAgencyWebApp\obj\Debug\net8.0\TravelAgencyWebApp.RazorAssemblyInfo.cs
-C:\Users\dell\source\repos\TravelAgencyWebApp\obj\Debug\net8.0\TravelAgencyWebApp.sourcelink.json
 C:\Users\dell\source\repos\TravelAgencyWebApp\obj\Debug\net8.0\staticwebassets.build.json
 C:\Users\dell\source\repos\TravelAgencyWebApp\obj\Debug\net8.0\staticwebassets.development.json
 C:\Users\dell\source\repos\TravelAgencyWebApp\obj\Debug\net8.0\staticwebassets\msbuild.TravelAgencyWebApp.Microsoft.AspNetCore.StaticWebAssets.props
@@ -315,4 +316,3 @@ C:\Users\dell\source\repos\TravelAgencyWebApp\obj\Debug\net8.0\refint\TravelAgen
 C:\Users\dell\source\repos\TravelAgencyWebApp\obj\Debug\net8.0\TravelAgencyWebApp.pdb
 C:\Users\dell\source\repos\TravelAgencyWebApp\obj\Debug\net8.0\TravelAgencyWebApp.genruntimeconfig.cache
 C:\Users\dell\source\repos\TravelAgencyWebApp\obj\Debug\net8.0\ref\TravelAgencyWebApp.dll
-C:\Users\dell\source\repos\TravelAgencyWebApp\bin\Debug\net8.0\System.ClientModel.dll

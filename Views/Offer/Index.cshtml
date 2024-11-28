@@ -1,4 +1,6 @@
 ﻿@model IEnumerable<TravelAgencyWebApp.ViewModels.Offer.OfferViewModel>
+@inject Microsoft.AspNetCore.Identity.UserManager<TravelAgencyWebApp.Data.Models.ApplicationUser> UserManager
+@using static TravelAgencyWebApp.Common.ApplicationConstants;
 
 @{
 	ViewData["Title"] = "Оферти";
@@ -19,7 +21,10 @@
 </head>
 <body>
 	<p>
+		@if (User.IsInRole(AdminRoleName))
+		{
 		<a asp-controller="Offer" asp-action="Create" class="btn btn-primary">Създаване на Нова Оферта</a>
+	}
 	</p>
 	<div class="mb-3">
 		<input type="text" id="searchInput" placeholder="Търсене в офертите..." class="form-control" onkeyup="filterTable()">
@@ -47,8 +52,18 @@
 						<td>@offer.Price.ToString("C")</td>
 						<td>@offer.TravelingWayMethod</td>
 						<td>
+							@if (User.IsInRole(AdminRoleName))
+							{
+								<a asp-controller="Booking" asp-action="Create" asp-route-id="@offer.Id" class="btn btn-primary">Резервирай</a>
+							<a asp-controller="Offer" asp-action="Details" asp-route-id="@offer.Id" class="btn btn-info">Детайли</a>
 							<a asp-controller="Offer" asp-action="Edit" asp-route-id="@offer.Id" class="btn btn-warning">Редактиране</a>
 							<a asp-controller="Offer" asp-action="Delete" asp-route-id="@offer.Id" class="btn btn-danger">Изтриване</a>
+							}
+							else
+							{
+								<a asp-controller="Booking" asp-action="Create" asp-route-id="@offer.Id" class="btn btn-primary">Резервирай</a>
+								<a asp-controller="Offer" asp-action="Details" asp-route-id="@offer.Id" class="btn btn-info">Детайли</a>
+							}
 						</td>
 					</tr>
 				}

@@ -11,26 +11,26 @@ namespace TravelAgencyWebApp.Data.Seeding
 				new TravelingWay
 				{
 					Id = 1,
-					Method = "Air",
-					Description = "Travel by airplane.",
+					Method = "Самолет",
+					Description = "Пътуване със самолет",
 				},
 				new TravelingWay
 				{
 					Id = 2,
-					Method = "Train",
-					Description = "Travel by train.",
+					Method = "Влак",
+					Description = "Пътуване със влак",
 				},
 				new TravelingWay
 				{
 					Id = 3,
-					Method = "Bus",
-					Description = "Travel by bus.",
+					Method ="Автобус",
+					Description = "Пътуване с автобус",
 				},
 				new TravelingWay
 				{
 					Id = 4,
-					Method = "Car",
-					Description = "Travel by car.",
+					Method = "Кола",
+					Description = "Пътуване с кола",
 				}
 			);
 		}

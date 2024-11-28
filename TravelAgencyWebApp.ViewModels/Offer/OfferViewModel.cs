@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
-using TravelAgencyWebApp.Common;
+using static TravelAgencyWebApp.Common.DataConstants;
 
 namespace TravelAgencyWebApp.ViewModels.Offer
 {
@@ -10,28 +10,28 @@ namespace TravelAgencyWebApp.ViewModels.Offer
 		[Comment("Offer identifier")]
 		public int Id { get; set; }
 		
-		[Required(ErrorMessage = DataConstants.OfferTitleRequiredError)]
-		[StringLength(DataConstants.OfferTitleMaxLength,
-			   ErrorMessage = DataConstants.OfferTitleMaxLengthError)]
+		[Required(ErrorMessage = OfferTitleRequiredError)]
+		[StringLength(OfferTitleMaxLength,
+			   ErrorMessage = OfferTitleMaxLengthError)]
 		[Comment("Offer title")]
 		public string? Title { get; set; }
 
-		[Required(ErrorMessage = DataConstants.OfferDescriptionRequiredError)]
+		[Required(ErrorMessage = OfferDescriptionRequiredError)]
 		[Comment("Offer description")]
 		public string? Description { get; set; }
 
-		[Required(ErrorMessage = DataConstants.OfferPriceRequiredError)]
-		[Range(DataConstants.OfferPriceRangeMin, DataConstants.OfferPriceRangeMax,
-			ErrorMessage = DataConstants.OfferPriceRangeError)]
+		[Required(ErrorMessage = OfferPriceRequiredError)]
+		[Range(OfferPriceRangeMin, OfferPriceRangeMax,
+			ErrorMessage = OfferPriceRangeError)]
 		[Comment("Offer price")]
 		public decimal Price { get; set; }
 
 
-		[Url(ErrorMessage = DataConstants.OfferImageUrlInvalidError)]
+		[Url(ErrorMessage = OfferImageUrlInvalidError)]
 		[Comment("Offer image")]
 		public string? ImageUrl { get; set; }
 
-		[Required(ErrorMessage = "Please select a traveling way method.")] // MAKE DATA CONSTANTS
+		[Required(ErrorMessage = "Please select a traveling way method.")]
 		[Comment("Traveling way method")]
 		public string? TravelingWayMethod { get; set; }
 

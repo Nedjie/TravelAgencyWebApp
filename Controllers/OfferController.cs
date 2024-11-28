@@ -1,14 +1,13 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.Azure.Documents;
-using TravelAgencyWebApp.Data.Models;
-using TravelAgencyWebApp.Infrastructure.Extensions;
 using TravelAgencyWebApp.Services.Data.Interfaces;
 using TravelAgencyWebApp.ViewModels.Offer;
+using static TravelAgencyWebApp.Common.ApplicationConstants;
 
 namespace TravelAgencyWebApp.Controllers
 {
-	public class OfferController(IOfferService offerService, ITravelingWayService travelingWayService
+    public class OfferController(IOfferService offerService, ITravelingWayService travelingWayService
 		, ILogger<OfferController> logger)
 		: BaseController(logger)
 	{
@@ -16,8 +15,9 @@ namespace TravelAgencyWebApp.Controllers
 			?? throw new ArgumentNullException(nameof(offerService));
 		private readonly ITravelingWayService _travelingWayService = travelingWayService
 			?? throw new ArgumentNullException(nameof(travelingWayService));
-
-		public async Task<IActionResult> Index()
+       
+		[AllowAnonymous]
+        public async Task<IActionResult> Index()
 		{
 			var offers = await _offerService.GetAllOffersAsync();
 			return View(offers.Select(offer => new OfferViewModel 
@@ -30,8 +30,9 @@ namespace TravelAgencyWebApp.Controllers
 				TravelingWayMethod = offer.TravelingWay?.Method 
 			}));
 		}
-
+		
 		[HttpGet]
+		[Authorize(Roles = "Admin")]
 		public async Task<IActionResult> Create()
 		{
 			var travelingWays = await _travelingWayService.GetAllTravelingWaysAsync();
@@ -43,7 +44,9 @@ namespace TravelAgencyWebApp.Controllers
 
 			return View();
 		}
-		[HttpPost]
+
+        [HttpPost]
+		[Authorize(Roles = AdminRoleName)]
 		public async Task<IActionResult> Create(OfferViewModel model)
 		{
 			if (!ModelState.IsValid)
@@ -91,7 +94,8 @@ namespace TravelAgencyWebApp.Controllers
 			return RedirectToAction(nameof(Index));
 		}
 
-		[HttpGet("offer/details/{id:int}")]
+        [Authorize]
+        [HttpGet("offer/details/{id:int}")]
 		public async Task<IActionResult> Details(int id)
 		{
 			var offer = await _offerService.GetOfferByIdAsync(id);
@@ -113,7 +117,8 @@ namespace TravelAgencyWebApp.Controllers
 			return View(model);
 		}
 
-		[HttpGet]
+        [Authorize(Roles = AdminRoleName)]
+        [HttpGet]
 		public async Task<IActionResult> Edit(int id)
 		{
 			var offer = await _offerService.GetOfferByIdAsync(id);
@@ -143,7 +148,8 @@ namespace TravelAgencyWebApp.Controllers
 			return View(model);
 		}
 
-		[HttpPost]
+        [Authorize(Roles = AdminRoleName)]
+        [HttpPost]
 		public async Task<IActionResult> Edit(OfferViewModel model)
 		{
 			if (!ModelState.IsValid)
@@ -206,7 +212,8 @@ namespace TravelAgencyWebApp.Controllers
 			return RedirectToAction(nameof(Index));
 		}
 
-		[HttpGet]
+        [Authorize(Roles = AdminRoleName)]
+        [HttpGet]
 		public async Task<IActionResult> Delete(int id)
 		{
 			var offer = await _offerService.GetOfferByIdAsync(id);
@@ -225,7 +232,8 @@ namespace TravelAgencyWebApp.Controllers
 			return View(model);
 		}
 
-		[HttpPost, ActionName("Delete")]
+        [Authorize(Roles = AdminRoleName)]
+        [HttpPost, ActionName("Delete")]
 		public async Task<IActionResult> DeleteConfirmed(ConfirmDeleteOfferViewModel model)
 		{
 			if (ModelState.IsValid)

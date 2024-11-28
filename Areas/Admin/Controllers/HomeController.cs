@@ -1,10 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using TravelAgencyWebApp.Data.Models;
-using TravelAgencyWebApp.Services.Data;
 using TravelAgencyWebApp.Services.Data.Interfaces;
-using TravelAgencyWebApp.ViewModels.Offer;
 using static TravelAgencyWebApp.Common.ApplicationConstants;
 
 namespace TravelAgencyWebApp.Areas.Admin.Controllers
@@ -115,15 +111,13 @@ namespace TravelAgencyWebApp.Areas.Admin.Controllers
 			return this.RedirectToAction(nameof(Index));
 		}
 
-		public bool IsGuidValid(string? id, ref Guid parsedGuid)
+		private bool IsGuidValid(string? id, ref Guid parsedGuid)
 		{
-			// Non-existing parameter in the URL
 			if (String.IsNullOrWhiteSpace(id))
 			{
 				return false;
 			}
 
-			// Invalid parameter in the URL
 			bool isGuidValid = Guid.TryParse(id, out parsedGuid);
 			if (!isGuidValid)
 			{

@@ -1,0 +1,107 @@
+﻿@{
+    ViewData["Title"] = "404 - Page Not Found";
+    ViewData["IsErrorPage"] = true;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css" />
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+        }
+
+        body {
+            background-image: url('https://images.pexels.com/photos/12940795/pexels-photo-12940795.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+            background-size: contain; 
+            background-position: left top; 
+            background-repeat: repeat;
+            overflow: hidden;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 1;
+        }
+
+        .error-container {
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 30px;
+            border-radius: 15px;
+            position: relative;
+            z-index: 2;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .error-code {
+            font-size: 100px;
+            font-weight: bold;
+            color: #dc3545;
+        }
+
+        .error-message {
+            font-size: 24px;
+            margin: 20px 0;
+        }
+
+        .error__button {
+            min-width: 200px;
+            margin-top: 20px;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #e67e22;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s;
+        }
+
+            .error__button:hover {
+                background-color: #d57c1c;
+                transform: scale(1.05);
+            }
+
+        .link-container {
+            margin-top: 20px;
+        }
+
+            .link-container a {
+                color: #e67e22;
+                margin: 0 10px;
+                text-decoration: none;
+                transition: color 0.3s ease;
+            }
+
+                .link-container a:hover {
+                    color: #dc3545;
+                }
+    </style>
+</head>
+<body>
+    <div class="overlay"></div>
+    <div class="error-container">
+        <div class="error-code">404</div>
+        <div class="error-message">О, не! Страницата не може да бъде намерена.</div>
+        <div>
+            <p>Изглежда, че загубихме пътя по време на пътуването.</p>
+            <p>Върнете се към безопасността на началната страница.</p>
+            <a asp-controller="Home" asp-action="Index" asp-area="" class="btn btn-primary error__button">Начало</a>
+        </div>
+    </div>
+</body>
+</html>

@@ -13,9 +13,14 @@
 	<link rel="stylesheet" href="~/Content/styles/main_styles.css" asp-append-version="true" />
 	<link rel="stylesheet" href="~/Content/styles/responsive.css" asp-append-version="true" />
 	<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-
 </head>
 <body>
+	@if (ViewData["IsErrorPage"] != null && (bool)ViewData["IsErrorPage"]!)
+	{
+		// Do not render navbar and footer for error pages
+	}
+	else
+	{	
 	<div class="super_container">
 		<!-- Header -->
 		<header class="header">
@@ -25,7 +30,6 @@
 						<div class="col d-flex flex-row">
 							<div class="phone">+359 332 5678</div>
 							<div class="user_box ml-auto">
-
 								@if (User.Identity!.IsAuthenticated)
 								{
 									<div class="user_box_login user_box_link">
@@ -84,14 +88,20 @@
 			<img src="~/Content/images/about_background.jpg" alt="Нашите Оферти" class="img-fluid" style="max-width: 100%; height: auto;" />
 		</div>
 	</div>
+	}
 	<!-- Body Content -->
 	<main>
 		@RenderBody()
 	</main>
-
-	<!-- Footer -->
-	<footer class="footer">
-		<div class="container">
+	@if (ViewData["IsErrorPage"] != null && (bool)ViewData["IsErrorPage"]!)
+	{
+		// Do not render navbar and footer for error pages
+	}
+	else
+	{
+		<!-- Footer -->
+		<footer class="footer">
+			<div class="container">
 			<div class="row justify-content-center">
 				<!-- Center the content horizontally -->
 				<div class="col-lg-6 text-center">
@@ -99,7 +109,7 @@
 					<div class="footer_col">
 						<div class="footer_content footer_about">
 							<div class="logo_container footer_logo">
-								<div class="logo"><a href="#"><img src="images/logo.png" alt="" />Дени Травел</a></div>
+								<div class="logo"><a href="#"><img src="/Content/images/logo.png" alt="" />Дени Травел</a></div>
 							</div>
 							<p>Вашият надежден партньор за пътуване.</p>
 							<p>Свържете се с нас: <a href="mailto:info@denitravel.com">info@denitravel.com</a></p>
@@ -117,6 +127,7 @@
 			</div>
 		</div>
 	</footer>
+	}
 	<!-- Render script section at the bottom -->
 	@RenderSection("Scripts", required: false)
 	<!-- Scripts Section -->

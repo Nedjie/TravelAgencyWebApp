@@ -1,0 +1,107 @@
+﻿@{
+    ViewData["Title"] = "500 - Internal Server Error";
+    ViewData["IsErrorPage"] = true;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css" />
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+        }
+
+        body {
+            background-image: url('https://images.pexels.com/photos/3368844/pexels-photo-3368844.jpeg');
+            background-size: contain;
+            background-position: left top;
+            background-repeat: repeat;
+            overflow: hidden;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1;
+        }
+
+        .error-container {
+            background-color: rgba(255, 0, 0, 0.8);
+            padding: 30px;
+            border-radius: 15px;
+            position: relative;
+            z-index: 2;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .error-code {
+            font-size: 100px;
+            font-weight: bold;
+            color: #ff4d4d;
+        }
+
+        .error-message {
+            font-size: 24px;
+            margin: 20px 0;
+        }
+
+        .error__button {
+            min-width: 200px;
+            margin-top: 20px;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #28a745;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s;
+        }
+
+        .error__button:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+
+        .link-container {
+            margin-top: 20px;
+        }
+
+        .link-container a {
+            color: #007bff;
+            margin: 0 10px;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .link-container a:hover {
+            color: #ff4d4d;
+        }
+    </style>
+</head>
+<body>
+    <div class="overlay"></div>
+    <div class="error-container">
+        <div class="error-code">500</div>
+        <div class="error-message">О, не! Нещо се обърка на нашите сървъри.</div>
+        <div>
+            <p>Не се притеснявайте! Вече работим за решаване на проблема.</p>
+            <p>Ако имате нужда от помощ, моля свържете се с нас на <a href="mailto:deni@travelagency.com">support@travelagency.com</a>.</p>
+            <a asp-controller="Home" asp-action="Index" asp-area="" class="btn btn-primary error__button">Върни се Начало</a>
+        </div>
+    </div>
+</body>
+</html>

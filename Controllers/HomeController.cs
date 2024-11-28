@@ -52,10 +52,19 @@ namespace TravelAgencyWebApp.Controllers
 			return View(reviews);
 		}
 
-		[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-		public IActionResult Error()
-		{
-			return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-		}
-	}
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public IActionResult Error(int statusCode)
+        {
+            if (statusCode == 404 || statusCode == 400)
+            {
+                return this.View("Error404");
+            }
+
+            if (statusCode == 500)
+            {
+                return this.View("Error500");
+            }
+            return View();
+        }
+    }
 }

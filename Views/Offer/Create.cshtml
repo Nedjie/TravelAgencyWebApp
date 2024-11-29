@@ -17,49 +17,58 @@
 	<link rel="stylesheet" type="text/css" href="~/Content/styles/responsive.css" asp-append-version="true" />
 </head>
 <body>
-	<h2>Създаване на Нова Оферта</h2>
-	@* Check if the user is an admin *@
-	@if (!User.IsInRole("Admin"))
-	{
-		<div class="alert alert-danger">
-			<strong>Ограничен достъп!</strong> Нямате права да достъпвате тази страница.
-		</div>
-	}
-	else
-	{
+	<div class="container mt-5">
+		<h2>Създаване на Нова Оферта</h2>
+
 		<form asp-action="Create">
-			<div class="form-group">
-				<label asp-for="Title" class="control-label">Заглавие</label>
-				<input asp-for="Title" class="form-control" required />
-				<span asp-validation-for="Title" class="text-danger"></span>
-			</div>
+			<fieldset class="border p-4">
+				<legend class="w-auto">Основни Детайли</legend>
 
-			<div class="form-group">
-				<label asp-for="Description" class="control-label">Описание</label>
-				<textarea asp-for="Description" class="form-control" required></textarea>
-				<span asp-validation-for="Description" class="text-danger"></span>
-			</div>
+				<div class="form-group">
+					<label asp-for="Title" class="control-label">Заглавие</label>
+					<input asp-for="Title" class="form-control" placeholder="Въведете заглавието на офератата" required />
+					<span asp-validation-for="Title" class="text-danger"></span>
+				</div>
 
-			<div class="form-group">
-				<label asp-for="Price" class="control-label">Цена</label>
-				<input asp-for="Price" class="form-control" type="number" step="0.01" required />
-				<span asp-validation-for="Price" class="text-danger"></span>
-			</div>
-			<div class="form-group">
-				<label asp-for="TravelingWayMethod" class="control-label"></label>
-				<select asp-for="TravelingWayMethod" class="form-control" asp-items="@ViewBag.TravelingWays">
-					<option value="">Select a Traveling Way</option>
-				</select>
-				<span asp-validation-for="TravelingWayMethod" class="text-danger"></span>
-			</div>
-			<div class="form-group">
-				<label asp-for="ImageUrl" class="control-label">URL на изображение</label>
-				<input asp-for="ImageUrl" class="form-control" />
-				<span asp-validation-for="ImageUrl" class="text-danger"></span>
-			</div>
+				<div class="form-group">
+					<label asp-for="Description" class="control-label">Описание</label>
+					<textarea asp-for="Description" class="form-control" placeholder="Опишете офертата" required></textarea>
+					<span asp-validation-for="Description" class="text-danger"></span>
+				</div>
 
-			<button type="submit" class="btn btn-success">Създай Оферта</button>
-			<a asp-action="Index" class="btn btn-secondary">Отказ</a>
+				<div class="form-group">
+					<label asp-for="Price" class="control-label">Цена</label>
+					<input asp-for="Price" class="form-control" type="number" step="0.01" placeholder="Въведете цената" required />
+					<span asp-validation-for="Price" class="text-danger"></span>
+					<small class="form-text text-muted">Цената трябва да бъде в лева.</small>
+				</div>
+
+				<div class="form-group">
+					<label asp-for="TravelingWayMethod" class="control-label">Метод на Пътуване</label>
+					<select asp-for="TravelingWayMethod" class="form-control" asp-items="@ViewBag.TravelingWays">
+						<option value="">Изберете метод на пътуване</option>
+					</select>
+					<span asp-validation-for="TravelingWayMethod" class="text-danger"></span>
+				</div>
+
+				<div class="form-group">
+					<label asp-for="ImageUrl" class="control-label">URL на изображение</label>
+					<input asp-for="ImageUrl" class="form-control" placeholder="Въведете URL на изображението" />
+					<span asp-validation-for="ImageUrl" class="text-danger"></span>
+				</div>
+			</fieldset>
+			<div class="form-group mt-3">
+				<button type="submit" class="btn btn-success me-2">
+					<i class="fas fa-plus"></i> Създай Оферта
+				</button>
+				<a asp-action="Index" class="btn btn-secondary">
+					<i class="fas fa-times"></i> Отказ
+				</a>
+			</div>
 		</form>
-	}
+	</div>
+
+	<!-- Optional JavaScript -->
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js" asp-append-version="true"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.min.js" asp-append-version="true"></script>
 </body>

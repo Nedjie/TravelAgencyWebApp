@@ -1,7 +1,7 @@
 ﻿@model TravelAgencyWebApp.ViewModels.Offer.OfferViewModel
 
 @{
-    ViewData["Title"] = "Редактиране на Оферта"; 
+	ViewData["Title"] = "Редактиране на Оферта";
 }
 <head>
 	<title>Дени Травел</title>
@@ -17,44 +17,54 @@
 	<link rel="stylesheet" type="text/css" href="~/Content/styles/responsive.css" asp-append-version="true" />
 </head>
 <body>
-<h2>Редактиране на Оферта</h2>
+	<div class="container mt-5">
+		<h2 class="text-center mb-4">Редактиране на Оферта</h2>
 
-<form asp-action="Edit">
-    <input type="hidden" asp-for="Id" />
+		<form asp-action="Edit">
+			<input type="hidden" asp-for="Id" />
 
-    <div class="form-group">
-        <label asp-for="Title" class="control-label">Заглавие</label>
-        <input asp-for="Title" class="form-control" required />
-        <span asp-validation-for="Title" class="text-danger"></span>
-    </div>
+			<div class="form-group">
+				<label asp-for="Title" class="control-label">Заглавие</label>
+				<input asp-for="Title" class="form-control" required placeholder="Въведете заглавието на офертата" />
+				<span asp-validation-for="Title" class="text-danger"></span>
+			</div>
 
-    <div class="form-group">
-        <label asp-for="Description" class="control-label">Описание</label>
-        <textarea asp-for="Description" class="form-control" required></textarea>
-        <span asp-validation-for="Description" class="text-danger"></span>
-    </div>
+			<div class="form-group">
+				<label asp-for="Description" class="control-label">Описание</label>
+				<textarea asp-for="Description" class="form-control" required placeholder="Дайте подробно описание на офертата"></textarea>
+				<span asp-validation-for="Description" class="text-danger"></span>
+			</div>
 
-    <div class="form-group">
-        <label asp-for="Price" class="control-label">Цена</label>
-        <input asp-for="Price" class="form-control" type="number" step="0.01" required />
-        <span asp-validation-for="Price" class="text-danger"></span>
-    </div>
+			<div class="form-group">
+				<label asp-for="Price" class="control-label">Цена</label>
+				<input asp-for="Price" class="form-control" type="number" step="0.01" required placeholder="Въведете цената на офертата" />
+				<span asp-validation-for="Price" class="text-danger"></span>
+			</div>
 
-	<div class="form-group">
-		<label asp-for="TravelingWayMethod">Метод на пътуване</label>
-		<select asp-for="TravelingWayMethod" class="form-control" asp-items="@(new SelectList(ViewBag.TravelingWays, "Value", "Text"))">
-			<option value="">Изберете метод на пътуване</option> <!-- Placeholder -->
-		</select>
-		<span asp-validation-for="TravelingWayMethod" class="text-danger"></span>
+			<div class="form-group">
+				<label asp-for="TravelingWayMethod" class="control-label">Метод на пътуване</label>
+				<select asp-for="TravelingWayMethod" class="form-control" asp-items="@(new SelectList(ViewBag.TravelingWays, "Value", "Text"))">
+					<option value="">Изберете метод на пътуване</option> <!-- Placeholder -->
+				</select>
+				<span asp-validation-for="TravelingWayMethod" class="text-danger"></span>
+			</div>
+
+			<div class="form-group">
+				<label asp-for="ImageUrl" class="control-label">URL на изображение (по желание)</label>
+				<input asp-for="ImageUrl" class="form-control" placeholder="Въведете URL на изображение" />
+				<span asp-validation-for="ImageUrl" class="text-danger"></span>
+			</div>
+
+			<div class="text-center">
+				<button type="submit" class="btn btn-success mx-2">Запази Промените</button>
+				<a asp-action="Index" class="btn btn-secondary mx-2">Отказ</a>
+			</div>
+		</form>
 	</div>
-    <div class="form-group">
-        <label asp-for="ImageUrl" class="control-label">URL на изображение (по желание)</label>
-        <input asp-for="ImageUrl" class="form-control" />
-        <span asp-validation-for="ImageUrl" class="text-danger"></span>
-    </div>
 
-    <button type="submit" class="btn btn-success">Запази Промените</button>
-    <a asp-action="Index" class="btn btn-secondary">Отказ</a>
-</form>
+	<!-- Include validation scripts -->
+	@section Scripts {
+		<partial name="_ValidationScriptsPartial" />
+	}
+	}
 </body>
-

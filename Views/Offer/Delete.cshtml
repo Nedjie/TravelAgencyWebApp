@@ -17,18 +17,24 @@
 	<link rel="stylesheet" type="text/css" href="~/Content/styles/responsive.css" asp-append-version="true" />
 </head>
 <body>
-	<div>
-		<h4>Сигурни ли сте, че искате да изтриете следната оферта?</h4>
-		<div>
-			<h5>Идентификатор на Офертата: @Model.Id</h5>
-			<p>Заглавие: @Model.Title</p>
-			<p>Описание: @Model.Description</p>
-		</div>
-	</div>
+    <div class="container mt-5 text-center">
+        <h4 class="mb-4">Сигурни ли сте, че искате да изтриете следната оферта?</h4>
+        <div class="card shadow-sm p-4 mb-4">
+            <h5>Идентификатор на Офертата: <strong>@Model.Id</strong></h5>
+            <p><strong>Заглавие:</strong> @Model.Title</p>
+            <p><strong>Описание:</strong> @Model.Description</p>
+        </div>
 
-	<form asp-action="Delete" method="post">
-		<input type="hidden" asp-for="Id" />
-		<button type="submit" class="btn btn-danger">Изтрий</button>
-		<a asp-action="Index" class="btn btn-secondary">Отказ</a>
-	</form>
+        <p class="text-danger">Тази операция не може да бъде отменена!</p>
+
+        <form asp-action="Delete" method="post" class="mb-3">
+            <input type="hidden" asp-for="Id" />
+            <button type="submit" class="btn btn-danger mr-2">
+                <i class="fas fa-trash-alt"></i> Изтрий
+            </button>
+            <a asp-action="Index" class="btn btn-secondary">
+                <i class="fas fa-arrow-left"></i> Отказ
+            </a>
+        </form>
+    </div>
 </body>

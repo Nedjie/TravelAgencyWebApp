@@ -2,6 +2,10 @@
 @using Microsoft.AspNetCore.Identity
 @using Microsoft.EntityFrameworkCore
 @inject RoleManager<IdentityRole<Guid>> roleManager
+<head>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
 @{
 	ViewData["Title"] = "Admin Dashboard";
 }
@@ -31,14 +35,16 @@
 					<td>@offer.Description</td>
 					<td>@offer.Price.ToString("C")</td>
 					<td>
-						<!-- Notice the asp-area="" to redirect to the Offer/Create view correctly -->
-						<a asp-controller="Offer" asp-action="Create" asp-area="" class="btn btn-primary">Добави Нова Оферта</a>
-						<!-- Redirect to Offer Edit page -->
-						<a asp-controller="Offer" asp-action="Edit" asp-route-id="@offer.Id" asp-area="" class="btn btn-warning">Редактиране</a>
-
-						<!-- Form to delete the offer -->
+						<a asp-controller="Offer" asp-action="Create" asp-area="" class="btn btn-primary btn-sm me-1">
+							<i class="fas fa-plus"></i>Нова Оферта
+						</a>
+						<a asp-controller="Offer" asp-action="Edit" asp-route-id="@offer.Id" asp-area="" class="btn btn-warning btn-sm me-1">
+							<i class="fas fa-edit"></i>Редактиране
+						</a>
 						<form asp-controller="Offer" asp-action="Delete" asp-route-id="@offer.Id" asp-area="" method="post" style="display:inline;">
-							<input type="submit" class="btn btn-danger" value="Изтриване" onclick="return confirm('Сигурни ли сте, че искате да изтриете тази оферта?');" />
+							<button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Сигурни ли сте, че искате да изтриете тази оферта?');">
+								<i class="fas fa-trash-alt"></i> Изтриване
+							</button>
 						</form>
 					</td>
 				</tr>
@@ -70,7 +76,7 @@
 									<option value="@role">@role</option>
 								}
 							</select>
-							<button type="submit" class="btn btn-primary btn-sm">Присвояване на роля</button>
+							<button type="submit" class="btn btn-primary btn-sm"><i class="fas fa-plus"></i>Присвояване на роля</button>
 						</form>
 
 						<form method="post" asp-action="RemoveRole" asp-controller="Home" asp-area="Admin" class="d-inline ms-2">
@@ -81,12 +87,12 @@
 									<option value="@role">@role</option>
 								}
 							</select>
-							<button type="submit" class="btn btn-warning btn-sm">Изтриване на роля</button>
+							<button type="submit" class="btn btn-warning btn-sm"><i class="fas fa-trash-alt"></i> Изтриване на роля</button>
 						</form>
 
 						<form method="post" asp-action="DeleteUser" asp-controller="Home" asp-area="Admin" class="d-inline ms-2">
 							<input type="hidden" name="userId" value="@user.Id" />
-							<button type="submit" class="btn btn-danger btn-sm">Изтрий потребителя</button>
+							<button type="submit" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i>Изтрий потребителя</button>
 						</form>
 					</td>
 				</tr>

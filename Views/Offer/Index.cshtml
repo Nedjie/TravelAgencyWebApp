@@ -55,14 +55,18 @@
 							@if (User.IsInRole(AdminRoleName))
 							{
 								<a asp-controller="Booking" asp-action="Create" asp-route-id="@offer.Id" class="btn btn-primary">Резервирай</a>
-							<a asp-controller="Offer" asp-action="Details" asp-route-id="@offer.Id" class="btn btn-info">Детайли</a>
-							<a asp-controller="Offer" asp-action="Edit" asp-route-id="@offer.Id" class="btn btn-warning">Редактиране</a>
-							<a asp-controller="Offer" asp-action="Delete" asp-route-id="@offer.Id" class="btn btn-danger">Изтриване</a>
+						    	<a asp-controller="Offer" asp-action="Details" asp-route-id="@offer.Id" class="btn btn-info">Детайли</a>
+							    <a asp-controller="Offer" asp-action="Edit" asp-route-id="@offer.Id" class="btn btn-warning">Редактиране</a>
+								<a asp-controller="Offer" asp-action="Delete" asp-route-id="@offer.Id" class="btn btn-danger">Изтриване</a>
 							}
-							else
+							else if (User.Identity!.IsAuthenticated)
 							{
 								<a asp-controller="Booking" asp-action="Create" asp-route-id="@offer.Id" class="btn btn-primary">Резервирай</a>
 								<a asp-controller="Offer" asp-action="Details" asp-route-id="@offer.Id" class="btn btn-info">Детайли</a>
+							}	
+							else if(!User.Identity.IsAuthenticated)
+							{
+								<a asp-controller="Offer" asp-action="Details" asp-route-id="@offer.Id" asp-area="" class="btn btn-info">Детайли</a>
 							}
 						</td>
 					</tr>

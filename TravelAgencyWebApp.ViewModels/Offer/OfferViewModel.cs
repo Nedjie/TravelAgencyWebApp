@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
+using TravelAgencyWebApp.Common.Attributes;
 using static TravelAgencyWebApp.Common.DataConstants;
 
 namespace TravelAgencyWebApp.ViewModels.Offer
@@ -26,6 +27,14 @@ namespace TravelAgencyWebApp.ViewModels.Offer
 		[Comment("Offer price")]
 		public decimal Price { get; set; }
 
+		[Required(ErrorMessage = OfferCheckInDateRequiredError)]
+		[Comment("Check in date of booking")]
+		public DateTime CheckInDate { get; set; }
+
+		[Required(ErrorMessage = OfferCheckOutDateRequiredError)]
+		[IsBefore("CheckInDate", ErrorMessage = BookingCheckOutDateIsBeforeCheckInDateError)]
+		[Comment("Check out date of booking")]
+		public DateTime CheckOutDate { get; set; }
 
 		[Url(ErrorMessage = OfferImageUrlInvalidError)]
 		[Comment("Offer image")]

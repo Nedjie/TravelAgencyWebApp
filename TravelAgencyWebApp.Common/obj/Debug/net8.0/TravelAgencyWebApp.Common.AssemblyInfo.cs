@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TravelAgencyWebApp.Common")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+257251f4f3d307b6ca61b841ff25403318c63bb3")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9fddb737dc200335220a2799bf2a2420e501f194")]
 [assembly: System.Reflection.AssemblyProductAttribute("TravelAgencyWebApp.Common")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TravelAgencyWebApp.Common")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

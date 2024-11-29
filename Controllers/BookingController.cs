@@ -1,22 +1,26 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Security.Claims;
 using TravelAgencyWebApp.Data.Models;
 using TravelAgencyWebApp.Infrastructure.Extensions;
-using TravelAgencyWebApp.Services.Data;
 using TravelAgencyWebApp.Services.Data.Interfaces;
 using TravelAgencyWebApp.ViewModels.Booking;
 
 namespace TravelAgencyWebApp.Controllers
 {
-    public class BookingController(IBookingService bookingService, IOfferService offerService,
-        ILogger<BookingController> logger) : BaseController(logger)
+	public class BookingController(IBookingService bookingService, IOfferService offerService,
+        UserManager<ApplicationUser> userManager,ILogger<BookingController> logger) : BaseController(logger)
     {
         private readonly IBookingService _bookingService = bookingService
             ?? throw new ArgumentNullException(nameof(bookingService));
         private readonly IOfferService _offerService = offerService
             ?? throw new ArgumentNullException(nameof(offerService));
+        private readonly UserManager<ApplicationUser> _userManager = userManager
+            ?? throw new ArgumentNullException(nameof(userManager));
+      
 
-        public async Task<IActionResult> Index()
+		public async Task<IActionResult> Index()
         {
             try
             {
@@ -42,16 +46,32 @@ namespace TravelAgencyWebApp.Controllers
         }
 
         [HttpGet]
-        public IActionResult Create()
+        public async Task<IActionResult> Create(int id)
         {
-            ViewBag.Offers = _offerService.GetAllOffersAsync().Result
-                .Select(o => new SelectListItem
-                {
-                    Value = o.Id.ToString(),
-                    Text = o.Title
-                });
+            var offer = await _offerService.GetOfferByIdAsync(id); 
+            if (offer == null)
+            {
+                return NotFound(); 
+            }
+			var user = await _userManager.GetUserAsync(User);
 
-            return View();
+			if (user == null)
+			{
+				return Unauthorized(); 
+			}
+
+			var bookingViewModel = new CreateBookingViewModel
+            {
+                UserId =user.Id,
+                OfferId = offer.Id,
+                CheckInDate = DateTime.Now, 
+                CheckOutDate = DateTime.Now.AddDays(1).Date, 
+                UserEmail=user.Email,
+                UserFullName=user.FullName,
+                UserPhoneNumber=user.PhoneNumber
+            };
+            ViewBag.Offer = offer;
+            return View(bookingViewModel);
         }
 
         [HttpPost]
@@ -68,12 +88,24 @@ namespace TravelAgencyWebApp.Controllers
 
                 return View(model);
             }
-            var id = User.GetCurrentUserId().ToString();
-            model.UserId = Guid.Parse(id);
+			try
+			{
+				bool isSuccess = await _bookingService.CreateBookingAsync(model);
+				if (!isSuccess)
+				{
+					TempData["ErrorMessage"] = "Error occurred while creating the reservation. Please try again.";
+					return View(model); 
+				}
 
-            await _bookingService.AddBookingAsync(model);
-            return RedirectToAction(nameof(Index));
-        }
+				TempData["SuccessMessage"] = "Reservation created successfully!";
+				return RedirectToAction(nameof(Index)); 
+			}
+			catch (Exception ex)
+			{
+				ModelState.AddModelError(string.Empty, "An unexpected error occurred: " + ex.Message);
+				return View(model); 
+			}
+		}
 
         [HttpGet]
         public async Task<IActionResult> Edit(int id)

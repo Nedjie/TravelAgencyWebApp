@@ -7,7 +7,7 @@ namespace TravelAgencyWebApp.Services.Data.Interfaces
     {
         Task<IEnumerable<BookingViewModel>> GetAllBookingsAsync();
         Task<BookingViewModel?> GetBookingByIdAsync(int id);
-        Task AddBookingAsync(CreateBookingViewModel model);
+		Task<bool> CreateBookingAsync(CreateBookingViewModel model);
         Task UpdateBookingAsync(EditBookingViewModel model);
         Task DeleteBookingAsync(int id);
     }

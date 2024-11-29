@@ -1,4 +1,7 @@
-﻿using TravelAgencyWebApp.Common;
+﻿using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using TravelAgencyWebApp.Common;
 using TravelAgencyWebApp.Common.ErrorMessages;
 using TravelAgencyWebApp.Data.Models;
 using TravelAgencyWebApp.Data.Repository.Interfaces;
@@ -57,29 +60,32 @@ namespace TravelAgencyWebApp.Services.Data
             };
         }
 
-        public async Task AddBookingAsync(CreateBookingViewModel model)
+        public async Task<bool> CreateBookingAsync(CreateBookingViewModel model)
         {
-            if (model.CheckOutDate <= model.CheckInDate)
+			var user = await _userRepository.GetByIdAsync(model.UserId);
+			
+            if (user == null)
+			{
+				throw new ArgumentException("User not found.");
+			}
+
+			if (model.CheckOutDate <= model.CheckInDate)
             {
                 throw new ArgumentException(DataConstants.BookingCheckOutDateIsBeforeCheckInDateError);
             }
 
-            var userExists = await _userRepository.GetByIdAsync(model.UserId);
-            ArgumentNullException.ThrowIfNull(userExists);
-          
-            var offer = await _offerRepository.GetByIdAsync(model.OfferId);
-            ArgumentNullException.ThrowIfNull(offer);            
-
-            var booking = new Booking
-            {
-                UserId = model.UserId,
-                CheckInDate = model.CheckInDate,
-                CheckOutDate = model.CheckOutDate,
-                OfferId = model.OfferId
-            };
-
-            await _bookingRepository.AddAsync(booking);
-        }
+			var booking = new Booking
+			{
+				UserId = model.UserId,
+				OfferId = model.OfferId,
+				CheckInDate = model.CheckInDate,
+				CheckOutDate = model.CheckOutDate,
+				User=user
+			};
+			
+			await _bookingRepository.AddAsync(booking);
+            return true;
+		}
 
         public async Task UpdateBookingAsync(EditBookingViewModel model)
         {

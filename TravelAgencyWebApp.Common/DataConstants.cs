@@ -18,6 +18,8 @@
         public const double OfferPriceRangeMax = double.MaxValue;
         public const string OfferPriceRangeError = "Price must be greater than zero.";
         public const string OfferDescriptionRequiredError = "Description is required.";
+        public const string OfferCheckInDateRequiredError = "Check-in date is required.";
+        public const string OfferCheckOutDateRequiredError = "Check-out date is required.";
         public const string OfferImageUrlInvalidError = "Invalid image URL format.";
 
         // Booking Constants

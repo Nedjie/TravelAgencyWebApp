@@ -3,17 +3,22 @@ using System.Globalization;
 
 namespace TravelAgencyWebApp.Common.Attributes
 {
-    public class IsBefore(string comparisonProperty) : ValidationAttribute
-    {
-        private readonly string _comparisonProperty = comparisonProperty;
+	public class IsBefore : ValidationAttribute
+	{
+		private readonly string _comparisonProperty;
 
-        protected override ValidationResult IsValid(object? value, ValidationContext validationContext)
+		public IsBefore(string comparisonProperty)
+		{
+			_comparisonProperty = comparisonProperty;
+		}
+
+		protected override ValidationResult IsValid(object? value, ValidationContext validationContext)
         {
             var comparisonValue = validationContext.ObjectType.GetProperty(_comparisonProperty)?.GetValue(validationContext.ObjectInstance, null);
 
             if (value is DateTime currentDate && comparisonValue is DateTime comparisonDate)
             {
-                if (currentDate < comparisonDate)
+                if (currentDate >= comparisonDate)
                 {
                     return ValidationResult.Success!; 
                 }

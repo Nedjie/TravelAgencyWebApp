@@ -19,99 +19,144 @@
 	<link rel="stylesheet" type="text/css" href="~/Content/styles/main_styles.css" asp-append-version="true" />
 	<link rel="stylesheet" type="text/css" href="~/Content/styles/responsive.css" asp-append-version="true" />
 </head>
-<body>
-	<p>
-		@if (User.IsInRole(AdminRoleName))
-		{
-		<a asp-controller="Offer" asp-action="Create" class="btn btn-primary">Създаване на Нова Оферта</a>
-	}
-	</p>
-	<div class="mb-3">
-		<input type="text" id="searchInput" placeholder="Търсене в офертите..." class="form-control" onkeyup="filterTable()">
-	</div>
 
-	<!-- Table for Offers -->
-	<table class="table table-striped">
-		<thead>
-			<tr>
-				<th style="cursor: pointer;" onclick="sortTable(0)">Заглавие <i class="fa fa-sort" aria-hidden="true"></i></th>
-				<th style="cursor: pointer;" onclick="sortTable(1)">Описание <i class="fa fa-sort" aria-hidden="true"></i></th>
-				<th style="cursor: pointer;" onclick="sortTable(2)">Цена <i class="fa fa-sort" aria-hidden="true"></i></th>
-				<th style="cursor: pointer;" onclick="sortTable(3)">Вид транспорт <i class="fa fa-sort" aria-hidden="true"></i></th>
-				<th>Действия</th>
-			</tr>
-		</thead>
-		<tbody>
-			@if (Model != null && Model.Any())
-			{
-				foreach (var offer in Model)
-				{
-					<tr>
-						<td>@offer.Title</td>
-						<td>@offer.Description</td>
-						<td>@offer.Price.ToString("C")</td>
-						<td>@offer.TravelingWayMethod</td>
-						<td>
-							@if (User.IsInRole(AdminRoleName))
-							{
-								<a asp-controller="Booking" asp-action="Create" asp-route-id="@offer.Id" class="btn btn-primary">Резервирай</a>
-						    	<a asp-controller="Offer" asp-action="Details" asp-route-id="@offer.Id" class="btn btn-info">Детайли</a>
-							    <a asp-controller="Offer" asp-action="Edit" asp-route-id="@offer.Id" class="btn btn-warning">Редактиране</a>
-								<a asp-controller="Offer" asp-action="Delete" asp-route-id="@offer.Id" class="btn btn-danger">Изтриване</a>
-							}
-							else if (User.Identity!.IsAuthenticated)
-							{
-								<a asp-controller="Booking" asp-action="Create" asp-route-id="@offer.Id" class="btn btn-primary">Резервирай</a>
-								<a asp-controller="Offer" asp-action="Details" asp-route-id="@offer.Id" class="btn btn-info">Детайли</a>
-							}	
-							else if(!User.Identity.IsAuthenticated)
-							{
-								<a asp-controller="Offer" asp-action="Details" asp-route-id="@offer.Id" asp-area="" class="btn btn-info">Детайли</a>
-							}
-						</td>
-					</tr>
-				}
-			}
-			else
-			{
-				<tr>
-					<td colspan="6" class="text-center">Няма намерени оферти.</td>
-				</tr>
-			}
-		</tbody>
-	</table>
-</body>
-<!-- Include jQuery and Bootstrap scripts -->
-<script src="~/Content/scripts/jquery.min.js" asp-append-version="true"></script>
-<script src="~/Content/styles/bootstrap4/bootstrap.bundle.min.js" asp-append-version="true"></script>
-
-@section Scripts {
-	<script>
-		let ascending = true; // Variable to track sorting order
-
-		function sortTable(columnIndex) {
-			const table = document.querySelector("table.table-striped tbody");
-			const rows = Array.from(table.rows);
-
-			// Sort rows based on the selected column index
-			rows.sort((rowA, rowB) => {
-				const cellA = rowA.cells[columnIndex].innerText.toLowerCase();
-				const cellB = rowB.cells[columnIndex].innerText.toLowerCase();
-
-				// Determine sorting behavior based on column type
-				if (columnIndex === 3) { // Price column
-					const priceA = parseFloat(cellA.replace(/[^0-9.-]+/g, ""));
-					const priceB = parseFloat(cellB.replace(/[^0-9.-]+/g, ""));
-					return ascending ? priceA - priceB : priceB - priceA; // Sort numerically
-				} else {
-					return ascending ? (cellA > cellB ? 1 : -1) : (cellB > cellA ? 1 : -1); // Sort textually
-				}
-			});
-
-			// Reattach sorted rows
-			rows.forEach(row => table.appendChild(row));
-			ascending = !ascending; // Toggle ascending order for next sort
-		}
-	</script>
-
+@{
+    ViewData["Title"] = "Оферти";
 }
+
+<head>
+    <title>Дени Травел</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Travelix Project">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="~/Content/styles/bootstrap4/bootstrap.min.css" asp-append-version="true" />
+    <link href="~/Content/plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" asp-append-version="true" />
+    <link rel="stylesheet" type="text/css" href="~/Content/styles/main_styles.css" asp-append-version="true" />
+    <link rel="stylesheet" type="text/css" href="~/Content/styles/responsive.css" asp-append-version="true" />
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h2 class="text-center mb-4">Оферти</h2>
+
+        <p>
+            @if (User.IsInRole(AdminRoleName))
+            {
+                <a asp-controller="Offer" asp-action="Create" class="btn btn-primary">Създаване на Нова Оферта</a>
+            }
+        </p>
+
+        <div class="mb-3">
+            <input type="text" id="searchInput" placeholder="Търсене в офертите..." class="form-control" onkeyup="filterTable()">
+        </div>
+
+        <!-- Table for Offers -->
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th style="cursor: pointer;" onclick="sortTable(0)">Заглавие <i class="fa fa-sort" aria-hidden="true"></i></th>
+                    <th style="cursor: pointer;" onclick="sortTable(1)">Описание <i class="fa fa-sort" aria-hidden="true"></i></th>
+                    <th style="cursor: pointer;" onclick="sortTable(2)">Цена <i class="fa fa-sort" aria-hidden="true"></i></th>
+                    <th style="cursor: pointer;" onclick="sortTable(3)">Дата на настаняване <i class="fa fa-sort" aria-hidden="true"></i></th>
+                    <th style="cursor: pointer;" onclick="sortTable(4)">Дата на напускане <i class="fa fa-sort" aria-hidden="true"></i></th>
+                    <th style="cursor: pointer;" onclick="sortTable(5)">Вид транспорт <i class="fa fa-sort" aria-hidden="true"></i></th>
+                    <th>Действия</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model != null && Model.Any())
+                {
+                    foreach (var offer in Model)
+                    {
+                        <tr>
+                            <td>@offer.Title</td>
+                            <td>@offer.Description</td>
+                            <td>@offer.Price.ToString("C")</td>
+                            <td>@offer.CheckInDate.ToString("dd.MM.yyyy")</td>
+                            <td>@offer.CheckOutDate.ToString("dd.MM.yyyy")</td>
+                            <td>@offer.TravelingWayMethod</td>
+                            <td>
+                                @if (User.IsInRole(AdminRoleName))
+                                {
+                                    <a asp-controller="Booking" asp-action="Create" asp-route-id="@offer.Id" class="btn btn-primary">Резервирай</a>
+                                    <a asp-controller="Offer" asp-action="Details" asp-route-id="@offer.Id" class="btn btn-info">Детайли</a>
+                                    <a asp-controller="Offer" asp-action="Edit" asp-route-id="@offer.Id" class="btn btn-warning">Редактиране</a>
+                                    <a asp-controller="Offer" asp-action="Delete" asp-route-id="@offer.Id" class="btn btn-danger">Изтриване</a>
+                                }
+                                else if (User.Identity!.IsAuthenticated)
+                                {
+                                    <a asp-controller="Booking" asp-action="Create" asp-route-id="@offer.Id" class="btn btn-primary">Резервирай</a>
+                                    <a asp-controller="Offer" asp-action="Details" asp-route-id="@offer.Id" class="btn btn-info">Детайли</a>
+                                }
+                                else
+                                {
+                                    <a asp-controller="Offer" asp-action="Details" asp-route-id="@offer.Id" class="btn btn-info">Детайли</a>
+                                }
+                            </td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="7" class="text-center">Няма намерени оферти.</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Include jQuery and Bootstrap scripts -->
+    <script src="~/Content/scripts/jquery.min.js" asp-append-version="true"></script>
+    <script src="~/Content/styles/bootstrap4/bootstrap.bundle.min.js" asp-append-version="true"></script>
+
+    <script>
+        let ascending = true; // Variable to track sorting order
+
+        function sortTable(columnIndex) {
+            const table = document.querySelector("table.table-striped tbody");
+            const rows = Array.from(table.rows);
+
+            // Sort rows based on the selected column index
+            rows.sort((rowA, rowB) => {
+                const cellA = rowA.cells[columnIndex].innerText.toLowerCase();
+                const cellB = rowB.cells[columnIndex].innerText.toLowerCase();
+
+                // Determine sorting behavior based on column type
+                if (columnIndex === 2) { // Price column
+                    const priceA = parseFloat(cellA.replace(/[^0-9.-]+/g, ""));
+                    const priceB = parseFloat(cellB.replace(/[^0-9.-]+/g, ""));
+                    return ascending ? priceA - priceB : priceB - priceA; // Sort numerically
+                } else {
+                    return ascending ? (cellA > cellB ? 1 : -1) : (cellB > cellA ? 1 : -1); // Sort textually
+                }
+            });
+
+            // Reattach sorted rows
+            rows.forEach(row => table.appendChild(row));
+            ascending = !ascending; // Toggle ascending order for next sort
+        }
+
+        function filterTable() {
+            const searchInput = document.getElementById("searchInput").value.toLowerCase();
+            const table = document.querySelector("table.table-striped tbody");
+            const rows = table.getElementsByTagName("tr");
+
+            for (let i = 0; i < rows.length; i++) {
+                const cells = rows[i].getElementsByTagName("td");
+                let rowVisible = false;
+
+                // Look for search term in each cell
+                for (let j = 0; j < cells.length - 1; j++) { // Avoid the last column (Actions)
+                    if (cells[j].innerText.toLowerCase().includes(searchInput)) {
+                        rowVisible = true;
+                        break;
+                    }
+                }
+
+                rows[i].style.display = rowVisible ? "" : "none"; // Toggle visibility
+            }
+        }
+    </script>
+</body>

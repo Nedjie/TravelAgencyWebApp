@@ -27,7 +27,9 @@ namespace TravelAgencyWebApp.Controllers
                 Description = offer.Description,
                 Price = offer.Price,
                 ImageUrl = offer.ImageUrl,
-                TravelingWayMethod = offer.TravelingWay?.Method
+                TravelingWayMethod = offer.TravelingWay?.Method,
+                CheckInDate=offer.CheckInDate,
+                CheckOutDate=offer.CheckOutDate
             }));
         }
 
@@ -87,7 +89,9 @@ namespace TravelAgencyWebApp.Controllers
                 Description = model.Description ?? "No Description",
                 Price = model.Price,
                 ImageUrl = model.ImageUrl ?? "default-image-url.png",
-                TravelingWayId = travelingWay.Id
+                TravelingWayId = travelingWay.Id,
+                CheckInDate=model.CheckInDate,
+                CheckOutDate=model.CheckOutDate
             };
 
             await _offerService.AddOfferAsync(offer);
@@ -111,7 +115,9 @@ namespace TravelAgencyWebApp.Controllers
                 Description = offer.Description,
                 Price = offer.Price,
                 ImageUrl = offer.ImageUrl,
-                TravelingWayMethod = offer.TravelingWay?.Method
+                TravelingWayMethod = offer.TravelingWay?.Method,
+                CheckInDate=offer.CheckInDate,
+                CheckOutDate=offer.CheckOutDate
             };
 
             return View(model);
@@ -134,7 +140,10 @@ namespace TravelAgencyWebApp.Controllers
                 Description = offer.Description,
                 Price = offer.Price,
                 ImageUrl = offer.ImageUrl,
-                TravelingWayMethod = offer.TravelingWay?.Method
+                TravelingWayMethod = offer.TravelingWay?.Method,
+                CheckInDate=offer.CheckInDate,
+                CheckOutDate=offer.CheckOutDate
+
             };
 
             var travelingWays = await _travelingWayService.GetAllTravelingWaysAsync();
@@ -204,7 +213,9 @@ namespace TravelAgencyWebApp.Controllers
                 Description = model.Description ?? "No Description",
                 Price = model.Price,
                 ImageUrl = model.ImageUrl ?? "default-image-url.png",
-                TravelingWayId = travelingWay.Id
+                TravelingWayId = travelingWay.Id,
+                CheckInDate=model.CheckInDate,
+                CheckOutDate=model.CheckOutDate
             };
 
             await _offerService.UpdateOfferAsync(offerToUpdate);

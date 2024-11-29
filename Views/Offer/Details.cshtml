@@ -37,6 +37,8 @@
                     <h5 class="card-title">Заглавие: <span class="text-primary">@Model.Title</span></h5>
                     <p class="card-text"><strong>Описание:</strong> @Model.Description</p>
                     <p class="card-text"><strong>Цена:</strong> @Model.Price.ToString("C")</p>
+                    <p class=" card-text"><strong>Дата на настаняване:</strong>@Model.CheckInDate</p>
+                    <p class=" card-text"><strong>Дата на настаняване:</strong>@Model.CheckOutDate</p>
                     <p class="card-text"><strong>Метод на пътуване:</strong> @Model.TravelingWayMethod</p>
 
                     @if (User.IsInRole(AdminRoleName))

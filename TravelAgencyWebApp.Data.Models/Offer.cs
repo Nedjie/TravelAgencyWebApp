@@ -35,8 +35,11 @@ namespace TravelAgencyWebApp.Data.Models
 		public int TravelingWayId { get; set; }
 
 		[ForeignKey(nameof(TravelingWayId))]
-		public TravelingWay? TravelingWay { get; set; } 
+		public TravelingWay? TravelingWay { get; set; }
 
-		public ICollection<Review> Reviews { get; set; } = new List<Review>();
+        [Comment("Is this offer is deleted")]
+        public bool IsDeleted { get; set; }
+
+        public ICollection<Review> Reviews { get; set; } = new List<Review>();
     }
 }

@@ -1,5 +1,4 @@
 ﻿using TravelAgencyWebApp.Data.Models;
-using TravelAgencyWebApp.ViewModels.Offer;
 
 namespace TravelAgencyWebApp.Services.Data.Interfaces
 {
@@ -11,5 +10,6 @@ namespace TravelAgencyWebApp.Services.Data.Interfaces
 		Task AddOfferAsync(Offer model);
         Task UpdateOfferAsync(Offer model);
         Task DeleteOfferAsync(int id);
+        Task<bool> SoftDeleteOfferAsync(Offer offer);
     }
 }

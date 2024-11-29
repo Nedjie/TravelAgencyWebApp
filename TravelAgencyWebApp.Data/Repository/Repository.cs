@@ -85,11 +85,33 @@ namespace TravelAgencyWebApp.Data.Repository
 		public async Task<bool> DeleteAsync(TType entity)
 		{
             ArgumentNullException.ThrowIfNull(entity);
-            _dbSet.Remove(entity);
-			return await _context.SaveChangesAsync() > 0;
-		}
 
-		public bool Update(TType item)
+            var isDeletedProperty = typeof(TType).GetProperty("IsDeleted");
+            if (isDeletedProperty != null && isDeletedProperty.CanWrite)
+            {
+                isDeletedProperty.SetValue(entity, true); 
+                _dbSet.Update(entity); 
+                return await _context.SaveChangesAsync() > 0; 
+            }
+
+            return false; 
+        }
+
+        public async Task<bool> SoftDeleteAsync(TType entity)
+        {
+            ArgumentNullException.ThrowIfNull(entity); 
+            var isDeletedProperty = typeof(TType).GetProperty("IsDeleted");
+            if (isDeletedProperty != null && isDeletedProperty.CanWrite)
+            {
+                isDeletedProperty.SetValue(entity, true); 
+                _dbSet.Update(entity);
+                return await _context.SaveChangesAsync() > 0;
+            }
+
+            return false; 
+        }
+
+        public bool Update(TType item)
 		{
 			_dbSet.Update(item);
 			return _context.SaveChanges() > 0;

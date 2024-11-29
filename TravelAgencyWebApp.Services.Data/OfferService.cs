@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using SQLitePCL;
 using TravelAgencyWebApp.Common.ErrorMessages;
 using TravelAgencyWebApp.Data.Models;
 using TravelAgencyWebApp.Data.Repository.Interfaces;
@@ -81,16 +82,25 @@ namespace TravelAgencyWebApp.Services.Data
 				await _offerRepository.UpdateAsync(existingOffer); 
 			}
 		}
+		
 		public async Task DeleteOfferAsync(int id)
-		{
-			var offer = await _offerRepository.GetByIdAsync(id);
+        {
+            var offer = await _offerRepository.GetByIdAsync(id);
+            if (offer == null)
+            {
+                throw new KeyNotFoundException($"Offer with ID {id} was not found.");
+            }
 
-			if (offer == null)
-			{
-				throw new KeyNotFoundException($"Offer with ID {id} was not found.");
-			}
+            await _offerRepository.DeleteAsync(offer);
+        }
 
-			await _offerRepository.DeleteAsync(offer);
-		}
-	}
+        public async Task<bool> SoftDeleteOfferAsync(Offer offer)
+        {
+            ArgumentNullException.ThrowIfNull(offer);
+
+            offer.IsDeleted = true;
+           return await _offerRepository.UpdateAsync(offer); 
+           
+        }
+    }
 }

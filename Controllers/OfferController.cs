@@ -34,7 +34,7 @@ namespace TravelAgencyWebApp.Controllers
         }
 
         [HttpGet]
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = AdminRoleName)]
         public async Task<IActionResult> Create()
         {
             var travelingWays = await _travelingWayService.GetAllTravelingWaysAsync();
@@ -82,7 +82,7 @@ namespace TravelAgencyWebApp.Controllers
 
                 return View(model);
             }
-
+            Console.WriteLine($"Creating offer with title: {model.Title}, Check-In: {model.CheckInDate}, Check-Out: {model.CheckOutDate}");
             var offer = new Data.Models.Offer
             {
                 Title = model.Title ?? "No Title",
@@ -132,7 +132,7 @@ namespace TravelAgencyWebApp.Controllers
             {
                 return NotFound();
             }
-
+         
             var model = new OfferViewModel
             {
                 Id = offer.Id,

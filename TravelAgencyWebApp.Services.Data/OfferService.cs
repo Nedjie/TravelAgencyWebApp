@@ -55,7 +55,9 @@ namespace TravelAgencyWebApp.Services.Data
 				Price = model.Price,
 				ImageUrl = model.ImageUrl!,
 				TravelingWay = model.TravelingWay,
-				TravelingWayId = model.TravelingWayId
+				TravelingWayId = model.TravelingWayId,
+				CheckInDate=model.CheckInDate,
+				CheckOutDate=model.CheckOutDate
 			};
 
 			await _offerRepository.AddAsync(offer);
@@ -78,12 +80,13 @@ namespace TravelAgencyWebApp.Services.Data
 				existingOffer.Description =model.Description ?? "No Description";
 				existingOffer.Price = model.Price;
 				existingOffer.ImageUrl = model.ImageUrl;
-				existingOffer.TravelingWayId = model.TravelingWayId; 
+				existingOffer.TravelingWayId = model.TravelingWayId;
+				existingOffer.CheckInDate = model.CheckInDate;
+				existingOffer.CheckOutDate = model.CheckOutDate;
 
 				await _offerRepository.UpdateAsync(existingOffer); 
 			}
-		}
-		
+		}	
 		public async Task DeleteOfferAsync(int id)
         {
             var offer = await _offerRepository.GetByIdAsync(id);
@@ -94,7 +97,6 @@ namespace TravelAgencyWebApp.Services.Data
 
             await _offerRepository.DeleteAsync(offer);
         }
-
         public async Task<bool> SoftDeleteOfferAsync(Offer offer)
         {
             ArgumentNullException.ThrowIfNull(offer);

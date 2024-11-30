@@ -27,7 +27,9 @@ namespace TravelAgencyWebApp.Services.Data
 
         public async Task<IEnumerable<BookingViewModel>> GetAllBookingsAsync()
         {
-            var bookings = await _bookingRepository.GetAllAsync();
+            var bookings = await _bookingRepository
+                .GetAllIncludingAsync(b => b.Offer!); 
+
             return bookings.Select(b => new BookingViewModel
             {
                 Id = b.Id,
@@ -40,7 +42,7 @@ namespace TravelAgencyWebApp.Services.Data
             });
         }
 
-        public async Task<BookingViewModel?> GetBookingByIdAsync(int id)
+		public async Task<BookingViewModel?> GetBookingByIdAsync(int id)
         {
             var booking = await _bookingRepository.GetByIdAsync(id);
             if (booking == null)

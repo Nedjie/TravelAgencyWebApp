@@ -54,10 +54,14 @@ namespace TravelAgencyWebApp.Controllers
                 return NotFound(); 
             }
 			var user = await _userManager.GetUserAsync(User);
-
 			if (user == null)
 			{
-				return Unauthorized(); 
+				Console.WriteLine("User is not authenticated. Claims:");
+				foreach (var claim in User.Claims)
+				{
+					Console.WriteLine($"{claim.Type}: {claim.Value}");
+				}
+				return Unauthorized();
 			}
 
 			var bookingViewModel = new CreateBookingViewModel
@@ -69,6 +73,7 @@ namespace TravelAgencyWebApp.Controllers
                 UserEmail=user.Email,
                 UserFullName=user.FullName,
                 UserPhoneNumber=user.PhoneNumber
+
             };
             ViewBag.Offer = offer;
             return View(bookingViewModel);
@@ -77,7 +82,7 @@ namespace TravelAgencyWebApp.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(CreateBookingViewModel model)
         {
-            if (!ModelState.IsValid)
+			if (!ModelState.IsValid)
             {
                 ViewBag.Offers = (await _offerService.GetAllOffersAsync())
                     .Select(o => new SelectListItem
@@ -113,7 +118,7 @@ namespace TravelAgencyWebApp.Controllers
             var booking = await _bookingService.GetBookingByIdAsync(id);
             if (booking == null)
             {
-                return NotFound(); // Return 404 if the booking does not exist
+                return NotFound(); 
             }
 
             ViewBag.Offers = (await _offerService.GetAllOffersAsync())

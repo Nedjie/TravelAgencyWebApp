@@ -5,11 +5,16 @@ using TravelAgencyWebApp.Data.Repository.Interfaces;
 
 namespace TravelAgencyWebApp.Data.Repository
 {
-	public class Repository<TType, TId>(ApplicationDbContext context) : IRepository<TType, TId> where TType : class
+	public class Repository<TType, TId> : IRepository<TType, TId> where TType : class
 	{
-		private readonly ApplicationDbContext _context = context ?? throw new ArgumentNullException(nameof(context));
-		private readonly DbSet<TType> _dbSet = context.Set<TType>();
+		private readonly ApplicationDbContext _context;
+		private readonly DbSet<TType> _dbSet;
 
+		public Repository(ApplicationDbContext context)
+		{
+			_context = context ?? throw new ArgumentNullException(nameof(context));
+			_dbSet = context.Set<TType>();
+		}
 
 		public TType? GetById(TId id)
 		{
@@ -31,7 +36,7 @@ namespace TravelAgencyWebApp.Data.Repository
 			return await _dbSet.FirstOrDefaultAsync(predicate);
 		}
 
-		public IEnumerable<TType> GetAll() // ПРОВЕРИ ДАЛИ РАБОТИ ПРАВИЛНО!!!!!
+		public IEnumerable<TType> GetAll() 
 		{
 			return this._dbSet.AsEnumerable();
 		}
@@ -138,6 +143,18 @@ namespace TravelAgencyWebApp.Data.Repository
 		public async Task<IEnumerable<TType>> GetAllIncludingAsync(params Expression<Func<TType, object>>[] includes)
 		{
 			IQueryable<TType> query = _dbSet;
+
+			foreach (var include in includes)
+			{
+				query = query.Include(include);
+			}
+
+			return await query.ToListAsync();
+		}
+
+		public async Task<IEnumerable<TType>> GetByUserIdAsync(Guid userId, params Expression<Func<TType, object>>[] includes)
+		{
+			IQueryable<TType> query = _dbSet.Where(b => EF.Property<Guid>(b, "UserId") == userId); 
 
 			foreach (var include in includes)
 			{

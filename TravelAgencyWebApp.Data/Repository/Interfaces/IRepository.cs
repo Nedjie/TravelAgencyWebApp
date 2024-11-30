@@ -23,5 +23,6 @@ namespace TravelAgencyWebApp.Data.Repository.Interfaces
         Task<bool> UpdateAsync(TType item);
         Task<TType?> GetIncludingAsync(TId id, params Expression<Func<TType, object>>[] includes);
         Task<IEnumerable<TType>> GetAllIncludingAsync(params Expression<Func<TType, object>>[] includes);
+        Task<IEnumerable<TType>> GetByUserIdAsync(Guid userId, params Expression<Func<TType, object>>[] includes);
 	}
 }

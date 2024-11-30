@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using System.Linq.Expressions;
 using TravelAgencyWebApp.Common;
 using TravelAgencyWebApp.Common.ErrorMessages;
 using TravelAgencyWebApp.Data.Models;
@@ -62,7 +63,21 @@ namespace TravelAgencyWebApp.Services.Data
             };
         }
 
-        public async Task<bool> CreateBookingAsync(CreateBookingViewModel model)
+		public async Task<IEnumerable<BookingViewModel>> GetBookingsByUserIdAsync(Guid userId, params Expression<Func<Booking, object>>[] includes)
+		{
+			var bookings = await _bookingRepository.GetByUserIdAsync(userId, includes); 
+																						
+			return bookings.Select(b => new BookingViewModel
+			{
+				Id = b.Id,
+				CheckInDate = b.CheckInDate,
+				CheckOutDate = b.CheckOutDate,
+				OfferTitle = b.Offer?.Title ?? "No Offer Title" 
+																
+			}).ToList();
+		}
+
+		public async Task<bool> CreateBookingAsync(CreateBookingViewModel model)
         {
 			var user = await _userRepository.GetByIdAsync(model.UserId);
 			

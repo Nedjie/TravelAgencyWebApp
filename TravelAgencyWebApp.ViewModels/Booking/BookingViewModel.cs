@@ -26,6 +26,9 @@ namespace TravelAgencyWebApp.ViewModels.Booking
         [Comment("Offer title")]
         public string? OfferTitle { get; set; }
 
+        [Comment("Offer image")]
+        public string? OfferImageUrl { get; set; }
+
         [Required(ErrorMessage = BookingCheckInDateRequiredError)]
         [Comment("Check in date of booking")]
         public DateTime CheckInDate { get; set; } 

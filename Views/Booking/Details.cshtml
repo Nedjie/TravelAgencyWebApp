@@ -1,0 +1,79 @@
+﻿@model TravelAgencyWebApp.ViewModels.Booking.BookingViewModel
+
+@{
+	ViewData["Title"] = "Детайли на Резервация";
+}
+<style>
+	.card-text {
+		word-wrap: break-word; /* Allows long words to be broken and wrap onto the next line */
+		overflow-wrap: break-word; /* Similar function */
+		display: block; /* Makes sure the text takes full width */
+	}
+</style>
+<div class="container mt-5">
+	<nav aria-label="breadcrumb">
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Начало</a></li>
+			<li class="breadcrumb-item"><a asp-controller="Booking" asp-action="Index">Резервации</a></li>
+			<li class="breadcrumb-item active" aria-current="page">Резервация № @Model.Id</li>
+		</ol>
+	</nav>
+
+	<h2 class="text-center mb-4">Детайли на Резервация № @Model.Id</h2>
+
+	<div class="row mb-4">
+		<div class="col-md-6">
+			<div class="card border-light shadow-sm">
+				<div class="card-body">
+					<h5 class="card-title">Резервация № @Model.Id</h5>
+					<p class="card-text" style="max-width:100%;">
+						<strong>Оферта:</strong> @Model.OfferTitle
+					</p>
+					<p class="card-text"><strong>Номер на Оферта:</strong> @Model.OfferId</p>
+					<p class="card-text"><strong>Дата на Настаняване:</strong> @Model.CheckInDate.ToString("dd.MM.yyyy")</p>
+					<p class="card-text"><strong>Дата на Освобождаване:</strong> @Model.CheckOutDate.ToString("dd.MM.yyyy")</p>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-6 text-center">
+			<div>
+				@if (!string.IsNullOrEmpty(Model.OfferImageUrl))
+				{
+					<img src="@Model.OfferImageUrl" class="img-fluid rounded" alt="@Model.OfferTitle" style="max-width: 100%; height: auto;" />
+				}
+				else
+				{
+					<img src="~/Content/images/default.jpg" class="img-fluid rounded" alt="No image available" style="max-width: 100%; height: auto;" />
+				}
+			</div>
+		</div>
+	</div>
+
+	<hr class="my-4">
+
+	<div class="text-center">
+		<a asp-action="Index" class="btn btn-secondary" title="Назад към резервирания списък">
+			<i class="fas fa-arrow-left"></i> Назад към Резервации
+		</a>
+		<a asp-controller="Booking" asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning" title="Редактиране на резервацията">
+			<i class="fas fa-edit"></i> Редактиране
+		</a>
+		<a asp-controller="Booking" asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger" onclick="return confirm('Сигурни ли сте, че искате да изтриете тази резервация?');" title="Изтриване на резервацията">
+			<i class="fas fa-trash-alt"></i> Изтриване
+		</a>
+	</div>
+
+	<hr class="my-4">
+
+	<div class="text-center mt-5">
+		<h3>Допълнителна информация</h3>
+		<p>Ако имате въпроси относно вашата резервация, моля, свържете се с нас!</p>
+	</div>
+
+	<hr class="my-4">
+</div>
+
+<!-- Optional JavaScript -->
+<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" asp-append-version="true"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.min.js" asp-append-version="true"></script>

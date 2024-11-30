@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Security.Claims;
@@ -9,6 +10,7 @@ using TravelAgencyWebApp.ViewModels.Booking;
 
 namespace TravelAgencyWebApp.Controllers
 {
+    [Authorize]
 	public class BookingController(IBookingService bookingService, IOfferService offerService,
         UserManager<ApplicationUser> userManager,ILogger<BookingController> logger) : BaseController(logger)
     {
@@ -33,16 +35,36 @@ namespace TravelAgencyWebApp.Controllers
                 return View("Error");
             }
         }
-
+    
+        [HttpGet]
         public async Task<IActionResult> Details(int id)
         {
             var booking = await _bookingService.GetBookingByIdAsync(id);
+
             if (booking == null)
             {
-                return NotFoundPage();
+                return NotFound();
             }
 
-            return View(booking);
+            var offer = await _offerService.GetOfferByIdAsync(booking.OfferId);
+            
+            if (offer == null)
+            {
+                return NotFound();
+            }
+
+            var model = new BookingViewModel
+            {
+                Id=booking.Id,
+                OfferId = offer.Id,
+                OfferTitle = offer.Title,
+                CheckInDate = booking.CheckInDate,
+                CheckOutDate = booking.CheckOutDate,
+                UserName = booking.UserName,
+                OfferImageUrl = offer.ImageUrl 
+            };
+
+            return View(model);
         }
 
         [HttpGet]

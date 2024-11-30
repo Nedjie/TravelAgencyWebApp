@@ -261,7 +261,7 @@ namespace TravelAgencyWebApp.Controllers
                 TempData["ErrorMessage"] = "An unexpected error occurred: " + ex.Message;
             }
 
-            return RedirectToAction(nameof(Index)); // Redirect back to your index or relevant page
+            return RedirectToAction(nameof(Index));
         }
 
     }

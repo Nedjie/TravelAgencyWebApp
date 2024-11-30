@@ -102,20 +102,6 @@ namespace TravelAgencyWebApp.Data.Repository
             return false; 
         }
 
-        public async Task<bool> SoftDeleteAsync(TType entity)
-        {
-            ArgumentNullException.ThrowIfNull(entity); 
-            var isDeletedProperty = typeof(TType).GetProperty("IsDeleted");
-            if (isDeletedProperty != null && isDeletedProperty.CanWrite)
-            {
-                isDeletedProperty.SetValue(entity, true); 
-                _dbSet.Update(entity);
-                return await _context.SaveChangesAsync() > 0;
-            }
-
-            return false; 
-        }
-
         public bool Update(TType item)
 		{
 			_dbSet.Update(item);
@@ -124,6 +110,12 @@ namespace TravelAgencyWebApp.Data.Repository
 
 		public async Task<bool> UpdateAsync(TType item)
 		{
+			var isDeletedProperty = typeof(TType).GetProperty("IsDeleted");
+			if (isDeletedProperty != null && (bool)isDeletedProperty.GetValue(item) == true)
+			{
+				return false;
+			}
+
 			_dbSet.Update(item);
 			return await _context.SaveChangesAsync() > 0;
 		}
@@ -154,7 +146,7 @@ namespace TravelAgencyWebApp.Data.Repository
 
 		public async Task<IEnumerable<TType>> GetByUserIdAsync(Guid userId, params Expression<Func<TType, object>>[] includes)
 		{
-			IQueryable<TType> query = _dbSet.Where(b => EF.Property<Guid>(b, "UserId") == userId); 
+			IQueryable<TType> query = _dbSet.Where(b => EF.Property<Guid>(b, "UserId") == userId && EF.Property<bool>(b, "IsDeleted") == false);
 
 			foreach (var include in includes)
 			{

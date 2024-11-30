@@ -34,5 +34,7 @@ namespace TravelAgencyWebApp.Data.Models
         [IsBefore("CheckInDate", ErrorMessage = BookingCheckOutDateIsBeforeCheckInDateError)]
         [Comment("Check out date of booking")]
         public DateTime CheckOutDate { get; set; }
-    }
+
+		public bool IsDeleted { get; set; }
+	}
 }

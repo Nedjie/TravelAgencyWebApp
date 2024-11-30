@@ -102,8 +102,7 @@ namespace TravelAgencyWebApp.Services.Data
             ArgumentNullException.ThrowIfNull(offer);
 
             offer.IsDeleted = true;
-           return await _offerRepository.UpdateAsync(offer); 
-           
+           return await _offerRepository.UpdateAsync(offer);           
         }
     }
 }

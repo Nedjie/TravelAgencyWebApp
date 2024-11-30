@@ -41,7 +41,7 @@ namespace TravelAgencyWebApp.Services.Data
 
 		public async Task<BookingViewModel?> GetBookingByIdAsync(int id)
         {
-            var booking = await _bookingRepository.GetByIdAsync(id);
+            var booking = await _bookingRepository.GetIncludingAsync(id);
             if (booking == null)
             {
                 return null; 
@@ -61,8 +61,8 @@ namespace TravelAgencyWebApp.Services.Data
 
 		public async Task<IEnumerable<BookingViewModel>> GetBookingsByUserIdAsync(Guid userId, params Expression<Func<Booking, object>>[] includes)
 		{
-			var bookings = await _bookingRepository.GetByUserIdAsync(userId, includes); 
-																						
+			var bookings = await _bookingRepository.GetByUserIdAsync(userId,b => b.User, b => b.Offer);
+
 			return bookings.Select(b => new BookingViewModel
 			{
 				Id = b.Id,
@@ -123,13 +123,21 @@ namespace TravelAgencyWebApp.Services.Data
             return true;
         }
 
-        public async Task DeleteBookingAsync(int id)
-        {
-            var booking = await _bookingRepository.GetByIdAsync(id);
-            ArgumentNullException.ThrowIfNull(booking);
+		public async Task<Booking?> GetBookingByIdIncludingUserAndOfferAsync(int id)
+		{
+			return await _bookingRepository.GetIncludingAsync(id, b => b.User!, b => b.Offer!);
+		}
 
-            await _bookingRepository.DeleteAsync(booking);
-        }
+		public async Task<bool> DeleteBookingAsync(int id)
+		{
+			var booking = await _bookingRepository.GetByIdAsync(id);
 
+			if (booking == null)
+			{
+				return false; 
+			}
+
+			return await _bookingRepository.DeleteAsync(booking);
+		}
     }
 }

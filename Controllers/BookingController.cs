@@ -145,7 +145,7 @@ namespace TravelAgencyWebApp.Controllers
 		[HttpGet]
 		public async Task<IActionResult> Edit(int id)
 		{
-			var booking = await _bookingService.GetBookingByIdAsync(id);
+			var booking = await _bookingService.GetBookingByIdIncludingUserAndOfferAsync(id);
 			if (booking == null)
 			{
 				return NotFound();
@@ -161,7 +161,7 @@ namespace TravelAgencyWebApp.Controllers
 			var model = new EditBookingViewModel
 			{
 				Id = booking.Id,
-				UserId = Guid.Parse(booking.UserId!),
+				UserId = booking.UserId,
 				CheckInDate = booking.CheckInDate,
 				CheckOutDate = booking.CheckOutDate,
 				OfferId = booking.OfferId
@@ -192,25 +192,40 @@ namespace TravelAgencyWebApp.Controllers
 		[HttpGet]
 		public async Task<IActionResult> Delete(int id)
 		{
-			var booking = await _bookingService.GetBookingByIdAsync(id);
+			var booking = await _bookingService.GetBookingByIdIncludingUserAndOfferAsync(id);
+
 			if (booking == null)
 			{
-				return NotFound(); // make view special for 404
+				return NotFound();
 			}
+
 			var model = new ConfirmDeleteViewModel
 			{
 				Id = booking.Id,
-				UserName = booking.UserName ?? "Unknown",
-				OfferTitle = booking.OfferTitle ?? "No Offer"
+				OfferTitle = booking.Offer?.Title ?? "No Offer Title", 
+				UserName = booking.User?.FullName ?? "Unknown" 
 			};
 
 			return View(model);
 		}
 
 		[HttpPost, ActionName("Delete")]
-		public async Task<IActionResult> DeleteConfirmed(int id)
+		public async Task<IActionResult> DeleteConfirmed(ConfirmDeleteViewModel model)
 		{
-			await _bookingService.DeleteBookingAsync(id);
+			try
+			{
+				await _bookingService.DeleteBookingAsync(model.Id);
+				TempData["SuccessMessage"] = "Offer has been marked as deleted successfully.";
+			}
+			catch (KeyNotFoundException)
+			{
+				TempData["ErrorMessage"] = "The offer could not be found.";
+			}
+			catch (Exception ex)
+			{
+				TempData["ErrorMessage"] = "An unexpected error occurred: " + ex.Message;
+			}
+
 			return RedirectToAction(nameof(Index));
 		}
 	}

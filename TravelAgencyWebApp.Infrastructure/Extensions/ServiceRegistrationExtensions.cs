@@ -127,6 +127,7 @@ namespace TravelAgencyWebApp.Infrastructure.Extensions
             services.AddScoped(typeof(IRepository<,>), typeof(Repository<,>));
 			services.AddScoped<IApplicationUserService, ApplicationUserService>();
 			services.AddScoped<IBookingService, BookingService>();
+            services.AddScoped<IRepository<Booking, int>, Repository<Booking, int>>();
             services.AddScoped<IHomeService, HomeService>();
             services.AddScoped<IOfferService, OfferService>();
             services.AddScoped<IReviewService, ReviewService>();

@@ -14,6 +14,9 @@ namespace TravelAgencyWebApp.ViewModels.Booking
         [Comment("User identifier")]
         public Guid UserId { get; set; }
 
+        [Comment("User name")]
+        public string? UserName { get; set; }
+
         [Required(ErrorMessage = BookingCheckInDateRequiredError)]
         [Comment("Check in date of booking")]
         public DateTime CheckInDate { get; set; } 

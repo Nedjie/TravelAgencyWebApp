@@ -10,7 +10,7 @@ namespace TravelAgencyWebApp.Services.Data.Interfaces
         Task<BookingViewModel?> GetBookingByIdAsync(int id);
         Task<IEnumerable<BookingViewModel>> GetBookingsByUserIdAsync(Guid userId, params Expression<Func<Booking, object>>[] includes);
 		Task<bool> CreateBookingAsync(CreateBookingViewModel model);
-        Task UpdateBookingAsync(EditBookingViewModel model);
+        Task<bool> UpdateBookingAsync(EditBookingViewModel model);
         Task DeleteBookingAsync(int id);
     }
 }

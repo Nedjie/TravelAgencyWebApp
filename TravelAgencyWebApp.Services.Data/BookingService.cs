@@ -1,9 +1,5 @@
-﻿using Microsoft.AspNetCore.Http.HttpResults;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
-using System.Linq.Expressions;
+﻿using System.Linq.Expressions;
 using TravelAgencyWebApp.Common;
-using TravelAgencyWebApp.Common.ErrorMessages;
 using TravelAgencyWebApp.Data.Models;
 using TravelAgencyWebApp.Data.Repository.Interfaces;
 using TravelAgencyWebApp.Services.Data.Interfaces;
@@ -104,7 +100,7 @@ namespace TravelAgencyWebApp.Services.Data
             return true;
 		}
 
-        public async Task UpdateBookingAsync(EditBookingViewModel model)
+        public async Task<bool> UpdateBookingAsync(EditBookingViewModel model)
         {
             ArgumentNullException.ThrowIfNull(model);          
 
@@ -116,12 +112,15 @@ namespace TravelAgencyWebApp.Services.Data
                 throw new ArgumentException(DataConstants.BookingCheckOutDateIsBeforeCheckInDateError);
             }
 
-            existingBooking.UserId = model.UserId;
+            Console.WriteLine($"Existing UserId: {existingBooking.UserId}");
+            
+            //existingBooking.UserId = model.UserId;
             existingBooking.CheckInDate = model.CheckInDate;
             existingBooking.CheckOutDate = model.CheckOutDate;
             existingBooking.OfferId = model.OfferId; 
 
             await _bookingRepository.UpdateAsync(existingBooking);
+            return true;
         }
 
         public async Task DeleteBookingAsync(int id)

@@ -1,15 +1,12 @@
 using Microsoft.AspNetCore.Mvc;
-using System.Diagnostics;
-using TravelAgencyWebApp.Services.Data;
 using TravelAgencyWebApp.Services.Data.Interfaces;
-using TravelAgencyWebApp.ViewModels;
 using TravelAgencyWebApp.ViewModels.Offer;
 
 namespace TravelAgencyWebApp.Controllers
 {
-	public class HomeController(IHomeService homeService,
+    public class HomeController(IHomeService homeService,
 		ITravelingWayService travelingWayService, IOfferService offerService,
-		IReviewService reviewService, ILogger<HomeController> logger)
+		 ILogger<HomeController> logger)
 		: BaseController(logger)
 	{
 		private readonly IHomeService _homeService = homeService
@@ -19,10 +16,7 @@ namespace TravelAgencyWebApp.Controllers
 			?? throw new ArgumentNullException(nameof(travelingWayService));
 
 		private readonly IOfferService _offerService = offerService
-			?? throw new ArgumentNullException(nameof(offerService));
-
-		private readonly IReviewService _reviewService=reviewService
-			?? throw new ArgumentNullException(nameof(reviewService));
+			?? throw new ArgumentNullException(nameof(offerService));	
 
 		[HttpGet]
 		public async Task<IActionResult> Index()
@@ -45,11 +39,10 @@ namespace TravelAgencyWebApp.Controllers
 			return View(groupedOffers);
 		}
 
-		[HttpGet("About")]
-		public async Task<IActionResult> About()
-		{
-			var reviews = await _reviewService.GetAllReviewsAsync();
-			return View(reviews);
+		[HttpGet]
+		public IActionResult About()
+		{		
+			return View();
 		}
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

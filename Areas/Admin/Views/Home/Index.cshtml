@@ -62,7 +62,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			@foreach (var user in ViewBag.Users) // Use ViewBag to list users
+			@foreach (var user in ViewBag.Users) 
 			{
 				<tr>
 					<td>@user.Email</td>
@@ -99,36 +99,7 @@
 			}
 		</tbody>
 	</table>
-
-	<!-- Manage Reviews Section -->
-	<h3>Отзиви от Клиенти</h3>
-	<table class="table table-striped">
-		<thead>
-			<tr>
-				<th>Потребител</th>
-				<th>Съдържание</th>
-				<th>Оценка</th>
-				<th>Действия</th>
-			</tr>
-		</thead>
-		<tbody>
-			@foreach (var review in ViewBag.Reviews)
-			{
-				<tr>
-					<td>@review.UserName</td>
-					<td>@review.Content</td>
-					<td>@review.Rating</td>
-					<td>
-						<a asp-area="Admin" asp-controller="Review" asp-action="Edit" asp-route-id="@review.Id" class="btn btn-warning">Редактиране</a>
-
-						<form asp-area="Admin" asp-controller="Review" asp-action="Delete" asp-route-id="@review.Id" method="post" style="display:inline;">
-							<input type="submit" class="btn btn-danger" value="Изтриване" onclick="return confirm('Сигурни ли сте, че искате да изтриете този отзив?');" />
-						</form>
-					</td>
-				</tr>
-			}
-		</tbody>
-	</table>
+	
 </div>
 @section Scripts {
 	<script src="~/Content/scripts/jquery.min.js" asp-append-version="true"></script>

@@ -16,6 +16,5 @@ namespace TravelAgencyWebApp.Data.Models
         public string? Address { get; set; } 
 
         public virtual ICollection<Booking> Bookings { get; set; } = new HashSet<Booking>();
-        public virtual ICollection<Review> Reviews { get; set; } = new HashSet<Review>();
     }
 }

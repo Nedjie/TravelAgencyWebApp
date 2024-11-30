@@ -11,25 +11,20 @@ namespace TravelAgencyWebApp.Areas.Admin.Controllers
 	{
 		private readonly IOfferService _offerService;
 		private readonly IApplicationUserService _userService;
-		private readonly IReviewService _reviewService;
+
 
 		public HomeController(IOfferService offerService,
-			IApplicationUserService userService,
-			IReviewService reviewService)
+			IApplicationUserService userService)
 		{
 			_offerService = offerService;
 			_userService = userService;
-			_reviewService = reviewService;
-
 		}
 
 		public async Task<IActionResult> Index()
 		{
 			var offers = await _offerService.GetAllOffersAsync();
 			var users = await _userService.GetAllUsersAsync();
-			var reviews = await _reviewService.GetAllReviewsAsync();
 			ViewBag.Users = users;
-			ViewBag.Reviews = reviews;
 			return View(offers);
 		}
 

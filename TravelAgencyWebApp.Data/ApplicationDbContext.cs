@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
 using TravelAgencyWebApp.Data.Models;
 using TravelAgencyWebApp.Data.Seeding;
 
@@ -13,7 +12,6 @@ namespace TravelAgencyWebApp.Data
     {
         public DbSet<Booking> Bookings { get; set; }
         public DbSet<Offer> Offers { get; set; }
-        public DbSet<Review> Reviews { get; set; }
         public DbSet<TravelingWay> TravelingWays { get; set; }  
         //public DbSet<ApplicationUser> Users { get; set; }
 
@@ -34,18 +32,6 @@ namespace TravelAgencyWebApp.Data
                  .WithMany(u => u.Bookings)
                  .HasForeignKey(b => b.UserId)
                  .OnDelete(DeleteBehavior.Cascade);
-
-            modelBuilder.Entity<Review>()
-                .HasOne(r => r.User)
-                .WithMany(u => u.Reviews)
-                .HasForeignKey(r => r.UserId)
-                .OnDelete(DeleteBehavior.Cascade);
-
-            modelBuilder.Entity<Review>()
-                .HasOne(r => r.Offer)
-                .WithMany(o => o.Reviews)
-                .HasForeignKey(r => r.OfferId)
-                .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<Offer>()
                   .HasOne(o => o.TravelingWay)

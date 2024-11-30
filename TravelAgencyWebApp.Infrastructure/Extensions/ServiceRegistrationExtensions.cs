@@ -130,7 +130,6 @@ namespace TravelAgencyWebApp.Infrastructure.Extensions
             services.AddScoped<IRepository<Booking, int>, Repository<Booking, int>>();
             services.AddScoped<IHomeService, HomeService>();
             services.AddScoped<IOfferService, OfferService>();
-            services.AddScoped<IReviewService, ReviewService>();
             services.AddScoped<ITravelingWayService, TravelingWayService>();
 
             return services;
@@ -147,7 +146,6 @@ namespace TravelAgencyWebApp.Infrastructure.Extensions
                 Address = address
             };
 
-           // await userStore.SetUserNameAsync(applicationUser, username, CancellationToken.None);
             IdentityResult result = await userManager.CreateAsync(applicationUser, password);
             if (!result.Succeeded)
             {

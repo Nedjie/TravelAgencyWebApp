@@ -10,6 +10,5 @@ namespace TravelAgencyWebApp.Services.Data.Interfaces
 		Task AddOfferAsync(Offer model);
         Task UpdateOfferAsync(Offer model);
         Task DeleteOfferAsync(int id);
-        Task<bool> SoftDeleteOfferAsync(Offer offer);
     }
 }

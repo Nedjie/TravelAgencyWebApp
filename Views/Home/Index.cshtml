@@ -12,14 +12,6 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="description" content="Travelix Project">
 	<title>@ViewData["Title"]</title>
-	@* 	<link rel="stylesheet" href="~/Content/styles/bootstrap4/bootstrap.min.css" asp-append-version="true" />
-	<link rel="stylesheet" href="~/Content/plugins/font-awesome-4.7.0/css/font-awesome.min.css" asp-append-version="true" />
-	<link rel="stylesheet" href="~/Content/plugins/OwlCarousel2-2.2.1/owl.carousel.css" asp-append-version="true" />
-	<link rel="stylesheet" href="~/Content/plugins/OwlCarousel2-2.2.1/owl.theme.default.css" asp-append-version="true" />
-	<link rel="stylesheet" href="~/Content/styles/main_styles.css" asp-append-version="true" />
-	<link rel="stylesheet" href="~/Content/styles/responsive.css" asp-append-version="true" />
-	<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" /> *@
-
 	<link rel="stylesheet" type="text/css" href="~/Content/styles/bootstrap4/bootstrap.min.css" asp-append-version="true" />
 	<link href="~/Content/plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" asp-append-version="true" />
 	<link rel="stylesheet" type="text/css" href="~/Content/plugins/OwlCarousel2-2.2.1/owl.carousel.css" asp-append-version="true" />
@@ -33,7 +25,7 @@
 	<div class="container mt-5">
 		@foreach (var travelingWay in Model.Keys)
 		{
-			<h3 class="text-center">Почивки и Екскурзии с @travelingWay</h3> <!-- Displaying the TravelingWay Name -->
+			<h3 class="text-center">Почивки и Екскурзии с @travelingWay</h3>
 			<div class="row mb-4">
 				@foreach (var offer in Model[travelingWay])
 				{
@@ -50,7 +42,7 @@
 					</div>
 				}
 			</div>
-			<hr /> <!-- Add a horizontal line for separation between traveling ways -->
+			<hr /> 
 		}
 	</div>
 	<!-- Scripts Section -->

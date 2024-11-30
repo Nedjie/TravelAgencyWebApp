@@ -1,4 +1,4 @@
-﻿@model List<TravelAgencyWebApp.Data.Models.Review>
+﻿
 @{
 	ViewData["Title"] = "За Нас";
 }
@@ -60,27 +60,6 @@
 					</div>
 				</div>
 			</div>
-
-			<h3 class="mt-4">Отзиви от клиенти</h3>
-			<div class="testimonials">
-				@if (Model != null && Model.Any())
-				{
-					foreach (var review in Model)
-					{
-						<div class="testimonial-item mb-4">
-							<h5>@review.User?.UserName</h5> <!-- Display reviewer's username -->
-							<p>"@review.ReviewText"</p> <!-- Display review text -->
-							<p><strong>Рейтинг: @review.Rating звезди</strong></p> <!-- Display review rating -->
-							<p><small>На дата: @review.CreatedAt.ToString("dd.MM.yyyy")</small></p> <!-- Display review date -->
-						</div>
-					}
-				}
-				else
-				{
-					<p class="text-center">Няма отзиви за показване.</p>
-				}
-			</div>
-
 		</div>
 		<!-- Include jQuery and Bootstrap scripts -->
 		<script src="~/Content/plugins/jquery/jquery.min.js" asp-append-version="true"></script>

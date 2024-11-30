@@ -1,14 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore;
-using SQLitePCL;
-using TravelAgencyWebApp.Common.ErrorMessages;
-using TravelAgencyWebApp.Data.Models;
+﻿using TravelAgencyWebApp.Data.Models;
 using TravelAgencyWebApp.Data.Repository.Interfaces;
 using TravelAgencyWebApp.Services.Data.Interfaces;
-using TravelAgencyWebApp.ViewModels.Offer;
 
 namespace TravelAgencyWebApp.Services.Data
 {
-	public class OfferService(IRepository<Offer, int> offerRepository,
+    public class OfferService(IRepository<Offer, int> offerRepository,
 		IRepository<TravelingWay, int> travelingWayRepository) : IOfferService
 	{
 		private readonly IRepository<Offer, int> _offerRepository = offerRepository
@@ -96,13 +92,6 @@ namespace TravelAgencyWebApp.Services.Data
             }
 
             await _offerRepository.DeleteAsync(offer);
-        }
-        public async Task<bool> SoftDeleteOfferAsync(Offer offer)
-        {
-            ArgumentNullException.ThrowIfNull(offer);
-
-            offer.IsDeleted = true;
-           return await _offerRepository.UpdateAsync(offer);           
         }
     }
 }

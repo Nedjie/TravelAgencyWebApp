@@ -50,6 +50,5 @@ namespace TravelAgencyWebApp.Data.Models
         [Comment("Is this offer is deleted")]
         public bool IsDeleted { get; set; }
 
-        public ICollection<Review> Reviews { get; set; } = new List<Review>();
     }
 }

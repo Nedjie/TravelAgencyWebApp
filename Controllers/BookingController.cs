@@ -2,15 +2,13 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using System.Security.Claims;
 using TravelAgencyWebApp.Data.Models;
-using TravelAgencyWebApp.Infrastructure.Extensions;
 using TravelAgencyWebApp.Services.Data.Interfaces;
 using TravelAgencyWebApp.ViewModels.Booking;
 
 namespace TravelAgencyWebApp.Controllers
 {
-	[Authorize]
+    [Authorize]
 	public class BookingController(IBookingService bookingService, IOfferService offerService,
 		UserManager<ApplicationUser> userManager, ILogger<BookingController> logger) : BaseController(logger)
 	{

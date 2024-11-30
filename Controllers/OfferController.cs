@@ -1,20 +1,28 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using TravelAgencyWebApp.Data.Models;
 using TravelAgencyWebApp.Services.Data.Interfaces;
 using TravelAgencyWebApp.ViewModels.Offer;
 using static TravelAgencyWebApp.Common.ApplicationConstants;
 
 namespace TravelAgencyWebApp.Controllers
 {
-    public class OfferController(IOfferService offerService, ITravelingWayService travelingWayService
-        , ILogger<OfferController> logger)
+    public class OfferController(IOfferService offerService, ITravelingWayService travelingWayService,
+        IBookingService bookingService, UserManager<ApplicationUser> userManager,
+        ILogger<OfferController> logger)
         : BaseController(logger)
     {
         private readonly IOfferService _offerService = offerService
             ?? throw new ArgumentNullException(nameof(offerService));
         private readonly ITravelingWayService _travelingWayService = travelingWayService
             ?? throw new ArgumentNullException(nameof(travelingWayService));
+        private readonly IBookingService _bookingService = bookingService
+            ?? throw new ArgumentException(nameof(bookingService));
+        private readonly UserManager<ApplicationUser> _userManager = userManager
+             ?? throw new ArgumentNullException(nameof(userManager));
+
 
         [AllowAnonymous]
         public async Task<IActionResult> Index()
@@ -263,7 +271,6 @@ namespace TravelAgencyWebApp.Controllers
 
             return RedirectToAction(nameof(Index));
         }
-
     }
 }
 

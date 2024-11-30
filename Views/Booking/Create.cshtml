@@ -92,19 +92,18 @@
 
 @section Scripts {
 	<script>
-		// Ensure that the check-out date is always after the check-in date
 		const checkInInput = document.querySelector('input[name="CheckInDate"]');
 		const checkOutInput = document.querySelector('input[name="CheckOutDate"]');
 
 		checkInInput.addEventListener('change', function () {
 			const checkInDate = new Date(checkInInput.value);
 			const minCheckOutDate = new Date(checkInDate);
-			minCheckOutDate.setDate(minCheckOutDate.getDate() + 1); // Set to the day after
+			minCheckOutDate.setDate(minCheckOutDate.getDate() + 1); 
 
-			checkOutInput.setAttribute('min', minCheckOutDate.toISOString().split("T")[0]); // Update the min attribute
+			checkOutInput.setAttribute('min', minCheckOutDate.toISOString().split("T")[0]); 
 
 			if (checkOutInput.value && new Date(checkOutInput.value) < minCheckOutDate) {
-				checkOutInput.value = ''; // Clear value if it's invalid
+				checkOutInput.value = ''; 
 			}
 		});
 	</script>

@@ -35,14 +35,13 @@ namespace TravelAgencyWebApp.Controllers
                 Price = offer.Price,
                 ImageUrl = offer.ImageUrl,
                 TravelingWayMethod = offer.TravelingWay?.Method,
-                CheckInDate=offer.CheckInDate,
-                CheckOutDate=offer.CheckOutDate
+                CheckInDate = offer.CheckInDate,
+                CheckOutDate = offer.CheckOutDate
             }));
         }
 
-        [Authorize(Roles = AdminRoleName)]
-        [Authorize(Roles=AgentRoleName)]
-        [HttpGet]
+		[Authorize(Roles = $"{AdminRoleName}, {AgentRoleName}")]
+		[HttpGet]
         public async Task<IActionResult> Create()
         {
             var travelingWays = await _travelingWayService.GetAllTravelingWaysAsync();
@@ -55,9 +54,8 @@ namespace TravelAgencyWebApp.Controllers
             return View();
         }
 
-        [Authorize(Roles = AdminRoleName)]
-        [Authorize(Roles = AgentRoleName)]
-        [HttpPost]
+		[Authorize(Roles = $"{AdminRoleName}, {AgentRoleName}")]
+		[HttpPost]
         public async Task<IActionResult> Create(OfferViewModel model)
         {
             if (!ModelState.IsValid)
@@ -99,8 +97,8 @@ namespace TravelAgencyWebApp.Controllers
                 Price = model.Price,
                 ImageUrl = model.ImageUrl ?? "default-image-url.png",
                 TravelingWayId = travelingWay.Id,
-                CheckInDate=model.CheckInDate,
-                CheckOutDate=model.CheckOutDate
+                CheckInDate = model.CheckInDate,
+                CheckOutDate = model.CheckOutDate
             };
 
             await _offerService.AddOfferAsync(offer);
@@ -125,16 +123,15 @@ namespace TravelAgencyWebApp.Controllers
                 Price = offer.Price,
                 ImageUrl = offer.ImageUrl,
                 TravelingWayMethod = offer.TravelingWay?.Method,
-                CheckInDate=offer.CheckInDate,
-                CheckOutDate=offer.CheckOutDate
+                CheckInDate = offer.CheckInDate,
+                CheckOutDate = offer.CheckOutDate
             };
 
             return View(model);
         }
 
-        [Authorize(Roles = AdminRoleName)]       
-        [Authorize(Roles = AgentRoleName)]
-        [HttpGet]
+		[Authorize(Roles = $"{AdminRoleName}, {AgentRoleName}")]
+		[HttpGet]
         public async Task<IActionResult> Edit(int id)
         {
             var offer = await _offerService.GetOfferByIdAsync(id);
@@ -142,7 +139,7 @@ namespace TravelAgencyWebApp.Controllers
             {
                 return NotFound();
             }
-         
+
             var model = new OfferViewModel
             {
                 Id = offer.Id,
@@ -151,8 +148,8 @@ namespace TravelAgencyWebApp.Controllers
                 Price = offer.Price,
                 ImageUrl = offer.ImageUrl,
                 TravelingWayMethod = offer.TravelingWay?.Method,
-                CheckInDate=offer.CheckInDate,
-                CheckOutDate=offer.CheckOutDate
+                CheckInDate = offer.CheckInDate,
+                CheckOutDate = offer.CheckOutDate
 
             };
 
@@ -167,9 +164,8 @@ namespace TravelAgencyWebApp.Controllers
             return View(model);
         }
 
-        [Authorize(Roles = AdminRoleName)]
-        [Authorize(Roles = AgentRoleName)]
-        [HttpPost]
+		[Authorize(Roles = $"{AdminRoleName}, {AgentRoleName}")]
+		[HttpPost]
         public async Task<IActionResult> Edit(OfferViewModel model)
         {
             if (!ModelState.IsValid)
@@ -225,8 +221,8 @@ namespace TravelAgencyWebApp.Controllers
                 Price = model.Price,
                 ImageUrl = model.ImageUrl ?? "default-image-url.png",
                 TravelingWayId = travelingWay.Id,
-                CheckInDate=model.CheckInDate,
-                CheckOutDate=model.CheckOutDate
+                CheckInDate = model.CheckInDate,
+                CheckOutDate = model.CheckOutDate
             };
 
             await _offerService.UpdateOfferAsync(offerToUpdate);
@@ -234,8 +230,7 @@ namespace TravelAgencyWebApp.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        [Authorize(Roles = AdminRoleName)]
-        [Authorize(Roles = AgentRoleName)]
+        [Authorize(Roles = $"{AdminRoleName}, {AgentRoleName}")]
         [HttpGet]
         public async Task<IActionResult> Delete(int id)
         {
@@ -254,10 +249,9 @@ namespace TravelAgencyWebApp.Controllers
 
             return View(model);
         }
-     
-        [Authorize(Roles = AdminRoleName)]
-        [Authorize(Roles = AgentRoleName)]
-        [HttpPost, ActionName("Delete")]
+
+		[Authorize(Roles = $"{AdminRoleName}, {AgentRoleName}")]
+		[HttpPost, ActionName("Delete")]
         public async Task<IActionResult> DeleteConfirmed(ConfirmDeleteOfferViewModel model)
         {
             try

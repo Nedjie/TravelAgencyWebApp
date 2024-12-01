@@ -77,19 +77,33 @@
                             <td>
                                 @if (User.IsInRole(AdminRoleName) || (User.IsInRole(AgentRoleName)))
                                 {
-                                    <a asp-controller="Booking" asp-action="Create" asp-route-id="@offer.Id" class="btn btn-primary">Резервирай</a>
-                                    <a asp-controller="Offer" asp-action="Details" asp-route-id="@offer.Id" class="btn btn-info">Детайли</a>
-                                    <a asp-controller="Offer" asp-action="Edit" asp-route-id="@offer.Id" class="btn btn-warning">Редактиране</a>
-                                    <a asp-controller="Offer" asp-action="Delete" asp-route-id="@offer.Id" class="btn btn-danger">Изтриване</a>
+                                    <a asp-controller="Booking" asp-action="Create" asp-route-id="@offer.Id" class="btn btn-primary btn-sm me-1">
+                                        <i class="fas fa-plus"></i>Резервиране
+                                        </a>
+                                    <a asp-controller="Offer" asp-action="Details" asp-route-id="@offer.Id" class="btn btn-info btn-sm me-1">
+                                        <i class="fas fa-eye"></i>Детайли
+                                    </a>
+                                    <a asp-controller="Offer" asp-action="Edit" asp-route-id="@offer.Id" class="btn btn-warning btn-sm me-1">
+                                        <i class="fas fa-edit"></i>Редактиране
+                                    </a>
+                                    <a asp-controller="Offer" asp-action="Delete" asp-route-id="@offer.Id" class="btn btn-danger btn-sm me-1">
+                                        <i class="fas fa-trash"></i>Изтриване
+                                    </a>
                                 }
                                 else if (User.Identity!.IsAuthenticated)
                                 {
-                                    <a asp-controller="Booking" asp-action="Create" asp-route-id="@offer.Id" class="btn btn-primary">Резервирай</a>
-                                    <a asp-controller="Offer" asp-action="Details" asp-route-id="@offer.Id" class="btn btn-info">Детайли</a>
+                                    <a asp-controller="Booking" asp-action="Create" asp-route-id="@offer.Id" class="btn btn-primary btn-sm me-1">
+                                        <i class="fas fa-plus"></i>Резервиране
+                                    </a>
+                                    <a asp-controller="Offer" asp-action="Details" asp-route-id="@offer.Id" class="btn btn-info btn-sm me-1">
+                                        <i class="fas fa-eye"></i>Детайли
+                                    </a>
                                 }
                                 else
                                 {
-                                    <a asp-controller="Offer" asp-action="Details" asp-route-id="@offer.Id" class="btn btn-info">Детайли</a>
+                                    <a asp-controller="Offer" asp-action="Details" asp-route-id="@offer.Id" class="btn btn-info btn-sm me-1">
+                                        <i class="fas fa-eye"></i>Детайли
+                                    </a>
                                 }
                             </td>
                         </tr>

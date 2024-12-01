@@ -36,7 +36,9 @@
 								<h5 class="card-title">@offer.Title</h5>
 								<p class="card-text">@offer.Description</p>
 								<p class="card-text"><strong>Цена: @offer.Price.ToString("C")</strong></p>
-								<a asp-controller="Offer" asp-action="Details" asp-route-id="@offer.Id" class="btn btn-primary">Виж Офертата</a>
+								<a asp-controller="Offer" asp-action="Details" asp-route-id="@offer.Id" class=" btn btn-info">
+									<i class="fas fa-eye"></i>Виж Офертата
+								</a>
 							</div>
 						</div>
 					</div>

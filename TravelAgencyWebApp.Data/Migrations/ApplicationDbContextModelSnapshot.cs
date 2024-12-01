@@ -153,6 +153,29 @@ namespace TravelAgencyWebApp.Data.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("TravelAgencyWebApp.Data.Models.Agent", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier")
+                        .HasComment("Agent identifier");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasComment("Agent email address");
+
+                    b.Property<string>("FullName")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)")
+                        .HasComment("Agent Full Name");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Agents");
+                });
+
             modelBuilder.Entity("TravelAgencyWebApp.Data.Models.ApplicationUser", b =>
                 {
                     b.Property<Guid>("Id")
@@ -205,6 +228,10 @@ namespace TravelAgencyWebApp.Data.Migrations
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit");
 
+                    b.Property<string>("Roles")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
 
@@ -237,6 +264,9 @@ namespace TravelAgencyWebApp.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<Guid?>("AgentId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<DateTime>("CheckInDate")
                         .HasColumnType("datetime2")
                         .HasComment("Check in date of booking");
@@ -258,6 +288,8 @@ namespace TravelAgencyWebApp.Data.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("AgentId");
+
                     b.HasIndex("OfferId");
 
                     b.HasIndex("UserId");
@@ -273,6 +305,9 @@ namespace TravelAgencyWebApp.Data.Migrations
                         .HasComment("Offer identifier");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<Guid?>("AgentId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("CheckInDate")
                         .HasColumnType("datetime2")
@@ -311,6 +346,8 @@ namespace TravelAgencyWebApp.Data.Migrations
                         .HasComment("Traveling way identifier");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("AgentId");
 
                     b.HasIndex("TravelingWayId");
 
@@ -430,6 +467,10 @@ namespace TravelAgencyWebApp.Data.Migrations
 
             modelBuilder.Entity("TravelAgencyWebApp.Data.Models.Booking", b =>
                 {
+                    b.HasOne("TravelAgencyWebApp.Data.Models.Agent", null)
+                        .WithMany("Bookings")
+                        .HasForeignKey("AgentId");
+
                     b.HasOne("TravelAgencyWebApp.Data.Models.Offer", "Offer")
                         .WithMany()
                         .HasForeignKey("OfferId")
@@ -449,6 +490,10 @@ namespace TravelAgencyWebApp.Data.Migrations
 
             modelBuilder.Entity("TravelAgencyWebApp.Data.Models.Offer", b =>
                 {
+                    b.HasOne("TravelAgencyWebApp.Data.Models.Agent", null)
+                        .WithMany("Offers")
+                        .HasForeignKey("AgentId");
+
                     b.HasOne("TravelAgencyWebApp.Data.Models.TravelingWay", "TravelingWay")
                         .WithMany("Offers")
                         .HasForeignKey("TravelingWayId")
@@ -456,6 +501,13 @@ namespace TravelAgencyWebApp.Data.Migrations
                         .IsRequired();
 
                     b.Navigation("TravelingWay");
+                });
+
+            modelBuilder.Entity("TravelAgencyWebApp.Data.Models.Agent", b =>
+                {
+                    b.Navigation("Bookings");
+
+                    b.Navigation("Offers");
                 });
 
             modelBuilder.Entity("TravelAgencyWebApp.Data.Models.ApplicationUser", b =>

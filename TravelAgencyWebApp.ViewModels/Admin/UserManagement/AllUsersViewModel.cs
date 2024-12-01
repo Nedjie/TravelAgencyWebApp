@@ -1,13 +1,4 @@
-﻿using AutoMapper;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TravelAgencyWebApp.Data.Models;
-using TravelAgencyWebApp.Services.Mapping;
-
-namespace TravelAgencyWebApp.ViewModels.Admin.UserManagement
+﻿namespace TravelAgencyWebApp.ViewModels.Admin.UserManagement
 {
     public class AllUsersViewModel
     {

@@ -1,14 +1,11 @@
-using TravelAgencyWebApp.Data.Seeding;
-using TravelAgencyWebApp.Infrastructure.Extensions;
+using Microsoft.AspNetCore.Identity;
 using TravelAgencyWebApp.Services.Mapping;
 using TravelAgencyWebApp.ViewModels;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
-using TravelAgencyWebApp.Data;
+using static TravelAgencyWebApp.Infrastructure.Extensions.ServiceRegistrationExtensions;
 
 namespace TravelAgencyWebApp
 {
-	public class Program
+    public class Program
     {
         public static void Main(string[] args)
         {
@@ -38,6 +35,12 @@ namespace TravelAgencyWebApp
 
 			AutoMapperConfig.RegisterMappings(typeof(ErrorViewModel).Assembly);
 
+            using (var scope = app.Services.CreateScope())
+            {
+                var services = scope.ServiceProvider;
+                app.SeedRoleAgent(); // Call the updated role seeding method
+            }
+
             if (app.Environment.IsDevelopment())
             {
                 app.UseMigrationsEndPoint();
@@ -59,7 +62,7 @@ namespace TravelAgencyWebApp
             app.UseStatusCodePagesWithReExecute("/Home/Error/{0}");
 
 			app.SeedAdministrator(adminEmail, adminUsername, adminPassword);
-
+          
 			app.MapControllerRoute(
                 name: "Areas",
                 pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
@@ -74,7 +77,7 @@ namespace TravelAgencyWebApp
            
             app.MapRazorPages();
 
-            app.Run();
+             app.Run();
         }
     }
 }

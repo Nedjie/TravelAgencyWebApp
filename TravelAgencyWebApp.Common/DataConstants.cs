@@ -2,13 +2,13 @@
 {
     public static class DataConstants
     {
-        // ApplicationUser Constants
+        // ApplicationUser and Agent Constants
         public const string FullNameRequiredError = "Name is required.";
         public const int FullNameMaxLength = 200;
         public const string FullNameMaxLengthError = "Full name cannot be longer than {0} characters";
         public const int AddressMaxLength = 250;
         public const string AddressMaxLengthError = "Address cannot be longer than {0} characters";
-            
+
         // Offer Constants
         public const int OfferTitleMaxLength = 200;
         public const string OfferTitleRequiredError = "Title is required.";
@@ -28,16 +28,6 @@
         public const string BookingCheckInDateRequiredError = "Check-in date is required.";
         public const string BookingCheckOutDateRequiredError = "Check-out date is required.";
         public const string BookingCheckOutDateIsBeforeCheckInDateError = "Check-out date must be later than check-in date.";
-
-        // Review Constants
-        public const int ReviewTextMaxLength = 1000;
-        public const string ReviewTextRequiredError = "Review text is required.";
-        public const string ReviewTextMaxLengthError = "Review text cannot exceed 1000 characters.";
-        public const string ReviewUserIdRequiredError = "User ID is required.";
-        public const string ReviewOfferIdRequiredError = "Offer ID is required.";
-        public const int ReviewRangeMin = 1;
-        public const int ReviewRangeMax = 5;
-        public const string ReviewRatingRangeError = "Rating must be between 1 and 5.";
 
         // Traveling Way Constants
         public const string TravelingMethodRequiredError = "Traveling method is required.";

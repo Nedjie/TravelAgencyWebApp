@@ -1,107 +1,125 @@
-﻿@model IEnumerable<TravelAgencyWebApp.Data.Models.Offer>
+﻿@model TravelAgencyWebApp.ViewModels.Admin.AdminDashboardViewModel
 @using Microsoft.AspNetCore.Identity
 @using Microsoft.EntityFrameworkCore
+@using TravelAgencyWebApp.Data.Models
 @inject RoleManager<IdentityRole<Guid>> roleManager
+
 <head>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 
 @{
-	ViewData["Title"] = "Admin Dashboard";
+    ViewData["Title"] = "Admin Dashboard";
 }
+
 @{
-	IEnumerable<string?> allRoles = await roleManager.Roles
-		.Select(r => r.Name)
-		.ToArrayAsync();
-}
+    IEnumerable<string> allRoles = ViewBag.Roles;
+}   
+
 <div class="container mt-5">
-	<h2 class="text-center">Администраторски панел</h2>
+    <h2 class="text-center">Админ панел</h2>
 
-	<h3>Управление на Оферти</h3>
-	<table class="table table-striped">
-		<thead>
-			<tr>
-				<th>Заглавие</th>
-				<th>Описание</th>
-				<th>Цена</th>
-				<th>Действия</th>
-			</tr>
-		</thead>
-		<tbody>
-			@foreach (var offer in Model)
-			{
-				<tr>
-					<td>@offer.Title</td>
-					<td>@offer.Description</td>
-					<td>@offer.Price.ToString("C")</td>
-					<td>
-						<a asp-controller="Offer" asp-action="Create" asp-area="" class="btn btn-primary btn-sm me-1">
-							<i class="fas fa-plus"></i>Нова Оферта
-						</a>
-						<a asp-controller="Offer" asp-action="Edit" asp-route-id="@offer.Id" asp-area="" class="btn btn-warning btn-sm me-1">
-							<i class="fas fa-edit"></i>Редактиране
-						</a>
-						<form asp-controller="Offer" asp-action="Delete" asp-route-id="@offer.Id" asp-area="" method="post" style="display:inline;">
-							<button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Сигурни ли сте, че искате да изтриете тази оферта?');">
-								<i class="fas fa-trash-alt"></i> Изтриване
-							</button>
-						</form>
-					</td>
-				</tr>
-			}
-		</tbody>
-	</table>
+    <h3>Управление на Оферти</h3>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Заглавие</th>
+                <th>Описание</th>
+                <th>Цена</th>
+                <th>Действия</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var offer in Model.Offers)
+            {
+                <tr>
+                    <td>@offer.Title</td>
+                    <td>@offer.Description</td>
+                    <td>@offer.Price.ToString("C")</td>
+                    <td>
+                        <a asp-controller="Offer" asp-action="Create" class="btn btn-primary btn-sm me-1">
+                            <i class="fas fa-plus"></i>Нова Оферта
+                        </a>
+                        <a asp-controller="Offer" asp-action="Edit" asp-route-id="@offer.Id" class="btn btn-warning btn-sm me-1">
+                            <i class="fas fa-edit"></i>Редактиране
+                        </a>
+                        <form asp-controller="Offer" asp-action="Delete" asp-route-id="@offer.Id" method="post" style="display:inline;">
+                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Сигурни ли сте, че искате да изтриете тази оферта?');">
+                                <i class="fas fa-trash-alt"></i> Изтриване
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
 
-	<h3>Управление на Потребители</h3>
-	<table class="table table-striped">
-		<thead>
-			<tr>
-				<th>Email</th>
-				<th>Full Name</th>
-				<th>Действия</th>
-			</tr>
-		</thead>
-		<tbody>
-			@foreach (var user in ViewBag.Users) 
-			{
-				<tr>
-					<td>@user.Email</td>
-					<td>@user.FullName</td>
-					<td>
-						<form method="post" asp-action="AssignRole" asp-controller="Home" asp-area="Admin" class="d-inline">
-							<input type="hidden" name="userId" value="@user.Id" />
-							<select name="role" class="form-select d-inline w-auto">
-								@foreach (string role in allRoles)
-								{
-									<option value="@role">@role</option>
-								}
-							</select>
-							<button type="submit" class="btn btn-primary btn-sm"><i class="fas fa-plus"></i>Присвояване на роля</button>
-						</form>
+    <h3>Управление на Потребители</h3>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Email</th>
+                <th>Full Name</th>
+                <th>Действия</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var user in Model.Users)
+            {
+                <tr>
+                    <td>@user.Email</td>
+                    <td>@user.FullName</td>
+                    <td>
+                        <form method="post" asp-action="AssignRole" asp-controller="Admin" asp-area="Admin" class="d-inline">
+                            <input type="hidden" name="userId" value="@user.Id" />
+                            <select name="role" class="form-select d-inline w-auto">
+                                @foreach (var role in ViewBag.Roles)
+                                {
+                                    <option value="@role">@role</option>
+                                }
+                            </select>
+                            <button type="submit" class="btn btn-primary btn-sm">
+                                <i class="fas fa-plus"></i> Присвояване на роля
+                            </button>
+                        </form>
 
-						<form method="post" asp-action="RemoveRole" asp-controller="Home" asp-area="Admin" class="d-inline ms-2">
-							<input type="hidden" name="userId" value="@user.Id" />
-							<select name="role" class="form-select d-inline w-auto">
-								@foreach (var role in user.Roles)
-								{
-									<option value="@role">@role</option>
-								}
-							</select>
-							<button type="submit" class="btn btn-warning btn-sm"><i class="fas fa-trash-alt"></i> Изтриване на роля</button>
-						</form>
+                        <form method="post" asp-action="RemoveRole" asp-controller="Admin" asp-area="Admin" class="d-inline ms-2">
+                            <input type="hidden" name="userId" value="@user.Id" />
+                            <select name="role" class="form-select d-inline w-auto">
+                                @foreach (var role in user.Roles) // Ensure user.Roles is defined correctly
+                                {
+                                    <option value="@role">@role</option>
+                                }
+                            </select>
+                            <button type="submit" class="btn btn-warning btn-sm">
+                                <i class="fas fa-trash-alt"></i> Изтриване на роля
+                            </button>
+                        </form>
 
-						<form method="post" asp-action="DeleteUser" asp-controller="Home" asp-area="Admin" class="d-inline ms-2">
-							<input type="hidden" name="userId" value="@user.Id" />
-							<button type="submit" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i>Изтрий потребителя</button>
-						</form>
-					</td>
-				</tr>
-			}
-		</tbody>
-	</table>
-	
+                        <form method="post" asp-action="DeleteUser" asp-controller="Admin" asp-area="Admin" class="d-inline ms-2">
+                            <input type="hidden" name="userId" value="@user.Id" />
+                            <button type="submit" class="btn btn-danger btn-sm">
+                                <i class="fas fa-trash-alt"></i> Изтрий потребителя
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success">@TempData["SuccessMessage"]</div>
+    }
+
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-danger">@TempData["ErrorMessage"]</div>
+    }
 </div>
+
 @section Scripts {
-	<script src="~/Content/scripts/jquery.min.js" asp-append-version="true"></script>
-	<script src="~/Content/styles/bootstrap4/bootstrap.bundle.min.js" asp-append-version="true"></script>
+    <script src="~/Content/scripts/jquery.min.js" asp-append-version="true"></script>
+    <script src="~/Content/styles/bootstrap4/bootstrap.bundle.min.js" asp-append-version="true"></script>
 }

@@ -121,22 +121,60 @@ namespace TravelAgencyWebApp.Infrastructure.Extensions
             return app;
         }
 
+        public static IApplicationBuilder SeedRoleAgent(this IApplicationBuilder app)
+        {
+            using IServiceScope serviceScope = app.ApplicationServices.CreateAsyncScope();
+            IServiceProvider serviceProvider = serviceScope.ServiceProvider;
+
+            var roleManager = serviceProvider.GetService<RoleManager<IdentityRole<Guid>>>();
+            var userManager = serviceProvider.GetService<UserManager<ApplicationUser>>();
+
+            if (roleManager is null)
+            {
+                throw new InvalidOperationException($"Error occurred while accessing the {AgentRoleName} role!");
+            }
+
+            if (userManager is null)
+            {
+                throw new InvalidOperationException("UserManager service not found!");
+            }
+
+            // Wait for the async operations to complete
+            Task.Run(async () =>
+            {
+                // Check if the "Agent" role exists
+                if (!await roleManager.RoleExistsAsync("Agent"))
+                {
+                    // If it doesn't exist, create the "Agent" role
+                    var result = await roleManager.CreateAsync(new IdentityRole<Guid>("Agent"));
+                    if (!result.Succeeded)
+                    {
+                        throw new InvalidOperationException($"Error occurred while creating the Agent role!");
+                    }
+                }
+            }).GetAwaiter().GetResult();
+
+            return app; // Return the app
+
+        }
+
         public static IServiceCollection AddCustomServices(this IServiceCollection services, IConfiguration _)
         {
             // Register repositories and services
             services.AddScoped(typeof(IRepository<,>), typeof(Repository<,>));
-			services.AddScoped<IApplicationUserService, ApplicationUserService>();
-			services.AddScoped<IBookingService, BookingService>();
+            services.AddScoped<IApplicationUserService, ApplicationUserService>();
+            services.AddScoped<IBookingService, BookingService>();
             services.AddScoped<IRepository<Booking, int>, Repository<Booking, int>>();
             services.AddScoped<IHomeService, HomeService>();
             services.AddScoped<IOfferService, OfferService>();
             services.AddScoped<ITravelingWayService, TravelingWayService>();
+            services.AddScoped<IRoleService, RoleService>();
 
             return services;
         }
 
         private static async Task<ApplicationUser> CreateAdminUserAsync(string email, string username, string password,
-          IUserStore<ApplicationUser> userStore, UserManager<ApplicationUser> userManager, string fullName,string address)
+          IUserStore<ApplicationUser> userStore, UserManager<ApplicationUser> userManager, string fullName, string address)
         {
             var applicationUser = new ApplicationUser
             {

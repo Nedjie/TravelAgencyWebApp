@@ -73,7 +73,7 @@ namespace TravelAgencyWebApp.Areas.Admin.Controllers
             var user = await _userManager.FindByIdAsync(userId);
             if (user == null)
             {
-                return NotFound(); // User not found
+                return NotFound(); 
             }
 
             var result = await _userManager.AddToRoleAsync(user, role);
@@ -84,7 +84,6 @@ namespace TravelAgencyWebApp.Areas.Admin.Controllers
             }
             else
             {
-                // Add error messages to the model state
                 ModelState.AddModelError(string.Empty, "Failed to assign role.");
                 return RedirectToAction("Index");
             }

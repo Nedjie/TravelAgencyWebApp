@@ -11,8 +11,6 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="~/Content/styles/bootstrap4/bootstrap.min.css" asp-append-version="true" />
 	<link href="~/Content/plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" asp-append-version="true" />
-	<link rel="stylesheet" type="text/css" href="~/Content/plugins/OwlCarousel2-2.2.1/owl.carousel.css" asp-append-version="true" />
-	<link rel="stylesheet" type="text/css" href="~/Content/plugins/OwlCarousel2-2.2.1/owl.theme.default.css" asp-append-version="true" />
 	<link rel="stylesheet" type="text/css" href="~/Content/styles/main_styles.css" asp-append-version="true" />
 	<link rel="stylesheet" type="text/css" href="~/Content/styles/responsive.css" asp-append-version="true" />
 </head>
@@ -79,25 +77,6 @@
 
 	<!-- Optional JavaScript -->
 	@section Scripts {
-		<script src="https://code.jquery.com/jquery-3.6.0.min.js" asp-append-version="true"></script>
-		<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.min.js" asp-append-version="true"></script>
-
-		@* <script>
-			// Ensure that the CheckOut date is always after the CheckIn date
-			const checkInInput = document.querySelector('input[name="CheckInDate"]');
-			const checkOutInput = document.querySelector('input[name="CheckOutDate"]');
-
-			checkInInput.addEventListener('change', function () {
-				const checkInDate = new Date(checkInInput.value);
-				const minCheckOutDate = new Date(checkInDate);
-				minCheckOutDate.setDate(minCheckOutDate.getDate() + 1); // Set to the day after
-
-				checkOutInput.setAttribute('min', minCheckOutDate.toISOString().split("T")[0]); // Update the min attribute
-
-				if (checkOutInput.value && new Date(checkOutInput.value) < minCheckOutDate) {
-					checkOutInput.value = ''; // Clear value if it's invalid
-				}
-			});
-		</script> *@
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js" asp-append-version="true"></script>	
 	}
 </body>

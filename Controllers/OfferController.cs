@@ -23,7 +23,6 @@ namespace TravelAgencyWebApp.Controllers
         private readonly UserManager<ApplicationUser> _userManager = userManager
              ?? throw new ArgumentNullException(nameof(userManager));
 
-
         [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
@@ -41,8 +40,9 @@ namespace TravelAgencyWebApp.Controllers
             }));
         }
 
-        [HttpGet]
         [Authorize(Roles = AdminRoleName)]
+        [Authorize(Roles=AgentRoleName)]
+        [HttpGet]
         public async Task<IActionResult> Create()
         {
             var travelingWays = await _travelingWayService.GetAllTravelingWaysAsync();
@@ -55,8 +55,9 @@ namespace TravelAgencyWebApp.Controllers
             return View();
         }
 
-        [HttpPost]
         [Authorize(Roles = AdminRoleName)]
+        [Authorize(Roles = AgentRoleName)]
+        [HttpPost]
         public async Task<IActionResult> Create(OfferViewModel model)
         {
             if (!ModelState.IsValid)
@@ -131,7 +132,8 @@ namespace TravelAgencyWebApp.Controllers
             return View(model);
         }
 
-        [Authorize(Roles = AdminRoleName)]
+        [Authorize(Roles = AdminRoleName)]       
+        [Authorize(Roles = AgentRoleName)]
         [HttpGet]
         public async Task<IActionResult> Edit(int id)
         {
@@ -166,6 +168,7 @@ namespace TravelAgencyWebApp.Controllers
         }
 
         [Authorize(Roles = AdminRoleName)]
+        [Authorize(Roles = AgentRoleName)]
         [HttpPost]
         public async Task<IActionResult> Edit(OfferViewModel model)
         {
@@ -232,6 +235,7 @@ namespace TravelAgencyWebApp.Controllers
         }
 
         [Authorize(Roles = AdminRoleName)]
+        [Authorize(Roles = AgentRoleName)]
         [HttpGet]
         public async Task<IActionResult> Delete(int id)
         {
@@ -250,8 +254,9 @@ namespace TravelAgencyWebApp.Controllers
 
             return View(model);
         }
-
+     
         [Authorize(Roles = AdminRoleName)]
+        [Authorize(Roles = AgentRoleName)]
         [HttpPost, ActionName("Delete")]
         public async Task<IActionResult> DeleteConfirmed(ConfirmDeleteOfferViewModel model)
         {

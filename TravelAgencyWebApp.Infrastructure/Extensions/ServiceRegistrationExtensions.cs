@@ -139,14 +139,11 @@ namespace TravelAgencyWebApp.Infrastructure.Extensions
                 throw new InvalidOperationException("UserManager service not found!");
             }
 
-            // Wait for the async operations to complete
             Task.Run(async () =>
             {
-                // Check if the "Agent" role exists
-                if (!await roleManager.RoleExistsAsync("Agent"))
+                if (!await roleManager.RoleExistsAsync(AgentRoleName))
                 {
-                    // If it doesn't exist, create the "Agent" role
-                    var result = await roleManager.CreateAsync(new IdentityRole<Guid>("Agent"));
+                    var result = await roleManager.CreateAsync(new IdentityRole<Guid>(AgentRoleName));
                     if (!result.Succeeded)
                     {
                         throw new InvalidOperationException($"Error occurred while creating the Agent role!");
@@ -154,7 +151,7 @@ namespace TravelAgencyWebApp.Infrastructure.Extensions
                 }
             }).GetAwaiter().GetResult();
 
-            return app; // Return the app
+            return app; 
 
         }
 

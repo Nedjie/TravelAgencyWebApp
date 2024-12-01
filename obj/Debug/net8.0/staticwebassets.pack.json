@@ -1265,30 +1265,6 @@
       "PackagePath": "staticwebassets\\plugins\\Isotope\\isotope.pkgd.min.js"
     },
     {
-      "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\plugins\\OwlCarousel2-2.2.1\\ajax-loader.gif",
-      "PackagePath": "staticwebassets\\plugins\\OwlCarousel2-2.2.1\\ajax-loader.gif"
-    },
-    {
-      "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\plugins\\OwlCarousel2-2.2.1\\animate.css",
-      "PackagePath": "staticwebassets\\plugins\\OwlCarousel2-2.2.1\\animate.css"
-    },
-    {
-      "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\plugins\\OwlCarousel2-2.2.1\\owl.carousel.css",
-      "PackagePath": "staticwebassets\\plugins\\OwlCarousel2-2.2.1\\owl.carousel.css"
-    },
-    {
-      "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\plugins\\OwlCarousel2-2.2.1\\owl.carousel.js",
-      "PackagePath": "staticwebassets\\plugins\\OwlCarousel2-2.2.1\\owl.carousel.js"
-    },
-    {
-      "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\plugins\\OwlCarousel2-2.2.1\\owl.theme.default.css",
-      "PackagePath": "staticwebassets\\plugins\\OwlCarousel2-2.2.1\\owl.theme.default.css"
-    },
-    {
-      "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\plugins\\OwlCarousel2-2.2.1\\owl.video.play.png",
-      "PackagePath": "staticwebassets\\plugins\\OwlCarousel2-2.2.1\\owl.video.play.png"
-    },
-    {
       "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\plugins\\colorbox\\colorbox.css",
       "PackagePath": "staticwebassets\\plugins\\colorbox\\colorbox.css"
     },

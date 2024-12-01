@@ -19,7 +19,7 @@ namespace TravelAgencyWebApp.Services.Data
         }
 		public async Task<IEnumerable<string>> GetAllRoleNamesAsync()
 		{
-			return await _roleManager.Roles.Select(r => r.Name).ToListAsync();
+			return await _roleManager.Roles.Select(r => r.Name!).ToListAsync();
 		}
 
 	}

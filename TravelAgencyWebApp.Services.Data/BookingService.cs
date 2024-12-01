@@ -61,7 +61,7 @@ namespace TravelAgencyWebApp.Services.Data
 
 		public async Task<IEnumerable<BookingViewModel>> GetBookingsByUserIdAsync(Guid userId, params Expression<Func<Booking, object>>[] includes)
 		{
-			var bookings = await _bookingRepository.GetByUserIdAsync(userId,b => b.User, b => b.Offer);
+			var bookings = await _bookingRepository.GetByUserIdAsync(userId,b => b.User!, b => b.Offer!);
 
 			return bookings.Select(b => new BookingViewModel
 			{

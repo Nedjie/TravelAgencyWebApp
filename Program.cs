@@ -20,7 +20,6 @@ namespace TravelAgencyWebApp
             string adminEmail = builder.Configuration.GetValue<string>("Administrator:Email")!;
             string adminUsername = builder.Configuration.GetValue<string>("Administrator:Username")!;
             string adminPassword = builder.Configuration.GetValue<string>("Administrator:Password")!;
-            string adminAddress = builder.Configuration.GetValue<string>("Administrator:Address")!;
 
 			builder.Services.AddApplicationDatabase(builder.Configuration);
             builder.Services.AddApplicationIdentity(builder.Configuration);
@@ -38,7 +37,7 @@ namespace TravelAgencyWebApp
             using (var scope = app.Services.CreateScope())
             {
                 var services = scope.ServiceProvider;
-                app.SeedRoleAgent(); // Call the updated role seeding method
+                app.SeedRoleAgent(); 
             }
 
             if (app.Environment.IsDevelopment())
@@ -66,11 +65,11 @@ namespace TravelAgencyWebApp
 			app.MapControllerRoute(
                 name: "Areas",
                 pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
-			
+
             app.MapControllerRoute(
-				name: "Errors",
-				pattern: "{controller=Home}/{action=Index}/{statusCode?}");
-			
+                name: "Errors",
+                pattern: "{controller=Home}/{action=Index}/{statusCode?}");
+
             app.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");

@@ -30,8 +30,8 @@ namespace TravelAgencyWebApp.Areas.Admin.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var offers = await _offerService.GetAllOffersAsync(); 
-            var userViewModels = await _userService.GetAllUsersAsync(); 
+            var offers = await _offerService.GetAllOffersAsync();
+            var userViewModels = await _userService.GetAllUsersAsync();
 
             var userList = new List<ApplicationUser>();
 
@@ -41,24 +41,20 @@ namespace TravelAgencyWebApp.Areas.Admin.Controllers
                 {
                     Id = Guid.Parse(vm.Id),
                     Email = vm.Email,
-                    FullName=vm.FullName,
-                    Roles=vm.Roles.ToList()
-
+                    FullName = vm.FullName,
+                    Roles = vm.Roles.ToList() 
                 };
 
-                var userRoles = await _userManager.GetRolesAsync(user);
-                user.Roles = userRoles.ToList(); 
-
-                userList.Add(user);
+                userList.Add(user);  
             }
 
             var model = new AdminDashboardViewModel
             {
-                Offers = offers,   
-                Users = userList   
+                Offers = offers,
+                Users = userList
             };
 
-            var allRoles = await _roleService.GetAllRoleNamesAsync(); 
+            var allRoles = await _roleService.GetAllRoleNamesAsync();
             ViewBag.Roles = allRoles;
 
             return View(model);
@@ -67,27 +63,30 @@ namespace TravelAgencyWebApp.Areas.Admin.Controllers
         [HttpPost]
         public async Task<IActionResult> AssignRole(string userId, string role)
         {
+            Console.WriteLine($"AssignRole called: UserId = {userId}, Role = {role}");
+
             if (string.IsNullOrEmpty(userId) || string.IsNullOrEmpty(role))
             {
-                return BadRequest("User ID and role are required."); // Return an error if the parameters are not provided
+                return BadRequest("User ID and role are required.");
             }
 
             var user = await _userManager.FindByIdAsync(userId);
             if (user == null)
             {
-                return NotFound(); // Return 404 if the user is not found
+                return NotFound(); // User not found
             }
 
             var result = await _userManager.AddToRoleAsync(user, role);
             if (result.Succeeded)
             {
-                return RedirectToAction("Index"); // Redirect to a suitable action after successful assignment
+                TempData["SuccessMessage"] = "Role assigned successfully.";
+                return RedirectToAction("Index");
             }
             else
             {
-                // Handle errors
+                // Add error messages to the model state
                 ModelState.AddModelError(string.Empty, "Failed to assign role.");
-                return View(); // Return the same view if there are errors
+                return RedirectToAction("Index");
             }
         }
 

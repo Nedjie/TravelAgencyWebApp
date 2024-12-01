@@ -96,7 +96,7 @@ namespace TravelAgencyWebApp.Infrastructure.Extensions
                 }
 
                 var adminUser = await userManager!.FindByEmailAsync(email);
-                if (adminUser is null)
+                if (adminUser == null)
                 {
                     adminUser = await
                         CreateAdminUserAsync(email, username, password, userStore!, userManager, "Admin User", "Admin Address");

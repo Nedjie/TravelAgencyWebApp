@@ -21,25 +21,28 @@
 @{
     ViewData["Title"] = "Нашите оферти";
 }
+<style>
+    .equal-width-button {
+        flex: 1; /* Allow buttons to take equal available space */
+        min-width: 80px; /* Set a smaller minimum width for the buttons */
+        padding: 5px 8px; /* Decrease padding: top-bottom 5px, left-right 10px */
+        font-size: 12px; /* Smaller font size */
+        margin: 2px 0; /* Space between buttons when wrapped */
+    }
 
-<head>
-    <title>Дени Травел</title>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="Travelix Project">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="~/Content/styles/bootstrap4/bootstrap.min.css" asp-append-version="true" />
-    <link href="~/Content/plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" asp-append-version="true" />
-    <link rel="stylesheet" type="text/css" href="~/Content/styles/main_styles.css" asp-append-version="true" />
-    <link rel="stylesheet" type="text/css" href="~/Content/styles/responsive.css" asp-append-version="true" />
-</head>
+    /* Additional general styling for buttons (you can adjust according to your theme) */
+    .btn-primary, .btn-info, .btn-warning, .btn-danger {
+        height: auto; /* Allow height to adjust according to font size */
+        line-height: 1;
+    }
+</style>
 
 <body>
     <div class="container mt-5">
         <h2 class="text-center mb-4">Оферти</h2>
 
         <p>
-            @if (User.IsInRole(AdminRoleName)|| (User.IsInRole(AgentRoleName)))
+            @if (User.IsInRole(AdminRoleName) || User.IsInRole(AgentRoleName))
             {
                 <a asp-controller="Offer" asp-action="Create" class="btn btn-primary">Създаване на Нова Оферта</a>
             }
@@ -75,36 +78,32 @@
                             <td>@offer.CheckOutDate.ToString("dd.MM.yyyy")</td>
                             <td>@offer.TravelingWayMethod</td>
                             <td>
-                                @if (User.IsInRole(AdminRoleName) || (User.IsInRole(AgentRoleName)))
-                                {
-                                    <a asp-controller="Booking" asp-action="Create" asp-route-id="@offer.Id" class="btn btn-primary btn-sm me-1">
-                                        <i class="fas fa-plus"></i>Резервиране
+                                <div class="d-flex flex-wrap justify-content-between"> <!-- Buttons wrap together -->
+                                    @if (User.IsInRole(AdminRoleName) || User.IsInRole(AgentRoleName))
+                                    {
+                                        <a asp-controller="Booking" asp-action="Create" asp-route-id="@offer.Id" class="btn btn-primary equal-width-button me-1 mb-1">
+                                            <i class="fas fa-plus"></i> Резервиране
                                         </a>
-                                    <a asp-controller="Offer" asp-action="Details" asp-route-id="@offer.Id" class="btn btn-info btn-sm me-1">
-                                        <i class="fas fa-eye"></i>Детайли
-                                    </a>
-                                    <a asp-controller="Offer" asp-action="Edit" asp-route-id="@offer.Id" class="btn btn-warning btn-sm me-1">
-                                        <i class="fas fa-edit"></i>Редактиране
-                                    </a>
-                                    <a asp-controller="Offer" asp-action="Delete" asp-route-id="@offer.Id" class="btn btn-danger btn-sm me-1">
-                                        <i class="fas fa-trash"></i>Изтриване
-                                    </a>
-                                }
-                                else if (User.Identity!.IsAuthenticated)
-                                {
-                                    <a asp-controller="Booking" asp-action="Create" asp-route-id="@offer.Id" class="btn btn-primary btn-sm me-1">
-                                        <i class="fas fa-plus"></i>Резервиране
-                                    </a>
-                                    <a asp-controller="Offer" asp-action="Details" asp-route-id="@offer.Id" class="btn btn-info btn-sm me-1">
-                                        <i class="fas fa-eye"></i>Детайли
-                                    </a>
-                                }
-                                else if(!User.Identity.IsAuthenticated)
-                                {
-                                    <a asp-controller="Offer" asp-action="Details" asp-route-id="@offer.Id" class="btn btn-info btn-sm me-1">
-                                        <i class="fas fa-eye"></i>Детайли
-                                    </a>
-                                }
+                                        <a asp-controller="Offer" asp-action="Details" asp-route-id="@offer.Id" class="btn btn-info equal-width-button me-1 mb-1">
+                                            <i class="fas fa-eye"></i> Детайли
+                                        </a>
+                                        <a asp-controller="Offer" asp-action="Edit" asp-route-id="@offer.Id" class="btn btn-warning equal-width-button me-1 mb-1">
+                                            <i class="fas fa-edit"></i> Редактиране
+                                        </a>
+                                        <a asp-controller="Offer" asp-action="Delete" asp-route-id="@offer.Id" class="btn btn-danger equal-width-button me-1 mb-1" onclick="return confirm('Сигурни ли сте, че искате да изтриете тази оферта?');">
+                                            <i class="fas fa-trash"></i> Изтриване
+                                        </a>
+                                    }
+                                    else if (User.Identity!.IsAuthenticated)
+                                    {
+                                        <a asp-controller="Booking" asp-action="Create" asp-route-id="@offer.Id" class="btn btn-primary equal-width-button me-1 mb-1">
+                                            <i class="fas fa-plus"></i> Резервиране
+                                        </a>
+                                        <a asp-controller="Offer" asp-action="Details" asp-route-id="@offer.Id" class="btn btn-info equal-width-button me-1 mb-1">
+                                            <i class="fas fa-eye"></i> Детайли
+                                        </a>
+                                    }
+                                </div> <!-- End of button container -->
                             </td>
                         </tr>
                     }
@@ -118,7 +117,6 @@
             </tbody>
         </table>
     </div>
-
     <!-- Include jQuery and Bootstrap scripts -->
     <script src="~/Content/js/jquery-3.2.1.min.js" asp-append-version="true"></script>
 

@@ -23,16 +23,14 @@
 }
 <style>
     .equal-width-button {
-        flex: 1; /* Allow buttons to take equal available space */
-        min-width: 80px; /* Set a smaller minimum width for the buttons */
-        padding: 5px 8px; /* Decrease padding: top-bottom 5px, left-right 10px */
-        font-size: 12px; /* Smaller font size */
-        margin: 2px 0; /* Space between buttons when wrapped */
+        flex: 1; 
+        min-width: 80px; 
+        padding: 5px 8px; 
+        font-size: 12px; 
+        margin: 2px 0;
     }
-
-    /* Additional general styling for buttons (you can adjust according to your theme) */
     .btn-primary, .btn-info, .btn-warning, .btn-danger {
-        height: auto; /* Allow height to adjust according to font size */
+        height: auto; 
         line-height: 1;
     }
 </style>
@@ -78,7 +76,7 @@
                             <td>@offer.CheckOutDate.ToString("dd.MM.yyyy")</td>
                             <td>@offer.TravelingWayMethod</td>
                             <td>
-                                <div class="d-flex flex-wrap justify-content-between"> <!-- Buttons wrap together -->
+                                <div class="d-flex flex-wrap justify-content-between"> 
                                     @if (User.IsInRole(AdminRoleName) || User.IsInRole(AgentRoleName))
                                     {
                                         <a asp-controller="Booking" asp-action="Create" asp-route-id="@offer.Id" class="btn btn-primary equal-width-button me-1 mb-1">
@@ -103,7 +101,7 @@
                                             <i class="fas fa-eye"></i> Детайли
                                         </a>
                                     }
-                                </div> <!-- End of button container -->
+                                </div> 
                             </td>
                         </tr>
                     }

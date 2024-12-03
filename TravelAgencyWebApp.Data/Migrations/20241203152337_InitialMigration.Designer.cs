@@ -12,15 +12,15 @@ using TravelAgencyWebApp.Data;
 namespace TravelAgencyWebApp.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20241126183826_UpdateAddressProperty")]
-    partial class UpdateAddressProperty
+    [Migration("20241203152337_InitialMigration")]
+    partial class InitialMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.10")
+                .HasAnnotation("ProductVersion", "8.0.11")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -156,6 +156,29 @@ namespace TravelAgencyWebApp.Data.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("TravelAgencyWebApp.Data.Models.Agent", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier")
+                        .HasComment("Agent identifier");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasComment("Agent email address");
+
+                    b.Property<string>("FullName")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)")
+                        .HasComment("Agent Full Name");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Agents");
+                });
+
             modelBuilder.Entity("TravelAgencyWebApp.Data.Models.ApplicationUser", b =>
                 {
                     b.Property<Guid>("Id")
@@ -208,6 +231,10 @@ namespace TravelAgencyWebApp.Data.Migrations
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit");
 
+                    b.Property<string>("Roles")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
 
@@ -240,6 +267,9 @@ namespace TravelAgencyWebApp.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<Guid?>("AgentId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<DateTime>("CheckInDate")
                         .HasColumnType("datetime2")
                         .HasComment("Check in date of booking");
@@ -247,6 +277,9 @@ namespace TravelAgencyWebApp.Data.Migrations
                     b.Property<DateTime>("CheckOutDate")
                         .HasColumnType("datetime2")
                         .HasComment("Check out date of booking");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
 
                     b.Property<int>("OfferId")
                         .HasColumnType("int")
@@ -257,6 +290,8 @@ namespace TravelAgencyWebApp.Data.Migrations
                         .HasComment("User identifier");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("AgentId");
 
                     b.HasIndex("OfferId");
 
@@ -274,6 +309,17 @@ namespace TravelAgencyWebApp.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<Guid?>("AgentId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CheckInDate")
+                        .HasColumnType("datetime2")
+                        .HasComment("Check in date of booking");
+
+                    b.Property<DateTime>("CheckOutDate")
+                        .HasColumnType("datetime2")
+                        .HasComment("Check out date of booking");
+
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)")
@@ -283,6 +329,10 @@ namespace TravelAgencyWebApp.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)")
                         .HasComment("Offer image");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit")
+                        .HasComment("Is this offer is deleted");
 
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)")
@@ -300,49 +350,109 @@ namespace TravelAgencyWebApp.Data.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("AgentId");
+
                     b.HasIndex("TravelingWayId");
 
                     b.ToTable("Offers");
-                });
 
-            modelBuilder.Entity("TravelAgencyWebApp.Data.Models.Review", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasComment("Review identifier");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2")
-                        .HasComment("Review date");
-
-                    b.Property<int>("OfferId")
-                        .HasColumnType("int")
-                        .HasComment("Offer identifier");
-
-                    b.Property<int>("Rating")
-                        .HasColumnType("int")
-                        .HasComment("Review rating");
-
-                    b.Property<string>("ReviewText")
-                        .IsRequired()
-                        .HasMaxLength(1000)
-                        .HasColumnType("nvarchar(1000)")
-                        .HasComment("Review text");
-
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("uniqueidentifier")
-                        .HasComment("User identifier of review");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("OfferId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("Reviews");
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CheckInDate = new DateTime(2024, 12, 28, 17, 23, 35, 586, DateTimeKind.Local).AddTicks(5915),
+                            CheckOutDate = new DateTime(2025, 1, 7, 17, 23, 35, 586, DateTimeKind.Local).AddTicks(5959),
+                            Description = "Самолетен билет Мадрид - Пунта Кана - Мадрид;7 нощувки на база All Inclusive в хотел по избор в Плая Баваро;Трансфери летище Пунта Кана – хотел – летище Пунта Кана;Представител на български език от фирма - партньор на място.",
+                            ImageUrl = "/Content.images/dominicana.jpg",
+                            IsDeleted = false,
+                            Price = 2240.00m,
+                            Title = "Почивка в Доминикана",
+                            TravelingWayId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CheckInDate = new DateTime(2024, 12, 23, 17, 23, 35, 586, DateTimeKind.Local).AddTicks(5964),
+                            CheckOutDate = new DateTime(2024, 12, 28, 17, 23, 35, 586, DateTimeKind.Local).AddTicks(5967),
+                            Description = "Дубай -  смайващ лукс, високотехнологични съоръжения и целогодишно слънце, в съчетание с уникален допир до арабската култура. Известен в миналото като „град на търговците\", Дубай от векове посреща морски пътешественици, търговци и туристи по своите крайбрежия, превръщайки се в една от най-популярните дестинации за релаксираща почивка, авантюристична разходка в пустинята или бурен нощен живот. Подарете си релакс съчетан с лукс!",
+                            ImageUrl = "/Content.images/dubai.jpg",
+                            IsDeleted = false,
+                            Price = 1622.17m,
+                            Title = "Почивка в Дубай",
+                            TravelingWayId = 1
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CheckInDate = new DateTime(2024, 12, 8, 17, 23, 35, 586, DateTimeKind.Local).AddTicks(5971),
+                            CheckOutDate = new DateTime(2024, 12, 18, 17, 23, 35, 586, DateTimeKind.Local).AddTicks(5973),
+                            Description = "Самолетен билет София - Истанбул - Пукет - Истанбул - София с включени летищни такси;Чекиран багаж до 23 кг.и ръчен багаж до 8 кг.;7 нощувки в избрания хотел на съответната база изхранване;Трансфер летище - хотел - летище;Медицинска застраховка с покритие 10 000 евро;",
+                            ImageUrl = "/Content/images/tailand.jpg",
+                            IsDeleted = false,
+                            Price = 2523.00m,
+                            Title = "Почивка на о-в Пукет, Тайланд",
+                            TravelingWayId = 1
+                        },
+                        new
+                        {
+                            Id = 4,
+                            CheckInDate = new DateTime(2024, 12, 13, 17, 23, 35, 586, DateTimeKind.Local).AddTicks(5977),
+                            CheckOutDate = new DateTime(2024, 12, 20, 17, 23, 35, 586, DateTimeKind.Local).AddTicks(5979),
+                            Description = "Kогато камбани зазвънят из целия град , уличките се изпълнят с тържествения марш на духови оркестри , а от балконите залетят червени делви -Корфу ще грабне душата ви от пръв поглед на най-християнския празник !",
+                            ImageUrl = "/Content/images/korfu.jpg",
+                            IsDeleted = false,
+                            Price = 570.00m,
+                            Title = "Великден на Остров Корфу",
+                            TravelingWayId = 3
+                        },
+                        new
+                        {
+                            Id = 5,
+                            CheckInDate = new DateTime(2024, 12, 17, 17, 23, 35, 586, DateTimeKind.Local).AddTicks(5983),
+                            CheckOutDate = new DateTime(2024, 12, 19, 17, 23, 35, 586, DateTimeKind.Local).AddTicks(5985),
+                            Description = "2 нощувки със закуски в хотел 3*** в Будапеща.Водач от фирмата по време на пътуванетоАвтобусен транспорт от София с лицензиран автобус за международни превозиМедицинска застраховка за лица до 65г.на застрахователна компания Уника с лимит на отговорност 2000 евро",
+                            ImageUrl = "/Content/images/budapest.jpg",
+                            IsDeleted = false,
+                            Price = 365.00m,
+                            Title = "Екскурзия до Будапеща и Виена - Аристократизъм и Барок",
+                            TravelingWayId = 3
+                        },
+                        new
+                        {
+                            Id = 6,
+                            CheckInDate = new DateTime(2025, 1, 6, 17, 23, 35, 586, DateTimeKind.Local).AddTicks(5989),
+                            CheckOutDate = new DateTime(2025, 1, 9, 17, 23, 35, 586, DateTimeKind.Local).AddTicks(5992),
+                            Description = "Самолетен билет Варна – Перуджа – Варна с авиокомпания European Air Charter;Летищни такси;Чекиран багаж до 20 кг и 1 малък ръчен багаж с размери 40 х 30 х 20 см;Трансфер летище – хотел – летище с автобус;3 нощувки със закуски;Обиколен тур на Рим с екскурзовод на български език;Медицинска застраховка Помощ при пътуване от Евронинс с покритие 10000 евроПредставител на туроператора на български език.",
+                            ImageUrl = "/Content/images/rome.jpg",
+                            IsDeleted = false,
+                            Price = 799.00m,
+                            Title = "Рим - Вечният град - 3 нощувки - чартърен полет от Варна",
+                            TravelingWayId = 3
+                        },
+                        new
+                        {
+                            Id = 7,
+                            CheckInDate = new DateTime(2025, 2, 7, 17, 23, 35, 586, DateTimeKind.Local).AddTicks(5995),
+                            CheckOutDate = new DateTime(2025, 2, 15, 17, 23, 35, 586, DateTimeKind.Local).AddTicks(5998),
+                            Description = "Самолетен билет с авиокомпания \"България Еър\" и „ИТА”;Летищни такси;1 бр.ръчен багаж до 10 кг;1 бр.чекиран багаж до 23 кг;Трансфер летище Фиумичино – хотел в Рим;Трансфер хотел в Рим – пристанище Чивитавекия;Трансфер пристанище Чивитавекия – летищe Фиумичино;1 нощувка със закуска в тризвезден хотел в Рим;7 нощувки на база обогатен пълен пансион с круизен кораб MSC Seaview - богат асортимент от храна за закуска,обяд, следобедна закуска и вечеря + вода от диспенсър и чай в зоната на бюфет ресторанта;Безплатно ползване на басейните и фитнес центъра на кораба;Множество забавления на борда на кораба;Програма с атрактивни игри;Пристанищни такси;Водач – придружител от туроператора.",
+                            ImageUrl = "/Content/images/msc.jpg",
+                            IsDeleted = false,
+                            Price = 2826.00m,
+                            Title = "Круиз Средиземноморска приказка - MSC Seaview - 2025",
+                            TravelingWayId = 2
+                        },
+                        new
+                        {
+                            Id = 8,
+                            CheckInDate = new DateTime(2025, 2, 7, 17, 23, 35, 586, DateTimeKind.Local).AddTicks(6001),
+                            CheckOutDate = new DateTime(2025, 2, 15, 17, 23, 35, 586, DateTimeKind.Local).AddTicks(6004),
+                            Description = "Основен ресторант, отопляем открит басейн 210 кв. м., тенис на корт, шахмат, 6 бара (лоби бар, Риксос бар, Тропик бар, Калина бар, бар на плажа, бар при басейна), СПА център, магазини, мини маркет, аптека,детегледачка(заплаща се)Безплатни услуги: турска баня,сауна,дартс,фитнес център, минибар,осветление на тенис корта ",
+                            ImageUrl = "/Content/images/rixos.jpg",
+                            IsDeleted = false,
+                            Price = 1400.00m,
+                            Title = "Лара, Турция собствен транспорт - RIXOS DOWNTOWN 5*",
+                            TravelingWayId = 4
+                        });
                 });
 
             modelBuilder.Entity("TravelAgencyWebApp.Data.Models.TravelingWay", b =>
@@ -379,29 +489,29 @@ namespace TravelAgencyWebApp.Data.Migrations
                         {
                             Id = 1,
                             Cost = 0m,
-                            Description = "Travel by airplane.",
-                            Method = "Air"
+                            Description = "Пътуване със самолет",
+                            Method = "Самолет"
                         },
                         new
                         {
                             Id = 2,
                             Cost = 0m,
-                            Description = "Travel by train.",
-                            Method = "Train"
+                            Description = "Пътуване със круизен кораб",
+                            Method = "Круиз"
                         },
                         new
                         {
                             Id = 3,
                             Cost = 0m,
-                            Description = "Travel by bus.",
-                            Method = "Bus"
+                            Description = "Пътуване с автобус",
+                            Method = "Автобус"
                         },
                         new
                         {
                             Id = 4,
                             Cost = 0m,
-                            Description = "Travel by car.",
-                            Method = "Car"
+                            Description = "Пътуване с кола",
+                            Method = "Кола"
                         });
                 });
 
@@ -458,6 +568,10 @@ namespace TravelAgencyWebApp.Data.Migrations
 
             modelBuilder.Entity("TravelAgencyWebApp.Data.Models.Booking", b =>
                 {
+                    b.HasOne("TravelAgencyWebApp.Data.Models.Agent", null)
+                        .WithMany("Bookings")
+                        .HasForeignKey("AgentId");
+
                     b.HasOne("TravelAgencyWebApp.Data.Models.Offer", "Offer")
                         .WithMany()
                         .HasForeignKey("OfferId")
@@ -477,6 +591,10 @@ namespace TravelAgencyWebApp.Data.Migrations
 
             modelBuilder.Entity("TravelAgencyWebApp.Data.Models.Offer", b =>
                 {
+                    b.HasOne("TravelAgencyWebApp.Data.Models.Agent", null)
+                        .WithMany("Offers")
+                        .HasForeignKey("AgentId");
+
                     b.HasOne("TravelAgencyWebApp.Data.Models.TravelingWay", "TravelingWay")
                         .WithMany("Offers")
                         .HasForeignKey("TravelingWayId")
@@ -486,35 +604,16 @@ namespace TravelAgencyWebApp.Data.Migrations
                     b.Navigation("TravelingWay");
                 });
 
-            modelBuilder.Entity("TravelAgencyWebApp.Data.Models.Review", b =>
+            modelBuilder.Entity("TravelAgencyWebApp.Data.Models.Agent", b =>
                 {
-                    b.HasOne("TravelAgencyWebApp.Data.Models.Offer", "Offer")
-                        .WithMany("Reviews")
-                        .HasForeignKey("OfferId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.Navigation("Bookings");
 
-                    b.HasOne("TravelAgencyWebApp.Data.Models.ApplicationUser", "User")
-                        .WithMany("Reviews")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Offer");
-
-                    b.Navigation("User");
+                    b.Navigation("Offers");
                 });
 
             modelBuilder.Entity("TravelAgencyWebApp.Data.Models.ApplicationUser", b =>
                 {
                     b.Navigation("Bookings");
-
-                    b.Navigation("Reviews");
-                });
-
-            modelBuilder.Entity("TravelAgencyWebApp.Data.Models.Offer", b =>
-                {
-                    b.Navigation("Reviews");
                 });
 
             modelBuilder.Entity("TravelAgencyWebApp.Data.Models.TravelingWay", b =>

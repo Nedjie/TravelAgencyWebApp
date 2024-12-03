@@ -48,6 +48,7 @@ namespace TravelAgencyWebApp.Data
                    .HasColumnType("decimal(18,2)");
 
 			SeedDataTravelingWays.DataTravelingWays(modelBuilder);
+            SeedDataOffers.DataOffers(modelBuilder);
 		}
     }
 

@@ -5,7 +5,32 @@
 @{
 	ViewData["Title"] = Model.Title;
 }
+<style>
+    .card {
+        border: 1px solid #ddd; /* Optional border for clarity */
+        border-radius: 4px; /* Rounded edges */
+    }
 
+    .card-body {
+        padding: 1rem; /* Standard padding */
+    }
+
+    .card-title {
+        margin-bottom: 0.5rem; /* Space between title and content */
+        font-weight: bold; /* Make title bold */
+    }
+
+    .card-text {
+        overflow-wrap: break-word; /* Allow long words to break */
+        margin-bottom: 0.5rem; /* Space below paragraphs */
+        white-space: normal; /* Ensure wrapping of text */
+    }
+
+    img {
+        margin-bottom: 5px; /* Close spacing between image and text */
+    }
+
+</style>
 <div class="container mt-5">
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
@@ -22,23 +47,23 @@
             <div>
                 @if (!string.IsNullOrEmpty(Model.ImageUrl))
                 {
-                    <img src="@Model.ImageUrl" class="img-fluid rounded" alt="@Model.Title" style="max-width: 100%; height: auto;" />
+                    <img src="@Model.ImageUrl" class="img-fluid rounded" style="max-width: 80%; height: auto; margin-bottom: 5px;" alt="@Model.Title" />
                 }
                 else
                 {
-                    <img src="~/Content/images/default.jpg" class="img-fluid rounded" alt="No image available" style="max-width: 100%; height: auto;" />
+                    <img src="~/Content/images/default.jpg" class="img-fluid rounded" style="max-width: 80%; height: auto; margin-bottom: 5px;" alt="No image available" />
                 }
             </div>
         </div>
 
         <div class="col-md-6">
-            <div class="card border-light shadow-sm">
+            <div class="card border-light shadow-sm h-100">
                 <div class="card-body">
-                    <h5 class="card-title">Заглавие: <span class="text-primary">@Model.Title</span></h5>
-                    <p class="card-text"><strong>Описание:</strong> @Model.Description</p>
+                    <h5 class="card-title mb-2">@Model.Title</h5>
                     <p class="card-text"><strong>Цена:</strong> @Model.Price.ToString("C")</p>
-                    <p class=" card-text"><strong>Дата на настаняване:</strong>@Model.CheckInDate</p>
-                    <p class=" card-text"><strong>Дата на настаняване:</strong>@Model.CheckOutDate</p>
+                    <p class="card-text mb-3" style="margin-bottom: 15px;"><strong>Описание:</strong> @Model.Description</p>
+                    <p class="card-text"><strong>Дата на настаняване:</strong> @Model.CheckInDate.ToShortDateString()</p>
+                    <p class="card-text"><strong>Дата на напускане:</strong> @Model.CheckOutDate.ToShortDateString()</p>
                     <p class="card-text"><strong>Метод на пътуване:</strong> @Model.TravelingWayMethod</p>
 
                     @if (User.IsInRole(AdminRoleName))
@@ -73,8 +98,8 @@
             <i class="fas fa-arrow-left"></i> Назад към офертите
         </a>
     </div>
-    <hr class="my-4">
 
+    <hr class="my-4">
 </div>
 
 <!-- Optional JavaScript -->

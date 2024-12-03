@@ -105,7 +105,7 @@ namespace TravelAgencyWebApp.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        [Authorize]
+        [AllowAnonymous]
         [HttpGet("offer/details/{id:int}")]
         public async Task<IActionResult> Details(int id)
         {

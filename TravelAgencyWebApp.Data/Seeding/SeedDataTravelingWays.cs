@@ -17,8 +17,8 @@ namespace TravelAgencyWebApp.Data.Seeding
 				new TravelingWay
 				{
 					Id = 2,
-					Method = "Влак",
-					Description = "Пътуване със влак",
+					Method = "Круиз",
+					Description = "Пътуване със круизен кораб",
 				},
 				new TravelingWay
 				{

@@ -677,64 +677,12 @@
       "PackagePath": "staticwebassets\\Content\\images\\trend_8.png"
     },
     {
-      "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\js\\about_custom.js",
-      "PackagePath": "staticwebassets\\Content\\js\\about_custom.js"
-    },
-    {
-      "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\js\\blog_custom.js",
-      "PackagePath": "staticwebassets\\Content\\js\\blog_custom.js"
-    },
-    {
-      "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\js\\contact_custom.js",
-      "PackagePath": "staticwebassets\\Content\\js\\contact_custom.js"
-    },
-    {
-      "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\js\\custom.js",
-      "PackagePath": "staticwebassets\\Content\\js\\custom.js"
-    },
-    {
-      "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\js\\elements_custom.js",
-      "PackagePath": "staticwebassets\\Content\\js\\elements_custom.js"
-    },
-    {
       "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\js\\jquery-3.2.1.min.js",
       "PackagePath": "staticwebassets\\Content\\js\\jquery-3.2.1.min.js"
     },
     {
-      "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\js\\offers_custom.js",
-      "PackagePath": "staticwebassets\\Content\\js\\offers_custom.js"
-    },
-    {
-      "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\js\\single_listing_custom.js",
-      "PackagePath": "staticwebassets\\Content\\js\\single_listing_custom.js"
-    },
-    {
       "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\plugins\\Isotope\\isotope.pkgd.min.js",
       "PackagePath": "staticwebassets\\Content\\plugins\\Isotope\\isotope.pkgd.min.js"
-    },
-    {
-      "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\plugins\\OwlCarousel2-2.2.1\\ajax-loader.gif",
-      "PackagePath": "staticwebassets\\Content\\plugins\\OwlCarousel2-2.2.1\\ajax-loader.gif"
-    },
-    {
-      "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\plugins\\OwlCarousel2-2.2.1\\animate.css",
-      "PackagePath": "staticwebassets\\Content\\plugins\\OwlCarousel2-2.2.1\\animate.css"
-    },
-    {
-      "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\plugins\\OwlCarousel2-2.2.1\\owl.carousel.css",
-      "PackagePath": "staticwebassets\\Content\\plugins\\OwlCarousel2-2.2.1\\owl.carousel.css"
-    },
-    {
-      "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\plugins\\OwlCarousel2-2.2.1\\owl.carousel.js",
-      "PackagePath": "staticwebassets\\Content\\plugins\\OwlCarousel2-2.2.1\\owl.carousel.js"
-    },
-    {
-      "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\plugins\\OwlCarousel2-2.2.1\\owl.theme.default.css",
-      "PackagePath": "staticwebassets\\Content\\plugins\\OwlCarousel2-2.2.1\\owl.theme.default.css"
-    },
-    {
-      "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\plugins\\OwlCarousel2-2.2.1\\owl.video.play.png",
-      "PackagePath": "staticwebassets\\Content\\plugins\\OwlCarousel2-2.2.1\\owl.video.play.png"
     },
     {
       "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\plugins\\colorbox\\colorbox.css",
@@ -949,20 +897,20 @@
       "PackagePath": "staticwebassets\\Content\\plugins\\scrollmagic\\ScrollMagic.min.js"
     },
     {
-      "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\styles\\about_responsive.css",
-      "PackagePath": "staticwebassets\\Content\\styles\\about_responsive.css"
-    },
-    {
-      "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\styles\\about_styles.css",
-      "PackagePath": "staticwebassets\\Content\\styles\\about_styles.css"
-    },
-    {
       "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\styles\\blog_responsive.css",
       "PackagePath": "staticwebassets\\Content\\styles\\blog_responsive.css"
     },
     {
       "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\styles\\blog_styles.css",
       "PackagePath": "staticwebassets\\Content\\styles\\blog_styles.css"
+    },
+    {
+      "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\styles\\booking_index.css",
+      "PackagePath": "staticwebassets\\Content\\styles\\booking_index.css"
+    },
+    {
+      "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\styles\\booking_index_responsive.css",
+      "PackagePath": "staticwebassets\\Content\\styles\\booking_index_responsive.css"
     },
     {
       "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\styles\\bootstrap4\\bootstrap.min.css",

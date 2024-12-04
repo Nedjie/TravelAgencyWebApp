@@ -1,0 +1,48 @@
+/* Ensure the container takes full width and maintains margin */
+.container {
+	max-width: 1200px; /* Max width for the container */
+	margin: 0 auto; /* Center the container */
+	padding: 0 15px; /* Side padding */
+}
+/* Table Styles */
+.table {
+	width: 100%; /* Full width */
+	border-collapse: collapse; /* Ensures borders are merged */
+}
+
+	.table th, .table td {
+		padding: 10px; /* Padding within table cells */
+		text-align: left; /* Align text to the left */
+		border: 1px solid #ddd; /* Border for cells */
+	}
+.equal-width-button {
+	flex: 1; /* Allow buttons to take equal available space */
+	min-width: 70px; /* Minimum width to ensure usability */
+	padding: 6px; /* Adjust padding for smaller button size */
+	font-size: 12px; /* Smaller font size */
+}
+.d-flex {
+	width: 100%; /* Make sure the flex container takes the full width */
+}
+/* Responsive for cards if needed in other views */
+.card {
+	border: 1px solid #ddd; /* Light border for clarification */
+	border-radius: 4px; /* Rounded corners */
+	flex-direction: column; /* Stacked layout */
+}
+/* Ensure card body has padding */
+.card-body {
+	padding: 15px; /* Internal padding for card */
+}
+
+/* Provide visual feedback */
+.card-text {
+	overflow-wrap: break-word; /* Break long words to the next line */
+	white-space: normal; /* Allow normal wrapping behavior */
+	margin-bottom: 10px; /* Space below paragraphs */
+}
+
+/* Custom styles for header or navigation if needed */
+h2.text-center {
+	margin-bottom: 20px; /* Add space below headings */
+}

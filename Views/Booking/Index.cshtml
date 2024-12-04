@@ -4,22 +4,13 @@
 	ViewData["Title"] = "Управление на Резервации";
 }
 <head>
-	<title>Дени Травел</title>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="description" content="Travelix Project">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" type="text/css" href="~/Content/styles/bootstrap4/bootstrap.min.css" asp-append-version="true" />
-	<link href="~/Content/plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" asp-append-version="true" />
-	<link rel="stylesheet" type="text/css" href="~/Content/styles/main_styles.css" asp-append-version="true" />
-	<link rel="stylesheet" type="text/css" href="~/Content/styles/responsive.css" asp-append-version="true" />
+	<link rel="stylesheet" type="text/css" href="~/Content/styles/booking_index_responsive.css" asp-append-version="true" />
+	<link rel="stylesheet" type="text/css" href="~/Content/styles/booking_index.css" asp-append-version="true" />
 </head>
-
 <div class="container mt-5">
 	<h2 class="text-center mb-4">Управление на Резервации</h2>
 
 	<div class="table-responsive">
-		<!-- Make the table responsive -->
 		<table class="table table-striped">
 			<thead>
 				<tr>
@@ -39,15 +30,17 @@
 							<td>@booking.CheckOutDate.ToShortDateString()</td>
 							<td>@booking.OfferTitle</td>
 							<td>
-								<a asp-controller="Booking" asp-action="Details" asp-route-id="@booking.Id" class="btn btn-info" title="Детайли">
+								<div class="d-flex flex-column flex-sm-row justify-content-between">
+									<a asp-controller="Booking" asp-action="Details" asp-route-id="@booking.Id" class="btn btn-info equal-width-button mb-1 mb-sm-0 me-1" title="Детайли">
 									<i class="fas fa-eye"></i> Детайли
 								</a>
-								<a asp-controller="Booking" asp-action="Edit" asp-route-id="@booking.Id" class="btn btn-warning" title="Редактиране">
+									<a asp-controller="Booking" asp-action="Edit" asp-route-id="@booking.Id" class="btn btn-warning equal-width-button mb-1 mb-sm-0 me-1" title="Редактиране">
 									<i class="fas fa-edit"></i> Редактиране
 								</a>
-								<a asp-controller="Booking" asp-action="Delete" asp-route-id="@booking.Id" class="btn btn-danger" title="Изтриване" onclick="return confirm('Сигурни ли сте, че искате да изтриете тази резервация?');">
+									<a asp-controller="Booking" asp-action="Delete" asp-route-id="@booking.Id" class="btn btn-danger equal-width-button mb-1 mb-sm-0 me-1" title="Изтриване" onclick="return confirm('Сигурни ли сте, че искате да изтриете тази резервация?');">
 									<i class="fas fa-trash"></i> Изтриване
 								</a>
+								</div>
 							</td>
 						</tr>
 					}

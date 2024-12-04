@@ -1,0 +1,41 @@
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+    .table th:nth-child(4),
+    .table td:nth-child(4),
+    .table th:nth-child(5),
+    .table td:nth-child(5),
+    .table th:nth-child(2),
+    .table td:nth-child(2) {
+        display: none; /* Hides Check-In and Check-Out Date columns */
+    }
+    .btn-group {
+        flex-direction: column;
+        align-items: stretch;
+    }
+        .btn-group .btn {
+            width: 100%; /* Ensures buttons take full width within their container */
+            margin-bottom: 10px; /* Adds space between vertical buttons */
+        }
+    #searchInput {
+        width: 100%;
+        margin-bottom: 15px;
+    }
+}
+    
+.table-responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+@media (max-width: 576px) {
+    .table th:nth-child(3),
+    .table td:nth-child(3),
+    .table th:nth-child(4),
+    .table td:nth-child(4),
+    .table th:nth-child(5),
+    .table td:nth-child(5),
+    .table th:nth-child(2),
+    .table td:nth-child(2) {
+        display: none;
+    }
+}

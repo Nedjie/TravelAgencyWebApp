@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "8zGOF41ZuT1rqM7fn3XNKZM51QWqE/1obLKbyTrpBOc=",
+  "Hash": "xGQ8JZXpRVSM0/BxOmUnFbxFvxgqVswAW8rv2dxydfI=",
   "Source": "TravelAgencyWebApp",
   "BasePath": "_content/TravelAgencyWebApp",
   "Mode": "Default",
@@ -5432,6 +5432,25 @@
       "OriginalItemSpec": "wwwroot\\Content\\plugins\\scrollmagic\\ScrollMagic.min.js"
     },
     {
+      "Identity": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\styles\\booking_create.css",
+      "SourceId": "TravelAgencyWebApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\",
+      "BasePath": "_content/TravelAgencyWebApp",
+      "RelativePath": "Content/styles/booking_create.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Content\\styles\\booking_create.css"
+    },
+    {
       "Identity": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\styles\\booking_delete.css",
       "SourceId": "TravelAgencyWebApp",
       "SourceType": "Discovered",
@@ -5734,25 +5753,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Content\\styles\\single_listing_responsive.css"
-    },
-    {
-      "Identity": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\styles\\single_listing_styles.css",
-      "SourceId": "TravelAgencyWebApp",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\",
-      "BasePath": "_content/TravelAgencyWebApp",
-      "RelativePath": "Content/styles/single_listing_styles.css",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Content\\styles\\single_listing_styles.css"
     },
     {
       "Identity": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\css\\site.css",

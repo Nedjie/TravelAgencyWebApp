@@ -897,6 +897,10 @@
       "PackagePath": "staticwebassets\\Content\\plugins\\scrollmagic\\ScrollMagic.min.js"
     },
     {
+      "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\styles\\booking_create.css",
+      "PackagePath": "staticwebassets\\Content\\styles\\booking_create.css"
+    },
+    {
       "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\styles\\booking_delete.css",
       "PackagePath": "staticwebassets\\Content\\styles\\booking_delete.css"
     },
@@ -959,10 +963,6 @@
     {
       "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\styles\\single_listing_responsive.css",
       "PackagePath": "staticwebassets\\Content\\styles\\single_listing_responsive.css"
-    },
-    {
-      "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\styles\\single_listing_styles.css",
-      "PackagePath": "staticwebassets\\Content\\styles\\single_listing_styles.css"
     },
     {
       "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\css\\site.css",

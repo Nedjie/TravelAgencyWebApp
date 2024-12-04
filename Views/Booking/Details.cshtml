@@ -3,34 +3,10 @@
 @{
 	ViewData["Title"] = "Детайли на Резервация";
 }
-<style>
-	body {
-		background-color: #f8f9fa; /* Light background */
-	}
-
-	.confirm-delete-container {
-		background-color: #ffffff;
-		padding: 30px;
-		border-radius: 8px;
-		box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-	}
-
-	h2 {
-		color: #343a40; /* Dark color for heading */
-	}
-
-	.btn-danger {
-		background-color: #dc3545; /* Bootstrap Danger Button */
-	}
-
-	.btn-secondary {
-		background-color: #6c757d; /* Bootstrap Secondary Button */
-	}
-
-	.btn {
-		margin-right: 10px; /* Space between buttons */
-	}
-</style>
+<head>
+	<link rel="stylesheet" type="text/css" href="~/Content/styles/booking_details.css" asp-append-version="true" />
+	@* <link rel="stylesheet" type="text/css" href="~/Content/styles/booking_edit_responsive.css" asp-append-version="true" /> *@
+</head>
 <div class="container mt-5">
 	<nav aria-label="breadcrumb">
 		<ol class="breadcrumb">
@@ -94,7 +70,6 @@
 	<hr class="my-4">
 </div>
 
-<!-- Optional JavaScript -->
 <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" asp-append-version="true"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.min.js" asp-append-version="true"></script>

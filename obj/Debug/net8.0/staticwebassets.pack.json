@@ -197,14 +197,6 @@
       "PackagePath": "staticwebassets\\Content\\images\\add.jpg"
     },
     {
-      "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\images\\backpack.png",
-      "PackagePath": "staticwebassets\\Content\\images\\backpack.png"
-    },
-    {
-      "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\images\\bicycle.png",
-      "PackagePath": "staticwebassets\\Content\\images\\bicycle.png"
-    },
-    {
       "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\images\\blog_1.jpg",
       "PackagePath": "staticwebassets\\Content\\images\\blog_1.jpg"
     },
@@ -225,14 +217,6 @@
       "PackagePath": "staticwebassets\\Content\\images\\budapest.jpg"
     },
     {
-      "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\images\\bus.png",
-      "PackagePath": "staticwebassets\\Content\\images\\bus.png"
-    },
-    {
-      "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\images\\compass.png",
-      "PackagePath": "staticwebassets\\Content\\images\\compass.png"
-    },
-    {
       "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\images\\contact.png",
       "PackagePath": "staticwebassets\\Content\\images\\contact.png"
     },
@@ -241,28 +225,12 @@
       "PackagePath": "staticwebassets\\Content\\images\\contact_background.jpg"
     },
     {
-      "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\images\\cruise.png",
-      "PackagePath": "staticwebassets\\Content\\images\\cruise.png"
-    },
-    {
       "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\images\\cta.jpg",
       "PackagePath": "staticwebassets\\Content\\images\\cta.jpg"
     },
     {
-      "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\images\\departure.png",
-      "PackagePath": "staticwebassets\\Content\\images\\departure.png"
-    },
-    {
-      "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\images\\diving.png",
-      "PackagePath": "staticwebassets\\Content\\images\\diving.png"
-    },
-    {
       "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\images\\dominicana.jpg",
       "PackagePath": "staticwebassets\\Content\\images\\dominicana.jpg"
-    },
-    {
-      "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\images\\dropdown.png",
-      "PackagePath": "staticwebassets\\Content\\images\\dropdown.png"
     },
     {
       "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\images\\dubai.jpg",
@@ -313,18 +281,6 @@
       "PackagePath": "staticwebassets\\Content\\images\\home_slider.jpg"
     },
     {
-      "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\images\\icon_1.png",
-      "PackagePath": "staticwebassets\\Content\\images\\icon_1.png"
-    },
-    {
-      "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\images\\icon_2.png",
-      "PackagePath": "staticwebassets\\Content\\images\\icon_2.png"
-    },
-    {
-      "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\images\\icon_3.png",
-      "PackagePath": "staticwebassets\\Content\\images\\icon_3.png"
-    },
-    {
       "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\images\\intro.png",
       "PackagePath": "staticwebassets\\Content\\images\\intro.png"
     },
@@ -341,18 +297,6 @@
       "PackagePath": "staticwebassets\\Content\\images\\intro_3.jpg"
     },
     {
-      "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\images\\island.png",
-      "PackagePath": "staticwebassets\\Content\\images\\island.png"
-    },
-    {
-      "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\images\\island_t.png",
-      "PackagePath": "staticwebassets\\Content\\images\\island_t.png"
-    },
-    {
-      "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\images\\kayak.png",
-      "PackagePath": "staticwebassets\\Content\\images\\kayak.png"
-    },
-    {
       "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\images\\korfu.jpg",
       "PackagePath": "staticwebassets\\Content\\images\\korfu.jpg"
     },
@@ -363,94 +307,6 @@
     {
       "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\images\\latest_2.jpg",
       "PackagePath": "staticwebassets\\Content\\images\\latest_2.jpg"
-    },
-    {
-      "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\images\\latest_3.jpg",
-      "PackagePath": "staticwebassets\\Content\\images\\latest_3.jpg"
-    },
-    {
-      "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\images\\latest_4.jpg",
-      "PackagePath": "staticwebassets\\Content\\images\\latest_4.jpg"
-    },
-    {
-      "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\images\\listing_1.jpg",
-      "PackagePath": "staticwebassets\\Content\\images\\listing_1.jpg"
-    },
-    {
-      "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\images\\listing_2.jpg",
-      "PackagePath": "staticwebassets\\Content\\images\\listing_2.jpg"
-    },
-    {
-      "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\images\\listing_3.jpg",
-      "PackagePath": "staticwebassets\\Content\\images\\listing_3.jpg"
-    },
-    {
-      "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\images\\listing_4.jpg",
-      "PackagePath": "staticwebassets\\Content\\images\\listing_4.jpg"
-    },
-    {
-      "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\images\\listing_5.jpg",
-      "PackagePath": "staticwebassets\\Content\\images\\listing_5.jpg"
-    },
-    {
-      "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\images\\listing_6.jpg",
-      "PackagePath": "staticwebassets\\Content\\images\\listing_6.jpg"
-    },
-    {
-      "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\images\\listing_7.jpg",
-      "PackagePath": "staticwebassets\\Content\\images\\listing_7.jpg"
-    },
-    {
-      "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\images\\listing_8.jpg",
-      "PackagePath": "staticwebassets\\Content\\images\\listing_8.jpg"
-    },
-    {
-      "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\images\\listing_9.jpg",
-      "PackagePath": "staticwebassets\\Content\\images\\listing_9.jpg"
-    },
-    {
-      "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\images\\listing_gallery_1.jpg",
-      "PackagePath": "staticwebassets\\Content\\images\\listing_gallery_1.jpg"
-    },
-    {
-      "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\images\\listing_hotel.jpg",
-      "PackagePath": "staticwebassets\\Content\\images\\listing_hotel.jpg"
-    },
-    {
-      "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\images\\listing_thumb_1.jpg",
-      "PackagePath": "staticwebassets\\Content\\images\\listing_thumb_1.jpg"
-    },
-    {
-      "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\images\\listing_thumb_2.jpg",
-      "PackagePath": "staticwebassets\\Content\\images\\listing_thumb_2.jpg"
-    },
-    {
-      "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\images\\listing_thumb_3.jpg",
-      "PackagePath": "staticwebassets\\Content\\images\\listing_thumb_3.jpg"
-    },
-    {
-      "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\images\\listing_thumb_4.jpg",
-      "PackagePath": "staticwebassets\\Content\\images\\listing_thumb_4.jpg"
-    },
-    {
-      "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\images\\listing_thumb_5.jpg",
-      "PackagePath": "staticwebassets\\Content\\images\\listing_thumb_5.jpg"
-    },
-    {
-      "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\images\\listing_thumb_6.jpg",
-      "PackagePath": "staticwebassets\\Content\\images\\listing_thumb_6.jpg"
-    },
-    {
-      "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\images\\listing_thumb_7.jpg",
-      "PackagePath": "staticwebassets\\Content\\images\\listing_thumb_7.jpg"
-    },
-    {
-      "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\images\\listing_thumb_8.jpg",
-      "PackagePath": "staticwebassets\\Content\\images\\listing_thumb_8.jpg"
-    },
-    {
-      "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\images\\listing_thumb_9.jpg",
-      "PackagePath": "staticwebassets\\Content\\images\\listing_thumb_9.jpg"
     },
     {
       "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\images\\logo.png",
@@ -477,22 +333,6 @@
       "PackagePath": "staticwebassets\\Content\\images\\message.svg"
     },
     {
-      "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\images\\milestone_1.png",
-      "PackagePath": "staticwebassets\\Content\\images\\milestone_1.png"
-    },
-    {
-      "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\images\\milestone_2.png",
-      "PackagePath": "staticwebassets\\Content\\images\\milestone_2.png"
-    },
-    {
-      "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\images\\milestone_3.png",
-      "PackagePath": "staticwebassets\\Content\\images\\milestone_3.png"
-    },
-    {
-      "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\images\\milestone_4.png",
-      "PackagePath": "staticwebassets\\Content\\images\\milestone_4.png"
-    },
-    {
       "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\images\\msc.jpg",
       "PackagePath": "staticwebassets\\Content\\images\\msc.jpg"
     },
@@ -509,10 +349,6 @@
       "PackagePath": "staticwebassets\\Content\\images\\nav_rect.svg"
     },
     {
-      "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\images\\next.png",
-      "PackagePath": "staticwebassets\\Content\\images\\next.png"
-    },
-    {
       "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\images\\offer_1.jpg",
       "PackagePath": "staticwebassets\\Content\\images\\offer_1.jpg"
     },
@@ -523,26 +359,6 @@
     {
       "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\images\\offer_3.jpg",
       "PackagePath": "staticwebassets\\Content\\images\\offer_3.jpg"
-    },
-    {
-      "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\images\\offer_4.jpg",
-      "PackagePath": "staticwebassets\\Content\\images\\offer_4.jpg"
-    },
-    {
-      "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\images\\offer_5.jpg",
-      "PackagePath": "staticwebassets\\Content\\images\\offer_5.jpg"
-    },
-    {
-      "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\images\\offer_6.jpg",
-      "PackagePath": "staticwebassets\\Content\\images\\offer_6.jpg"
-    },
-    {
-      "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\images\\offer_7.jpg",
-      "PackagePath": "staticwebassets\\Content\\images\\offer_7.jpg"
-    },
-    {
-      "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\images\\offer_8.jpg",
-      "PackagePath": "staticwebassets\\Content\\images\\offer_8.jpg"
     },
     {
       "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\images\\phone-call.svg",
@@ -561,40 +377,12 @@
       "PackagePath": "staticwebassets\\Content\\images\\planet-earth.svg"
     },
     {
-      "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\images\\post.png",
-      "PackagePath": "staticwebassets\\Content\\images\\post.png"
-    },
-    {
-      "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\images\\prev.png",
-      "PackagePath": "staticwebassets\\Content\\images\\prev.png"
-    },
-    {
-      "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\images\\review_1.jpg",
-      "PackagePath": "staticwebassets\\Content\\images\\review_1.jpg"
-    },
-    {
-      "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\images\\review_2.jpg",
-      "PackagePath": "staticwebassets\\Content\\images\\review_2.jpg"
-    },
-    {
       "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\images\\rixos.jpg",
       "PackagePath": "staticwebassets\\Content\\images\\rixos.jpg"
     },
     {
       "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\images\\rome.jpg",
       "PackagePath": "staticwebassets\\Content\\images\\rome.jpg"
-    },
-    {
-      "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\images\\room_1.jpg",
-      "PackagePath": "staticwebassets\\Content\\images\\room_1.jpg"
-    },
-    {
-      "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\images\\room_2.jpg",
-      "PackagePath": "staticwebassets\\Content\\images\\room_2.jpg"
-    },
-    {
-      "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\images\\sailboat.png",
-      "PackagePath": "staticwebassets\\Content\\images\\sailboat.png"
     },
     {
       "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\images\\search.png",
@@ -609,72 +397,8 @@
       "PackagePath": "staticwebassets\\Content\\images\\single_background.jpg"
     },
     {
-      "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\images\\stats_1.png",
-      "PackagePath": "staticwebassets\\Content\\images\\stats_1.png"
-    },
-    {
-      "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\images\\stats_2.png",
-      "PackagePath": "staticwebassets\\Content\\images\\stats_2.png"
-    },
-    {
-      "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\images\\stats_3.png",
-      "PackagePath": "staticwebassets\\Content\\images\\stats_3.png"
-    },
-    {
-      "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\images\\stats_4.png",
-      "PackagePath": "staticwebassets\\Content\\images\\stats_4.png"
-    },
-    {
-      "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\images\\suitcase.png",
-      "PackagePath": "staticwebassets\\Content\\images\\suitcase.png"
-    },
-    {
       "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\images\\tailand.jpg",
       "PackagePath": "staticwebassets\\Content\\images\\tailand.jpg"
-    },
-    {
-      "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\images\\test_1.jpg",
-      "PackagePath": "staticwebassets\\Content\\images\\test_1.jpg"
-    },
-    {
-      "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\images\\test_2.jpg",
-      "PackagePath": "staticwebassets\\Content\\images\\test_2.jpg"
-    },
-    {
-      "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\images\\test_3.jpg",
-      "PackagePath": "staticwebassets\\Content\\images\\test_3.jpg"
-    },
-    {
-      "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\images\\trend_1.png",
-      "PackagePath": "staticwebassets\\Content\\images\\trend_1.png"
-    },
-    {
-      "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\images\\trend_2.png",
-      "PackagePath": "staticwebassets\\Content\\images\\trend_2.png"
-    },
-    {
-      "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\images\\trend_3.png",
-      "PackagePath": "staticwebassets\\Content\\images\\trend_3.png"
-    },
-    {
-      "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\images\\trend_4.png",
-      "PackagePath": "staticwebassets\\Content\\images\\trend_4.png"
-    },
-    {
-      "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\images\\trend_5.png",
-      "PackagePath": "staticwebassets\\Content\\images\\trend_5.png"
-    },
-    {
-      "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\images\\trend_6.png",
-      "PackagePath": "staticwebassets\\Content\\images\\trend_6.png"
-    },
-    {
-      "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\images\\trend_7.png",
-      "PackagePath": "staticwebassets\\Content\\images\\trend_7.png"
-    },
-    {
-      "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\images\\trend_8.png",
-      "PackagePath": "staticwebassets\\Content\\images\\trend_8.png"
     },
     {
       "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\js\\jquery-3.2.1.min.js",
@@ -965,28 +689,12 @@
       "PackagePath": "staticwebassets\\Content\\styles\\bootstrap4\\popper.js"
     },
     {
-      "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\styles\\contact_responsive.css",
-      "PackagePath": "staticwebassets\\Content\\styles\\contact_responsive.css"
-    },
-    {
       "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\styles\\main_styles.css",
       "PackagePath": "staticwebassets\\Content\\styles\\main_styles.css"
     },
     {
-      "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\styles\\offers_responsive.css",
-      "PackagePath": "staticwebassets\\Content\\styles\\offers_responsive.css"
-    },
-    {
-      "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\styles\\offers_styles.css",
-      "PackagePath": "staticwebassets\\Content\\styles\\offers_styles.css"
-    },
-    {
       "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\styles\\responsive.css",
       "PackagePath": "staticwebassets\\Content\\styles\\responsive.css"
-    },
-    {
-      "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\styles\\single_listing_responsive.css",
-      "PackagePath": "staticwebassets\\Content\\styles\\single_listing_responsive.css"
     },
     {
       "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\css\\site.css",
@@ -995,10 +703,6 @@
     {
       "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
-    },
-    {
-      "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\js\\site.js",
-      "PackagePath": "staticwebassets\\js\\site.js"
     },
     {
       "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\lib\\bootstrap\\LICENSE",

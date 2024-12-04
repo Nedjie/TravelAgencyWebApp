@@ -897,32 +897,32 @@
       "PackagePath": "staticwebassets\\Content\\plugins\\scrollmagic\\ScrollMagic.min.js"
     },
     {
-      "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\styles\\booking_create.css",
-      "PackagePath": "staticwebassets\\Content\\styles\\booking_create.css"
+      "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\styles\\BookingStyles\\booking_create.css",
+      "PackagePath": "staticwebassets\\Content\\styles\\BookingStyles\\booking_create.css"
     },
     {
-      "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\styles\\booking_delete.css",
-      "PackagePath": "staticwebassets\\Content\\styles\\booking_delete.css"
+      "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\styles\\BookingStyles\\booking_delete.css",
+      "PackagePath": "staticwebassets\\Content\\styles\\BookingStyles\\booking_delete.css"
     },
     {
-      "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\styles\\booking_details.css",
-      "PackagePath": "staticwebassets\\Content\\styles\\booking_details.css"
+      "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\styles\\BookingStyles\\booking_details.css",
+      "PackagePath": "staticwebassets\\Content\\styles\\BookingStyles\\booking_details.css"
     },
     {
-      "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\styles\\booking_edit.css",
-      "PackagePath": "staticwebassets\\Content\\styles\\booking_edit.css"
+      "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\styles\\BookingStyles\\booking_edit.css",
+      "PackagePath": "staticwebassets\\Content\\styles\\BookingStyles\\booking_edit.css"
     },
     {
-      "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\styles\\booking_edit_responsive.css",
-      "PackagePath": "staticwebassets\\Content\\styles\\booking_edit_responsive.css"
+      "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\styles\\BookingStyles\\booking_edit_responsive.css",
+      "PackagePath": "staticwebassets\\Content\\styles\\BookingStyles\\booking_edit_responsive.css"
     },
     {
-      "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\styles\\booking_index.css",
-      "PackagePath": "staticwebassets\\Content\\styles\\booking_index.css"
+      "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\styles\\BookingStyles\\booking_index.css",
+      "PackagePath": "staticwebassets\\Content\\styles\\BookingStyles\\booking_index.css"
     },
     {
-      "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\styles\\booking_index_responsive.css",
-      "PackagePath": "staticwebassets\\Content\\styles\\booking_index_responsive.css"
+      "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\styles\\BookingStyles\\booking_index_responsive.css",
+      "PackagePath": "staticwebassets\\Content\\styles\\BookingStyles\\booking_index_responsive.css"
     },
     {
       "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\styles\\bootstrap4\\bootstrap.min.css",

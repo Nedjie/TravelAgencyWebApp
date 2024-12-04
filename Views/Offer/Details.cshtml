@@ -5,32 +5,10 @@
 @{
 	ViewData["Title"] = Model.Title;
 }
-<style>
-    .card {
-        border: 1px solid #ddd; /* Optional border for clarity */
-        border-radius: 4px; /* Rounded edges */
-    }
-
-    .card-body {
-        padding: 1rem; /* Standard padding */
-    }
-
-    .card-title {
-        margin-bottom: 0.5rem; /* Space between title and content */
-        font-weight: bold; /* Make title bold */
-    }
-
-    .card-text {
-        overflow-wrap: break-word; /* Allow long words to break */
-        margin-bottom: 0.5rem; /* Space below paragraphs */
-        white-space: normal; /* Ensure wrapping of text */
-    }
-
-    img {
-        margin-bottom: 5px; /* Close spacing between image and text */
-    }
-
-</style>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="~/Content/styles/OfferStyles/offer_details.css" asp-append-version="true" />  
+</head>
 <div class="container mt-5">
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
@@ -39,9 +17,7 @@
             <li class="breadcrumb-item active" aria-current="page">@Model.Title</li>
         </ol>
     </nav>
-
     <h2 class="text-center mb-4">Детайли за Офертата</h2>
-
     <div class="row mb-4">
         <div class="col-md-6 text-center">
             <div>
@@ -55,7 +31,6 @@
                 }
             </div>
         </div>
-
         <div class="col-md-6">
             <div class="card border-light shadow-sm h-100">
                 <div class="card-body">
@@ -65,7 +40,6 @@
                     <p class="card-text"><strong>Дата на настаняване:</strong> @Model.CheckInDate.ToShortDateString()</p>
                     <p class="card-text"><strong>Дата на напускане:</strong> @Model.CheckOutDate.ToShortDateString()</p>
                     <p class="card-text"><strong>Метод на пътуване:</strong> @Model.TravelingWayMethod</p>
-
                     @if (User.IsInRole(AdminRoleName))
                     {
                         <div class="mt-3">

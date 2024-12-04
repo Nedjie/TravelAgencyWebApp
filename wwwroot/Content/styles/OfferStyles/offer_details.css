@@ -1,0 +1,43 @@
+﻿.card {
+    border: 1px solid #ddd; /* Optional border for clarity */
+    border-radius: 4px; /* Rounded edges */
+}
+
+.card-body {
+    padding: 1rem; /* Standard padding */
+}
+
+.card-title {
+    margin-bottom: 0.5rem; /* Space between title and content */
+    font-weight: bold; /* Make title bold */
+}
+
+.card-text {
+    overflow-wrap: break-word; /* Allow long words to break */
+    margin-bottom: 0.5rem; /* Space below paragraphs */
+    white-space: normal; /* Ensure wrapping of text */
+}
+
+img {
+    margin-bottom: 5px; /* Close spacing between image and text */
+}
+.mt-3 {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+    .mt-3 .btn {
+        margin-bottom: 0;
+    }
+
+@media (max-width: 768px) {
+    .mt-3 {
+        flex-direction: column;
+    }
+
+        .mt-3 .btn {
+            width: 100%; /* Make buttons full width in their container */
+            margin-bottom: 10px; /* Add space between buttons */
+        }
+}

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "dWg1KSmGMDWpNi/Bv3DkL/zzIjHcKNZaG9HJUYcJcNA=",
+  "Hash": "+wLJ3FnuucwkiC6R5pfzz5Q+nTuAAsyuS7XYFQhpaxo=",
   "Source": "TravelAgencyWebApp",
   "BasePath": "_content/TravelAgencyWebApp",
   "Mode": "Default",
@@ -5432,12 +5432,12 @@
       "OriginalItemSpec": "wwwroot\\Content\\plugins\\scrollmagic\\ScrollMagic.min.js"
     },
     {
-      "Identity": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\styles\\blog_responsive.css",
+      "Identity": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\styles\\booking_edit.css",
       "SourceId": "TravelAgencyWebApp",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\",
       "BasePath": "_content/TravelAgencyWebApp",
-      "RelativePath": "Content/styles/blog_responsive.css",
+      "RelativePath": "Content/styles/booking_edit.css",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -5448,15 +5448,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Content\\styles\\blog_responsive.css"
+      "OriginalItemSpec": "wwwroot\\Content\\styles\\booking_edit.css"
     },
     {
-      "Identity": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\styles\\blog_styles.css",
+      "Identity": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\styles\\booking_edit_responsive.css",
       "SourceId": "TravelAgencyWebApp",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\",
       "BasePath": "_content/TravelAgencyWebApp",
-      "RelativePath": "Content/styles/blog_styles.css",
+      "RelativePath": "Content/styles/booking_edit_responsive.css",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -5467,7 +5467,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Content\\styles\\blog_styles.css"
+      "OriginalItemSpec": "wwwroot\\Content\\styles\\booking_edit_responsive.css"
     },
     {
       "Identity": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\styles\\booking_index.css",

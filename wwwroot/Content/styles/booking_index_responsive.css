@@ -7,7 +7,6 @@
         margin: 0 5px; /* Horizontal spacing between buttons on larger screens */
     }
 }
-
 /* Adjust table headings for small screens */
 @media (max-width: 576px) {
     .equal-width-button {

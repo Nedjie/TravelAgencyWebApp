@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "6xnE2/OEfyWSGHxmPYphSKbrL0kE3+0pc13HVv8ULiU=",
+  "Hash": "T7tmACym9BNerWF0H1P/37Tjhk77NdSkkOBllYjVQuA=",
   "Source": "TravelAgencyWebApp",
   "BasePath": "_content/TravelAgencyWebApp",
   "Mode": "Default",
@@ -5753,6 +5753,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Content\\styles\\offers_styles.css"
+    },
+    {
+      "Identity": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\styles\\OfferStyles\\offer_delete.css",
+      "SourceId": "TravelAgencyWebApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\",
+      "BasePath": "_content/TravelAgencyWebApp",
+      "RelativePath": "Content/styles/OfferStyles/offer_delete.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Content\\styles\\OfferStyles\\offer_delete.css"
     },
     {
       "Identity": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\styles\\OfferStyles\\offer_details.css",

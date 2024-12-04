@@ -937,6 +937,10 @@
       "PackagePath": "staticwebassets\\Content\\styles\\HomeStyles\\home_index.css"
     },
     {
+      "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\styles\\OfferStyles\\offer_delete.css",
+      "PackagePath": "staticwebassets\\Content\\styles\\OfferStyles\\offer_delete.css"
+    },
+    {
       "Id": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\wwwroot\\Content\\styles\\OfferStyles\\offer_details.css",
       "PackagePath": "staticwebassets\\Content\\styles\\OfferStyles\\offer_details.css"
     },

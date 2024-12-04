@@ -1,0 +1,16 @@
+﻿.card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    min-height: 48px;
+}
+
+.card {
+    height: 100%;
+}

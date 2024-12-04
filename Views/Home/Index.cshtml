@@ -3,30 +3,12 @@
 @{
 	ViewData["Title"] = "Добре дошли в Дени Травел";
 }
-
+<head>
+	<link rel="stylesheet" type="text/css" href="~/Content/styles/HomeStyles/home_index.css" asp-append-version="true" />
+</head>
 <!DOCTYPE html>
 <html lang="bg">
-	<style>
-		.card-body {
-			display: flex; 
-			flex-direction: column; 
-			justify-content: space-between; 
-		}
-
-		.card-text {
-			overflow: hidden; 
-			text-overflow: ellipsis; 
-			white-space: nowrap; 
-			min-height: 48px; 
-		}
-
-		.card {
-			height: 100%; 
-		}
-	</style>
 <body>
-
-	<!-- Offers Section -->
 	<div class="container mt-5">
 		@foreach (var travelingWay in Model.Keys)
 		{
@@ -34,7 +16,7 @@
 			<div class="row mb-4">
 				@foreach (var offer in Model[travelingWay])
 				{
-					
+
 					<div class="col-md-4 mb-4">
 						<div class="card h-100">
 							<img src="@offer.ImageUrl" class="card-img-top" alt="@offer.Title" />
@@ -50,37 +32,32 @@
 					</div>
 				}
 			</div>
-			<hr /> 
+			<hr />
 		}
 	</div>
-	<!-- Scripts Section -->
+
 	@section Scripts {
 		<script src="~/Content/js/jquery-3.2.1.min.js" asp-append-version="true"></script>
 		<script src="~/Content/js/custom.js" asp-append-version="true"></script>
 
 		<script>
 			$(document).ready(function () {
-				// Search function for filtering table
 				$('#searchInput').on('keyup', function () {
 					const filter = $(this).val().toLowerCase();
 					$('table.table-striped tbody tr').filter(function () {
 						const text = $(this).text().toLowerCase();
-						// Filter based on the entire row's text
 						$(this).toggle(text.indexOf(filter) > -1);
 					});
 				});
 
 				let deleteOfferId;
-				// Show delete modal
 				window.showDeleteModal = function (offerId) {
 					deleteOfferId = offerId;
 					$('#deleteModal').modal('show');
 				};
 
-				// Confirm delete functionality
 				$('#confirmDelete').on('click', function () {
 					if (deleteOfferId) {
-						// Redirect to the delete action
 						window.location.href = `@Url.Action("Delete", "Offer")/${deleteOfferId}`;
 					}
 				});

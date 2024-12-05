@@ -19,7 +19,10 @@ namespace TravelAgencyWebApp.ViewModels.Booking
         [Comment("User name")]
         public string? UserName { get; set; }
 
-        [Comment("Offer identifier")]
+        [Comment("User that is done the booking")]
+		public string? ReservedByName { get; set; }
+
+		[Comment("Offer identifier")]
         public int OfferId { get; set; }
 
         [Comment("Offer title")]

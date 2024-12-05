@@ -19,6 +19,12 @@ namespace TravelAgencyWebApp.Data.Models
         [ForeignKey(nameof(UserId))]
         public ApplicationUser? User { get; set; }
 
+        [Comment("Agent identifier")]
+        public Guid? AgentId { get; set; }
+
+        [ForeignKey(nameof(AgentId))]
+        public Agent? Agent { get; set; }
+
         [Required(ErrorMessage = BookingOfferIdRequiredError)]
         [Comment("Offer identifier")]
         public int OfferId { get; set; }

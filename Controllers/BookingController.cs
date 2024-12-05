@@ -31,7 +31,7 @@ namespace TravelAgencyWebApp.Controllers
 					return RedirectToAction("Login", "Account");
 				}
 
-				var bookingViewModels = await _bookingService.GetBookingsByUserIdAsync(userId, b => b.Offer!); // Include Offer
+				var bookingViewModels = await _bookingService.GetBookingsByUserIdAsync(userId, b => b.Offer!); 
 
 				return View(bookingViewModels);
 			}
@@ -62,6 +62,7 @@ namespace TravelAgencyWebApp.Controllers
 			var model = new BookingViewModel
 			{
 				Id = booking.Id,
+				ReservedByName=booking.ReservedByName,
 				OfferId = offer.Id,
 				OfferTitle = offer.Title,
 				CheckInDate = booking.CheckInDate,
@@ -96,8 +97,8 @@ namespace TravelAgencyWebApp.Controllers
 			{
 				UserId = user.Id,
 				OfferId = offer.Id,
-				CheckInDate = DateTime.Now,
-				CheckOutDate = DateTime.Now.AddDays(1).Date,
+				CheckInDate = offer.CheckInDate,
+				CheckOutDate = offer.CheckOutDate,
 				UserEmail = user.Email,
 				UserFullName = user.FullName,
 				UserPhoneNumber = user.PhoneNumber
@@ -158,6 +159,7 @@ namespace TravelAgencyWebApp.Controllers
 
 			var model = new EditBookingViewModel
 			{
+				UserName=booking.User!.FullName,	
 				Id = booking.Id,
 				UserId = booking.UserId,
 				CheckInDate = booking.CheckInDate,

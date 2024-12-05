@@ -25,6 +25,8 @@
 					<p class="card-text" style="max-width:100%;">
 						<strong>Оферта:</strong> @Model.OfferTitle
 					</p>
+					<p class="card-text"><strong>Титуляр на резервацията:</strong>@Model.UserName</p>
+					<p class="card-text"><strong>Резервацията е направена от:@Model.ReservedByName</strong></p>
 					<p class="card-text"><strong>Номер на Оферта:</strong> @Model.OfferId</p>
 					<p class="card-text"><strong>Дата на Настаняване:</strong> @Model.CheckInDate.ToString("dd.MM.yyyy")</p>
 					<p class="card-text"><strong>Дата на Освобождаване:</strong> @Model.CheckOutDate.ToString("dd.MM.yyyy")</p>

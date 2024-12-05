@@ -25,13 +25,15 @@ namespace TravelAgencyWebApp.Services.Data
         public async Task<IEnumerable<BookingViewModel>> GetAllBookingsAsync()
         {
             var bookings = await _bookingRepository
-                .GetAllIncludingAsync(b => b.Offer!); 
+                .GetAllIncludingAsync(b => b.Offer!);
+                
 
             return bookings.Select(b => new BookingViewModel
             {
                 Id = b.Id,
                 UserId = b.UserId.ToString(),
-                UserName = b.User != null ? b.User.UserName : "Unknown",
+                UserName = b.User!.FullName ,
+                ReservedByName=b.Agent!.FullName !=null ? b.Agent.FullName:b.User.FullName,
                 OfferId = b.OfferId,
                 OfferTitle = b.Offer != null ? b.Offer.Title : "No Offer",
                 CheckInDate = b.CheckInDate,
@@ -41,18 +43,24 @@ namespace TravelAgencyWebApp.Services.Data
 
 		public async Task<BookingViewModel?> GetBookingByIdAsync(int id)
         {
-            var booking = await _bookingRepository.GetIncludingAsync(id);
-            if (booking == null)
+            var booking = await _bookingRepository.GetIncludingAsync(id, b => b.User!, b => b.Agent!, b => b.Offer!);
+			if (booking == null)
             {
                 return null; 
             }
+			string reservedByName = booking.Agent != null && !string.IsNullOrWhiteSpace(booking.Agent.FullName)
+	                        ? booking.Agent.FullName
+	                        : (booking.User != null && !string.IsNullOrWhiteSpace(booking.User.FullName)
+		                    ? booking.User.FullName
+		                    : "No Information Available");
 
-            return new BookingViewModel
+			return new BookingViewModel
             {
                 Id = booking.Id,
                 UserId = booking.UserId.ToString(),
-                UserName = booking.User != null ? booking.User.UserName : "Unknown",
-                OfferId = booking.OfferId,
+                UserName = booking.User?.FullName?? "Unknown User",
+                ReservedByName=reservedByName,
+				OfferId = booking.OfferId,
                 OfferTitle = booking.Offer != null ? booking.Offer.Title : "No Offer",
                 CheckInDate = booking.CheckInDate,
                 CheckOutDate = booking.CheckOutDate

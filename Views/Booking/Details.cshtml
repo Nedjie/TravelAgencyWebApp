@@ -16,39 +16,36 @@
 	</nav>
 
 	<h2 class="text-center mb-4">Детайли на Резервация № @Model.Id</h2>
-
 	<div class="row mb-4">
-		<div class="col-md-6">
-			<div class="card border-light shadow-sm">
-				<div class="card-body">
-					<h5 class="card-title">Резервация № @Model.Id</h5>
-					<p class="card-text" style="max-width:100%;">
-						<strong>Оферта:</strong> @Model.OfferTitle
-					</p>
-					<p class="card-text"><strong>Титуляр на резервацията:</strong>@Model.UserName</p>
-					<p class="card-text"><strong>Резервацията е направена от:@Model.ReservedByName</strong></p>
-					<p class="card-text"><strong>Номер на Оферта:</strong> @Model.OfferId</p>
-					<p class="card-text"><strong>Дата на Настаняване:</strong> @Model.CheckInDate.ToString("dd.MM.yyyy")</p>
-					<p class="card-text"><strong>Дата на Освобождаване:</strong> @Model.CheckOutDate.ToString("dd.MM.yyyy")</p>
+		<div class="col-12 col-md-10 offset-md-1">
+			<!-- Full width on small screens -->
+			<div class="card border-light shadow-sm" style="width: 100%; padding: 20px;">
+				<div class="row no-gutters align-items-stretch">
+					<div class="col-12 col-md-4">
+						<!-- Full width for small screens -->
+						<img src="@(Model.OfferImageUrl ?? "~/Content/images/default.jpg")"
+							 class="img-fluid rounded"
+							 alt="@Model.OfferTitle"
+							 style="object-fit: cover;" />
+					</div>
+					<div class="col-12 col-md-8">
+						<!-- Full width for small screens -->
+						<div class="card-body">
+							<h5 class="card-title">Резервация № @Model.Id</h5>
+							<p class="card-text"><strong>Оферта:</strong> @Model.OfferTitle</p>
+							<p class="card-text"><strong>Титуляр на резервацията:</strong> @Model.UserName</p>
+							<p class="card-text"><strong>Резервацията е направена от:</strong> @Model.ReservedByName</p>
+							<p class="card-text"><strong>Номер на Оферта:</strong> @Model.OfferId</p>
+							<p class="card-text"><strong>Дата на Настаняване:</strong> @Model.CheckInDate.ToString("dd.MM.yyyy")</p>
+							<p class="card-text"><strong>Дата на Освобождаване:</strong> @Model.CheckOutDate.ToString("dd.MM.yyyy")</p>
+						</div>
+					</div>
 				</div>
-			</div>
-		</div>
-		<div class="col-md-6 text-center">
-			<div>
-				@if (!string.IsNullOrEmpty(Model.OfferImageUrl))
-				{
-					<img src="@Model.OfferImageUrl" class="img-fluid rounded" alt="@Model.OfferTitle" style="max-width: 100%; height: auto;" />
-				}
-				else
-				{
-					<img src="~/Content/images/default.jpg" class="img-fluid rounded" alt="No image available" style="max-width: 100%; height: auto;" />
-				}
 			</div>
 		</div>
 	</div>
 
 	<hr class="my-4">
-
 	<div class="text-center">
 		<a asp-action="Index" class="btn btn-secondary" title="Назад към резервирания списък">
 			<i class="fas fa-arrow-left"></i> Назад към Резервации
@@ -67,10 +64,7 @@
 		<h3>Допълнителна информация</h3>
 		<p>Ако имате въпроси относно вашата резервация, моля, свържете се с нас!</p>
 	</div>
-
-	<hr class="my-4">
 </div>
-
 <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" asp-append-version="true"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.min.js" asp-append-version="true"></script>

@@ -6,9 +6,8 @@ namespace TravelAgencyWebApp.ViewModels.Booking
 {
     public class CreateBookingViewModel
     {
-        [Required]
         [Comment("User identifier")]
-        public Guid UserId { get; set; }
+        public Guid? UserId { get; set; }
 
         public string? UserEmail { get; set; }
 
@@ -25,6 +24,9 @@ namespace TravelAgencyWebApp.ViewModels.Booking
         public DateTime CheckOutDate { get; set; }
 
         [Comment("Offer identifier")]
-        public int OfferId { get; set; } 
-    }
+        public int OfferId { get; set; }
+
+        [Comment("AgentId identifier")]
+		public string? AgentId { get; set; }
+	}
 }

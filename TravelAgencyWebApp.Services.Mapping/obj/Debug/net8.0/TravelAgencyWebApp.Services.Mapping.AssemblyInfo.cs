@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TravelAgencyWebApp.Services.Mapping")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+000361b89dc9b090b188a3955cf91d96f12d4dd8")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fd0c684d6e8cb04f249e0aeb189f4b32d11610df")]
 [assembly: System.Reflection.AssemblyProductAttribute("TravelAgencyWebApp.Services.Mapping")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TravelAgencyWebApp.Services.Mapping")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

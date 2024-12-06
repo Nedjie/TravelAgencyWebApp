@@ -53,7 +53,14 @@ namespace TravelAgencyWebApp.Data
 				   .Property(tw => tw.Cost)
 				   .HasColumnType("decimal(18,2)");
 
-			SeedDataTravelingWays.DataTravelingWays(modelBuilder);
+            modelBuilder.Entity<Agent>()
+				  .HasOne(a => a.User) 
+			      .WithMany()  
+				  .HasForeignKey(a => a.UserId) 
+				  .OnDelete(DeleteBehavior.Cascade);
+
+
+            SeedDataTravelingWays.DataTravelingWays(modelBuilder);
 			SeedDataOffers.DataOffers(modelBuilder);
 		}
 	}

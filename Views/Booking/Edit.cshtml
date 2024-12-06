@@ -15,20 +15,20 @@
             <input type="hidden" asp-for="Id" />
 
             <div class="form-group">
-                <label asp-for="UserName" class="control-label">Вашите Имена</label>
-                <input asp-for="UserName" class="form-control" required />
-                <span asp-validation-for="UserName" class="text-danger"></span>
+                <label asp-for="FullName" class="control-label">Вашите Имена</label>
+                <input asp-for="FullName" class="form-control" required />
+                <span asp-validation-for="FullName" class="text-danger"></span>
             </div>
 
             <div class="form-group">
                 <label asp-for="CheckInDate" class="control-label">Дата на Настаняване</label>
-                <input asp-for="CheckInDate" class="form-control" type="date" required />
+                <input asp-for="CheckInDate" class="form-control" type="date" required readonly />
                 <span asp-validation-for="CheckInDate" class="text-danger"></span>
             </div>
 
             <div class="form-group">
                 <label asp-for="CheckOutDate" class="control-label">Дата на Освобождаване</label>
-                <input asp-for="CheckOutDate" class="form-control" type="date" required />
+                <input asp-for="CheckOutDate" class="form-control" type="date" required readonly />
                 <span asp-validation-for="CheckOutDate" class="text-danger"></span>
             </div>
 

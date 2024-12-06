@@ -11,10 +11,9 @@ namespace TravelAgencyWebApp.Data.Models
         [Key]
         [Comment("Booking identifier")]
         public int Id { get; set; }
-
-        [Required(ErrorMessage = BookingUserIdRequiredError)]
+        
         [Comment("User identifier")]
-        public Guid UserId { get; set; }
+        public Guid? UserId { get; set; }
 
         [ForeignKey(nameof(UserId))]
         public ApplicationUser? User { get; set; }
@@ -40,6 +39,10 @@ namespace TravelAgencyWebApp.Data.Models
         [IsBefore("CheckInDate", ErrorMessage = BookingCheckOutDateIsBeforeCheckInDateError)]
         [Comment("Check out date of booking")]
         public DateTime CheckOutDate { get; set; }
+
+        public string? FullName { get; set; }
+
+        public string? Email { get; set; }
 
 		public bool IsDeleted { get; set; }
 	}

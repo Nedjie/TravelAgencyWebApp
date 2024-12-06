@@ -120,7 +120,12 @@ namespace TravelAgencyWebApp.Services.Data
 
 			return true;
 		}
-	}
+
+        public async Task<List<ApplicationUser>> GetAllRegisteredUsersAsync()
+        {
+            return await _userManager.Users.ToListAsync(); 
+        }
+    }
 }
         
     

@@ -1,97 +1,64 @@
 ﻿@model TravelAgencyWebApp.ViewModels.Booking.CreateBookingViewModel
 @{
-	ViewData["Title"] = "Създаване на Резервация";
+    ViewBag.Title = "Създаване на Резервация";
 }
+
 <head>
-	<link rel="stylesheet" type="text/css" href="~/Content/styles/BookingStyles/booking_create.css" asp-append-version="true" />
+    <link rel="stylesheet" type="text/css" href="~/Content/styles/BookingStyles/booking_create.css" />
 </head>
-<div class="container mt-5">
-	<h2 class="text-center mb-4">Резервация</h2>
-	<div class="border p-4 mb-4">
-		@if (ViewBag.Offer != null)
-		{
-			<h4>@ViewBag.Offer.Title</h4>
-			@if (!string.IsNullOrEmpty(ViewBag.Offer.ImageUrl))
-			{
-				<img src="@ViewBag.Offer.ImageUrl" alt="@ViewBag.Offer.Title" class="img-fluid" style="max-width: 300px; height: auto;" />
-			}
-			else
-			{
-				<p>Няма налична снимка за тази оферта.</p>
-			}
-			<p>Дати: от @ViewBag.Offer.CheckInDate.ToString("dd.MM.yyyy") до @ViewBag.Offer.CheckOutDate.ToString("dd.MM.yyyy")</p>
-			<p>Цена: @($"{ViewBag.Offer.Price} лева")</p>
-		}
-		else
-		{
-		<p>Неуспешно зареждане на информацията за офертата.</p>
-		}
-	</div>
 
-	<form asp-action="Create" method="post">
-		  <input type="hidden" asp-for="OfferId" /> 
-		   <input type="hidden" asp-for="UserId" /> 
+<h2 class="text-center">Създаване на Резервация</h2>
 
-		  <h5 class="mb-3">Основна информация</h5>
-        <div class="form-row">
-            <div class="form-group col-md-6">
-                <label>Вашето Име</label>
-                <input asp-for="UserFullName" class="form-control" placeholder="Вашето име" required readonly />
+<div class="container mt-4">
+    <form asp-action="Create" method="post">
+        <div class="form-group">
+            <label asp-for="OfferId"></label>
+            <select asp-for="OfferId" class="form-control" asp-items="ViewBag.Offers"></select>
+            <span asp-validation-for="OfferId" class="text-danger"></span>
+        </div>
+
+        <!-- Option for Registered Users -->
+        <div class="user-option">
+            <h3 class="mt-4">Регистриран Потребител</h3>
+            <div class="form-group">
+                <label asp-for="UserId">Изберете потребител</label>
+                <select asp-for="UserId" class="form-control" asp-items="@(new SelectList(ViewBag.RegisteredUsers, "Id", "FullName"))">
+                    <option value="">-- Неизбран --</option>
+                </select>
+                <span asp-validation-for="UserId" class="text-danger"></span>
             </div>
-			<div class="form-group col-md-6">
-				<label asp-for="UserEmail" class="control-label">Имейл</label>
-				<input asp-for="UserEmail" class="form-control" type="email" placeholder="example@domain.com" required />
-				<span asp-validation-for="UserEmail" class="text-danger"></span>
-			</div>
-		</div>
+        </div>
 
-		<div class="form-row">
-			<div class="form-group col-md-6">
-				<label asp-for="UserPhoneNumber" class="control-label">Телефон</label>
-				<input asp-for="UserPhoneNumber" class="form-control" required placeholder="Въведете телефонен номер" />
-				<span asp-validation-for="UserPhoneNumber" class="text-danger"></span>
-			</div>
-			<div class="form-group col-md-3">
-				<label asp-for="CheckInDate" class="control-label">Дата на Настаняване</label>
-				<input asp-for="CheckInDate" class="form-control" type="date" required />
-				<span asp-validation-for="CheckInDate" class="text-danger"></span>
-			</div>
-			<div class="form-group col-md-3">
-				<label asp-for="CheckOutDate" class="control-label">Дата на Освобождаване</label>
-				<input asp-for="CheckOutDate" class="form-control" type="date" required />
-				<span asp-validation-for="CheckOutDate" class="text-danger"></span>
-			</div>
-		</div>
+        <!-- Option for Unregistered Users -->
+        <div class="user-option">
+            <h3 class="mt-4">Нерегистриран Потребител</h3>
+            <div class="form-group">
+                <label asp-for="UserFullName">Име</label>
+                <input asp-for="UserFullName" class="form-control" placeholder="Въведете име" />
+                <span asp-validation-for="UserFullName" class="text-danger"></span>
+            </div>
 
-		<div class="form-group">
-			<div class="form-check">
-				<input type="checkbox" class="form-check-input" id="terms" required>
-				<label class="form-check-label" for="terms">Приемам общите условия за резервация.</label>
-			</div>
-		</div>
+            <div class="form-group">
+                <label asp-for="UserEmail">Имейл</label>
+                <input asp-for="UserEmail" class="form-control" placeholder="Въведете имейл" />
+                <span asp-validation-for="UserEmail" class="text-danger"></span>
+            </div>
+        </div>
 
-		<div class="text-center">
-			<button type="submit" class="btn btn-success">Резервирай</button>
-			<a asp-action="Index" class="btn btn-secondary">Отказ</a>
-		</div>
-	</form>
+        <div class="form-group">
+            <label asp-for="CheckInDate"></label>
+            <input asp-for="CheckInDate" class="form-control" type="date" />
+            <span asp-validation-for="CheckInDate" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="CheckOutDate"></label>
+            <input asp-for="CheckOutDate" class="form-control" type="date" />
+            <span asp-validation-for="CheckOutDate" class="text-danger"></span>
+        </div>
+
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary">Създаване на Резервация</button>
+        </div>
+    </form>
 </div>
-
-@section Scripts {
-	<script>
-		const checkInInput = document.querySelector('input[name="CheckInDate"]');
-		const checkOutInput = document.querySelector('input[name="CheckOutDate"]');
-
-		checkInInput.addEventListener('change', function () {
-			const checkInDate = new Date(checkInInput.value);
-			const minCheckOutDate = new Date(checkInDate);
-			minCheckOutDate.setDate(minCheckOutDate.getDate() + 1); 
-
-			checkOutInput.setAttribute('min', minCheckOutDate.toISOString().split("T")[0]); 
-
-			if (checkOutInput.value && new Date(checkOutInput.value) < minCheckOutDate) {
-				checkOutInput.value = ''; 
-			}
-		});
-	</script>
-}

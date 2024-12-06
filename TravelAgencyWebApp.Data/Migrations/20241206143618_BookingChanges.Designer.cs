@@ -12,8 +12,8 @@ using TravelAgencyWebApp.Data;
 namespace TravelAgencyWebApp.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20241203152337_InitialMigration")]
-    partial class InitialMigration
+    [Migration("20241206143618_BookingChanges")]
+    partial class BookingChanges
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -174,7 +174,15 @@ namespace TravelAgencyWebApp.Data.Migrations
                         .HasColumnType("nvarchar(200)")
                         .HasComment("Agent Full Name");
 
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Agents");
                 });
@@ -268,7 +276,8 @@ namespace TravelAgencyWebApp.Data.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<Guid?>("AgentId")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uniqueidentifier")
+                        .HasComment("Agent identifier");
 
                     b.Property<DateTime>("CheckInDate")
                         .HasColumnType("datetime2")
@@ -278,6 +287,12 @@ namespace TravelAgencyWebApp.Data.Migrations
                         .HasColumnType("datetime2")
                         .HasComment("Check out date of booking");
 
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FullName")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
@@ -285,7 +300,7 @@ namespace TravelAgencyWebApp.Data.Migrations
                         .HasColumnType("int")
                         .HasComment("Offer identifier");
 
-                    b.Property<Guid>("UserId")
+                    b.Property<Guid?>("UserId")
                         .HasColumnType("uniqueidentifier")
                         .HasComment("User identifier");
 
@@ -360,10 +375,10 @@ namespace TravelAgencyWebApp.Data.Migrations
                         new
                         {
                             Id = 1,
-                            CheckInDate = new DateTime(2024, 12, 28, 17, 23, 35, 586, DateTimeKind.Local).AddTicks(5915),
-                            CheckOutDate = new DateTime(2025, 1, 7, 17, 23, 35, 586, DateTimeKind.Local).AddTicks(5959),
+                            CheckInDate = new DateTime(2024, 12, 31, 16, 36, 16, 880, DateTimeKind.Local).AddTicks(5035),
+                            CheckOutDate = new DateTime(2025, 1, 10, 16, 36, 16, 880, DateTimeKind.Local).AddTicks(5091),
                             Description = "Самолетен билет Мадрид - Пунта Кана - Мадрид;7 нощувки на база All Inclusive в хотел по избор в Плая Баваро;Трансфери летище Пунта Кана – хотел – летище Пунта Кана;Представител на български език от фирма - партньор на място.",
-                            ImageUrl = "/Content.images/dominicana.jpg",
+                            ImageUrl = "/Content/images/dominicana.jpg",
                             IsDeleted = false,
                             Price = 2240.00m,
                             Title = "Почивка в Доминикана",
@@ -372,10 +387,10 @@ namespace TravelAgencyWebApp.Data.Migrations
                         new
                         {
                             Id = 2,
-                            CheckInDate = new DateTime(2024, 12, 23, 17, 23, 35, 586, DateTimeKind.Local).AddTicks(5964),
-                            CheckOutDate = new DateTime(2024, 12, 28, 17, 23, 35, 586, DateTimeKind.Local).AddTicks(5967),
+                            CheckInDate = new DateTime(2024, 12, 26, 16, 36, 16, 880, DateTimeKind.Local).AddTicks(5096),
+                            CheckOutDate = new DateTime(2024, 12, 31, 16, 36, 16, 880, DateTimeKind.Local).AddTicks(5098),
                             Description = "Дубай -  смайващ лукс, високотехнологични съоръжения и целогодишно слънце, в съчетание с уникален допир до арабската култура. Известен в миналото като „град на търговците\", Дубай от векове посреща морски пътешественици, търговци и туристи по своите крайбрежия, превръщайки се в една от най-популярните дестинации за релаксираща почивка, авантюристична разходка в пустинята или бурен нощен живот. Подарете си релакс съчетан с лукс!",
-                            ImageUrl = "/Content.images/dubai.jpg",
+                            ImageUrl = "/Content/images/dubai.jpg",
                             IsDeleted = false,
                             Price = 1622.17m,
                             Title = "Почивка в Дубай",
@@ -384,8 +399,8 @@ namespace TravelAgencyWebApp.Data.Migrations
                         new
                         {
                             Id = 3,
-                            CheckInDate = new DateTime(2024, 12, 8, 17, 23, 35, 586, DateTimeKind.Local).AddTicks(5971),
-                            CheckOutDate = new DateTime(2024, 12, 18, 17, 23, 35, 586, DateTimeKind.Local).AddTicks(5973),
+                            CheckInDate = new DateTime(2024, 12, 11, 16, 36, 16, 880, DateTimeKind.Local).AddTicks(5102),
+                            CheckOutDate = new DateTime(2024, 12, 21, 16, 36, 16, 880, DateTimeKind.Local).AddTicks(5104),
                             Description = "Самолетен билет София - Истанбул - Пукет - Истанбул - София с включени летищни такси;Чекиран багаж до 23 кг.и ръчен багаж до 8 кг.;7 нощувки в избрания хотел на съответната база изхранване;Трансфер летище - хотел - летище;Медицинска застраховка с покритие 10 000 евро;",
                             ImageUrl = "/Content/images/tailand.jpg",
                             IsDeleted = false,
@@ -396,8 +411,8 @@ namespace TravelAgencyWebApp.Data.Migrations
                         new
                         {
                             Id = 4,
-                            CheckInDate = new DateTime(2024, 12, 13, 17, 23, 35, 586, DateTimeKind.Local).AddTicks(5977),
-                            CheckOutDate = new DateTime(2024, 12, 20, 17, 23, 35, 586, DateTimeKind.Local).AddTicks(5979),
+                            CheckInDate = new DateTime(2024, 12, 16, 16, 36, 16, 880, DateTimeKind.Local).AddTicks(5107),
+                            CheckOutDate = new DateTime(2024, 12, 23, 16, 36, 16, 880, DateTimeKind.Local).AddTicks(5109),
                             Description = "Kогато камбани зазвънят из целия град , уличките се изпълнят с тържествения марш на духови оркестри , а от балконите залетят червени делви -Корфу ще грабне душата ви от пръв поглед на най-християнския празник !",
                             ImageUrl = "/Content/images/korfu.jpg",
                             IsDeleted = false,
@@ -408,8 +423,8 @@ namespace TravelAgencyWebApp.Data.Migrations
                         new
                         {
                             Id = 5,
-                            CheckInDate = new DateTime(2024, 12, 17, 17, 23, 35, 586, DateTimeKind.Local).AddTicks(5983),
-                            CheckOutDate = new DateTime(2024, 12, 19, 17, 23, 35, 586, DateTimeKind.Local).AddTicks(5985),
+                            CheckInDate = new DateTime(2024, 12, 20, 16, 36, 16, 880, DateTimeKind.Local).AddTicks(5112),
+                            CheckOutDate = new DateTime(2024, 12, 22, 16, 36, 16, 880, DateTimeKind.Local).AddTicks(5114),
                             Description = "2 нощувки със закуски в хотел 3*** в Будапеща.Водач от фирмата по време на пътуванетоАвтобусен транспорт от София с лицензиран автобус за международни превозиМедицинска застраховка за лица до 65г.на застрахователна компания Уника с лимит на отговорност 2000 евро",
                             ImageUrl = "/Content/images/budapest.jpg",
                             IsDeleted = false,
@@ -420,8 +435,8 @@ namespace TravelAgencyWebApp.Data.Migrations
                         new
                         {
                             Id = 6,
-                            CheckInDate = new DateTime(2025, 1, 6, 17, 23, 35, 586, DateTimeKind.Local).AddTicks(5989),
-                            CheckOutDate = new DateTime(2025, 1, 9, 17, 23, 35, 586, DateTimeKind.Local).AddTicks(5992),
+                            CheckInDate = new DateTime(2025, 1, 9, 16, 36, 16, 880, DateTimeKind.Local).AddTicks(5118),
+                            CheckOutDate = new DateTime(2025, 1, 12, 16, 36, 16, 880, DateTimeKind.Local).AddTicks(5120),
                             Description = "Самолетен билет Варна – Перуджа – Варна с авиокомпания European Air Charter;Летищни такси;Чекиран багаж до 20 кг и 1 малък ръчен багаж с размери 40 х 30 х 20 см;Трансфер летище – хотел – летище с автобус;3 нощувки със закуски;Обиколен тур на Рим с екскурзовод на български език;Медицинска застраховка Помощ при пътуване от Евронинс с покритие 10000 евроПредставител на туроператора на български език.",
                             ImageUrl = "/Content/images/rome.jpg",
                             IsDeleted = false,
@@ -432,8 +447,8 @@ namespace TravelAgencyWebApp.Data.Migrations
                         new
                         {
                             Id = 7,
-                            CheckInDate = new DateTime(2025, 2, 7, 17, 23, 35, 586, DateTimeKind.Local).AddTicks(5995),
-                            CheckOutDate = new DateTime(2025, 2, 15, 17, 23, 35, 586, DateTimeKind.Local).AddTicks(5998),
+                            CheckInDate = new DateTime(2025, 2, 10, 16, 36, 16, 880, DateTimeKind.Local).AddTicks(5123),
+                            CheckOutDate = new DateTime(2025, 2, 18, 16, 36, 16, 880, DateTimeKind.Local).AddTicks(5125),
                             Description = "Самолетен билет с авиокомпания \"България Еър\" и „ИТА”;Летищни такси;1 бр.ръчен багаж до 10 кг;1 бр.чекиран багаж до 23 кг;Трансфер летище Фиумичино – хотел в Рим;Трансфер хотел в Рим – пристанище Чивитавекия;Трансфер пристанище Чивитавекия – летищe Фиумичино;1 нощувка със закуска в тризвезден хотел в Рим;7 нощувки на база обогатен пълен пансион с круизен кораб MSC Seaview - богат асортимент от храна за закуска,обяд, следобедна закуска и вечеря + вода от диспенсър и чай в зоната на бюфет ресторанта;Безплатно ползване на басейните и фитнес центъра на кораба;Множество забавления на борда на кораба;Програма с атрактивни игри;Пристанищни такси;Водач – придружител от туроператора.",
                             ImageUrl = "/Content/images/msc.jpg",
                             IsDeleted = false,
@@ -444,8 +459,8 @@ namespace TravelAgencyWebApp.Data.Migrations
                         new
                         {
                             Id = 8,
-                            CheckInDate = new DateTime(2025, 2, 7, 17, 23, 35, 586, DateTimeKind.Local).AddTicks(6001),
-                            CheckOutDate = new DateTime(2025, 2, 15, 17, 23, 35, 586, DateTimeKind.Local).AddTicks(6004),
+                            CheckInDate = new DateTime(2025, 2, 10, 16, 36, 16, 880, DateTimeKind.Local).AddTicks(5129),
+                            CheckOutDate = new DateTime(2025, 2, 18, 16, 36, 16, 880, DateTimeKind.Local).AddTicks(5130),
                             Description = "Основен ресторант, отопляем открит басейн 210 кв. м., тенис на корт, шахмат, 6 бара (лоби бар, Риксос бар, Тропик бар, Калина бар, бар на плажа, бар при басейна), СПА център, магазини, мини маркет, аптека,детегледачка(заплаща се)Безплатни услуги: турска баня,сауна,дартс,фитнес център, минибар,осветление на тенис корта ",
                             ImageUrl = "/Content/images/rixos.jpg",
                             IsDeleted = false,
@@ -566,11 +581,23 @@ namespace TravelAgencyWebApp.Data.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("TravelAgencyWebApp.Data.Models.Agent", b =>
+                {
+                    b.HasOne("TravelAgencyWebApp.Data.Models.ApplicationUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("TravelAgencyWebApp.Data.Models.Booking", b =>
                 {
-                    b.HasOne("TravelAgencyWebApp.Data.Models.Agent", null)
+                    b.HasOne("TravelAgencyWebApp.Data.Models.Agent", "Agent")
                         .WithMany("Bookings")
-                        .HasForeignKey("AgentId");
+                        .HasForeignKey("AgentId")
+                        .OnDelete(DeleteBehavior.SetNull);
 
                     b.HasOne("TravelAgencyWebApp.Data.Models.Offer", "Offer")
                         .WithMany()
@@ -581,8 +608,9 @@ namespace TravelAgencyWebApp.Data.Migrations
                     b.HasOne("TravelAgencyWebApp.Data.Models.ApplicationUser", "User")
                         .WithMany("Bookings")
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.Navigation("Agent");
 
                     b.Navigation("Offer");
 

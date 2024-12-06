@@ -17,7 +17,7 @@
 	}
 .equal-width-button {
 	flex: 1; /* Allow buttons to take equal available space */
-	min-width: 70px; /* Minimum width to ensure usability */
+	min-width: 100px; /* Minimum width to ensure usability */
 	padding: 6px; /* Adjust padding for smaller button size */
 	font-size: 12px; /* Smaller font size */
 }

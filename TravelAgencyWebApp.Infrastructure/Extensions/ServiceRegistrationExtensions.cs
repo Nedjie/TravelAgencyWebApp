@@ -166,6 +166,7 @@ namespace TravelAgencyWebApp.Infrastructure.Extensions
             services.AddScoped<IOfferService, OfferService>();
             services.AddScoped<ITravelingWayService, TravelingWayService>();
             services.AddScoped<IRoleService, RoleService>();
+            services.AddScoped<IAgentService, AgentService>();
 
             return services;
         }

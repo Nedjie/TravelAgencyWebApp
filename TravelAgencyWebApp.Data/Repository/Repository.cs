@@ -67,11 +67,11 @@ namespace TravelAgencyWebApp.Data.Repository
 			await _dbSet.AddRangeAsync(items);
 			await _context.SaveChangesAsync();
 		}
-		public bool Delete(TType entity)
+		public  async Task<bool> DeleteAsyncHard(TType entity)//This is HardDelete
 		{
-			if (entity == null) return false;
-			_dbSet.Remove(entity);
-			return _context.SaveChanges() > 0;
+			ArgumentNullException.ThrowIfNull(entity); 
+			_dbSet.Remove(entity); 
+			return await _context.SaveChangesAsync() > 0;
 		}
 		public async Task<bool> DeleteAsync(TType entity)
 		{
@@ -86,7 +86,7 @@ namespace TravelAgencyWebApp.Data.Repository
             }
 
             return false; 
-        }
+        }//This is SoftDelete
         public bool Update(TType item)
 		{
 			_dbSet.Update(item);

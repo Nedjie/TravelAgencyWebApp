@@ -16,8 +16,8 @@ namespace TravelAgencyWebApp.Data.Repository.Interfaces
         Task AddAsync(TType item);
         void AddRange(TType[] items);
         Task AddRangeAsync(TType[] items);
-        bool Delete(TType entity);
-        Task<bool> DeleteAsync(TType entity);
+        Task<bool> DeleteAsyncHard(TType entity);
+		Task<bool> DeleteAsync(TType entity);
         bool Update(TType item);
         Task<bool> UpdateAsync(TType item);
 		Task<TType?> GetIncludingAsync(TId id, params Expression<Func<TType, object>>[] includes);

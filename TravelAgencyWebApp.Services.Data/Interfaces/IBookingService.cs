@@ -7,7 +7,8 @@ namespace TravelAgencyWebApp.Services.Data.Interfaces
     public interface IBookingService
     {
         Task<IEnumerable<BookingViewModel>> GetAllBookingsAsync();
-        Task<BookingViewModel?> GetBookingByIdAsync(int id);
+        Task<IEnumerable<BookingViewModel>> GetBookingsForAgentAsync(Guid agentId);
+		Task<BookingViewModel?> GetBookingByIdAsync(int id);
         Task<IEnumerable<BookingViewModel>> GetBookingsByUserIdAsync(Guid userId, params Expression<Func<Booking, object>>[] includes);
 		Task<bool> CreateBookingAsync(CreateBookingViewModel model);
         Task<bool> UpdateBookingAsync(EditBookingViewModel model);

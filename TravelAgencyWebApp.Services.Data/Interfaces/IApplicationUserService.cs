@@ -1,4 +1,5 @@
-﻿using TravelAgencyWebApp.ViewModels.Admin.UserManagement;
+﻿using TravelAgencyWebApp.Data.Models;
+using TravelAgencyWebApp.ViewModels.Admin.UserManagement;
 
 namespace TravelAgencyWebApp.Services.Data.Interfaces
 {
@@ -9,5 +10,6 @@ namespace TravelAgencyWebApp.Services.Data.Interfaces
 		Task<bool> UserExistsByIdAsync(Guid userId);
 		Task<bool> RemoveUserRoleAsync(Guid userId, string roleName);
 		Task<bool> DeleteUserAsync(Guid userId);
-	}
+        Task<List<ApplicationUser>> GetAllRegisteredUsersAsync();
+    }
 }

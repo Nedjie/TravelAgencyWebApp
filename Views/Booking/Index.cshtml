@@ -17,6 +17,8 @@
 					<th>Дата на Настаняване</th>
 					<th>Дата на Освобождаване</th>
 					<th>Оферта</th>
+					<th>Титуляр на резервацията</th>
+					<th>Резервацията е направена от</th>
 					<th>Действия</th>
 				</tr>
 			</thead>
@@ -29,17 +31,19 @@
 							<td>@booking.CheckInDate.ToShortDateString()</td>
 							<td>@booking.CheckOutDate.ToShortDateString()</td>
 							<td>@booking.OfferTitle</td>
+							<td>@booking.FullName</td>
+							<td>@booking.ReservedByName</td>
 							<td>
 								<div class="d-flex flex-column flex-sm-row justify-content-between">
 									<a asp-controller="Booking" asp-action="Details" asp-route-id="@booking.Id" class="btn btn-info equal-width-button mb-1 mb-sm-0 me-1" title="Детайли">
-									<i class="fas fa-eye"></i> Детайли
-								</a>
+										<i class="fas fa-eye"></i> Детайли
+									</a>
 									<a asp-controller="Booking" asp-action="Edit" asp-route-id="@booking.Id" class="btn btn-warning equal-width-button mb-1 mb-sm-0 me-1" title="Редактиране">
-									<i class="fas fa-edit"></i> Редактиране
-								</a>
+										<i class="fas fa-edit"></i> Редактиране
+									</a>
 									<a asp-controller="Booking" asp-action="Delete" asp-route-id="@booking.Id" class="btn btn-danger equal-width-button mb-1 mb-sm-0 me-1" title="Изтриване" onclick="return confirm('Сигурни ли сте, че искате да изтриете тази резервация?');">
-									<i class="fas fa-trash"></i> Изтриване
-								</a>
+										<i class="fas fa-trash"></i> Изтриване
+									</a>
 								</div>
 							</td>
 						</tr>
@@ -60,10 +64,10 @@
 	<script>
 		document.querySelectorAll("table.table-striped tbody tr").forEach(row => {
 			row.addEventListener('mouseenter', function () {
-				this.style.backgroundColor = '#f0f8ff';  
+				this.style.backgroundColor = '#f0f8ff';
 			});
 			row.addEventListener('mouseleave', function () {
-				this.style.backgroundColor = '';  
+				this.style.backgroundColor = '';
 			});
 		});
 	</script>

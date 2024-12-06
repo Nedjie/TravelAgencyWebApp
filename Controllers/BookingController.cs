@@ -4,230 +4,301 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using TravelAgencyWebApp.Data.Models;
 using TravelAgencyWebApp.Services.Data.Interfaces;
+using TravelAgencyWebApp.TravelAgencyWebApp.ViewModels.ApplicationUser;
 using TravelAgencyWebApp.ViewModels.Booking;
 
 namespace TravelAgencyWebApp.Controllers
 {
     [Authorize]
-	public class BookingController(IBookingService bookingService, IOfferService offerService,
-		UserManager<ApplicationUser> userManager, ILogger<BookingController> logger) : BaseController(logger)
-	{
-		private readonly IBookingService _bookingService = bookingService
-			?? throw new ArgumentNullException(nameof(bookingService));
-		private readonly IOfferService _offerService = offerService
-			?? throw new ArgumentNullException(nameof(offerService));
-		private readonly UserManager<ApplicationUser> _userManager = userManager
-			?? throw new ArgumentNullException(nameof(userManager));
+    public class BookingController : BaseController
+    {
+        private readonly IBookingService _bookingService;
+        private readonly IOfferService _offerService;
+        private readonly UserManager<ApplicationUser> _userManager;
+        private readonly IApplicationUserService _applicationUserService;
+
+        public BookingController(IBookingService bookingService, IOfferService offerService,
+                                 UserManager<ApplicationUser> userManager,
+                                 IApplicationUserService applicationUserService,
+                                 ILogger<BookingController> logger) : base(logger)
+        {
+            _bookingService = bookingService ?? throw new ArgumentNullException(nameof(bookingService));
+            _offerService = offerService ?? throw new ArgumentNullException(nameof(offerService));
+            _userManager = userManager ?? throw new ArgumentNullException(nameof(userManager));
+            _applicationUserService = applicationUserService ?? throw new ArgumentNullException(nameof(applicationUserService));
+        }
 
 
-		public async Task<IActionResult> Index()
-		{
-			try
-			{
-				var userIdString = _userManager.GetUserId(User);
+        public async Task<IActionResult> Index()
+        {
+            try
+            {
+                var userIdString = _userManager.GetUserId(User);
 
-				if (!Guid.TryParse(userIdString, out var userId))
-				{
-					return RedirectToAction("Login", "Account");
-				}
+                if (!Guid.TryParse(userIdString, out var userId))
+                {
+                    return RedirectToAction("Login", "Account");
+                }
+                var user = await _userManager.FindByIdAsync(userIdString);
+                if (user == null)
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+                var userRoles = await _userManager.GetRolesAsync(user);
 
-				var bookingViewModels = await _bookingService.GetBookingsByUserIdAsync(userId, b => b.Offer!); 
+                IEnumerable<BookingViewModel> bookingViewModels;
 
-				return View(bookingViewModels);
-			}
-			catch (Exception ex)
-			{
-				Console.WriteLine(ex.Message);
-				return View("Error");
-			}
-		}
+                if (userRoles.Contains("Admin"))
+                {
+                    bookingViewModels = await _bookingService.GetAllBookingsAsync();
+                }
+                else if (userRoles.Contains("Agent"))
+                {
+                    bookingViewModels = await _bookingService.GetBookingsForAgentAsync(userId);
+                }
+                else
+                {
+                    bookingViewModels = await _bookingService.GetBookingsByUserIdAsync(userId);
+                }
 
-		[HttpGet]
-		public async Task<IActionResult> Details(int id)
-		{
-			var booking = await _bookingService.GetBookingByIdAsync(id);
+                return View(bookingViewModels);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return View("Error");
+            }
+        }
 
-			if (booking == null)
-			{
-				return NotFound();
-			}
+        [HttpGet]
+        public async Task<IActionResult> Details(int id)
+        {
+            var booking = await _bookingService.GetBookingByIdAsync(id);
 
-			var offer = await _offerService.GetOfferByIdAsync(booking.OfferId);
+            if (booking == null)
+            {
+                return NotFound();
+            }
 
-			if (offer == null)
-			{
-				return NotFound();
-			}
+            var offer = await _offerService.GetOfferByIdAsync(booking.OfferId);
 
-			var model = new BookingViewModel
-			{
-				Id = booking.Id,
-				ReservedByName=booking.ReservedByName,
-				OfferId = offer.Id,
-				OfferTitle = offer.Title,
-				CheckInDate = booking.CheckInDate,
-				CheckOutDate = booking.CheckOutDate,
-				UserName = booking.UserName,
-				OfferImageUrl = offer.ImageUrl
-			};
+            if (offer == null)
+            {
+                return NotFound();
+            }
 
-			return View(model);
-		}
+            var model = new BookingViewModel
+            {
+                Id = booking.Id,
+                ReservedByName = booking.ReservedByName,
+                OfferId = offer.Id,
+                OfferTitle = offer.Title,
+                CheckInDate = booking.CheckInDate,
+                CheckOutDate = booking.CheckOutDate,
+                UserName = booking.UserName,
+                OfferImageUrl = offer.ImageUrl
+            };
 
-		[HttpGet]
-		public async Task<IActionResult> Create(int id)
-		{
-			var offer = await _offerService.GetOfferByIdAsync(id);
-			if (offer == null)
-			{
-				return NotFound();
-			}
-			var user = await _userManager.GetUserAsync(User);
-			if (user == null)
-			{
-				Console.WriteLine("User is not authenticated. Claims:");
-				foreach (var claim in User.Claims)
-				{
-					Console.WriteLine($"{claim.Type}: {claim.Value}");
-				}
-				return Unauthorized();
-			}
+            return View(model);
+        }
 
-			var bookingViewModel = new CreateBookingViewModel
-			{
-				UserId = user.Id,
-				OfferId = offer.Id,
-				CheckInDate = offer.CheckInDate,
-				CheckOutDate = offer.CheckOutDate,
-				UserEmail = user.Email,
-				UserFullName = user.FullName,
-				UserPhoneNumber = user.PhoneNumber
+        [HttpGet]
+        public async Task<IActionResult> Create(int id)
+        {
+            var offer = await _offerService.GetOfferByIdAsync(id);
+            if (offer == null)
+            {
+                TempData["ErrorMessage"] = "Offer not found.";
+                return RedirectToAction("Index");
+            }
 
-			};
-			ViewBag.Offer = offer;
-			return View(bookingViewModel);
-		}
+            await PopulateViewBagsAsync();
 
-		[HttpPost]
-		public async Task<IActionResult> Create(CreateBookingViewModel model)
-		{
-			if (!ModelState.IsValid)
-			{
-				ViewBag.Offers = (await _offerService.GetAllOffersAsync())
-					.Select(o => new SelectListItem
-					{
-						Value = o.Id.ToString(),
-						Text = o.Title
-					});
+            var bookingViewModel = new CreateBookingViewModel
+            {
+                OfferId = offer.Id,
+                CheckInDate = offer.CheckInDate,
+                CheckOutDate = offer.CheckOutDate,
 
-				return View(model);
-			}
-			try
-			{
-				bool isSuccess = await _bookingService.CreateBookingAsync(model);
-				if (!isSuccess)
-				{
-					TempData["ErrorMessage"] = "Error occurred while creating the reservation. Please try again.";
-					return View(model);
-				}
+            };
 
-				TempData["SuccessMessage"] = "Reservation created successfully!";
-				return RedirectToAction(nameof(Index));
-			}
-			catch (Exception ex)
-			{
-				ModelState.AddModelError(string.Empty, "An unexpected error occurred: " + ex.Message);
-				return View(model);
-			}
-		}
+            return View(bookingViewModel);
+        }
 
-		[HttpGet]
-		public async Task<IActionResult> Edit(int id)
-		{
-			var booking = await _bookingService.GetBookingByIdIncludingUserAndOfferAsync(id);
-			if (booking == null)
-			{
-				return NotFound();
-			}
+        [HttpPost]
+        public async Task<IActionResult> Create(CreateBookingViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                await PopulateViewBagsAsync();
+                return View(model);
+            }
 
-			ViewBag.Offers = (await _offerService.GetAllOffersAsync())
-				.Select(o => new SelectListItem
-				{
-					Value = o.Id.ToString(),
-					Text = o.Title
-				});
+            try
+            {
+                var agentIdString = _userManager.GetUserId(User);
+                if (!Guid.TryParse(agentIdString, out Guid agentId))
+                {
+                    ModelState.AddModelError("AgentId", "Invalid Agent ID.");
+                    await PopulateViewBagsAsync();
+                    return View(model);
+                }
 
-			var model = new EditBookingViewModel
-			{
-				UserName=booking.User!.FullName,	
-				Id = booking.Id,
-				UserId = booking.UserId,
-				CheckInDate = booking.CheckInDate,
-				CheckOutDate = booking.CheckOutDate,
-				OfferId = booking.OfferId
-			};
+                model.AgentId = agentId.ToString();
 
-			return View(model);
-		}
+                // Custom Validation: Ensure UserId or Name and Email
+                if (!model.UserId.HasValue)
+                {
+                    if (string.IsNullOrWhiteSpace(model.UserFullName))
+                    {
+                        ModelState.AddModelError(nameof(model.UserFullName), "Full Name is required for unregistered users.");
+                    }
+                    if (string.IsNullOrWhiteSpace(model.UserEmail))
+                    {
+                        ModelState.AddModelError(nameof(model.UserEmail), "Email is required for unregistered users.");
+                    }
+                    if (!ModelState.IsValid)
+                    {
+                        await PopulateViewBagsAsync();
+                        return View(model);
+                    }
+                }
 
-		[HttpPost]
-		public async Task<IActionResult> Edit(EditBookingViewModel model)
-		{
-			if (!ModelState.IsValid)
-			{
-				ViewBag.Offers = (await _offerService.GetAllOffersAsync())
-					.Select(o => new SelectListItem
-					{
-						Value = o.Id.ToString(),
-						Text = o.Title
-					});
+                // Proceed with creating the booking
+                bool isSuccess = await _bookingService.CreateBookingAsync(model);
+                if (!isSuccess)
+                {
+                    TempData["ErrorMessage"] = "An error occurred while creating the booking. Please try again.";
+                    return View(model);
+                }
 
-				return View(model);
-			}
+                TempData["SuccessMessage"] = "Booking created successfully!";
+                return RedirectToAction(nameof(Index));
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError(string.Empty, $"An unexpected error occurred: {ex.Message}");
+                await PopulateViewBagsAsync();
+                return View(model);
+            }
+        }
 
-			await _bookingService.UpdateBookingAsync(model);
+        [HttpGet]
+        public async Task<IActionResult> Edit(int id)
+        {
+            var booking = await _bookingService.GetBookingByIdIncludingUserAndOfferAsync(id);
+            if (booking == null)
+            {
+                return NotFound();
+            }
 
-			return RedirectToAction(nameof(Index));
-		}
-		[HttpGet]
-		public async Task<IActionResult> Delete(int id)
-		{
-			var booking = await _bookingService.GetBookingByIdIncludingUserAndOfferAsync(id);
+            ViewBag.Offers = (await _offerService.GetAllOffersAsync())
+                .Select(o => new SelectListItem
+                {
+                    Value = o.Id.ToString(),
+                    Text = o.Title
+                });
 
-			if (booking == null)
-			{
-				return NotFound();
-			}
+            var model = new EditBookingViewModel
+            {
+                FullName=booking.FullName,
+                Email=booking.Email,
+                Id = booking.Id,
+                AgentId = booking.AgentId,
+                CheckInDate = booking.CheckInDate,
+                CheckOutDate = booking.CheckOutDate,
+                OfferId = booking.OfferId
+            };
 
-			var model = new ConfirmDeleteViewModel
-			{
-				Id = booking.Id,
-				OfferTitle = booking.Offer?.Title ?? "No Offer Title", 
-				UserName = booking.User?.FullName ?? "Unknown" 
-			};
+            return View(model);
+        }
 
-			return View(model);
-		}
+        [HttpPost]
+        public async Task<IActionResult> Edit(EditBookingViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                ViewBag.Offers = (await _offerService.GetAllOffersAsync())
+                    .Select(o => new SelectListItem
+                    {
+                        Value = o.Id.ToString(),
+                        Text = o.Title
+                    });
 
-		[HttpPost, ActionName("Delete")]
-		public async Task<IActionResult> DeleteConfirmed(ConfirmDeleteViewModel model)
-		{
-			try
-			{
-				await _bookingService.DeleteBookingAsync(model.Id);
-				TempData["SuccessMessage"] = "Offer has been marked as deleted successfully.";
-			}
-			catch (KeyNotFoundException)
-			{
-				TempData["ErrorMessage"] = "The offer could not be found.";
-			}
-			catch (Exception ex)
-			{
-				TempData["ErrorMessage"] = "An unexpected error occurred: " + ex.Message;
-			}
+                return View(model);
+            }
 
-			return RedirectToAction(nameof(Index));
-		}
-	}
+            await _bookingService.UpdateBookingAsync(model);
+
+            return RedirectToAction(nameof(Index));
+        }
+        [HttpGet]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var booking = await _bookingService.GetBookingByIdIncludingUserAndOfferAsync(id);
+
+            if (booking == null)
+            {
+                return NotFound();
+            }
+
+            var model = new ConfirmDeleteViewModel
+            {
+                Id = booking.Id,
+                OfferTitle = booking.Offer?.Title ?? "No Offer Title",
+                UserName = booking.User?.FullName ?? "Unknown"
+            };
+
+            return View(model);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        public async Task<IActionResult> DeleteConfirmed(ConfirmDeleteViewModel model)
+        {
+            try
+            {
+                await _bookingService.DeleteBookingAsync(model.Id);
+                TempData["SuccessMessage"] = "Offer has been marked as deleted successfully.";
+            }
+            catch (KeyNotFoundException)
+            {
+                TempData["ErrorMessage"] = "The offer could not be found.";
+            }
+            catch (Exception ex)
+            {
+                TempData["ErrorMessage"] = "An unexpected error occurred: " + ex.Message;
+            }
+
+            return RedirectToAction(nameof(Index));
+        }
+
+
+        private async Task PopulateViewBagsAsync()
+        {
+            try
+            {
+                var offers = await _offerService.GetAllOffersAsync();
+                ViewBag.Offers = offers?.Select(o => new SelectListItem
+                {
+                    Value = o.Id.ToString(),
+                    Text = o.Title
+                }).ToList() ?? new List<SelectListItem>();
+
+                var registeredUsers = await _applicationUserService.GetAllRegisteredUsersAsync();
+                ViewBag.RegisteredUsers = registeredUsers?.Select(u => new RegisteredUserViewModel
+                {
+                    Id = u.Id,
+                    FullName = u.FullName
+                }).ToList() ?? new List<RegisteredUserViewModel>();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error populating ViewBags: {ex.Message}");
+
+                ViewBag.Offers = new List<SelectListItem>();
+                ViewBag.RegisteredUsers = new List<RegisteredUserViewModel>();
+            }
+        }
+    }
 }
 

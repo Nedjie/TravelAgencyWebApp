@@ -5,13 +5,18 @@ using TravelAgencyWebApp.Services.Data.Interfaces;
 
 namespace TravelAgencyWebApp.Services.Data
 {
-    public class OfferService(IRepository<Offer, int> offerRepository,
-		IRepository<TravelingWay, int> travelingWayRepository) : IOfferService
+	public class OfferService : IOfferService
 	{
-		private readonly IRepository<Offer, int> _offerRepository = offerRepository
-			?? throw new ArgumentNullException(nameof(offerRepository));
-		private readonly IRepository<TravelingWay, int> _travelingWayRepository = travelingWayRepository
-			?? throw new ArgumentNullException(nameof(travelingWayRepository));
+		private readonly IRepository<Offer, int> _offerRepository;
+		private readonly IRepository<TravelingWay, int> _travelingWayRepository;
+
+		public OfferService(
+			IRepository<Offer, int> offerRepository,
+			IRepository<TravelingWay, int> travelingWayRepository)
+		{
+			_offerRepository = offerRepository ?? throw new ArgumentNullException(nameof(offerRepository));
+			_travelingWayRepository = travelingWayRepository ?? throw new ArgumentNullException(nameof(travelingWayRepository));
+		}
 
 		public async Task<IEnumerable<Offer>> GetAllOffersAsync()
 		{

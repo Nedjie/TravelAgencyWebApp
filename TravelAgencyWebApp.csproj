@@ -82,6 +82,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\TravelAgencyWebApp.Service.Tests\TravelAgencyWebApp.Service.Tests.csproj" />
     <ProjectReference Include="TravelAgencyWebApp.Common\TravelAgencyWebApp.Common.csproj" />
     <ProjectReference Include="TravelAgencyWebApp.Data\TravelAgencyWebApp.Data.csproj" />
     <ProjectReference Include="TravelAgencyWebApp.Infrastructure\TravelAgencyWebApp.Infrastructure.csproj" />

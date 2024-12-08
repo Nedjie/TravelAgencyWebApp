@@ -20,10 +20,6 @@
     min-width: 150px; /* Minimum button width */
 }
 
-.pagination {
-    pagination: 0;
-}
-
 .page-item.disabled .page-link {
     pointer-events: none;
     color: #6c757d; /* Style to indicate disabled state */

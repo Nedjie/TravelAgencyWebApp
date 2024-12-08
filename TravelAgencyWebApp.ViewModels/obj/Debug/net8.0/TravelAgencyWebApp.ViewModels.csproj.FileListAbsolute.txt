@@ -5,11 +5,9 @@ C:\Users\dell\source\repos\TravelAgencyWebApp\TravelAgencyWebApp.ViewModels\bin\
 C:\Users\dell\source\repos\TravelAgencyWebApp\TravelAgencyWebApp.ViewModels\bin\Debug\net8.0\TravelAgencyWebApp.Common.dll
 C:\Users\dell\source\repos\TravelAgencyWebApp\TravelAgencyWebApp.ViewModels\bin\Debug\net8.0\TravelAgencyWebApp.Data.dll
 C:\Users\dell\source\repos\TravelAgencyWebApp\TravelAgencyWebApp.ViewModels\bin\Debug\net8.0\TravelAgencyWebApp.Data.Models.dll
-C:\Users\dell\source\repos\TravelAgencyWebApp\TravelAgencyWebApp.ViewModels\bin\Debug\net8.0\TravelAgencyWebApp.Services.Mapping.dll
 C:\Users\dell\source\repos\TravelAgencyWebApp\TravelAgencyWebApp.ViewModels\bin\Debug\net8.0\TravelAgencyWebApp.Common.pdb
 C:\Users\dell\source\repos\TravelAgencyWebApp\TravelAgencyWebApp.ViewModels\bin\Debug\net8.0\TravelAgencyWebApp.Data.Models.pdb
 C:\Users\dell\source\repos\TravelAgencyWebApp\TravelAgencyWebApp.ViewModels\bin\Debug\net8.0\TravelAgencyWebApp.Data.pdb
-C:\Users\dell\source\repos\TravelAgencyWebApp\TravelAgencyWebApp.ViewModels\bin\Debug\net8.0\TravelAgencyWebApp.Services.Mapping.pdb
 C:\Users\dell\source\repos\TravelAgencyWebApp\TravelAgencyWebApp.ViewModels\obj\Debug\net8.0\TravelAgencyWebApp.ViewModels.csproj.AssemblyReference.cache
 C:\Users\dell\source\repos\TravelAgencyWebApp\TravelAgencyWebApp.ViewModels\obj\Debug\net8.0\TravelAgencyWebApp.ViewModels.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\dell\source\repos\TravelAgencyWebApp\TravelAgencyWebApp.ViewModels\obj\Debug\net8.0\TravelAgencyWebApp.ViewModels.AssemblyInfoInputs.cache

@@ -5,5 +5,36 @@
 }
 
 .table {
-    width: 90%;
+    width: 100%;
+    margin: 0 auto;
+    border-radius: 0.5rem;
+}
+
+    .table th, .table td {
+        vertical-align: middle; /* Center content vertically */
+        padding: 15px; /* Increase padding for better spacing */
+    }
+
+.btn {
+    margin: 5px; /* Add some space around buttons */
+    min-width: 150px; /* Minimum button width */
+}
+
+.pagination {
+    pagination: 0;
+}
+
+.page-item.disabled .page-link {
+    pointer-events: none;
+    color: #6c757d; /* Style to indicate disabled state */
+}
+
+.page-item.active .page-link {
+    background-color: #0d6efd; /* Active page background */
+    border-color: #0d6efd; /* Active border color */
+}
+
+.page-link {
+    margin: 0 5px; /* Spacing between pagination buttons */
+    border-radius: 5px; /* Slightly rounded buttons */
 }

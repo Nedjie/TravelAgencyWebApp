@@ -1,4 +1,5 @@
-﻿using TravelAgencyWebApp.Data.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using TravelAgencyWebApp.Data.Models;
 using TravelAgencyWebApp.Data.Repository.Interfaces;
 using TravelAgencyWebApp.Services.Data.Interfaces;
 
@@ -17,7 +18,25 @@ namespace TravelAgencyWebApp.Services.Data
             var offers = await _offerRepository.GetAllIncludingAsync(o => o.TravelingWay!);
             return offers.Where(offer => !offer.IsDeleted).ToList();
         }
-		public async Task<Offer?> GetOfferByIdAsync(int id)
+        public async Task<IEnumerable<Offer>> GetFilteredOffersAsync(string searchTerm,string selectedTravelingWay)
+        {
+			var offers = await _offerRepository.GetAllIncludingAsync(o => o.TravelingWay!);          
+
+            if (!string.IsNullOrEmpty(searchTerm))
+            {
+                offers = offers.Where(offer =>
+                    offer.Title.Contains(searchTerm, StringComparison.OrdinalIgnoreCase) ||
+                    offer.Description.Contains(searchTerm, StringComparison.OrdinalIgnoreCase))
+                    .ToList();
+            }
+            if (!string.IsNullOrEmpty(selectedTravelingWay))
+            {
+                offers = offers.Where(offer => offer.TravelingWay!.Method == selectedTravelingWay).ToList();
+            }
+
+            return offers;
+        }
+        public async Task<Offer?> GetOfferByIdAsync(int id)
 		{
 			return await _offerRepository.GetIncludingAsync(id, o => o.TravelingWay!);
 		}
@@ -36,7 +55,31 @@ namespace TravelAgencyWebApp.Services.Data
 
 			return groupedOffers.ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
 		}
-		public async Task AddOfferAsync(Offer model)
+        public async Task<(IEnumerable<Offer>, int)> GetFilteredOffersAsync(string searchItem, string selectedTravelingWay, int pageNumber, int pageSize)
+        {
+			var query = _offerRepository.Query();
+
+            if (!string.IsNullOrEmpty(searchItem))
+            {
+                query = query.Where(o => o.Title.Contains(searchItem, StringComparison.OrdinalIgnoreCase) ||
+                                         o.Description.Contains(searchItem, StringComparison.OrdinalIgnoreCase));
+            }
+
+            if (!string.IsNullOrEmpty(selectedTravelingWay))
+            {
+                query = query.Where(o => o.TravelingWay!.Method == selectedTravelingWay);
+            }
+
+            var totalCount = await query.CountAsync();
+
+            var offers = await query
+                .Skip((pageNumber - 1) * pageSize)
+                .Take(pageSize)
+                .ToListAsync();
+
+            return (offers, totalCount);
+        }
+        public async Task AddOfferAsync(Offer model)
 		{
 
 			if (model == null)

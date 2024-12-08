@@ -1,139 +1,176 @@
-﻿@model IEnumerable<TravelAgencyWebApp.ViewModels.Offer.OfferViewModel>
+﻿@model TravelAgencyWebApp.ViewModels.Offer.OfferSearchViewModel
 @inject Microsoft.AspNetCore.Identity.UserManager<TravelAgencyWebApp.Data.Models.ApplicationUser> UserManager
 @using static TravelAgencyWebApp.Common.ApplicationConstants;
+@using static TravelAgencyWebApp.ViewModels.Offer.OfferViewModel; 
 @{
-	ViewData["Title"] = "Нашите оферти";
+    ViewData["Title"] = "Нашите оферти";
 }
 <head>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" type="text/css" href="~/Content/styles/OfferStyles/offer_index.css" asp-append-version="true" />
-	<link rel="stylesheet" type="text/css" href="~/Content/styles/OfferStyles/offer_index_responsive.css" asp-append-version="true" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="~/Content/styles/OfferStyles/offer_index.css" asp-append-version="true" />
+    <link rel="stylesheet" type="text/css" href="~/Content/styles/OfferStyles/offer_index_responsive.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
 </head>
 <body>
-	<div class="container mt-5">
-		<div class="col-12 col-md-8 mx-auto">
-		<h2 class="text-center mb-4">Нашите Оферти</h2>
-		</div>
-		<p class="text-center">
-			@if (User.IsInRole(AdminRoleName) || User.IsInRole(AgentRoleName))
-			{
-				<a asp-controller="Offer" asp-action="Create" class="btn btn-primary mb-3">Създаване на Нова Оферта</a>
-			}
-		</p>
-		<div class="mb-3">
-			<input type="text" id="searchInput" placeholder="Търсене в офертите..." class="form-control" onkeyup="filterTable()">
-		</div>
-		<div class="table-responsive">
-			<table class="table table-striped table-bordered">
-				<thead class="thead-dark">
-					<tr>
-						<th style="cursor: pointer;" onclick="sortTable(0)">Заглавие <i class="fa fa-sort" aria-hidden="true"></i></th>
-						<th style="cursor: pointer;" onclick="sortTable(1)">Описание <i class="fa fa-sort" aria-hidden="true"></i></th>
-						<th style="cursor: pointer;" onclick="sortTable(2)">Цена <i class="fa fa-sort" aria-hidden="true"></i></th>
-						<th style="cursor: pointer;" onclick="sortTable(3)">Дата на настаняване <i class="fa fa-sort" aria-hidden="true"></i></th>
-						<th style="cursor: pointer;" onclick="sortTable(4)">Дата на напускане <i class="fa fa-sort" aria-hidden="true"></i></th>
-						<th style="cursor: pointer;" onclick="sortTable(5)">Вид транспорт <i class="fa fa-sort" aria-hidden="true"></i></th>
-						<th>Действия</th>
-					</tr>
-				</thead>
-				<tbody>
-					@if (Model != null && Model.Any())
-					{
-						foreach (var offer in Model)
-						{
-							<tr>
-								<td>@offer.Title</td>
-								<td>@offer.Description</td>
-								<td>@offer.Price.ToString("C")</td>
-								<td>@offer.CheckInDate.ToString("dd.MM.yyyy")</td>
-								<td>@offer.CheckOutDate.ToString("dd.MM.yyyy")</td>
-								<td>@offer.TravelingWayMethod</td>
-								<td>
-									<div class="btn-group">
-										@if (User.IsInRole(AdminRoleName) || User.IsInRole(AgentRoleName))
-										{
-											<a asp-controller="Booking" asp-action="Create" asp-route-id="@offer.Id" class="btn btn-primary">
-												<i class="fas fa-plus"></i> Резервиране
-											</a>
-											<a asp-controller="Offer" asp-action="Details" asp-route-id="@offer.Id" class="btn btn-info">
-												<i class="fas fa-eye"></i> Детайли
-											</a>
-											<a asp-controller="Offer" asp-action="Edit" asp-route-id="@offer.Id" class="btn btn-warning">
-												<i class="fas fa-edit"></i> Редактиране
-											</a>
-											<a asp-controller="Offer" asp-action="Delete" asp-route-id="@offer.Id" class="btn btn-danger" onclick="return confirm('Сигурни ли сте, че искате да изтриете тази оферта?');">
-												<i class="fas fa-trash"></i> Изтриване
-											</a>
-										}
-										else if (User.Identity!.IsAuthenticated)
-										{
-											<a asp-controller="Booking" asp-action="Create" asp-route-id="@offer.Id" class="btn btn-primary">
-												<i class="fas fa-plus"></i> Резервиране
-											</a>
-											<a asp-controller="Offer" asp-action="Details" asp-route-id="@offer.Id" class="btn btn-info">
-												<i class="fas fa-eye"></i> Детайли
-											</a>
-										}
-									</div>
-								</td>
-							</tr>
-						}
-					}
-					else
-					{
-						<tr>
-							<td colspan="7" class="text-center">Няма намерени оферти.</td>
-						</tr>
-					}					
-				</tbody>
-			</table>
-		</div>
-	</div>
+    <div class="container mt-5">
+        <h2 class="text-center mb-4">Нашите Оферти</h2>
 
-	<script src="~/Content/js/jquery-3.2.1.min.js" asp-append-version="true"></script>
+        <p class="text-center">
+            @if (User.IsInRole(AdminRoleName) || User.IsInRole(AgentRoleName))
+            {
+                <a asp-controller="Offer" asp-action="Create" class="btn btn-primary mb-3">Създаване на Нова Оферта</a>
+            }
+        </p>
 
-	<script>
-		let ascending = true;
+        <form asp-action="Index" method="get" class="mb-3">
+            <input type="text" name="searchItem" placeholder="Търсене в офертите..." class="form-control" value="@ViewData["SearchItem"]">
+            <button type="submit" class="btn btn-primary mt-2">Търси</button>
+        </form>
+       
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th style="cursor: pointer;" onclick="sortTable(0)">Заглавие <i class="fa fa-sort" aria-hidden="true"></i></th>
+                        <th style="cursor: pointer;" onclick="sortTable(1)">Описание <i class="fa fa-sort" aria-hidden="true"></i></th>
+                        <th style="cursor: pointer;" onclick="sortTable(2)">Цена <i class="fa fa-sort" aria-hidden="true"></i></th>
+                        <th style="cursor: pointer;" onclick="sortTable(3)">Дата на настаняване <i class="fa fa-sort" aria-hidden="true"></i></th>
+                        <th style="cursor: pointer;" onclick="sortTable(4)">Дата на напускане <i class="fa fa-sort" aria-hidden="true"></i></th>
+                        <th style="cursor: pointer;" onclick="sortTable(5)">Вид транспорт <i class="fa fa-sort" aria-hidden="true"></i></th>
+                        <th>Действия</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model != null && Model.Offers.Any())
+                    {
+                        foreach (var offer in Model.Offers)
+                        {
+                            <tr>
+                                <td>@offer.Title</td>
+                                <td>@offer.Description</td>
+                                <td>@offer.Price.ToString("C")</td>
+                                <td>@offer.CheckInDate.ToString("dd.MM.yyyy")</td>
+                                <td>@offer.CheckOutDate.ToString("dd.MM.yyyy")</td>
+                                <td>@offer.TravelingWayMethod</td>
+                                <td>
+                                    <div class="btn-group d-flex flex-column">
+                                        @if (User.IsInRole(AdminRoleName) || User.IsInRole(AgentRoleName))
+                                        {
+                                            <a asp-controller="Booking" asp-action="Create" asp-route-id="@offer.Id" class="btn btn-primary mb-1">
+                                                <i class="fas fa-plus"></i> Резервиране
+                                            </a>
+                                            <a asp-controller="Offer" asp-action="Details" asp-route-id="@offer.Id" class="btn btn-info mb-1">
+                                                <i class="fas fa-eye"></i> Детайли
+                                            </a>
+                                            <a asp-controller="Offer" asp-action="Edit" asp-route-id="@offer.Id" class="btn btn-warning mb-1">
+                                                <i class="fas fa-edit"></i> Редактиране
+                                            </a>
+                                            <a asp-controller="Offer" asp-action="Delete" asp-route-id="@offer.Id" class="btn btn-danger" onclick="return confirm('Сигурни ли сте, че искате да изтриете тази оферта?');">
+                                                <i class="fas fa-trash"></i> Изтриване
+                                            </a>
+                                        }
+                                        else if (User.Identity!.IsAuthenticated)
+                                        {
+                                            <a asp-controller="Booking" asp-action="Create" asp-route-id="@offer.Id" class="btn btn-primary mb-1">
+                                                <i class="fas fa-plus"></i> Резервиране
+                                            </a>
+                                            <a asp-controller="Offer" asp-action="Details" asp-route-id="@offer.Id" class="btn btn-info mb-1">
+                                                <i class="fas fa-eye"></i> Детайли
+                                            </a>
+                                        }
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="7" class="text-center">Няма намерени оферти.</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!-- Pagination Controls -->
+    <div class="d-flex justify-content-center mt-4">
+        <nav aria-label="Page navigation">
+            <ul class="pagination">
+                @if (Model.TotalOffers > 0)
+                {
+                    // Previous Button
+                    <li class="page-item @(Model.CurrentPage == 1 ? "disabled" : "")">
+                        <a class="page-link" asp-action="Index" asp-route-searchItem="@Model.SearchTerm" asp-route-selectedTravelingWay="@Model.SelectedTravelingWay" asp-route-pageNumber="@(Model.CurrentPage - 1)">
+                            <i class="fas fa-chevron-left"></i> Предишна
+                        </a>
+                    </li>
 
-		function sortTable(columnIndex) {
-			const table = document.querySelector("table.table-striped tbody");
-			const rows = Array.from(table.rows);
+                    // Page Number Links
+                    int totalPages = (int)Math.Ceiling((double)Model.TotalOffers / Model.PageSize);
+                    for (int i = 1; i <= totalPages; i++)
+                    {
+                        <li class="page-item @(Model.CurrentPage == i ? "active" : "")">
+                            <a class="page-link" asp-action="Index" asp-route-searchItem="@Model.SearchTerm" asp-route-selectedTravelingWay="@Model.SelectedTravelingWay" asp-route-pageNumber="@i">
+                                @i
+                            </a>
+                        </li>
+                    }
 
-			rows.sort((rowA, rowB) => {
-				const cellA = rowA.cells[columnIndex].innerText.toLowerCase();
-				const cellB = rowB.cells[columnIndex].innerText.toLowerCase();
+                    // Next Button
+                    <li class="page-item @(Model.CurrentPage == totalPages ? "disabled" : "")">
+                        <a class="page-link" asp-action="Index" asp-route-searchItem="@Model.SearchTerm" asp-route-selectedTravelingWay="@Model.SelectedTravelingWay" asp-route-pageNumber="@(Model.CurrentPage + 1)">
+                            Следваща <i class="fas fa-chevron-right"></i>
+                        </a>
+                    </li>
+                }
+            </ul>
+        </nav>
+    </div>
+    <script src="~/Content/js/jquery-3.2.1.min.js" asp-append-version="true"></script>
 
-				if (columnIndex === 2) {
-					const priceA = parseFloat(cellA.replace(/[^0-9.-]+/g, ""));
-					const priceB = parseFloat(cellB.replace(/[^0-9.-]+/g, ""));
-					return ascending ? priceA - priceB : priceB - priceA;
-				} else {
-					return ascending ? (cellA > cellB ? 1 : -1) : (cellB > cellA ? 1 : -1);
-				}
-			});
+    <script>
+        let ascending = true;
 
-			rows.forEach(row => table.appendChild(row));
-			ascending = !ascending;
-		}
+        function sortTable(columnIndex) {
+            const table = document.querySelector("table.table-striped tbody");
+            const rows = Array.from(table.rows);
 
-		function filterTable() {
-			const searchInput = document.getElementById("searchInput").value.toLowerCase();
-			const table = document.querySelector("table.table-striped tbody");
-			const rows = table.getElementsByTagName("tr");
+            rows.sort((rowA, rowB) => {
+                const cellA = rowA.cells[columnIndex].innerText.toLowerCase();
+                const cellB = rowB.cells[columnIndex].innerText.toLowerCase();
 
-			for (let i = 0; i < rows.length; i++) {
-				const cells = rows[i].getElementsByTagName("td");
-				let rowVisible = false;
+                if (columnIndex === 2) { 
+                    const priceA = parseFloat(cellA.replace(/[^0-9.-]+/g, ""));
+                    const priceB = parseFloat(cellB.replace(/[^0-9.-]+/g, ""));
+                    return ascending ? priceA - priceB : priceB - priceA;
+                } else {
+                    return ascending ? (cellA > cellB ? 1 : -1) : (cellB > cellA ? 1 : -1);
+                }
+            });
 
-				for (let j = 0; j < cells.length - 1; j++) {
-					if (cells[j].innerText.toLowerCase().includes(searchInput)) {
-						rowVisible = true;
-						break;
-					}
-				}
+            rows.forEach(row => table.appendChild(row));
+            ascending = !ascending;
+        }
+        // Търсене със JS
+        // function filterTable() {
+        //     const searchInput = document.getElementById("searchInput").value.toLowerCase();
+        //     const table = document.querySelector("table.table-striped tbody");
+        //     const rows = table.getElementsByTagName("tr");
 
-				rows[i].style.display = rowVisible ? "" : "none";
-			}
-		}
-	</script>
+        //     for (let i = 0; i < rows.length; i++) {
+        //         const cells = rows[i].getElementsByTagName("td");
+        //         let rowVisible = false;
+
+        //         for (let j = 0; j < cells.length - 1; j++) { 
+        //             if (cells[j].innerText.toLowerCase().includes(searchInput)) {
+        //                 rowVisible = true;
+        //                 break;
+        //             }
+        //         }
+
+        //         rows[i].style.display = rowVisible ? "" : "none"; 
+            }
+        }
+    </script>
 </body>

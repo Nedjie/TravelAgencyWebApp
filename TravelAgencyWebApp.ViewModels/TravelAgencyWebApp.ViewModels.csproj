@@ -25,7 +25,6 @@
     <ProjectReference Include="..\TravelAgencyWebApp.Common\TravelAgencyWebApp.Common.csproj" />
     <ProjectReference Include="..\TravelAgencyWebApp.Data.Models\TravelAgencyWebApp.Data.Models.csproj" />
     <ProjectReference Include="..\TravelAgencyWebApp.Data\TravelAgencyWebApp.Data.csproj" />
-    <ProjectReference Include="..\TravelAgencyWebApp.Services.Mapping\TravelAgencyWebApp.Services.Mapping.csproj" />
   </ItemGroup>
 
 </Project>

@@ -2224,18 +2224,6 @@
           }
         }
       },
-      "TravelAgencyWebApp.Services.Mapping/1.0.0": {
-        "dependencies": {
-          "AutoMapper": "13.0.1",
-          "WebEssentials.AspNetCore.PWA": "1.0.85"
-        },
-        "runtime": {
-          "TravelAgencyWebApp.Services.Mapping.dll": {
-            "assemblyVersion": "1.0.0",
-            "fileVersion": "1.0.0.0"
-          }
-        }
-      },
       "TravelAgencyWebApp.ViewModels/1.0.0": {
         "dependencies": {
           "AutoMapper": "13.0.1",
@@ -2248,7 +2236,6 @@
           "TravelAgencyWebApp.Common": "1.0.0",
           "TravelAgencyWebApp.Data": "1.0.0",
           "TravelAgencyWebApp.Data.Models": "1.0.0",
-          "TravelAgencyWebApp.Services.Mapping": "1.0.0",
           "WebEssentials.AspNetCore.PWA": "1.0.85"
         },
         "runtime": {
@@ -3502,11 +3489,6 @@
       "sha512": ""
     },
     "TravelAgencyWebApp.Data.Models/1.0.0": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "TravelAgencyWebApp.Services.Mapping/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

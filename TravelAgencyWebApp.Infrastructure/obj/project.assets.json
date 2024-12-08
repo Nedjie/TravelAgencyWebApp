@@ -4880,20 +4880,6 @@
           "bin/placeholder/TravelAgencyWebApp.Services.Data.dll": {}
         }
       },
-      "TravelAgencyWebApp.Services.Mapping/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v8.0",
-        "dependencies": {
-          "AutoMapper": "13.0.1",
-          "WebEssentials.AspNetCore.PWA": "1.0.85"
-        },
-        "compile": {
-          "bin/placeholder/TravelAgencyWebApp.Services.Mapping.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/TravelAgencyWebApp.Services.Mapping.dll": {}
-        }
-      },
       "TravelAgencyWebApp.ViewModels/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
@@ -4908,7 +4894,6 @@
           "TravelAgencyWebApp.Common": "1.0.0",
           "TravelAgencyWebApp.Data": "1.0.0",
           "TravelAgencyWebApp.Data.Models": "1.0.0",
-          "TravelAgencyWebApp.Services.Mapping": "1.0.0",
           "WebEssentials.AspNetCore.PWA": "1.0.85"
         },
         "compile": {
@@ -14203,11 +14188,6 @@
       "type": "project",
       "path": "../TravelAgencyWebApp.Services.Data/TravelAgencyWebApp.Services.Data.csproj",
       "msbuildProject": "../TravelAgencyWebApp.Services.Data/TravelAgencyWebApp.Services.Data.csproj"
-    },
-    "TravelAgencyWebApp.Services.Mapping/1.0.0": {
-      "type": "project",
-      "path": "../TravelAgencyWebApp.Services.Mapping/TravelAgencyWebApp.Services.Mapping.csproj",
-      "msbuildProject": "../TravelAgencyWebApp.Services.Mapping/TravelAgencyWebApp.Services.Mapping.csproj"
     },
     "TravelAgencyWebApp.ViewModels/1.0.0": {
       "type": "project",

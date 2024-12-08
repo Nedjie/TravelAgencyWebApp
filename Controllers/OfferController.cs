@@ -9,25 +9,38 @@ using static TravelAgencyWebApp.Common.ApplicationConstants;
 
 namespace TravelAgencyWebApp.Controllers
 {
-    public class OfferController(IOfferService offerService, ITravelingWayService travelingWayService,
-        IBookingService bookingService, UserManager<ApplicationUser> userManager,
-        ILogger<OfferController> logger)
-        : BaseController(logger)
+    public class OfferController:BaseController
     {
-        private readonly IOfferService _offerService = offerService
-            ?? throw new ArgumentNullException(nameof(offerService));
-        private readonly ITravelingWayService _travelingWayService = travelingWayService
-            ?? throw new ArgumentNullException(nameof(travelingWayService));
-        private readonly IBookingService _bookingService = bookingService
-            ?? throw new ArgumentException(nameof(bookingService));
-        private readonly UserManager<ApplicationUser> _userManager = userManager
-             ?? throw new ArgumentNullException(nameof(userManager));
+        private readonly IOfferService _offerService;
+        private readonly ITravelingWayService _travelingWayService;
+        private readonly IBookingService _bookingService;
+        private readonly UserManager<ApplicationUser> _userManager;
+
+        public OfferController(
+            IOfferService offerService,
+            ITravelingWayService travelingWayService,
+            IBookingService bookingService,
+            UserManager<ApplicationUser> userManager,
+            ILogger<OfferController> logger)
+            : base(logger)
+        {
+            _offerService = offerService;
+            _travelingWayService = travelingWayService;
+            _bookingService = bookingService;
+            _userManager = userManager;
+        }
+
 
         [AllowAnonymous]
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchItem,string selectedTravelingWay, int pageNumber = 1)
         {
-            var offers = await _offerService.GetAllOffersAsync();
-            return View(offers.Select(offer => new OfferViewModel
+            const int pageSize = 5;
+
+            var (offers, totalCount) = await _offerService.GetFilteredOffersAsync(searchItem, selectedTravelingWay, pageNumber, pageSize);
+
+            var travelingWays = await _travelingWayService.GetAllTravelingWaysAsync();
+
+            var offerViewModels = offers.Select(offer => new OfferViewModel
             {
                 Id = offer.Id,
                 Title = offer.Title,
@@ -37,7 +50,21 @@ namespace TravelAgencyWebApp.Controllers
                 TravelingWayMethod = offer.TravelingWay?.Method,
                 CheckInDate = offer.CheckInDate,
                 CheckOutDate = offer.CheckOutDate
-            }));
+            }).ToList();
+
+            var viewModel = new OfferSearchViewModel
+            {
+                SearchTerm = searchItem,
+                SelectedTravelingWay = selectedTravelingWay,
+                TravelingWays = travelingWays.Select(tw=>tw.Method),
+                Offers = offerViewModels,
+                TotalOffers = totalCount,
+                CurrentPage = pageNumber,
+                PageSize = pageSize
+            };
+
+            return View(viewModel);
+                
         }
 
 		[Authorize(Roles = $"{AdminRoleName}, {AgentRoleName}")]

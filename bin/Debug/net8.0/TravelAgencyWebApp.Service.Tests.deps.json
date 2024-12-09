@@ -13,10 +13,13 @@
           "Moq": "4.20.72",
           "NUnit": "4.2.2",
           "NUnit3TestAdapter": "5.0.0-beta.5",
+          "ReportGenerator": "5.4.1",
           "TravelAgencyWebApp.Data": "1.0.0",
           "TravelAgencyWebApp.Data.Models": "1.0.0",
           "TravelAgencyWebApp.Services.Data": "1.0.0",
-          "TravelAgencyWebApp.ViewModels": "1.0.0"
+          "TravelAgencyWebApp.ViewModels": "1.0.0",
+          "coverlet.collector": "6.0.2",
+          "coverlet.msbuild": "6.0.2"
         },
         "runtime": {
           "TravelAgencyWebApp.Service.Tests.dll": {}
@@ -78,6 +81,8 @@
           }
         }
       },
+      "coverlet.collector/6.0.2": {},
+      "coverlet.msbuild/6.0.2": {},
       "Humanizer/2.14.1": {
         "dependencies": {
           "Humanizer.Core.af": "2.14.1",
@@ -2313,6 +2318,7 @@
           "Microsoft.Testing.Platform.MSBuild": "1.4.1"
         }
       },
+      "ReportGenerator/5.4.1": {},
       "SQLitePCLRaw.bundle_e_sqlite3/2.1.6": {
         "dependencies": {
           "SQLitePCLRaw.lib.e_sqlite3": "2.1.6",
@@ -2861,6 +2867,20 @@
       "sha512": "sha512-rpYtIczkzGpf+EkZgDr9CClTdemhsrwA/W5hMoPjLkRFnXzH44zDLoovXeKtmxb1ykXK9aJVODSpiJml8CTw2g==",
       "path": "castle.core/5.1.1",
       "hashPath": "castle.core.5.1.1.nupkg.sha512"
+    },
+    "coverlet.collector/6.0.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-bJShQ6uWRTQ100ZeyiMqcFlhP7WJ+bCuabUs885dJiBEzMsJMSFr7BOyeCw4rgvQokteGi5rKQTlkhfQPUXg2A==",
+      "path": "coverlet.collector/6.0.2",
+      "hashPath": "coverlet.collector.6.0.2.nupkg.sha512"
+    },
+    "coverlet.msbuild/6.0.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-8b4jBNH7mcQy1otyQErjjIUuGD74XxKZ1wvDufbY7jhWwckl7wIa+icjwdPYeI0aYMS4Tp63LIZvyMFjWwOMDw==",
+      "path": "coverlet.msbuild/6.0.2",
+      "hashPath": "coverlet.msbuild.6.0.2.nupkg.sha512"
     },
     "Humanizer/2.14.1": {
       "type": "package",
@@ -3855,6 +3875,13 @@
       "sha512": "sha512-MWwsiCXmY4GgEfE/5MRJs2u0b/3CygzJd6yqBC5bUo19TrR9mPpIthXxu/0SpBh+f3mO59geJioHIC6z5yoTpA==",
       "path": "nunit3testadapter/5.0.0-beta.5",
       "hashPath": "nunit3testadapter.5.0.0-beta.5.nupkg.sha512"
+    },
+    "ReportGenerator/5.4.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-43jtNAWOxLuGz0v4GbbQVNVw+No6PtrFw40VhhEsiZS3wJ0JjawoN8ezIFy4OsARKhQyM8KLhDqQy12YU/kuPA==",
+      "path": "reportgenerator/5.4.1",
+      "hashPath": "reportgenerator.5.4.1.nupkg.sha512"
     },
     "SQLitePCLRaw.bundle_e_sqlite3/2.1.6": {
       "type": "package",

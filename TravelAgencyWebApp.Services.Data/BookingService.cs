@@ -224,5 +224,6 @@ namespace TravelAgencyWebApp.Services.Data
 
             return await _bookingRepository.DeleteAsync(booking);
         }
+
     }
 }

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "zDlKdTAV1sA=",
+  "dgSpecHash": "bE88HOZMetE=",
   "success": true,
   "projectFilePath": "C:\\Users\\dell\\source\\repos\\TravelAgencyWebApp\\TravelAgencyWebApp.csproj",
   "expectedPackageFiles": [
@@ -156,6 +156,7 @@
     "C:\\Users\\dell\\.nuget\\packages\\nuget.versioning\\6.11.0\\nuget.versioning.6.11.0.nupkg.sha512",
     "C:\\Users\\dell\\.nuget\\packages\\nunit\\4.2.2\\nunit.4.2.2.nupkg.sha512",
     "C:\\Users\\dell\\.nuget\\packages\\nunit3testadapter\\5.0.0-beta.5\\nunit3testadapter.5.0.0-beta.5.nupkg.sha512",
+    "C:\\Users\\dell\\.nuget\\packages\\reportgenerator\\5.4.1\\reportgenerator.5.4.1.nupkg.sha512",
     "C:\\Users\\dell\\.nuget\\packages\\runtime.debian.8-x64.runtime.native.system.security.cryptography.openssl\\4.3.2\\runtime.debian.8-x64.runtime.native.system.security.cryptography.openssl.4.3.2.nupkg.sha512",
     "C:\\Users\\dell\\.nuget\\packages\\runtime.fedora.23-x64.runtime.native.system.security.cryptography.openssl\\4.3.2\\runtime.fedora.23-x64.runtime.native.system.security.cryptography.openssl.4.3.2.nupkg.sha512",
     "C:\\Users\\dell\\.nuget\\packages\\runtime.fedora.24-x64.runtime.native.system.security.cryptography.openssl\\4.3.2\\runtime.fedora.24-x64.runtime.native.system.security.cryptography.openssl.4.3.2.nupkg.sha512",

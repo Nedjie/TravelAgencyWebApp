@@ -2454,6 +2454,7 @@
           "Microsoft.Testing.Platform.MSBuild": "1.4.1"
         }
       },
+      "ReportGenerator/5.4.1": {},
       "runtime.debian.8-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.2": {},
       "runtime.fedora.23-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.2": {},
       "runtime.fedora.24-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.2": {},
@@ -3758,6 +3759,7 @@
           "Moq": "4.20.72",
           "NUnit": "4.2.2",
           "NUnit3TestAdapter": "5.0.0-beta.5",
+          "ReportGenerator": "5.4.1",
           "TravelAgencyWebApp.Data": "1.0.0",
           "TravelAgencyWebApp.Data.Models": "1.0.0",
           "TravelAgencyWebApp.Services.Data": "1.0.0",
@@ -4888,6 +4890,13 @@
       "sha512": "sha512-MWwsiCXmY4GgEfE/5MRJs2u0b/3CygzJd6yqBC5bUo19TrR9mPpIthXxu/0SpBh+f3mO59geJioHIC6z5yoTpA==",
       "path": "nunit3testadapter/5.0.0-beta.5",
       "hashPath": "nunit3testadapter.5.0.0-beta.5.nupkg.sha512"
+    },
+    "ReportGenerator/5.4.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-43jtNAWOxLuGz0v4GbbQVNVw+No6PtrFw40VhhEsiZS3wJ0JjawoN8ezIFy4OsARKhQyM8KLhDqQy12YU/kuPA==",
+      "path": "reportgenerator/5.4.1",
+      "hashPath": "reportgenerator.5.4.1.nupkg.sha512"
     },
     "runtime.debian.8-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.2": {
       "type": "package",

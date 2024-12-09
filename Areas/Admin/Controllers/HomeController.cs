@@ -88,8 +88,8 @@ namespace TravelAgencyWebApp.Areas.Admin.Controllers
 						{
 							Email = user.Email ?? "unknown",
 							FullName = user.FullName,
-                            UserId = Guid.Parse(userId)
-                        };
+							UserId = Guid.Parse(userId)
+						};
 						await _agentService.AddAsync(agent);
 					}
 				}
@@ -133,7 +133,7 @@ namespace TravelAgencyWebApp.Areas.Admin.Controllers
 					}
 				}
 				TempData["SuccessMessage"] = $"Role '{role}' removed successfully from user.";
-				return RedirectToAction("Index"); 
+				return RedirectToAction("Index");
 			}
 
 			foreach (var error in result.Errors)

@@ -1,4 +1,4 @@
-﻿namespace TravelAgencyWebApp.TravelAgencyWebApp.ViewModels.ApplicationUser
+﻿namespace TravelAgencyWebApp.ViewModels.ApplicationUser
 {
     public class RegisteredUserViewModel
     {

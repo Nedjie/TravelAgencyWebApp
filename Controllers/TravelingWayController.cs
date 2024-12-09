@@ -4,56 +4,48 @@ using TravelAgencyWebApp.Services.Data.Interfaces;
 
 namespace TravelAgencyWebApp.Controllers
 {
-    public class TravelingWayController(ITravelingWayService travelingWayService,
-        ILogger<TravelingWayController> logger) : BaseController(logger)
-    {
-        private readonly ITravelingWayService _travelingWayService = travelingWayService
-            ?? throw new ArgumentNullException(nameof(travelingWayService));
+	public class TravelingWayController : BaseController
+	{
+		private readonly ITravelingWayService _travelingWayService;
 
+		public TravelingWayController(ITravelingWayService travelingWayService,
+									  ILogger<TravelingWayController> logger)
+			: base(logger)
+		{
+			_travelingWayService = travelingWayService;
+		}
 
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<TravelingWay>>> GetAllTravelingWays()
-        {
-            var travelingWays = await _travelingWayService.GetAllTravelingWaysAsync();
-            return Ok(travelingWays);
-        }
+		[HttpGet]
+		public async Task<ActionResult<IEnumerable<TravelingWay>>> GetAllTravelingWays()
+		{
+			var travelingWays = await _travelingWayService.GetAllTravelingWaysAsync();
+			return Ok(travelingWays);
+		}
 
 		[HttpGet("travelingway/details/{id:int}")]
 		public async Task<ActionResult<TravelingWay>> GetTravelingWayById(int id)
-        {
-            var travelingWay = await _travelingWayService.GetTravelingWayByIdAsync(id);
-            if (travelingWay == null)
-            {
-                //  return HandleNotFound($"Traveling way with ID: {id}");
-            }
-            return Ok(travelingWay);
-        }
+		{
+			var travelingWay = await _travelingWayService.GetTravelingWayByIdAsync(id);
+			if (travelingWay == null)
+			{
+				return BadRequest();
+			}
+			return Ok(travelingWay);
+		}
 
-        [HttpPost]
-        public async Task<ActionResult<TravelingWay>> CreateTravelingWay([FromBody] TravelingWay travelingWay)
-        {
-            await _travelingWayService.AddTravelingWayAsync(travelingWay);
-            return CreatedAtAction(nameof(GetTravelingWayById), new { id = travelingWay.Id }, travelingWay);
-        }
+		[HttpPost]
+		public async Task<ActionResult<TravelingWay>> CreateTravelingWay([FromBody] TravelingWay travelingWay)
+		{
+			await _travelingWayService.AddTravelingWayAsync(travelingWay);
+			return CreatedAtAction(nameof(GetTravelingWayById), new { id = travelingWay.Id }, travelingWay);
+		}
 
-        [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateTravelingWay(int id, [FromBody] TravelingWay travelingWay)
-        {
-            if (id != travelingWay.Id)
-            {
-                return BadRequest();
-            }
-
-            await _travelingWayService.UpdateTravelingWayAsync(travelingWay);
-            return NoContent();
-        }
-
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteTravelingWay(int id)
-        {
-            await _travelingWayService.DeleteTravelingWayAsync(id);
-            return NoContent();
-        }
-    }
+		[HttpDelete("{id}")]
+		public async Task<IActionResult> DeleteTravelingWay(int id)
+		{
+			await _travelingWayService.DeleteTravelingWayAsync(id);
+			return NoContent();
+		}
+	}
 }
 

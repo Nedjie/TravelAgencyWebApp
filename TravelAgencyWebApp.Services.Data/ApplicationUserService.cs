@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using TravelAgencyWebApp.Data.Models;
 using TravelAgencyWebApp.Services.Data.Interfaces;
-using TravelAgencyWebApp.ViewModels.Admin.UserManagement;
+using TravelAgencyWebApp.ViewModels.Admin;
 
 namespace TravelAgencyWebApp.Services.Data
 {

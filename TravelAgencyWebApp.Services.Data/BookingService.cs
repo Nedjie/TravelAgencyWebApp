@@ -9,20 +9,16 @@ namespace TravelAgencyWebApp.Services.Data
 {
     public class BookingService : IBookingService
     {
-        private readonly IRepository<Booking, int> _bookingRepository;
-        private readonly IRepository<Offer, int> _offerRepository;
+        private readonly IRepository<Booking, int> _bookingRepository;   
         private readonly IRepository<ApplicationUser, Guid> _userRepository;
         private readonly IRepository<Agent, Guid> _agentRepository;
 
-        public BookingService(IRepository<Booking, int> bookingRepository,
-            IRepository<Offer, int> offerRepository, IRepository<ApplicationUser,
+        public BookingService(IRepository<Booking, int> bookingRepository,IRepository<ApplicationUser,
                 Guid> userRepository, IRepository<Agent, Guid> agentRepository)
         {
             _bookingRepository = bookingRepository;
-            _offerRepository = offerRepository;
             _userRepository = userRepository;
             _agentRepository = agentRepository;
-
         }
 
         public async Task<IEnumerable<BookingViewModel>> GetAllBookingsAsync()

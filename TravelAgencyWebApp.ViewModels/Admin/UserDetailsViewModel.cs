@@ -1,11 +1,10 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using static TravelAgencyWebApp.Common.DataConstants;
 
-namespace TravelAgencyWebApp.ViewModels.Admin.UserManagement
+namespace TravelAgencyWebApp.ViewModels.Admin
 {
-    public class AllUsersViewModel
+    public class UserDetailsViewModel
     {
-        
         public string Id { get; set; } = null!;
 
         [Required]
@@ -16,8 +15,12 @@ namespace TravelAgencyWebApp.ViewModels.Admin.UserManagement
 
         [Required(ErrorMessage = FullNameRequiredError)]
         [StringLength(FullNameMaxLength,
-           ErrorMessage = FullNameMaxLengthError)]
+          ErrorMessage = FullNameMaxLengthError)]
         public string FullName { get; set; } = null!;
+
+        [StringLength(AddressMaxLength,
+           ErrorMessage = AddressMaxLengthError)]
+        public string Address { get; set; } = null!;
 
         public IEnumerable<string> Roles { get; set; } = null!;
     }

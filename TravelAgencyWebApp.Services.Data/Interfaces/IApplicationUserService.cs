@@ -1,5 +1,5 @@
 ﻿using TravelAgencyWebApp.Data.Models;
-using TravelAgencyWebApp.ViewModels.Admin.UserManagement;
+using TravelAgencyWebApp.ViewModels.Admin;
 
 namespace TravelAgencyWebApp.Services.Data.Interfaces
 {

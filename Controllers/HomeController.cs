@@ -4,19 +4,15 @@ using TravelAgencyWebApp.ViewModels.Offer;
 
 namespace TravelAgencyWebApp.Controllers
 {
-    public class HomeController(IHomeService homeService,
-		ITravelingWayService travelingWayService, IOfferService offerService,
-		 ILogger<HomeController> logger)
-		: BaseController(logger)
+	public class HomeController : BaseController
 	{
-		private readonly IHomeService _homeService = homeService
-			?? throw new ArgumentNullException(nameof(homeService));
+		private readonly IOfferService _offerService;
 
-		private readonly ITravelingWayService _travelingWayService = travelingWayService
-			?? throw new ArgumentNullException(nameof(travelingWayService));
-
-		private readonly IOfferService _offerService = offerService
-			?? throw new ArgumentNullException(nameof(offerService));	
+		public HomeController(IOfferService offerService, ILogger<HomeController> logger)
+			: base(logger)
+		{
+			_offerService = offerService;
+		}
 
 		[HttpGet]
 		public async Task<IActionResult> Index()
@@ -24,8 +20,8 @@ namespace TravelAgencyWebApp.Controllers
 			var offers = await _offerService.GetAllOffersAsync();
 
 			var groupedOffers = offers
-				.Where(offer => offer.TravelingWay != null) 
-				.GroupBy(offer => offer.TravelingWay!.Method) 
+				.Where(offer => offer.TravelingWay != null)
+				.GroupBy(offer => offer.TravelingWay!.Method)
 				.ToDictionary(g => g.Key, g => g.Select(o => new OfferViewModel
 				{
 					Id = o.Id,
@@ -33,7 +29,7 @@ namespace TravelAgencyWebApp.Controllers
 					Description = o.Description,
 					Price = o.Price,
 					ImageUrl = o.ImageUrl,
-					TravelingWayMethod = o.TravelingWay?.Method 
+					TravelingWayMethod = o.TravelingWay?.Method
 				}));
 
 			return View(groupedOffers);
@@ -41,7 +37,7 @@ namespace TravelAgencyWebApp.Controllers
 
 		[HttpGet]
 		public IActionResult About()
-		{		
+		{
 			return View();
 		}
 

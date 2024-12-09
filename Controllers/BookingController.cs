@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using TravelAgencyWebApp.Data.Models;
 using TravelAgencyWebApp.Services.Data.Interfaces;
-using TravelAgencyWebApp.TravelAgencyWebApp.ViewModels.ApplicationUser;
+using TravelAgencyWebApp.ViewModels.ApplicationUser;
 using TravelAgencyWebApp.ViewModels.Booking;
 
 namespace TravelAgencyWebApp.Controllers

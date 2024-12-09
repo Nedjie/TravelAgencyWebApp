@@ -40,6 +40,8 @@
     <Compile Include="obj\Debug\net8.0\TravelAgencyWebApp.GlobalUsings.g.cs" />
     <Compile Include="obj\Debug\net8.0\TravelAgencyWebApp.MvcApplicationPartsAssemblyInfo.cs" />
     <Compile Include="obj\Debug\net8.0\TravelAgencyWebApp.RazorAssemblyInfo.cs" />
+    <Compile Include="TravelAgencyWebApp.ViewModels\Admin\AllUsersViewModel.cs" />
+    <Compile Include="TravelAgencyWebApp.ViewModels\Admin\UserDetailsViewModel.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -81,6 +83,7 @@
   <ItemGroup>
     <ProjectReference Include="..\TravelAgencyWebApp.Service.Tests\TravelAgencyWebApp.Service.Tests.csproj" />
     <ProjectReference Include="TravelAgencyWebApp.Common\TravelAgencyWebApp.Common.csproj" />
+    <ProjectReference Include="TravelAgencyWebApp.Data.Models\TravelAgencyWebApp.Data.Models.csproj" />
     <ProjectReference Include="TravelAgencyWebApp.Data\TravelAgencyWebApp.Data.csproj" />
     <ProjectReference Include="TravelAgencyWebApp.Infrastructure\TravelAgencyWebApp.Infrastructure.csproj" />
     <ProjectReference Include="TravelAgencyWebApp.Services.Data\TravelAgencyWebApp.Services.Data.csproj" />
@@ -105,7 +108,6 @@
   <ItemGroup>
     <Folder Include=".github\workflows\" />
     <Folder Include="Areas\Admin\Views\Shared\" />
-    <Folder Include="TravelAgencyWebApp.ViewModels\" />
   </ItemGroup>
 
   <ItemGroup>

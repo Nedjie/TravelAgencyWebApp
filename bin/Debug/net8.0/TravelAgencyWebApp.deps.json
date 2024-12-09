@@ -19,6 +19,7 @@
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "8.0.7",
           "TravelAgencyWebApp.Common": "1.0.0",
           "TravelAgencyWebApp.Data": "1.0.0",
+          "TravelAgencyWebApp.Data.Models": "1.0.0",
           "TravelAgencyWebApp.Infrastructure": "1.0.0",
           "TravelAgencyWebApp.Service.Tests": "1.0.0",
           "TravelAgencyWebApp.Services.Data": "1.0.0",

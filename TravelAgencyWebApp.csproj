@@ -13,28 +13,24 @@
     <Compile Remove="TravelAgencyWebApp.Data\**" />
     <Compile Remove="TravelAgencyWebApp.Infrastructure\**" />
     <Compile Remove="TravelAgencyWebApp.Services.Data\**" />
-    <Compile Remove="TravelAgencyWebApp.Services.Mapping\**" />
     <Compile Remove="TravelAgencyWebApp.ViewModels\**" />
     <Content Remove="TravelAgencyWebApp.Common\**" />
     <Content Remove="TravelAgencyWebApp.Data.Models\**" />
     <Content Remove="TravelAgencyWebApp.Data\**" />
     <Content Remove="TravelAgencyWebApp.Infrastructure\**" />
     <Content Remove="TravelAgencyWebApp.Services.Data\**" />
-    <Content Remove="TravelAgencyWebApp.Services.Mapping\**" />
     <Content Remove="TravelAgencyWebApp.ViewModels\**" />
     <EmbeddedResource Remove="TravelAgencyWebApp.Common\**" />
     <EmbeddedResource Remove="TravelAgencyWebApp.Data.Models\**" />
     <EmbeddedResource Remove="TravelAgencyWebApp.Data\**" />
     <EmbeddedResource Remove="TravelAgencyWebApp.Infrastructure\**" />
     <EmbeddedResource Remove="TravelAgencyWebApp.Services.Data\**" />
-    <EmbeddedResource Remove="TravelAgencyWebApp.Services.Mapping\**" />
     <EmbeddedResource Remove="TravelAgencyWebApp.ViewModels\**" />
     <None Remove="TravelAgencyWebApp.Common\**" />
     <None Remove="TravelAgencyWebApp.Data.Models\**" />
     <None Remove="TravelAgencyWebApp.Data\**" />
     <None Remove="TravelAgencyWebApp.Infrastructure\**" />
     <None Remove="TravelAgencyWebApp.Services.Data\**" />
-    <None Remove="TravelAgencyWebApp.Services.Mapping\**" />
     <None Remove="TravelAgencyWebApp.ViewModels\**" />
   </ItemGroup>
 
@@ -71,9 +67,10 @@
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="8.0.8" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.11" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="8.0.11" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.11" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.11" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.11">
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
@@ -87,7 +84,6 @@
     <ProjectReference Include="TravelAgencyWebApp.Data\TravelAgencyWebApp.Data.csproj" />
     <ProjectReference Include="TravelAgencyWebApp.Infrastructure\TravelAgencyWebApp.Infrastructure.csproj" />
     <ProjectReference Include="TravelAgencyWebApp.Services.Data\TravelAgencyWebApp.Services.Data.csproj" />
-    <ProjectReference Include="TravelAgencyWebApp.Services.Mapping\TravelAgencyWebApp.Services.Mapping.csproj" />
     <ProjectReference Include="TravelAgencyWebApp.ViewModels\TravelAgencyWebApp.ViewModels.csproj" />
   </ItemGroup>
 
@@ -365,8 +361,6 @@
     <None Include="bin\Debug\net8.0\TravelAgencyWebApp.pdb" />
     <None Include="bin\Debug\net8.0\TravelAgencyWebApp.Services.Data.dll" />
     <None Include="bin\Debug\net8.0\TravelAgencyWebApp.Services.Data.pdb" />
-    <None Include="bin\Debug\net8.0\TravelAgencyWebApp.Services.Mapping.dll" />
-    <None Include="bin\Debug\net8.0\TravelAgencyWebApp.Services.Mapping.pdb" />
     <None Include="bin\Debug\net8.0\TravelAgencyWebApp.ViewModels.dll" />
     <None Include="bin\Debug\net8.0\TravelAgencyWebApp.ViewModels.pdb" />
     <None Include="bin\Debug\net8.0\tr\Humanizer.resources.dll" />

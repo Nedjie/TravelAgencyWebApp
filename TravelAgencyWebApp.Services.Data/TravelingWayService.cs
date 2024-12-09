@@ -1,12 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
-using TravelAgencyWebApp.Common.ErrorMessages;
+﻿using TravelAgencyWebApp.Common.ErrorMessages;
 using TravelAgencyWebApp.Data.Models;
 using TravelAgencyWebApp.Data.Repository.Interfaces;
 using TravelAgencyWebApp.Services.Data.Interfaces;
 
 namespace TravelAgencyWebApp.Services.Data
 {
-    public class TravelingWayService(IRepository<TravelingWay, int> travelingWayRepository) : ITravelingWayService
+	public class TravelingWayService(IRepository<TravelingWay, int> travelingWayRepository) : ITravelingWayService
     {
         private readonly IRepository<TravelingWay, int> _travelingWayRepository= travelingWayRepository 
             ?? throw new ArgumentNullException(nameof(travelingWayRepository));

@@ -1,11 +1,9 @@
-using Microsoft.AspNetCore.Identity;
-using TravelAgencyWebApp.Services.Mapping;
-using TravelAgencyWebApp.ViewModels;
+using Microsoft.AspNetCore.Mvc;
 using static TravelAgencyWebApp.Infrastructure.Extensions.ServiceRegistrationExtensions;
 
 namespace TravelAgencyWebApp
 {
-    public class Program
+	public class Program
     {
         public static void Main(string[] args)
         {
@@ -20,13 +18,14 @@ namespace TravelAgencyWebApp
             builder.Services.AddCustomServices(builder.Configuration);
            
 		
-            builder.Services.AddControllersWithViews();
+            builder.Services.AddControllersWithViews(cfg=>
+            {
+                cfg.Filters.Add(new AutoValidateAntiforgeryTokenAttribute());
+            });
 	
             builder.Services.AddRazorPages();
 
             var app = builder.Build();
-
-			AutoMapperConfig.RegisterMappings(typeof(ErrorViewModel).Assembly);
 
             using (var scope = app.Services.CreateScope())
             {

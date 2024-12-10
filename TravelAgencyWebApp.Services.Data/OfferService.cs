@@ -14,34 +14,17 @@ namespace TravelAgencyWebApp.Services.Data
 			IRepository<Offer, int> offerRepository,
 			IRepository<TravelingWay, int> travelingWayRepository)
 		{
-			_offerRepository = offerRepository ?? throw new ArgumentNullException(nameof(offerRepository));
-			_travelingWayRepository = travelingWayRepository ?? throw new ArgumentNullException(nameof(travelingWayRepository));
+			_offerRepository = offerRepository;
+			_travelingWayRepository = travelingWayRepository;
 		}
 
 		public async Task<IEnumerable<Offer>> GetAllOffersAsync()
 		{
-            var offers = await _offerRepository.GetAllIncludingAsync(o => o.TravelingWay!);
-            return offers.Where(offer => !offer.IsDeleted).ToList();
-        }
-        public async Task<IEnumerable<Offer>> GetFilteredOffersAsync(string searchTerm,string selectedTravelingWay)
-        {
-			var offers = await _offerRepository.GetAllIncludingAsync(o => o.TravelingWay!);          
+			var offers = await _offerRepository.GetAllIncludingAsync(o => o.TravelingWay!);
+			return offers.Where(offer => !offer.IsDeleted).ToList();
+		}
 
-            if (!string.IsNullOrEmpty(searchTerm))
-            {
-                offers = offers.Where(offer =>
-                    offer.Title.Contains(searchTerm, StringComparison.OrdinalIgnoreCase) ||
-                    offer.Description.Contains(searchTerm, StringComparison.OrdinalIgnoreCase))
-                    .ToList();
-            }
-            if (!string.IsNullOrEmpty(selectedTravelingWay))
-            {
-                offers = offers.Where(offer => offer.TravelingWay!.Method == selectedTravelingWay).ToList();
-            }
-
-            return offers;
-        }
-        public async Task<Offer?> GetOfferByIdAsync(int id)
+		public async Task<Offer?> GetOfferByIdAsync(int id)
 		{
 			return await _offerRepository.GetIncludingAsync(id, o => o.TravelingWay!);
 		}
@@ -60,31 +43,40 @@ namespace TravelAgencyWebApp.Services.Data
 
 			return groupedOffers.ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
 		}
-        public async Task<(IEnumerable<Offer>, int)> GetFilteredOffersAsync(string searchItem, string selectedTravelingWay, int pageNumber, int pageSize)
-        {
-			var query = _offerRepository.Query();
+		public async Task<(IEnumerable<Offer>, int)> GetFilteredOffersAsync(string searchItem, string selectedTravelingWay, int pageNumber, int pageSize)
+		{
+			var offers = await _offerRepository.GetAllIncludingAsync(o => o.TravelingWay) ?? new List<Offer>();
 
-            if (!string.IsNullOrEmpty(searchItem))
-            {
-                query = query.Where(o => o.Title.Contains(searchItem, StringComparison.OrdinalIgnoreCase) ||
-                                         o.Description.Contains(searchItem, StringComparison.OrdinalIgnoreCase));
-            }
+			var filteredOffers = offers.AsQueryable();
 
-            if (!string.IsNullOrEmpty(selectedTravelingWay))
-            {
-                query = query.Where(o => o.TravelingWay!.Method == selectedTravelingWay);
-            }
+			if (!string.IsNullOrEmpty(selectedTravelingWay))
+			{
+				string trimmedTravelingWay = selectedTravelingWay.Trim();
 
-            var totalCount = await query.CountAsync();
+				filteredOffers = filteredOffers
+					.Where(offer => offer.TravelingWay != null &&
+									offer.TravelingWay.Method.Trim().Equals(trimmedTravelingWay, StringComparison.OrdinalIgnoreCase));
+			}
 
-            var offers = await query
-                .Skip((pageNumber - 1) * pageSize)
-                .Take(pageSize)
-                .ToListAsync();
+			if (!string.IsNullOrEmpty(searchItem))
+			{
+				filteredOffers = filteredOffers.Where(offer =>
+					(offer.Title != null && offer.Title.ToLower().Contains(searchItem.ToLower())) ||
+					(offer.Description != null && offer.Description.ToLower().Contains(searchItem.ToLower())));
+			}
 
-            return (offers, totalCount);
-        }
-        public async Task AddOfferAsync(Offer model)
+			int totalCount = filteredOffers.Count();
+
+			var pagedOffers = filteredOffers
+				.Where(offer => !offer.IsDeleted) 
+				.Skip((pageNumber - 1) * pageSize)
+				.Take(pageSize)
+				.ToList(); 
+
+			return (pagedOffers, totalCount);
+		}
+
+		public async Task AddOfferAsync(Offer model)
 		{
 
 			if (model == null)
@@ -100,8 +92,8 @@ namespace TravelAgencyWebApp.Services.Data
 				ImageUrl = model.ImageUrl!,
 				TravelingWay = model.TravelingWay,
 				TravelingWayId = model.TravelingWayId,
-				CheckInDate=model.CheckInDate,
-				CheckOutDate=model.CheckOutDate
+				CheckInDate = model.CheckInDate,
+				CheckOutDate = model.CheckOutDate
 			};
 
 			await _offerRepository.AddAsync(offer);
@@ -117,29 +109,29 @@ namespace TravelAgencyWebApp.Services.Data
 			var existingOffer = await _offerRepository.GetByIdAsync(model.Id);
 
 			ArgumentNullException.ThrowIfNull(model);
-			
+
 			if (existingOffer != null)
 			{
 				existingOffer.Title = model.Title;
-				existingOffer.Description =model.Description ?? "No Description";
+				existingOffer.Description = model.Description ?? "No Description";
 				existingOffer.Price = model.Price;
 				existingOffer.ImageUrl = model.ImageUrl;
 				existingOffer.TravelingWayId = model.TravelingWayId;
 				existingOffer.CheckInDate = model.CheckInDate;
 				existingOffer.CheckOutDate = model.CheckOutDate;
 
-				await _offerRepository.UpdateAsync(existingOffer); 
+				await _offerRepository.UpdateAsync(existingOffer);
 			}
-		}	
+		}
 		public async Task DeleteOfferAsync(int id)
-        {
-            var offer = await _offerRepository.GetByIdAsync(id);
-            if (offer == null)
-            {
-                throw new KeyNotFoundException($"Offer with ID {id} was not found.");
-            }
+		{
+			var offer = await _offerRepository.GetByIdAsync(id);
+			if (offer == null)
+			{
+				throw new KeyNotFoundException($"Offer with ID {id} was not found.");
+			}
 
-            await _offerRepository.DeleteAsync(offer);
-        }
-    }
+			await _offerRepository.DeleteAsync(offer);
+		}
+	}
 }

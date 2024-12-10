@@ -49,7 +49,6 @@ namespace TravelAgencyWebApp.Infrastructure.Extensions
                 .AddDefaultTokenProviders();
 
             return services;
-
         }
 
         public static IApplicationBuilder SeedAdministrator(this IApplicationBuilder app, string email, string username, string password)

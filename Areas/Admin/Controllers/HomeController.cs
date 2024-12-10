@@ -30,34 +30,43 @@ namespace TravelAgencyWebApp.Areas.Admin.Controllers
 			_agentService = agentService;
 		}
 
-		public async Task<IActionResult> Index()
+		public async Task<IActionResult> Index(int pageNumber = 1, int pageSize = 5)
 		{
 			var offers = await _offerService.GetAllOffersAsync();
+
+			// Calculate the total count of offers
+			var totalCount = offers.Count();
+			var totalPages = (int)Math.Ceiling(totalCount / (double)pageSize);
+
+			// Fetch the paginated offers
+			var paginatedOffers = offers.Skip((pageNumber - 1) * pageSize)
+										.Take(pageSize)
+										.ToList();
+
+			// Fetch all users
 			var userViewModels = await _userService.GetAllUsersAsync();
-
-			var userList = new List<ApplicationUser>();
-
-			foreach (var vm in userViewModels)
+			var userList = userViewModels.Select(vm => new ApplicationUser
 			{
-				var user = new ApplicationUser
-				{
-					Id = Guid.Parse(vm.Id),
-					Email = vm.Email,
-					FullName = vm.FullName,
-					Roles = vm.Roles.ToList()
-				};
-
-				userList.Add(user);
-			}
+				Id = Guid.Parse(vm.Id),
+				Email = vm.Email,
+				FullName = vm.FullName,
+				Roles = vm.Roles.ToList()
+			}).ToList();
 
 			var model = new AdminDashboardViewModel
 			{
-				Offers = offers,
+				Offers = paginatedOffers, // Use paginated offers
 				Users = userList
 			};
 
+			// Load roles for the ViewBag
 			var allRoles = await _roleService.GetAllRoleNamesAsync();
 			ViewBag.Roles = allRoles;
+
+			// Set pagination info into ViewBag
+			ViewBag.CurrentPage = pageNumber;
+			ViewBag.TotalPages = totalPages;
+			ViewBag.PageSize = pageSize;
 
 			return View(model);
 		}

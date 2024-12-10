@@ -22,14 +22,14 @@ namespace TravelAgencyWebApp.Controllers
 								 IApplicationUserService applicationUserService,
 								 ILogger<BookingController> logger) : base(logger)
 		{
-			_bookingService = bookingService ?? throw new ArgumentNullException(nameof(bookingService));
-			_offerService = offerService ?? throw new ArgumentNullException(nameof(offerService));
-			_userManager = userManager ?? throw new ArgumentNullException(nameof(userManager));
-			_applicationUserService = applicationUserService ?? throw new ArgumentNullException(nameof(applicationUserService));
+			_bookingService = bookingService;
+			_offerService = offerService;
+			_userManager = userManager;
+			_applicationUserService = applicationUserService;
 		}
 
-
-		public async Task<IActionResult> Index(int pageNumber = 1, int pageSize = 5)
+		public async Task<IActionResult> Index(string searchItem, string selectedReservationHolder, int pageNumber = 1,
+			 int pageSize = 5)
 		{
 			try
 			{
@@ -45,7 +45,6 @@ namespace TravelAgencyWebApp.Controllers
 					return RedirectToAction("Index", "Home");
 				}
 				var userRoles = await _userManager.GetRolesAsync(user);
-
 				IEnumerable<BookingViewModel> bookingViewModels;
 
 				if (userRoles.Contains("Admin"))
@@ -61,17 +60,45 @@ namespace TravelAgencyWebApp.Controllers
 					bookingViewModels = await _bookingService.GetBookingsByUserIdAsync(userId);
 				}
 
+				if (!string.IsNullOrWhiteSpace(searchItem))
+				{
+					bookingViewModels = await _bookingService.SearchBookingsAsync(searchItem,selectedReservationHolder);
+				}
+
+				if (!string.IsNullOrWhiteSpace(selectedReservationHolder))
+				{
+					bookingViewModels = bookingViewModels
+						.Where(b =>
+							b.FullName!.Equals(selectedReservationHolder, StringComparison.OrdinalIgnoreCase))
+						.ToList();
+				}
+
+				// Pagination logic
 				var totalCount = bookingViewModels.Count();
 				var totalPages = (int)Math.Ceiling(totalCount / (double)pageSize);
-
 				var paginatedBookings = bookingViewModels.Skip((pageNumber - 1) * pageSize)
-									  .Take(pageSize)
-									  .ToList();
+														  .Take(pageSize)
+														  .ToList();
+
 				ViewBag.CurrentPage = pageNumber;
 				ViewBag.TotalPages = totalPages;
 				ViewBag.PageSize = pageSize;
 
-				return View(paginatedBookings);
+				// Get reservation holders for the dropdown
+				var reservationHolders = await _bookingService.GetAllReservationHoldersAsync();
+
+				var viewModel = new BookingSearchViewModel
+				{
+					SearchTerm = searchItem,
+					SelectedReservationHolder = selectedReservationHolder,
+					Bookings = paginatedBookings,
+					TotalCount = totalCount,
+					PageNumber = pageNumber,
+					PageSize = pageSize,
+					ReservationHolders = reservationHolders // Store this for dropdown in the view
+				};
+
+				return View(viewModel);
 			}
 			catch (Exception ex)
 			{

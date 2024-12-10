@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 using TravelAgencyWebApp.Common.Attributes;
+using TravelAgencyWebApp.ViewModels.Offer;
 using static TravelAgencyWebApp.Common.DataConstants;
 
 
@@ -38,10 +39,16 @@ namespace TravelAgencyWebApp.ViewModels.Booking
         [Required(ErrorMessage = BookingCheckOutDateRequiredError)]
         [IsBefore("CheckInDate", ErrorMessage = BookingCheckOutDateIsBeforeCheckInDateError)]
         [Comment("Check out date of booking")]
-        public DateTime CheckOutDate { get; set; } 
+        public DateTime CheckOutDate { get; set; }
+
+		public string? AgentFullName { get; set; }  
+
+		public string? UserFullName { get; set; }
+
+		public OfferViewModel? Offer { get; set; }
 
         public string? FullName { get; set; }
 
         public string? Email { get; set; }
-    }
+	}
 }

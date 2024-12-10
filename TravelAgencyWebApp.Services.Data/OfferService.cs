@@ -45,7 +45,7 @@ namespace TravelAgencyWebApp.Services.Data
 		}
 		public async Task<(IEnumerable<Offer>, int)> GetFilteredOffersAsync(string searchItem, string selectedTravelingWay, int pageNumber, int pageSize)
 		{
-			var offers = await _offerRepository.GetAllIncludingAsync(o => o.TravelingWay) ?? new List<Offer>();
+			var offers = await _offerRepository.GetAllIncludingAsync(o => o.TravelingWay!) ?? new List<Offer>();
 
 			var filteredOffers = offers.AsQueryable();
 

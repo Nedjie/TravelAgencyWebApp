@@ -9,7 +9,10 @@ namespace TravelAgencyWebApp.Services.Data.Interfaces
         Task<IEnumerable<BookingViewModel>> GetAllBookingsAsync();
         Task<IEnumerable<BookingViewModel>> GetBookingsForAgentAsync(Guid agentId);
 		Task<BookingViewModel?> GetBookingByIdAsync(int id);
-        Task<IEnumerable<BookingViewModel>> GetBookingsByUserIdAsync(Guid userId, params Expression<Func<Booking, object>>[] includes);
+        Task<IEnumerable<string>> GetAllReservationHoldersAsync();
+		Task<IEnumerable<BookingViewModel>> GetBookingsByUserIdAsync(Guid userId, params Expression<Func<Booking, object>>[] includes);
+        Task<IEnumerable<BookingViewModel>> SearchBookingsAsync(string searchTerm, string selectedReservationHolder);
+		Task<IEnumerable<BookingViewModel>> GetFilteredBookingsAsync(string searchTerm, string selectedReservationHolder);
 		Task<bool> CreateBookingAsync(CreateBookingViewModel model);
         Task<bool> UpdateBookingAsync(EditBookingViewModel model);
         Task<Booking?> GetBookingByIdIncludingUserAndOfferAsync(int id);

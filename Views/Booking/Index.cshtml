@@ -59,7 +59,36 @@
 		</table>
 	</div>
 </div>
+<div class="d-flex justify-content-center mt-4">
+	<nav aria-label="Page navigation">
+		<ul class="pagination">
+			<!-- Previous Button -->
+			<li class="page-item @(ViewBag.CurrentPage == 1 ? "disabled" : "")">
+				<a class="page-link" asp-action="Index" asp-route-pageNumber="@(ViewBag.CurrentPage - 1)" asp-route-pageSize="@ViewBag.PageSize">
+					<i class="fas fa-chevron-left"></i>
+				</a>
+			</li>
 
+			<!-- Page Number Links -->
+			@{
+				int totalPages = ViewBag.TotalPages; // Get total pages from ViewBag
+				for (int i = 1; i <= totalPages; i++)
+				{
+					<li class="page-item @(ViewBag.CurrentPage == i ? "active" : "")">
+						<a class="page-link" asp-action="Index" asp-route-pageNumber="@i" asp-route-pageSize="@ViewBag.PageSize">@i</a>
+					</li>
+				}
+			}
+
+			<!-- Next Button -->
+			<li class="page-item @(ViewBag.CurrentPage == ViewBag.TotalPages ? "disabled" : "")">
+				<a class="page-link" asp-action="Index" asp-route-pageNumber="@(ViewBag.CurrentPage + 1)" asp-route-pageSize="@ViewBag.PageSize">
+					<i class="fas fa-chevron-right"></i>
+				</a>
+			</li>
+		</ul>
+	</nav>
+</div>
 @section Scripts {
 	<script>
 		document.querySelectorAll("table.table-striped tbody tr").forEach(row => {

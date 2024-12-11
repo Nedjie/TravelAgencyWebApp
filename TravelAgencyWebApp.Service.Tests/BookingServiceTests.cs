@@ -1,6 +1,7 @@
 ﻿using Moq;
 using NUnit.Framework;
 using System.Linq.Expressions;
+using System.Threading.Tasks;
 using TravelAgencyWebApp.Common;
 using TravelAgencyWebApp.Data.Models;
 using TravelAgencyWebApp.Data.Repository.Interfaces;
@@ -80,7 +81,7 @@ namespace TravelAgencyWebApp.Service.Tests
 			Assert.That(result.Count(), Is.EqualTo(2));
 			var firstBooking = result.First();
 			Assert.That(firstBooking.Id, Is.EqualTo(1));
-			Assert.That(firstBooking.UserName, Is.EqualTo(user1.FullName)); 
+			Assert.That(firstBooking.UserName, Is.EqualTo(user1.FullName));
 			Assert.That(firstBooking.OfferTitle, Is.EqualTo(offer1.Title));
 			Assert.That(result.First().ReservedByName, Is.EqualTo(agent1.FullName));
 		}
@@ -89,7 +90,7 @@ namespace TravelAgencyWebApp.Service.Tests
 		public async Task GetBookingByIdAsync_NonExistingBooking_ReturnsNull()
 		{
 			// Arrange
-			var bookingId = 999; 
+			var bookingId = 999;
 			_mockBookingRepository?.Setup(repo => repo.GetIncludingAsync(bookingId, b => b.User!, b => b.Agent!, b => b.Offer!))
 								  .ReturnsAsync((Booking)null!);
 
@@ -117,7 +118,7 @@ namespace TravelAgencyWebApp.Service.Tests
 				Email = "martin@gmail.com",
 				User = new ApplicationUser { FullName = "Мартин Димитров" },
 				Agent = new Agent { FullName = "Симеон Ангелов" },
-				Offer = new Offer { Title = "Луксозно сафари" } 
+				Offer = new Offer { Title = "Луксозно сафари" }
 			};
 
 			_mockBookingRepository?.Setup(repo => repo.GetIncludingAsync(bookingId, b => b.User!, b => b.Agent!, b => b.Offer!)).ReturnsAsync(booking);
@@ -170,7 +171,7 @@ namespace TravelAgencyWebApp.Service.Tests
 				CheckInDate = DateTime.Now,
 				CheckOutDate = DateTime.Now.AddDays(2),
 				UserEmail = "martin@gmail.com",
-				AgentId = Guid.NewGuid().ToString() 
+				AgentId = Guid.NewGuid().ToString()
 			};
 
 			var user = new ApplicationUser { Id = model.UserId.Value, FullName = "Мартин Димитров" };
@@ -250,10 +251,9 @@ namespace TravelAgencyWebApp.Service.Tests
 			_mockBookingRepository?.Setup(repo => repo.GetByIdAsync(bookingId)).ReturnsAsync(existingBooking);
 
 			// Act & Assert
-			var exception = Assert.ThrowsAsync<ArgumentException>(async () =>
-				await _bookingService!.UpdateBookingAsync(model));
+			var exception =  Assert.ThrowsAsync<ArgumentException>(() => _bookingService!.UpdateBookingAsync(model));
 
-			Assert.That(exception?.Message, Is.EqualTo(DataConstants.BookingCheckOutDateIsBeforeCheckInDateError)); 
+			Assert.That(exception?.Message, Is.EqualTo(DataConstants.BookingCheckOutDateIsBeforeCheckInDateError));
 		}
 
 		[Test]
@@ -302,7 +302,7 @@ namespace TravelAgencyWebApp.Service.Tests
 		public async Task DeleteBookingAsync_BookingDoesNotExist_ReturnsFalse()
 		{
 			// Arrange
-			var bookingId = 9999999; 
+			var bookingId = 9999999;
 			_mockBookingRepository?.Setup(repo => repo.GetByIdAsync(bookingId)).ReturnsAsync((Booking)null!);
 
 			// Act
@@ -318,13 +318,13 @@ namespace TravelAgencyWebApp.Service.Tests
 			// Arrange
 			var userId = Guid.NewGuid();
 			_mockBookingRepository?.Setup(repo => repo.GetByUserIdAsync(userId, It.IsAny<Expression<Func<Booking, object>>[]>()))
-				.ReturnsAsync(new List<Booking>()); 
+				.ReturnsAsync(new List<Booking>());
 
 			// Act
 			var result = await _bookingService!.GetBookingsByUserIdAsync(userId);
 
 			// Assert
-			Assert.That(result, Is.Empty); 
+			Assert.That(result, Is.Empty);
 		}
 
 		[Test]
@@ -355,7 +355,7 @@ namespace TravelAgencyWebApp.Service.Tests
 			// Arrange
 			var model = new EditBookingViewModel
 			{
-				Id = 999, 
+				Id = 999,
 				CheckInDate = DateTime.Now,
 				CheckOutDate = DateTime.Now.AddDays(3),
 				OfferId = 1,
@@ -369,15 +369,15 @@ namespace TravelAgencyWebApp.Service.Tests
 
 			try
 			{
-				result = await _bookingService!.UpdateBookingAsync(model); 
+				result = await _bookingService!.UpdateBookingAsync(model);
 			}
 			catch (ArgumentNullException)
 			{
-				
+
 			}
 
 			// Assert
-			Assert.That(result, Is.False); 
+			Assert.That(result, Is.False);
 		}
 
 		[Test]
@@ -385,11 +385,10 @@ namespace TravelAgencyWebApp.Service.Tests
 		{
 			// Act & Assert
 			var ex = Assert.ThrowsAsync<ArgumentNullException>(async () =>
-				await _bookingService!.UpdateBookingAsync(null!)); 
+				await _bookingService!.UpdateBookingAsync(null!));
 
-			Assert.That(ex?.ParamName, Is.EqualTo("model")); 
+			Assert.That(ex?.ParamName, Is.EqualTo("model"));
 		}
 	}
 
 }
-

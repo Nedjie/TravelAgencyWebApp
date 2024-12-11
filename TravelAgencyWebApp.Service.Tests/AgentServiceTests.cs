@@ -107,5 +107,3 @@ namespace TravelAgencyWebApp.Service.Tests
 		}
 	}
 }
-	
-

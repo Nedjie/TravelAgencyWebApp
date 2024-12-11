@@ -53,7 +53,7 @@ namespace TravelAgencyWebApp.Service.Tests
 		new Offer { Id = 1, Title = "Самолетна почивка", TravelingWayId = 1 },
 		new Offer { Id = 2, Title = "Автобусна почивка", TravelingWayId = 2 },
 		new Offer { Id = 3, Title = "Собствен транспорт", TravelingWayId = 0 }
-    };
+	};
 
 			_mockOfferRepository?.Setup(repo => repo.GetAllAsync()).ReturnsAsync(offers);
 			_mockTravelingWayRepository?.Setup(repo => repo.GetAllAsync()).ReturnsAsync(new List<TravelingWay> { travelingWay1, travelingWay2 });
@@ -65,10 +65,10 @@ namespace TravelAgencyWebApp.Service.Tests
 			var travelingWay2Offers = result[travelingWay2].ToList();
 
 			// Assert
-			Assert.That(result, Has.Count.EqualTo(2)); 
+			Assert.That(result, Has.Count.EqualTo(2));
 
-			Assert.That(travelingWay1Offers, Has.Count.EqualTo(1)); 
-			Assert.That(travelingWay2Offers, Has.Count.EqualTo(1)); 
+			Assert.That(travelingWay1Offers, Has.Count.EqualTo(1));
+			Assert.That(travelingWay2Offers, Has.Count.EqualTo(1));
 
 			Assert.That(travelingWay1Offers.First().Title, Is.EqualTo("Самолетна почивка"));
 			Assert.That(travelingWay2Offers.First().Title, Is.EqualTo("Автобусна почивка"));
@@ -85,20 +85,18 @@ namespace TravelAgencyWebApp.Service.Tests
 	};
 
 			// Setup mocks
-			_mockOfferRepository?.Setup(repo => repo.GetAllAsync()).ReturnsAsync(new List<Offer>()); 
-			_mockTravelingWayRepository?.Setup(repo => repo.GetAllAsync()).ReturnsAsync(travelingWays); 
+			_mockOfferRepository?.Setup(repo => repo.GetAllAsync()).ReturnsAsync(new List<Offer>());
+			_mockTravelingWayRepository?.Setup(repo => repo.GetAllAsync()).ReturnsAsync(travelingWays);
 
 			// Act
 			var result = await _homeService!.GetOffersGroupedByTravelingWayAsync();
 
 			// Assert
-			Assert.That(result, Has.Count.EqualTo(0)); 
+			Assert.That(result, Has.Count.EqualTo(0));
 			foreach (var travelingWay in travelingWays)
 			{
-				Assert.That(result.ContainsKey(travelingWay), Is.False); 
+				Assert.That(result.ContainsKey(travelingWay), Is.False);
 			}
 		}
 	}
 }
-	
-

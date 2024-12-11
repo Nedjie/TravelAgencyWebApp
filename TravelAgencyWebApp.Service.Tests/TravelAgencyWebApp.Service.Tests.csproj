@@ -7,14 +7,14 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Moq" Version="4.20.72" />
-		<PackageReference Include="NUnit" Version="4.2.2" />
+		<PackageReference Include="Moq" Version="4.20.72"/>
+		<PackageReference Include="NUnit" Version="4.2.2"/>
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\TravelAgencyWebApp.Data.Models\TravelAgencyWebApp.Data.Models.csproj" />
-		<ProjectReference Include="..\TravelAgencyWebApp.Data\TravelAgencyWebApp.Data.csproj" />
-		<ProjectReference Include="..\TravelAgencyWebApp.Services.Data\TravelAgencyWebApp.Services.Data.csproj" />
+		<ProjectReference Include="..\TravelAgencyWebApp.Data.Models\TravelAgencyWebApp.Data.Models.csproj"/>
+		<ProjectReference Include="..\TravelAgencyWebApp.Data\TravelAgencyWebApp.Data.csproj"/>
+		<ProjectReference Include="..\TravelAgencyWebApp.Services.Data\TravelAgencyWebApp.Services.Data.csproj"/>
 	</ItemGroup>
 
 </Project>

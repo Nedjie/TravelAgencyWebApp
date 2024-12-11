@@ -51,18 +51,19 @@ namespace TravelAgencyWebApp.Service.Tests
 			var offers = new List<Offer>
 	{
 		new Offer { Id = 1, Title = "Почивка в Доминикана", Description = "Страхотна оферта", IsDeleted = false },
-		new Offer { Id = 2, Title = "Средиземноморски круиз", Description = "Страхотна оферта", IsDeleted = false }
-	};
-			_mockOfferRepository?
-				.Setup(repo => repo.GetAllAsync())
-				.ReturnsAsync(offers);
+		new Offer { Id = 2, Title = "Средиземноморски круиз", Description = "Страхотна оферта", IsDeleted = false },
+		new Offer { Id = 3, Title = "Почивка в Тенерифе", Description = "Други страхотни оферти", IsDeleted = false } 
+    };
+
+			_mockOfferRepository?.Setup(repo => repo.GetAllIncludingAsync(It.IsAny<Expression<Func<Offer, object>>>()))
+								.ReturnsAsync(offers);
 
 			// Act
 			var (result, totalCount) = await _offerService!.GetFilteredOffersAsync("Почивка", null!, 1, 10);
 
 			// Assert
-			Assert.That(result.Count(), Is.EqualTo(1));
-			Assert.That(result.First().Title, Is.EqualTo("Почивка в Доминикана"));
+			Assert.That(result.Count(), Is.EqualTo(2)); 
+			Assert.That(result.Select(o => o.Title), Is.EquivalentTo(new[] { "Почивка в Доминикана", "Почивка в Тенерифе" })); 
 		}
 
 		[Test]
@@ -74,9 +75,10 @@ namespace TravelAgencyWebApp.Service.Tests
 		new Offer { Id = 1, Title = "Сейшели", TravelingWay = new TravelingWay { Id = 1, Method = "Самолет" }, IsDeleted = false },
 		new Offer { Id = 2, Title = "Букурещ", TravelingWay = new TravelingWay { Id = 2, Method = "Автобус" }, IsDeleted = false },
 		new Offer { Id = 3, Title = "Мадагаскар", TravelingWay = new TravelingWay { Id = 1, Method = "Самолет" }, IsDeleted = false }
-	};
+    };
 
-			_mockOfferRepository?.Setup(repo => repo.GetAllAsync()).ReturnsAsync(offers);
+			_mockOfferRepository?.Setup(repo => repo.GetAllIncludingAsync(It.IsAny<Expression<Func<Offer, object>>>()))
+								.ReturnsAsync(offers);
 
 			var selectedTravelingWay = "Самолет";
 
@@ -84,7 +86,7 @@ namespace TravelAgencyWebApp.Service.Tests
 			var (result, totalCount) = await _offerService!.GetFilteredOffersAsync(null!, selectedTravelingWay, 1, 10);
 
 			// Assert
-			Assert.That(result, Has.Count.EqualTo(2));
+			Assert.That(result, Has.Count.EqualTo(2)); 
 			Assert.That(result.All(o => o.TravelingWay?.Method == selectedTravelingWay), Is.True);
 		}
 
@@ -95,19 +97,20 @@ namespace TravelAgencyWebApp.Service.Tests
 			var offers = new List<Offer>
 	{
 		new Offer { Id = 1, Title = "Малдиви", TravelingWay = new TravelingWay { Method = "Самолет" }, IsDeleted = false },
-		new Offer { Id = 2, Title = "Сейшели", TravelingWay = new TravelingWay { Method = "Автобус" }, IsDeleted = false }
-	};
+		new Offer { Id = 2, Title = "Сейшели", TravelingWay = new TravelingWay { Method = "Автобус" }, IsDeleted = false },
+		new Offer { Id = 3, Title = "Токио", TravelingWay = new TravelingWay { Method = "Собствен транспорт" }, IsDeleted = false }, 
+    };
 
-			// Setup the repository mock
-			_mockOfferRepository?.Setup(repo => repo.GetAllAsync()).ReturnsAsync(offers);
+			_mockOfferRepository?.Setup(repo => repo.GetAllIncludingAsync(It.IsAny<Expression<Func<Offer, object>>>()))
+								.ReturnsAsync(offers);
 
 			// Act
 			var (result, totalCount) = await _offerService!.GetFilteredOffersAsync(null!, null!, 1, 10);
 
 			// Assert
-			Assert.That(result, Has.Count.EqualTo(2));
-			Assert.That(result.Select(o => o.Title), Is.EquivalentTo(new[] { "Малдиви", "Сейшели" }));
-			Assert.That(totalCount, Is.EqualTo(2));
+			Assert.That(result, Has.Count.EqualTo(3)); 
+			Assert.That(result.Select(o => o.Title), Is.EquivalentTo(new[] { "Малдиви", "Сейшели", "Токио" }));
+			Assert.That(totalCount, Is.EqualTo(3)); 
 		}
 
 		[Test]

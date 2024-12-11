@@ -69,21 +69,29 @@ namespace TravelAgencyWebApp.Service.Tests
 			CheckOutDate = DateTime.Now.AddDays(3),
 			User = user2,
 			Offer = offer2,
-			 Agent = agent2
+			Agent = agent2
 		}
 	};
-			_mockBookingRepository?.Setup(repo => repo.GetAllIncludingAsync(b => b.Offer!)).ReturnsAsync(bookings);
+
+			_mockBookingRepository?.Setup(repo => repo.GetAllIncludingAsync(It.IsAny<Expression<Func<Booking, object>>[]>())).ReturnsAsync(bookings);
 
 			// Act
 			var result = await _bookingService!.GetAllBookingsAsync();
 
 			// Assert
 			Assert.That(result.Count(), Is.EqualTo(2));
+
 			var firstBooking = result.First();
 			Assert.That(firstBooking.Id, Is.EqualTo(1));
 			Assert.That(firstBooking.UserName, Is.EqualTo(user1.FullName));
 			Assert.That(firstBooking.OfferTitle, Is.EqualTo(offer1.Title));
-			Assert.That(result.First().ReservedByName, Is.EqualTo(agent1.FullName));
+			Assert.That(firstBooking.ReservedByName, Is.EqualTo(agent1.FullName));
+
+			var secondBooking = result.Last();
+			Assert.That(secondBooking.Id, Is.EqualTo(2));
+			Assert.That(secondBooking.UserName, Is.EqualTo(user2.FullName));
+			Assert.That(secondBooking.OfferTitle, Is.EqualTo(offer2.Title));
+			Assert.That(secondBooking.ReservedByName, Is.EqualTo(agent2.FullName));
 		}
 
 		[Test]

@@ -31,20 +31,11 @@ namespace TravelAgencyWebApp.Services.Data
 			{
 				Id = b.Id,
 				UserId = b.UserId != null ? b.UserId.ToString() : "Unregistered User",
-
-				// Safely access User information
-				UserName = b.User?.FullName ?? "Unknown User", // Provide a default value if User is null
-
-				// Check for Agent and User FullName
-				ReservedByName = b.Agent?.FullName ?? b.User?.FullName ?? "Unknown User", // Provide default value
-
+				UserName = b.User?.FullName ?? "Unknown User", 
+				ReservedByName = b.Agent?.FullName ?? b.User?.FullName ?? "Unknown User", 
 				FullName=b.FullName,
-
 				OfferId = b.OfferId,
-
-				// Safeguard for the Offer Title
-				OfferTitle = b.Offer?.Title ?? "No Offer", // Use null-conditional operator to safely access
-
+				OfferTitle = b.Offer?.Title ?? "No Offer",
 				CheckInDate = b.CheckInDate,
 				CheckOutDate = b.CheckOutDate
 			}).ToList();
@@ -167,7 +158,6 @@ namespace TravelAgencyWebApp.Services.Data
 		{
 			var bookings = await GetAllBookingsAsync();
 
-			// Filter by reservation holder if provided
 			if (!string.IsNullOrWhiteSpace(selectedReservationHolder))
 			{
 				bookings = bookings
@@ -175,12 +165,11 @@ namespace TravelAgencyWebApp.Services.Data
 					.ToList();
 			}
 
-			// Search term filtering
 			if (!string.IsNullOrWhiteSpace(searchTerm))
 			{
 				bookings = bookings
-					.Where(b => b.ReservedByName.Contains(searchTerm, StringComparison.OrdinalIgnoreCase) ||
-								 b.Offer.Title.Contains(searchTerm, StringComparison.OrdinalIgnoreCase))
+					.Where(b => b.ReservedByName!.Contains(searchTerm, StringComparison.OrdinalIgnoreCase) ||
+								 b.Offer!.Title!.Contains(searchTerm, StringComparison.OrdinalIgnoreCase))
 					.ToList();
 			}
 

@@ -27,8 +27,10 @@ namespace TravelAgencyWebApp.Infrastructure.Extensions
 
             services.ConfigureApplicationCookie(options =>
             {
-                options.LoginPath = "/Identity/Account/Login";
-            });
+				options.LoginPath = "/Account/Login";
+				options.LogoutPath = "/Account/Logout";
+				options.AccessDeniedPath = "/Account/AccessDenied";
+			});
 
             return services;
         }

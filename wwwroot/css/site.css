@@ -56,10 +56,14 @@ body {
     }
 
 .footer {
-    background-color: #f8f9fa;
+    background-color: rgba(54, 19, 84, 0.6);
     padding: 20px 0;
 }
-
+.footer_logo {
+    position: center;
+    left: 0;
+    top: -14px;
+}
 th.sorted-asc i,
 th.sorted-desc i {
     visibility: visible; /* Ensure the icon is visible */

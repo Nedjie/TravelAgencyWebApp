@@ -34,16 +34,13 @@ namespace TravelAgencyWebApp.Areas.Admin.Controllers
 		{
 			var offers = await _offerService.GetAllOffersAsync();
 
-			// Calculate the total count of offers
 			var totalCount = offers.Count();
 			var totalPages = (int)Math.Ceiling(totalCount / (double)pageSize);
 
-			// Fetch the paginated offers
 			var paginatedOffers = offers.Skip((pageNumber - 1) * pageSize)
 										.Take(pageSize)
 										.ToList();
 
-			// Fetch all users
 			var userViewModels = await _userService.GetAllUsersAsync();
 			var userList = userViewModels.Select(vm => new ApplicationUser
 			{
@@ -55,15 +52,13 @@ namespace TravelAgencyWebApp.Areas.Admin.Controllers
 
 			var model = new AdminDashboardViewModel
 			{
-				Offers = paginatedOffers, // Use paginated offers
+				Offers = paginatedOffers, 
 				Users = userList
 			};
 
-			// Load roles for the ViewBag
 			var allRoles = await _roleService.GetAllRoleNamesAsync();
 			ViewBag.Roles = allRoles;
 
-			// Set pagination info into ViewBag
 			ViewBag.CurrentPage = pageNumber;
 			ViewBag.TotalPages = totalPages;
 			ViewBag.PageSize = pageSize;

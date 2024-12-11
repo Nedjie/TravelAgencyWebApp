@@ -73,7 +73,6 @@ namespace TravelAgencyWebApp.Controllers
 						.ToList();
 				}
 
-				// Pagination logic
 				var totalCount = bookingViewModels.Count();
 				var totalPages = (int)Math.Ceiling(totalCount / (double)pageSize);
 				var paginatedBookings = bookingViewModels.Skip((pageNumber - 1) * pageSize)
@@ -84,7 +83,6 @@ namespace TravelAgencyWebApp.Controllers
 				ViewBag.TotalPages = totalPages;
 				ViewBag.PageSize = pageSize;
 
-				// Get reservation holders for the dropdown
 				var reservationHolders = await _bookingService.GetAllReservationHoldersAsync();
 
 				var viewModel = new BookingSearchViewModel
@@ -95,7 +93,7 @@ namespace TravelAgencyWebApp.Controllers
 					TotalCount = totalCount,
 					PageNumber = pageNumber,
 					PageSize = pageSize,
-					ReservationHolders = reservationHolders // Store this for dropdown in the view
+					ReservationHolders = reservationHolders 
 				};
 
 				return View(viewModel);
@@ -183,7 +181,6 @@ namespace TravelAgencyWebApp.Controllers
 
 				model.AgentId = agentId.ToString();
 
-				// Custom Validation: Ensure UserId or Name and Email
 				if (!model.UserId.HasValue)
 				{
 					if (string.IsNullOrWhiteSpace(model.UserFullName))
@@ -201,7 +198,6 @@ namespace TravelAgencyWebApp.Controllers
 					}
 				}
 
-				// Proceed with creating the booking
 				bool isSuccess = await _bookingService.CreateBookingAsync(model);
 				if (!isSuccess)
 				{

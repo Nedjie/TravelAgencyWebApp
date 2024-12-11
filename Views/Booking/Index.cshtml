@@ -1,5 +1,7 @@
 ﻿@model TravelAgencyWebApp.ViewModels.Booking.BookingSearchViewModel
 @using static TravelAgencyWebApp.ViewModels.Booking.BookingViewModel;
+@inject Microsoft.AspNetCore.Identity.UserManager<TravelAgencyWebApp.Data.Models.ApplicationUser> UserManager
+@using static TravelAgencyWebApp.Common.ApplicationConstants;
 
 @{
 	ViewData["Title"] = "Управление на Резервации";
@@ -17,20 +19,23 @@
 		</div>
 		<button type="submit" class="btn btn-primary">Търси</button>
 	</form>
-	<!-- Dropdown for Reservation Holder -->
-	<form asp-action="Index" method="get" id="reservationHolderForm">
-		<div class="form-group">
-			<label for="reservationHolder">Изберете Титуляр на Резервацията:</label>
-			<select name="selectedReservationHolder" id="reservationHolder" class="form-control">
-				<option value="">Всички Титуляри</option>
-				@foreach (var holder in Model.ReservationHolders)
-				{
-					<option value="@holder">@holder</option>
-				}
-			</select>
-		</div>
-		<button type="submit" class="btn btn-secondary">Филтрирай по Титуляр</button>
-	</form>
+	@if (User.IsInRole(AdminRoleName) || User.IsInRole(AgentRoleName))
+	{ <!-- Dropdown for Reservation Holder -->
+		<form asp-action="Index" method="get" id="reservationHolderForm">
+			<div class="form-group">
+				<label for="reservationHolder">Изберете Титуляр на Резервацията:</label>
+				<select name="selectedReservationHolder" id="reservationHolder" class="form-control">
+					<option value="">Всички Титуляри</option>
+					@foreach (var holder in Model.ReservationHolders)
+					{
+						<option value="@holder">@holder</option>
+					}
+				</select>
+			</div>
+			<button type="submit" class="btn btn-secondary">Филтрирай по Титуляр</button>
+		</form>
+	}
+	
 	<div class="table-responsive">
 		<table class="table table-striped">
 			<thead>

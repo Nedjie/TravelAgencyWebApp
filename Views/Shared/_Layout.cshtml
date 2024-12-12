@@ -82,15 +82,15 @@
 								</div>
 								<div class="main_nav_container ml-auto">
 									<ul class="main_nav_list">
-										<li class="main_nav_item"><a asp-controller="Home" asp-action="Index">Начало</a></li>
-										<li class="main_nav_item"><a asp-controller="Offer" asp-action="Index">Оферти</a></li>
+										<li class="main_nav_item"><a asp-controller="Home" asp-action="Index" asp-area="">Начало</a></li>
+										<li class="main_nav_item"><a asp-controller="Offer" asp-action="Index" asp-area="">Оферти</a></li>
 										@if (User.Identity!.IsAuthenticated)
 										{
 											<li class="main_nav_item">
-												<a asp-controller="Booking" asp-action="Index" onclick="console.log('Redirecting to My Reservations');">Моите Резервации</a>
+												<a asp-controller="Booking" asp-action="Index" asp-area="" onclick="console.log('Redirecting to My Reservations');">Моите Резервации</a>
 											</li>
 										}
-										<li class="main_nav_item"><a asp-controller="Home" asp-action="About">За Нас</a></li>
+										<li class="main_nav_item"><a asp-controller="Home" asp-action="About" asp-area="">За Нас</a></li>
 									</ul>
 								</div>
 							</div>

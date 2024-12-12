@@ -1,12 +1,39 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.AspNetCore.Identity;
+using TravelAgencyWebApp.Data.Models;
 
 namespace TravelAgencyWebApp.Data.Seeding
 {
-	internal class SeedUsers
+	internal class SeedDataUsers
 	{
+		public static async Task DataUsers(UserManager<ApplicationUser> userManager)
+		{
+			if (userManager.Users.Any())
+			{
+				return;
+			}
+
+			var users = new ApplicationUser[]
+			{
+		new ApplicationUser
+		{
+			FullName = "Иван Петров",
+			Address = "гр. Пловдив",
+			UserName = "ivan@gmail.com",
+			Email = "ivan@gmail.com"
+		},
+		new ApplicationUser
+		{
+			FullName = "Неджмие Чакър",
+			Address = "гр. Кубрат",
+			UserName = "nedji@gmail.com",
+			Email = "nedji@gmail.com"
+		}
+			};
+
+			foreach (var user in users)
+			{
+				await userManager.CreateAsync(user, "123456a");
+			}
+		}
 	}
 }

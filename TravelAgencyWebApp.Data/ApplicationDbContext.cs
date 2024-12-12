@@ -61,7 +61,7 @@ namespace TravelAgencyWebApp.Data
 
 
             SeedDataTravelingWays.DataTravelingWays(modelBuilder);
-			SeedDataOffers.DataOffers(modelBuilder);
+			//SeedDataOffers.DataOffers(modelBuilder);
 		}
 	}
 

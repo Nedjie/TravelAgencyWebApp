@@ -20,5 +20,5 @@ Password: admin123
 
 Common User Profile:
 
-Email: user@gmail.com
-Password: 123456
+Email: nedji@gmail.com
+Password: 123456a

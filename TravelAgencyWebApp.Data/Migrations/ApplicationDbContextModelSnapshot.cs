@@ -181,7 +181,7 @@ namespace TravelAgencyWebApp.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Agents");
+                    b.ToTable("Agents", (string)null);
                 });
 
             modelBuilder.Entity("TravelAgencyWebApp.Data.Models.ApplicationUser", b =>
@@ -309,7 +309,7 @@ namespace TravelAgencyWebApp.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Bookings");
+                    b.ToTable("Bookings", (string)null);
                 });
 
             modelBuilder.Entity("TravelAgencyWebApp.Data.Models.Offer", b =>
@@ -366,7 +366,7 @@ namespace TravelAgencyWebApp.Data.Migrations
 
                     b.HasIndex("TravelingWayId");
 
-                    b.ToTable("Offers");
+                    b.ToTable("Offers", (string)null);
 
                     b.HasData(
                         new
@@ -494,7 +494,7 @@ namespace TravelAgencyWebApp.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("TravelingWays");
+                    b.ToTable("TravelingWays", (string)null);
 
                     b.HasData(
                         new

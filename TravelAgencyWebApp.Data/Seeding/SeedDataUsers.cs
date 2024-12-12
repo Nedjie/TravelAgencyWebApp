@@ -7,7 +7,7 @@ namespace TravelAgencyWebApp.Data.Seeding
 	{
 		public static async Task DataUsers(UserManager<ApplicationUser> userManager)
 		{
-			if (userManager.Users.Any())
+			if (userManager.Users.Any(u => u.Email == "ivan@gmail.com" || u.Email == "nedji@gmail.com"))
 			{
 				return;
 			}
@@ -32,7 +32,20 @@ namespace TravelAgencyWebApp.Data.Seeding
 
 			foreach (var user in users)
 			{
-				await userManager.CreateAsync(user, "123456a");
+				var password = "123456a";
+				var result = await userManager.CreateAsync(user, password);
+				if (result.Succeeded)
+				{
+					Console.WriteLine($"User '{user.UserName}' created successfully.");
+				}
+				else
+				{
+					foreach (var error in result.Errors)
+					{
+						Console.WriteLine($"Error creating user '{user.UserName}': {error.Description}");
+					}
+				}
+
 			}
 		}
 	}

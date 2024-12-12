@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using TravelAgencyWebApp.Data;
 using TravelAgencyWebApp.Data.Models;
 using TravelAgencyWebApp.Data.Seeding;
 using static TravelAgencyWebApp.Infrastructure.Extensions.ServiceRegistrationExtensions;
@@ -34,8 +35,12 @@ namespace TravelAgencyWebApp
             {
                 var services = scope.ServiceProvider;
                 app.SeedRoleAgent();
-				var userManager = services.GetRequiredService<UserManager<ApplicationUser>>();
-			    SeedDataUsers.DataUsers(userManager);
+				var userManager = services.GetRequiredService<UserManager<ApplicationUser>>(); 
+                var context = services.GetRequiredService<ApplicationDbContext>();
+				if (!context.Users.Any(u => u.Email == "ivan@gmail.com" || u.Email == "nedji@gmail.com"))
+				{
+					SeedDataUsers.DataUsers(userManager).Wait();
+				}		
 
 			}
 

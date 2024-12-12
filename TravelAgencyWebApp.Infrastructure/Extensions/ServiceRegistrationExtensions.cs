@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
 using TravelAgencyWebApp.Data;
 using TravelAgencyWebApp.Data.Models;
 using TravelAgencyWebApp.Data.Repository;
@@ -22,8 +23,9 @@ namespace TravelAgencyWebApp.Infrastructure.Extensions
 
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(connectionString));
+			
 
-            services.AddDatabaseDeveloperPageExceptionFilter();
+			services.AddDatabaseDeveloperPageExceptionFilter();
 
             services.ConfigureApplicationCookie(options =>
             {

@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 using TravelAgencyWebApp.Data.Models;
 using TravelAgencyWebApp.Data.Seeding;
 
@@ -20,7 +21,8 @@ namespace TravelAgencyWebApp.Data
 			if (!optionsBuilder.IsConfigured)
 			{
 				var connectionString = "Server=.\\SQLEXPRESS;Database=TravelAgencyDb;Integrated Security=True;TrustServerCertificate=True";
-				optionsBuilder.UseSqlServer(connectionString);
+				optionsBuilder.UseSqlServer(connectionString,
+					b => b.MigrationsAssembly("TravelAgencyWebApp.Data"));
 			}
 		}
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -31,7 +33,7 @@ namespace TravelAgencyWebApp.Data
 				 .HasOne(b => b.User)
 				 .WithMany(u => u.Bookings)
 				 .HasForeignKey(b => b.UserId)
-				 .OnDelete(DeleteBehavior.Cascade);
+				 .OnDelete(DeleteBehavior.NoAction);
 
 			modelBuilder.Entity<Booking>()
 				.HasOne(b => b.Agent)
@@ -43,7 +45,7 @@ namespace TravelAgencyWebApp.Data
 				  .HasOne(o => o.TravelingWay)
 				  .WithMany(tw => tw.Offers)
 				  .HasForeignKey(o => o.TravelingWayId)
-				  .OnDelete(DeleteBehavior.Cascade);
+				  .OnDelete(DeleteBehavior.NoAction);
 
 			modelBuilder.Entity<Offer>()
 				  .Property(o => o.Price)
@@ -57,11 +59,11 @@ namespace TravelAgencyWebApp.Data
 				  .HasOne(a => a.User) 
 			      .WithMany()  
 				  .HasForeignKey(a => a.UserId) 
-				  .OnDelete(DeleteBehavior.Cascade);
+				  .OnDelete(DeleteBehavior.NoAction);
 
 
             SeedDataTravelingWays.DataTravelingWays(modelBuilder);
-			//SeedDataOffers.DataOffers(modelBuilder);
+			SeedDataOffers.DataOffers(modelBuilder);
 		}
 	}
 

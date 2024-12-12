@@ -3,7 +3,7 @@ using TravelAgencyWebApp.Data.Models;
 
 namespace TravelAgencyWebApp.Data.Seeding
 {
-	internal class SeedDataUsers
+	public static class SeedDataUsers
 	{
 		public static async Task DataUsers(UserManager<ApplicationUser> userManager)
 		{

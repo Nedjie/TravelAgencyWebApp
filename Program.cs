@@ -1,11 +1,14 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using TravelAgencyWebApp.Data.Models;
+using TravelAgencyWebApp.Data.Seeding;
 using static TravelAgencyWebApp.Infrastructure.Extensions.ServiceRegistrationExtensions;
 
 namespace TravelAgencyWebApp
 {
 	public class Program
     {
-        public static void Main(string[] args)
+        public static  void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
             
@@ -30,8 +33,11 @@ namespace TravelAgencyWebApp
             using (var scope = app.Services.CreateScope())
             {
                 var services = scope.ServiceProvider;
-                app.SeedRoleAgent(); 
-            }
+                app.SeedRoleAgent();
+				var userManager = services.GetRequiredService<UserManager<ApplicationUser>>();
+			    SeedDataUsers.DataUsers(userManager);
+
+			}
 
             if (app.Environment.IsDevelopment())
             {

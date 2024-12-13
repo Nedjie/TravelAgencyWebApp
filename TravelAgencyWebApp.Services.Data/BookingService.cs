@@ -27,8 +27,8 @@ namespace TravelAgencyWebApp.Services.Data
 		{
 			var bookings = await _bookingRepository
 				.GetAllIncludingAsync(b => b.User!, b => b.Agent!, b => b.Offer!);
-
-			return bookings.Select(b => new BookingViewModel
+			var filteredBookings = bookings.Where(b => b.IsDeleted == false);
+			return filteredBookings.Select(b => new BookingViewModel
 			{
 				Id = b.Id,
 				UserId = b.UserId != null ? b.UserId.ToString() : "Unregistered User",
@@ -47,7 +47,6 @@ namespace TravelAgencyWebApp.Services.Data
 			var bookings = await _bookingRepository
 				.GetAllIncludingAsync(b => b.Offer!, b => b.Agent!, b => b.User!)
 				;
-
 
 			var agents = await _agentRepository.GetByUserIdAsync(userId);
 

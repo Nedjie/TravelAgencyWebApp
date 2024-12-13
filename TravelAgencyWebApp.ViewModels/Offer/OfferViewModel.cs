@@ -36,7 +36,6 @@ namespace TravelAgencyWebApp.ViewModels.Offer
 		[Comment("Check out date of booking")]
 		public DateTime CheckOutDate { get; set; }
 
-		[Url(ErrorMessage = OfferImageUrlInvalidError)]
 		[Comment("Offer image")]
 		public string? ImageUrl { get; set; }
 

@@ -1,4 +1,5 @@
-﻿using System.Linq.Expressions;
+﻿using Microsoft.Extensions.Logging;
+using System.Linq.Expressions;
 using TravelAgencyWebApp.Common;
 using TravelAgencyWebApp.Data.Models;
 using TravelAgencyWebApp.Data.Repository.Interfaces;
@@ -25,15 +26,15 @@ namespace TravelAgencyWebApp.Services.Data
 		public async Task<IEnumerable<BookingViewModel>> GetAllBookingsAsync()
 		{
 			var bookings = await _bookingRepository
-				.GetAllIncludingAsync(b => b.Agent!, b => b.Offer!);
+				.GetAllIncludingAsync(b => b.User!, b => b.Agent!, b => b.Offer!);
 
 			return bookings.Select(b => new BookingViewModel
 			{
 				Id = b.Id,
 				UserId = b.UserId != null ? b.UserId.ToString() : "Unregistered User",
-				UserName = b.User?.FullName ?? "Unknown User", 
-				ReservedByName = b.Agent?.FullName ?? b.User?.FullName ?? "Unknown User", 
-				FullName=b.FullName,
+				UserName = b.User?.FullName ?? "Unknown User",
+				ReservedByName = b.Agent?.FullName ?? b.User?.FullName ?? "Unknown User",
+				FullName = b.FullName,
 				OfferId = b.OfferId,
 				OfferTitle = b.Offer?.Title ?? "No Offer",
 				CheckInDate = b.CheckInDate,
@@ -43,7 +44,10 @@ namespace TravelAgencyWebApp.Services.Data
 
 		public async Task<IEnumerable<BookingViewModel>> GetBookingsForAgentAsync(Guid userId)
 		{
-			var bookings = await _bookingRepository.GetAllIncludingAsync(b => b.Offer!, b => b.Agent!, b => b.User!);
+			var bookings = await _bookingRepository
+				.GetAllIncludingAsync(b => b.Offer!, b => b.Agent!, b => b.User!)
+				;
+
 
 			var agents = await _agentRepository.GetByUserIdAsync(userId);
 
@@ -55,7 +59,7 @@ namespace TravelAgencyWebApp.Services.Data
 			}
 
 			var filteredBookings = bookings
-				 .Where(b => b.UserId == userId || b.AgentId == agent!.Id)
+				  .Where(b => !b.IsDeleted && (b.UserId == userId || b.AgentId == agent?.Id))
 				.ToList();
 
 			return filteredBookings.Select(b => new BookingViewModel
@@ -101,12 +105,12 @@ namespace TravelAgencyWebApp.Services.Data
 
 		public async Task<IEnumerable<string>> GetAllReservationHoldersAsync()
 		{
-			var bookings = await GetAllBookingsAsync(); 
+			var bookings = await GetAllBookingsAsync();
 
 			return bookings
-				.Select(b => b.FullName!) 
+				.Select(b => b.FullName!)
 				.Distinct()
-				.Where(name => !string.IsNullOrWhiteSpace(name)) 
+				.Where(name => !string.IsNullOrWhiteSpace(name))
 				.ToList();
 		}
 
@@ -119,23 +123,26 @@ namespace TravelAgencyWebApp.Services.Data
 				Id = b.Id,
 				CheckInDate = b.CheckInDate,
 				CheckOutDate = b.CheckOutDate,
-				OfferTitle = b.Offer?.Title ?? "No Offer Title"
+				OfferTitle = b.Offer?.Title ?? "No Offer Title",
+				ReservedByName=b.Agent?.FullName?? b.User?.FullName,
+				FullName=b.FullName
 
 			}).ToList();
 		}
 
 		public async Task<IEnumerable<BookingViewModel>> SearchBookingsAsync(string searchTerm, string selectedReservationHolder)
 		{
-			var bookings = await GetAllBookingsAsync(); 
+			var bookings = await GetAllBookingsAsync();
 
-			var filteredBookings = bookings.AsQueryable();
+			var filteredBookings = bookings.AsQueryable();			
 
 			if (!string.IsNullOrWhiteSpace(searchTerm))
 			{
 				filteredBookings = filteredBookings.Where(b =>
-					(b.AgentFullName != null && b.AgentFullName != null && b.AgentFullName.Contains(searchTerm, StringComparison.OrdinalIgnoreCase)) ||
-					(b.UserFullName!= null && b.UserFullName != null && b.UserFullName.Contains(searchTerm, StringComparison.OrdinalIgnoreCase)) ||
-					(b.Offer != null && b.Offer.Title!.Contains(searchTerm, StringComparison.OrdinalIgnoreCase)));
+					
+					(b.OfferTitle!.Contains(searchTerm, StringComparison.OrdinalIgnoreCase)==true));
+				var results = filteredBookings.ToList();
+
 			}
 
 			if (!string.IsNullOrWhiteSpace(selectedReservationHolder))
@@ -149,8 +156,8 @@ namespace TravelAgencyWebApp.Services.Data
 			return filteredBookings.Select(b => new BookingViewModel
 			{
 				Id = b.Id,
-				ReservedByName = b.ReservedByName ?? "Unknown User", 
-				OfferTitle = b.OfferTitle ?? "No Title" 
+				ReservedByName = b.ReservedByName ?? "Unknown User",
+				OfferTitle = b.OfferTitle ?? "No Title"
 			}).ToList();
 		}
 
@@ -183,24 +190,38 @@ namespace TravelAgencyWebApp.Services.Data
 
 		public async Task<bool> CreateBookingAsync(CreateBookingViewModel model)
 		{
-			var user = await _userRepository.GetByIdAsync(model.UserId!.Value);
-			if (model.UserId.HasValue)
-			{
-				if (user == null)
-				{
-					throw new ArgumentException("User not found.");
-				}
-			}
+			////var user = await _userRepository.GetByIdAsync(model.UserId.Value);
+			////if (model.UserId.HasValue)
+			////{
+			////	if (user == null)
+			////	{
+			////		throw new ArgumentException("User not found.");
+			////	}
+			////}
 
+			//model.AgentId = agentId.ToString();
 			if (Guid.TryParse(model.AgentId, out Guid parsedUserId))
 			{
 				var agents = await _agentRepository.GetByUserIdAsync(parsedUserId);
-				if (agents == null || !agents.Any())
+				if (agents == null || !agents.Any() && model.UserId != null)
 				{
 					Console.WriteLine($"No agent found for UserId: {parsedUserId}");
-					return false;
-				}
 
+					var matchUser = _userRepository.GetById(model.UserId.Value);
+					var booking = new Booking
+					{
+						OfferId = model.OfferId,
+						CheckInDate = model.CheckInDate,
+						CheckOutDate = model.CheckOutDate,
+						FullName = matchUser!.FullName,
+						Email = matchUser!.Email,
+						AgentId = null,
+						UserId = model.UserId
+
+					};
+					await _bookingRepository.AddAsync(booking);
+					return true;
+				}
 				var agent = agents.FirstOrDefault();
 				if (agent == null)
 				{
@@ -219,7 +240,7 @@ namespace TravelAgencyWebApp.Services.Data
 						OfferId = model.OfferId,
 						CheckInDate = model.CheckInDate,
 						CheckOutDate = model.CheckOutDate,
-						FullName = user!.FullName,
+						FullName = model.UserFullName,
 						Email = model.UserEmail,
 						AgentId = agent.Id,
 						UserId = model.UserId
@@ -249,6 +270,7 @@ namespace TravelAgencyWebApp.Services.Data
 			}
 			return false;
 		}
+
 
 		public async Task<bool> UpdateBookingAsync(EditBookingViewModel model)
 		{

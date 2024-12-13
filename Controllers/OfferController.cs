@@ -240,7 +240,7 @@ namespace TravelAgencyWebApp.Controllers
 				return View(model);
 			}
 
-			var offerToUpdate = new Data.Models.Offer
+			var offerToUpdate = new Offer
 			{
 				Id = model.Id,
 				Title = model.Title ?? "No Title",
